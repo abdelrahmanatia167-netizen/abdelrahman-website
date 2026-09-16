@@ -422,7 +422,7 @@
                     <i class="fa-solid fa-lock"></i>
                 </div>
                 <h3 class="text-lg font-bold" data-i18n="pass_title">تسجيل الدخول للوحة التحكم</h3>
-                <p class="text-xs text-slate-500 mt-1" data-i18n="pass_sub">أدخل كلمة المرور لتعديل الموقع (كلمة السر الافتراضية: 123456)</p>
+                <p class="text-xs text-slate-500 mt-1" data-i18n="pass_sub">أدخل كلمة مرور حساب الإدارة في Firebase لتعديل الموقع</p>
             </div>
             
             <form id="passwordForm" class="space-y-4">
@@ -715,7 +715,7 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, updatePassword, EmailAuthProvider, reauthenticateWithCredential } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         // Translation dictionary for fixed static strings
@@ -759,7 +759,7 @@
                 footer_rights: "جميع الحقوق محفوظة ©",
                 footer_role: "مصمم جرافيك احترافي",
                 pass_title: "تسجيل الدخول للوحة التحكم",
-                pass_sub: "أدخل كلمة المرور لتعديل الموقع (كلمة السر الافتراضية: 123456)",
+                pass_sub: "أدخل كلمة مرور حساب الإدارة في Firebase لتعديل الموقع",
                 pass_err: "كلمة المرور غير صحيحة!",
                 pass_btn: "دخول اللوحة",
                 cp_title: "لوحة تحكم الموقع الكاملة",
@@ -812,7 +812,7 @@
                 footer_rights: "All Rights Reserved ©",
                 footer_role: "Professional Graphic Designer",
                 pass_title: "Admin Panel Login",
-                pass_sub: "Enter password to edit site (Default: 123456)",
+                pass_sub: "Enter the Firebase admin account password to edit the site",
                 pass_err: "Incorrect password!",
                 pass_btn: "Login to Panel",
                 cp_title: "Complete Website Control Panel",
@@ -831,7 +831,6 @@
         // Default application state object
         const defaultState = {
             currentLang: 'ar',
-            adminPassword: '123456',
             logoType: 'image',
             logoUrl: '1001809140.jpg',
             headerName: 'عبدالرحمن عطيه',
@@ -942,31 +941,31 @@
         let appState = getInitialState();
         let isAuthenticated = false;
 
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'abdelrahman-portfolio';
+        // Firebase configuration for the live public website.
+        const firebaseConfig = {
+            apiKey: "AIzaSyALctJ_89OZSds1XMlXYN-f9TGtjU-xjlg",
+            authDomain: "abdelrahman-website-98d4c.firebaseapp.com",
+            projectId: "abdelrahman-website-98d4c",
+            storageBucket: "abdelrahman-website-98d4c.firebasestorage.app",
+            messagingSenderId: "1046099191095",
+            appId: "1:1046099191095:web:9640fa5a45305c27f066b2",
+            measurementId: "G-X8BM3KYEJS"
+        };
+
+        const ADMIN_EMAIL = 'abdelrahmanatia167@gmail.com';
+        const appId = 'abdelrahman-website';
         let db = null;
         let auth = null;
         let docRef = null;
 
         async function initFirebaseSync() {
-            if (typeof __firebase_config === 'undefined') {
-                console.warn('Firebase config missing. Running in robust local/link sync mode.');
-                return;
-            }
             try {
-                const firebaseConfig = JSON.parse(__firebase_config);
                 const app = initializeApp(firebaseConfig);
                 auth = getAuth(app);
                 db = getFirestore(app);
-
-                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                    await signInWithCustomToken(auth, __initial_auth_token);
-                } else {
-                    await signInAnonymously(auth);
-                }
-
                 docRef = doc(db, 'artifacts', appId, 'public', 'data', 'config', 'siteState');
 
-                // Listen to live cloud updates
+                // Public visitors can read the site state; only the Firebase admin account can write.
                 onSnapshot(docRef, (docSnap) => {
                     if (docSnap.exists()) {
                         const cloudData = docSnap.data();
@@ -977,11 +976,17 @@
                         if (drawer && !drawer.classList.contains('-translate-x-full')) {
                             fillControlPanelInputs();
                         }
-                    } else {
+                    } else if (auth?.currentUser?.email === ADMIN_EMAIL) {
                         saveStateToCloud(appState);
                     }
                 }, (error) => {
                     console.error("Firestore sync error:", error);
+                });
+
+                onAuthStateChanged(auth, (user) => {
+                    if (user && user.email === ADMIN_EMAIL) {
+                        console.log('Firebase admin session active.');
+                    }
                 });
             } catch (err) {
                 console.error("Firebase init failed:", err);
@@ -1473,21 +1478,25 @@
             passwordError.classList.add('hidden');
         });
 
-        passwordForm.addEventListener('submit', (e) => {
+        passwordForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const entered = inputAdminPassword.value.trim();
-            if (entered === (appState.adminPassword || '123456')) {
+            if (!entered) return;
+
+            try {
+                await signInWithEmailAndPassword(auth, ADMIN_EMAIL, entered);
                 isAuthenticated = true;
                 passwordModal.classList.add('hidden');
                 passwordModal.classList.remove('flex');
                 passwordError.classList.add('hidden');
                 inputAdminPassword.value = '';
-                
+
                 lockStatusIcon.className = 'fa-solid fa-lock-open text-emerald-500';
                 fillControlPanelInputs();
                 customizerDrawer.classList.remove('-translate-x-full');
                 showToast('تم تسجيل الدخول بنجاح للوحة التحكم');
-            } else {
+            } catch (err) {
+                console.error('Firebase admin login failed:', err);
                 passwordError.classList.remove('hidden');
             }
         });
@@ -1503,24 +1512,30 @@
             customizerDrawer.classList.add('-translate-x-full');
         });
 
-        document.getElementById('savePasswordBtn').addEventListener('click', () => {
+        document.getElementById('savePasswordBtn').addEventListener('click', async () => {
             const cur = document.getElementById('inputCurrentPass').value;
             const newP = document.getElementById('inputNewPass').value;
 
-            if (cur !== (appState.adminPassword || '123456')) {
-                showToast('كلمة المرور الحالية غير صحيحة!');
+            if (!auth?.currentUser || auth.currentUser.email !== ADMIN_EMAIL) {
+                showToast('سجّل الدخول للوحة التحكم أولاً');
                 return;
             }
-            if (!newP || newP.length < 4) {
-                showToast('كلمة المرور يجب أن تكون 4 عناصر على الأقل');
+            if (!newP || newP.length < 6) {
+                showToast('كلمة المرور يجب أن تكون 6 أحرف/أرقام على الأقل');
                 return;
             }
 
-            appState.adminPassword = newP;
-            saveState();
-            document.getElementById('inputCurrentPass').value = '';
-            document.getElementById('inputNewPass').value = '';
-            showToast('تم تغيير كلمة السر بنجاح!');
+            try {
+                const credential = EmailAuthProvider.credential(ADMIN_EMAIL, cur);
+                await reauthenticateWithCredential(auth.currentUser, credential);
+                await updatePassword(auth.currentUser, newP);
+                document.getElementById('inputCurrentPass').value = '';
+                document.getElementById('inputNewPass').value = '';
+                showToast('تم تغيير كلمة مرور Firebase بنجاح!');
+            } catch (err) {
+                console.error('Password update failed:', err);
+                showToast('تعذر تغيير كلمة المرور. تأكد من كلمة المرور الحالية.');
+            }
         });
 
         document.getElementById('btnSyncCloudNow').addEventListener('click', async () => {
