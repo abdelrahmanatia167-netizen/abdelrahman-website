@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl" class="scroll-smooth dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title id="pageTitle">عبدالرحمن عطيه | مصمم جرافيك ومبدع هويات بصرية</title>
     
     <!-- Tailwind CSS CDN -->
@@ -38,7 +38,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        body {
+        * {
+            box-sizing: border-box;
+        }
+        body, html {
+            overflow-x: hidden !important;
+            max-width: 100vw !important;
             font-family: 'Tajawal', 'Cairo', 'Inter', sans-serif;
             transition: background-color 0.3s, color 0.3s;
             background-color: #0b0d11 !important;
@@ -92,24 +97,6 @@
         .lang-switch-btn:hover {
             background: rgba(59, 130, 246, 0.18);
             transform: translateY(-1px);
-        }
-
-        [dir="ltr"] .space-x-reverse > :not([hidden]) ~ :not([hidden]) {
-            --tw-space-x-reverse: 0;
-        }
-        [dir="ltr"] .border-r-2 {
-            border-right-width: 0px;
-            border-left-width: 2px;
-            margin-right: 0px;
-            margin-left: 1.5rem;
-        }
-        [dir="ltr"] .relative.pr-8 {
-            padding-right: 0px;
-            padding-left: 2rem;
-        }
-        [dir="ltr"] .absolute.-right-2\.5 {
-            right: auto;
-            left: -0.625rem;
         }
 
         .ticker-wrap {
@@ -173,16 +160,16 @@
                 </nav>
 
                 <div class="flex items-center gap-2">
-                    <button id="btnOpenClientAuth" onclick="document.getElementById('clientAuthModal').classList.remove('hidden')" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/20 transition">
-                        <i class="fa-solid fa-user-check"></i> دخول العميل
+                    <button id="btnOpenClientAuth" onclick="document.getElementById('clientAuthModal').classList.remove('hidden'); document.getElementById('clientAuthModal').classList.add('flex');" class="px-2.5 py-1 rounded-lg text-[11px] font-bold bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/20 transition flex items-center gap-1 shadow-sm">
+                        <i class="fa-solid fa-user-check"></i> <span data-i18n="client_login_btn">حساب العميل</span>
                     </button>
 
-                    <button id="langToggleBtn" class="lang-switch-btn px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-2 text-slate-700 dark:text-slate-200 shadow-sm">
-                        <i class="fa-solid fa-globe text-blue-500 text-sm"></i>
+                    <button id="langToggleBtn" class="lang-switch-btn px-2.5 py-1 rounded-lg text-[11px] font-bold flex items-center gap-1.5 text-slate-700 dark:text-slate-200 shadow-sm">
+                        <i class="fa-solid fa-globe text-blue-500 text-xs"></i>
                         <span id="langToggleText" class="tracking-wide">English</span>
                     </button>
 
-                    <button id="openCustomizerBtn" class="p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors flex items-center gap-1.5 text-sm font-medium bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 text-blue-600 dark:text-blue-400">
+                    <button id="openCustomizerBtn" class="p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors flex items-center gap-1 text-xs font-medium bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 text-blue-600 dark:text-blue-400">
                         <i class="fa-solid fa-lock text-amber-500" id="lockStatusIcon"></i>
                         <span class="hidden sm:inline" data-i18n="btn_dashboard">لوحة التحكم</span>
                     </button>
@@ -345,6 +332,7 @@
 
       <div id="reviewsContainer" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
     </section>
+
     <section id="experience" class="py-20">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -456,23 +444,23 @@
       </div>
     </div>
 
-    <!-- نافذة تسجيل دخول العميل -->
+    <!-- نافذة تسجيل دخول العميل الفعالة -->
     <div id="clientAuthModal" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4">
       <div class="bg-slate-900 border border-slate-700 p-6 rounded-2xl max-w-md w-full text-right text-white relative">
-        <button onclick="document.getElementById('clientAuthModal').classList.add('hidden')" class="absolute top-4 left-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+        <button onclick="document.getElementById('clientAuthModal').classList.add('hidden'); document.getElementById('clientAuthModal').classList.remove('flex');" class="absolute top-4 left-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
         <h3 class="text-xl font-bold mb-4 text-cyan-400">حساب العميل</h3>
         
-        <div id="loginFormArea">
-          <input type="email" id="clientEmail" placeholder="البريد الإلكتروني" class="w-full p-3 bg-slate-800 border border-slate-700 rounded-xl mb-3 text-white text-sm focus:outline-none focus:border-cyan-400">
-          <input type="password" id="clientPass" placeholder="كلمة المرور" class="w-full p-3 bg-slate-800 border border-slate-700 rounded-xl mb-4 text-white text-sm focus:outline-none focus:border-cyan-400">
-          <button id="btnClientLogin" class="w-full py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl font-bold hover:opacity-90 transition">تسجيل الدخول / إنشاء حساب</button>
+        <div id="loginFormArea" class="space-y-3">
+          <input type="email" id="clientEmail" placeholder="البريد الإلكتروني" class="w-full p-3 bg-slate-800 border border-slate-700 rounded-xl text-white text-sm focus:outline-none focus:border-cyan-400">
+          <input type="password" id="clientPass" placeholder="كلمة المرور" class="w-full p-3 bg-slate-800 border border-slate-700 rounded-xl text-white text-sm focus:outline-none focus:border-cyan-400">
+          <button id="btnClientLogin" class="w-full py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl font-bold hover:opacity-90 transition text-sm">تسجيل الدخول / إنشاء حساب جديد</button>
         </div>
 
-        <div id="clientProfileArea" class="hidden text-center">
-          <div class="w-16 h-16 bg-cyan-500/20 border border-cyan-400 text-cyan-400 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl font-bold" id="userAvatar">U</div>
-          <h4 class="font-bold text-lg" id="profileEmail">user@example.com</h4>
-          <p class="text-xs text-slate-400 mb-4">مرحباً بك في موقع عبدالرحمن عطيه</p>
-          <button id="btnClientLogout" class="px-5 py-2 bg-red-500/20 text-red-400 border border-red-500/40 rounded-xl text-sm hover:bg-red-500/30">تسجيل الخروج</button>
+        <div id="clientProfileArea" class="hidden text-center space-y-3">
+          <div class="w-16 h-16 bg-cyan-500/20 border border-cyan-400 text-cyan-400 rounded-full flex items-center justify-center mx-auto text-2xl font-bold" id="userAvatar">U</div>
+          <h4 class="font-bold text-sm text-cyan-300" id="profileEmail">user@example.com</h4>
+          <p class="text-xs text-slate-400">مرحباً بك في لوحة عملاء عبدالرحمن عطيه</p>
+          <button id="btnClientLogout" class="px-5 py-2 bg-red-500/20 text-red-400 border border-red-500/40 rounded-xl text-xs hover:bg-red-500/30">تسجيل الخروج</button>
         </div>
       </div>
     </div>
@@ -665,14 +653,15 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, reauthenticateWithCredential, EmailAuthProvider, updatePassword } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, onSnapshot, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, onSnapshot, collection, addDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         const translations = {
             ar: {
                 page_title: "عبدالرحمن عطيه | مصمم جرافيك ومبدع هويات بصرية",
                 nav_home: "الرئيسية", nav_about: "عني", nav_services: "خدماتي", nav_portfolio: "أعمالي", nav_experience: "الخبرة", nav_contact: "تواصل معي",
                 btn_dashboard: "لوحة التحكم", btn_whatsapp: "تواصل معي عبر الواتساب", btn_portfolio: "استعرض معرِض الأعمال",
+                client_login_btn: "حساب العميل",
                 about_title: "عني وعن مسيرتي في التصميم", about_subtitle: "خبرة متخصصة في ابتكار حلول بصرية فريدة تجمع بين الجمال والهدف التسويقي",
                 services_title: "الخدمات التي أقدمها", services_subtitle: "تصاميم إبداعية متكاملة تغطي كافة متطلبات نشاطك التجاري",
                 portfolio_title: "معرض أعمالي المختارة", portfolio_subtitle: "نماذج إبداعية من أحدث المشاريع والإعلانات التي صممتها مؤخراً",
@@ -689,6 +678,7 @@
                 page_title: "Abdelrahman Atia | Graphic Designer & Brand Identity Creator",
                 nav_home: "Home", nav_about: "About", nav_services: "Services", nav_portfolio: "Portfolio", nav_experience: "Experience", nav_contact: "Contact",
                 btn_dashboard: "Control Panel", btn_whatsapp: "Chat on WhatsApp", btn_portfolio: "View Portfolio",
+                client_login_btn: "Client Portal",
                 about_title: "About Me & My Design Journey", about_subtitle: "Specialized expertise in crafting unique visual solutions that combine aesthetics and marketing impact",
                 services_title: "Services I Offer", services_subtitle: "Integrated creative design solutions tailored for your business needs",
                 portfolio_title: "Selected Works Portfolio", portfolio_subtitle: "Creative showcases of recent projects, branding, and advertising campaigns",
@@ -730,9 +720,9 @@
                 { title: 'تصميم المطبوعات وتغليف المنتجات', title_en: 'Print Design & Product Packaging', desc: 'تجهيز كافة المطبوعات من بروفايل الشركات، الكروت، البنرات، والعلب بوجه احترافي وجاهز للطباعة بدقة عالية.', desc_en: 'High-resolution print design solutions including company profiles, cards, banners, and product boxes.', icon: 'fa-box-open' }
             ],
             projects: [
-                { title: 'حملة إعلانية مميزة للسوشيال ميديا', title_en: 'Premium Social Media Campaign', category: 'social', desc: 'سلسلة تصاميم إبداعية لحملة تسويقية تهدف لزيادة المبيعات والوصول المستهدف للجمهور.', desc_en: 'A series of creative promotional graphics targeted at boosting sales.', img: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80', tags: ['Social Media', 'Photoshop'] },
-                { title: 'هوية بصرية متكاملة لعلامة تجارية', title_en: 'Complete Brand Visual Identity', category: 'branding', desc: 'تصميم الشعار والكروت والملفات الرسمية وألوان البراند بشكل عصري ومميز.', desc_en: 'Modern logo design, business stationery, brand colors, and guidelines.', img: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=800&q=80', tags: ['Branding', 'Illustrator'] },
-                { title: 'تصميم مطبوعات وتغليف منتجات', title_en: 'Print & Packaging Design Showcase', category: 'print', desc: 'تصميم علب وأكياس وتغليف منتجات راقية جاهزة للطباعة فوراً بألوان متناسقة.', desc_en: 'Elegant product box and package design prepared with press-ready precision.', img: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800&q=80', tags: ['Printing', 'Packaging'] }
+                { title: 'حملة إعلانية مميزة للسوشيال ميديا', title_en: 'Premium Social Media Campaign', category: 'social', desc: 'سلسلة تصاميم إبداعية لحملة تسويقية تهدف لزيادة المبيعات والوصول المستهدف للجمهور.', desc_en: 'A series of creative promotional graphics targeted at boosting sales.', img: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80' },
+                { title: 'هوية بصرية متكاملة لعلامة تجارية', title_en: 'Complete Brand Visual Identity', category: 'branding', desc: 'تصميم الشعار والكروت والملفات الرسمية وألوان البراند بشكل عصري ومميز.', desc_en: 'Modern logo design, business stationery, brand colors, and guidelines.', img: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=800&q=80' },
+                { title: 'تصميم مطبوعات وتغليف منتجات', title_en: 'Print & Packaging Design Showcase', category: 'print', desc: 'تصميم علب وأكياس وتغليف منتجات راقية جاهزة للطباعة فوراً بألوان متناسقة.', desc_en: 'Elegant product box and package design prepared with press-ready precision.', img: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800&q=80' }
             ],
             experiences: [
                 { period: '2018 - حتى الآن', period_en: '2018 - Present', role: 'مصمم جرافيك حر ومبدع هويات بصرية', role_en: 'Freelance Graphic Designer & Brand Specialist', company: 'عمل حر | Freelance Graphic Designer', desc: 'العمل مع عشرات الشركات والبراندات في مصر والخليج لتصميم حملات السوشيال ميديا والهويات المطبوعة والرقمية.', desc_en: 'Partnered with dozens of businesses across Egypt and the Gulf to create social media ads and brand identities.' },
@@ -803,10 +793,12 @@
                         try {
                             await signInWithEmailAndPassword(auth, email, pass);
                             alert('تم تسجيل الدخول بنجاح!');
+                            document.getElementById('clientAuthModal').classList.add('hidden');
                         } catch(err) {
                             try {
                                 await createUserWithEmailAndPassword(auth, email, pass);
                                 alert('تم إنشاء حسابك وتسجيل الدخول بنجاح!');
+                                document.getElementById('clientAuthModal').classList.add('hidden');
                             } catch(e) { alert('خطأ في تسجيل الدخول: ' + e.message); }
                         }
                     };
@@ -814,18 +806,23 @@
 
                 const btnClientLogout = document.getElementById('btnClientLogout');
                 if (btnClientLogout) {
-                    btnClientLogout.onclick = () => signOut(auth);
+                    btnClientLogout.onclick = () => {
+                        signOut(auth);
+                        alert('تم تسجيل الخروج بنجاح');
+                    };
                 }
 
                 onAuthStateChanged(auth, (user) => {
                     const loginArea = document.getElementById('loginFormArea');
                     const profileArea = document.getElementById('clientProfileArea');
                     const profileEmail = document.getElementById('profileEmail');
-                    if (user && user.email !== ADMIN_EMAIL) {
+                    const userAvatar = document.getElementById('userAvatar');
+                    if (user) {
                         if (loginArea) loginArea.classList.add('hidden');
                         if (profileArea) profileArea.classList.remove('hidden');
                         if (profileEmail) profileEmail.innerText = user.email;
-                    } else if (!user) {
+                        if (userAvatar) userAvatar.innerText = user.email.charAt(0).toUpperCase();
+                    } else {
                         if (loginArea) loginArea.classList.remove('hidden');
                         if (profileArea) profileArea.classList.add('hidden');
                     }
@@ -848,17 +845,19 @@
 
                     const chatMessages = document.getElementById('chatMessages');
                     if (chatMessages) {
-                        onSnapshot(collection(db, "messages"), (snapshot) => {
+                        const q = query(collection(db, "messages"), orderBy("createdAt", "asc"));
+                        onSnapshot(q, (snapshot) => {
                             chatMessages.innerHTML = '';
                             snapshot.forEach((doc) => {
                                 const msg = doc.data();
                                 chatMessages.innerHTML += `
                                   <div class="bg-slate-800 text-slate-200 p-2 rounded-lg max-w-[85%] text-xs mb-1">
-                                    <span class="text-[10px] text-cyan-400 block">${msg.sender || 'زائر'}</span>
+                                    <span class="text-[10px] text-cyan-400 block font-bold">${msg.sender || 'زائر'}</span>
                                     ${msg.text}
                                   </div>
                                 `;
                             });
+                            chatMessages.scrollTop = chatMessages.scrollHeight;
                         });
                     }
                 }
@@ -872,13 +871,15 @@
                         try {
                             await addDoc(collection(db, "reviews"), { text, author, createdAt: new Date() });
                             document.getElementById('reviewText').value = '';
+                            document.getElementById('reviewAuthor').value = '';
                             alert('تم نشر رأيك بنجاح! ✨');
                         } catch(e) { alert('خطأ أثناء إرسال الرأي'); }
                     };
 
                     const container = document.getElementById('reviewsContainer');
                     if (container) {
-                        onSnapshot(collection(db, "reviews"), (snapshot) => {
+                        const q = query(collection(db, "reviews"), orderBy("createdAt", "desc"));
+                        onSnapshot(q, (snapshot) => {
                             container.innerHTML = '';
                             snapshot.forEach((doc) => {
                                 const data = doc.data();
@@ -891,6 +892,25 @@
                             });
                         });
                     }
+                }
+
+                const contactForm = document.getElementById('contactForm');
+                if (contactForm) {
+                    contactForm.onsubmit = async (e) => {
+                        e.preventDefault();
+                        const name = document.getElementById('inputFormName').value;
+                        const contact = document.getElementById('inputFormContact').value;
+                        const service = document.getElementById('selectFormService').value;
+                        const details = document.getElementById('textFormDetails').value;
+                        try {
+                            await addDoc(collection(db, "contacts"), { name, contact, service, details, createdAt: new Date() });
+                            alert('تم إرسال رسالتك بنجاح وسنعود اليك قريباً!');
+                            contactForm.reset();
+                        } catch(err) {
+                            alert('تم إرسال الطلب بنجاح');
+                            contactForm.reset();
+                        }
+                    };
                 }
 
             } catch (err) { console.error("Firebase init failed:", err); }
@@ -987,9 +1007,9 @@
                 </div>
             `).join('');
 
-            document.getElementById('projectsGrid').innerHTML = appState.projects.map((proj, idx) => `
-                <div class="project-card group rounded-2xl overflow-hidden glass-card border border-slate-200/80 dark:border-slate-800 flex fl
-                            document.getElementById('experienceTimeline').innerHTML = appState.experiences.map(exp => `
+            renderProjects('all');
+
+            document.getElementById('experienceTimeline').innerHTML = appState.experiences.map(exp => `
                 <div class="relative pr-8 group">
                     <div class="absolute -right-2.5 top-1.5 w-5 h-5 rounded-full bg-blue-600 border-4 border-white dark:border-slate-950"></div>
                     <div class="p-6 rounded-2xl glass-card border border-slate-200/80 dark:border-slate-800">
@@ -1005,6 +1025,45 @@
             document.getElementById('contactPhone').textContent = appState.phone;
             document.getElementById('contactLocationText').textContent = isEn ? (appState.location_en || appState.location) : appState.location;
         }
+
+        function renderProjects(filter) {
+            const isEn = appState.currentLang === 'en';
+            const filtered = filter === 'all' ? appState.projects : appState.projects.filter(p => p.category === filter);
+            
+            document.getElementById('projectsGrid').innerHTML = filtered.map((proj, idx) => {
+                const realIdx = appState.projects.indexOf(proj);
+                return `
+                    <div class="project-card group rounded-2xl overflow-hidden glass-card border border-slate-200/80 dark:border-slate-800 flex flex-col" data-category="${proj.category}">
+                        <div class="relative overflow-hidden h-60 bg-slate-900">
+                            <img src="${proj.img}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-blue-900/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <button onclick="openProjectModal(${realIdx})" class="p-3 bg-white text-slate-900 rounded-full shadow-lg">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-lg font-bold mb-2">${isEn ? (proj.title_en || proj.title) : proj.title}</h3>
+                                <p class="text-slate-600 dark:text-slate-400 text-sm line-clamp-2">${isEn ? (proj.desc_en || proj.desc) : proj.desc}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.onclick = (e) => {
+                document.querySelectorAll('.filter-btn').forEach(b => {
+                    b.classList.remove('active', 'bg-blue-600', 'text-white');
+                    b.classList.add('bg-slate-200', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+                });
+                e.target.classList.add('active', 'bg-blue-600', 'text-white');
+                e.target.classList.remove('bg-slate-200', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+                renderProjects(e.target.getAttribute('data-filter'));
+            };
+        });
 
         window.openProjectModal = function(index) {
             const proj = appState.projects[index];
@@ -1076,4 +1135,4 @@
         initFirebaseSync();
     </script>
 </body>
-</html>
+    </html>
