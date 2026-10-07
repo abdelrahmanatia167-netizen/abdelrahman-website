@@ -714,10 +714,83 @@
         <span id="toastMsg" class="font-medium text-sm">تم تنفيذ الإجراء بنجاح</span>
     </div>
 
-    <script type="module">import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-import { getFirestore, collection, addDoc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-;
+    <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+  import { getFirestore, collection, addDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+  // التأكد من وجود أوبجكت Firebase الأصلي في موقعك
+  const auth = typeof firebaseAuth !== 'undefined' ? firebaseAuth : (window.auth || null);
+  const db = typeof firebaseDb !== 'undefined' ? firebaseDb : (window.db || null);
+
+  // 1. الشات المباشر
+  document.addEventListener('DOMContentLoaded', () => {
+    const btnSendChat = document.getElementById('btnSendChat');
+    if(btnSendChat && db) {
+      btnSendChat.addEventListener('click', async () => {
+        const input = document.getElementById('chatInput');
+        if(!input || !input.value.trim()) return;
+        try {
+          await addDoc(collection(db, "messages"), {
+            text: input.value,
+            sender: (auth && auth.currentUser) ? auth.currentUser.email : 'زائر',
+            createdAt: new Date()
+          });
+          input.value = '';
+        } catch(e) { console.error(e); }
+      });
+    }
+
+    if(db) {
+      const chatMessages = document.getElementById('chatMessages');
+      if(chatMessages) {
+        onSnapshot(collection(db, "messages"), (snapshot) => {
+          chatMessages.innerHTML = '';
+          snapshot.forEach((doc) => {
+            const msg = doc.data();
+            chatMessages.innerHTML += `
+              <div class="bg-slate-800 text-slate-200 p-2 rounded-lg max-w-[85%] text-xs mb-1">
+                <span class="text-[10px] text-cyan-400 block">${msg.sender || 'زائر'}</span>
+                ${msg.text}
+              </div>
+            `;
+          });
+        });
+      }
+
+      // 2. آراء العملاء
+      const btnSubmitReview = document.getElementById('btnSubmitReview');
+      if(btnSubmitReview) {
+        btnSubmitReview.addEventListener('click', async () => {
+          const text = document.getElementById('reviewText')?.value;
+          const author = document.getElementById('reviewAuthor')?.value || 'عميل مميز';
+          if(!text) return alert('يرجى كتابة الرأي أولاً');
+          try {
+            await addDoc(collection(db, "reviews"), { text, author, createdAt: new Date() });
+            document.getElementById('reviewText').value = '';
+            alert('تم إضافة رأيك بنجاح! ✨');
+          } catch(e) { alert('حصل خطأ أثناء الإرسال'); }
+        });
+      }
+
+      const container = document.getElementById('reviewsContainer');
+      if(container) {
+        onSnapshot(collection(db, "reviews"), (snapshot) => {
+          container.innerHTML = '';
+          snapshot.forEach((doc) => {
+            const data = doc.data();
+            container.innerHTML += `
+              <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl text-right mb-2">
+                <p class="text-slate-300 text-sm mb-2">"${data.text}"</p>
+                <span class="text-xs text-cyan-400 font-bold">- ${data.author}</span>
+              </div>
+            `;
+          });
+        });
+      }
+    }
+  });
+</script>
 // تشغيل الميزات الجديدة
 const btnClientLogin = document.getElementById('btnClientLogin');
 if(btnClientLogin) {
@@ -1080,7 +1153,106 @@ onSnapshot(collection(db, "messages"), (snapshot) => {
                     if (user && user.email === ADMIN_EMAIL) {
                         console.log('Firebase admin session active.');
                     }
-                });
+                });        // --- تشغيل الميزات التفاعلية مع Firebase ---
+        
+        // 1. تسجيل دخول العميل
+        const btnClientLogin = document.getElementById('btnClientLogin');
+        if (btnClientLogin) {
+          btnClientLogin.onclick = async () => {
+            const email = document.getElementById('clientEmail')?.value;
+            const pass = document.getElementById('clientPass')?.value;
+            if (!email || !pass) return alert('يرجى إدخال البريد وكلمة المرور');
+            try {
+              await signInWithEmailAndPassword(auth, email, pass);
+              alert('تم تسجيل الدخول بنجاح!');
+            } catch (err) {
+              try {
+                await createUserWithEmailAndPassword(auth, email, pass);
+                alert('تم إنشاء حسابك الجديد وتسجيل الدخول!');
+              } catch (e) { alert('خطأ في تسجيل الدخول: ' + e.message); }
+            }
+          };
+        }
+
+        // 2. تحديث واجهة البروفايل للعميل
+        onAuthStateChanged(auth, (user) => {
+          const loginArea = document.getElementById('loginFormArea');
+          const profileArea = document.getElementById('clientProfileArea');
+          const profileEmail = document.getElementById('profileEmail');
+          if (user) {
+            if (loginArea) loginArea.classList.add('hidden');
+            if (profileArea) profileArea.classList.remove('hidden');
+            if (profileEmail) profileEmail.innerText = user.email;
+          } else {
+            if (loginArea) loginArea.classList.remove('hidden');
+            if (profileArea) profileArea.classList.add('hidden');
+          }
+        });
+
+        // 3. الشات المباشر
+        const btnSendChat = document.getElementById('btnSendChat');
+        if (btnSendChat && db) {
+          btnSendChat.onclick = async () => {
+            const input = document.getElementById('chatInput');
+            if (!input || !input.value.trim()) return;
+            try {
+              await addDoc(collection(db, "messages"), {
+                text: input.value,
+                sender: (auth && auth.currentUser) ? auth.currentUser.email : 'زائر',
+                createdAt: new Date()
+              });
+              input.value = '';
+            } catch (e) { console.error('Chat error:', e); }
+          };
+
+          const chatMessages = document.getElementById('chatMessages');
+          if (chatMessages) {
+            onSnapshot(collection(db, "messages"), (snapshot) => {
+              chatMessages.innerHTML = '';
+              snapshot.forEach((doc) => {
+                const msg = doc.data();
+                chatMessages.innerHTML += `
+                  <div class="bg-slate-800 text-slate-200 p-2 rounded-lg max-w-[85%] text-xs mb-1">
+                    <span class="text-[10px] text-cyan-400 block">${msg.sender || 'زائر'}</span>
+                    ${msg.text}
+                  </div>
+                `;
+              });
+            });
+          }
+        }
+
+        // 4. إرسال وعرض الآراء
+        const btnSubmitReview = document.getElementById('btnSubmitReview');
+        if (btnSubmitReview && db) {
+          btnSubmitReview.onclick = async () => {
+            const text = document.getElementById('reviewText')?.value;
+            const author = document.getElementById('reviewAuthor')?.value || 'عميل مميز';
+            if (!text) return alert('يرجى كتابة الرأي أولاً');
+            try {
+              await addDoc(collection(db, "reviews"), { text, author, createdAt: new Date() });
+              document.getElementById('reviewText').value = '';
+              alert('تم إضافة رأيك بنجاح! ✨');
+            } catch (e) { alert('حصل خطأ أثناء إرسال الرأي'); }
+          };
+
+          const container = document.getElementById('reviewsContainer');
+          if (container) {
+            onSnapshot(collection(db, "reviews"), (snapshot) => {
+              container.innerHTML = '';
+              snapshot.forEach((doc) => {
+                const data = doc.data();
+                container.innerHTML += `
+                  <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl text-right mb-2">
+                    <p class="text-slate-300 text-sm mb-2">"${data.text}"</p>
+                    <span class="text-xs text-cyan-400 font-bold">- ${data.author}</span>
+                  </div>
+                `;
+              });
+            });
+          }
+        }
+
             } catch (err) {
                 console.error("Firebase init failed:", err);
             }
