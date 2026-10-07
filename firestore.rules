@@ -1,12 +1,62 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    function isAdmin() { return request.auth != null && request.auth.token.email == 'abdelrahmanatia167@gmail.com'; }
-    match /site/content { allow read: if true; allow write: if isAdmin(); }
-    match /reviews/{id} { allow read: if true; allow create: if true; allow delete, update: if isAdmin(); }
-    match /contacts/{id} { allow create: if true; allow read, update, delete: if isAdmin(); }
-    match /users/{id} { allow create: if request.auth != null && request.auth.uid == id; allow read: if isAdmin() || (request.auth != null && request.auth.uid == id); allow update: if isAdmin() || (request.auth != null && request.auth.uid == id); allow delete: if isAdmin(); }
-    match /loginIndex/{id} { allow read: if true; allow create, update: if request.auth != null && request.resource.data.uid == request.auth.uid; allow delete: if isAdmin(); }
-    match /messages/{id} { allow create: if request.auth != null && request.resource.data.uid == request.auth.uid; allow read: if isAdmin() || (request.auth != null && resource.data.uid == request.auth.uid); allow update, delete: if isAdmin(); }
+    function signedIn() { return request.auth != null; }
+    function isAdmin() {
+      return signedIn() && request.auth.token.email == 'abdelrahmanatia167@gmail.com';
+    }
+
+    // Site content: public can read; only the admin can change it.
+    match /site/content {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    // Customer reviews: public can read and submit; only admin can edit/delete.
+    match /reviews/{id} {
+      allow read: if true;
+      allow create: if request.resource.data.rating is int
+                    && request.resource.data.rating >= 1
+                    && request.resource.data.rating <= 5
+                    && request.resource.data.text is string
+                    && request.resource.data.text.size() > 0
+                    && request.resource.data.text.size() <= 2000;
+      allow update, delete: if isAdmin();
+    }
+
+    // Contact requests: anyone may submit; only admin can read/manage them.
+    match /contacts/{id} {
+      allow create: if request.resource.data.name is string
+                    && request.resource.data.contact is string
+                    && request.resource.data.details is string;
+      allow read, update, delete: if isAdmin();
+    }
+
+    // Customer profiles.
+    match /users/{id} {
+      allow create: if signedIn() && request.auth.uid == id;
+      allow read: if isAdmin() || (signedIn() && request.auth.uid == id);
+      allow update: if isAdmin() || (signedIn() && request.auth.uid == id);
+      allow delete: if isAdmin();
+    }
+
+    // Name/phone -> email index used for login without exposing passwords.
+    match /loginIndex/{id} {
+      allow read: if true;
+      allow create, update: if signedIn() && request.resource.data.uid == request.auth.uid;
+      allow delete: if isAdmin();
+    }
+
+    // Customer/admin chat.
+    match /messages/{id} {
+      allow create: if signedIn() && request.resource.data.uid == request.auth.uid;
+      allow read: if isAdmin() || (signedIn() && resource.data.uid == request.auth.uid);
+      allow update, delete: if isAdmin();
+    }
+
+    // Everything else stays locked.
+    match /{document=**} {
+      allow read, write: if false;
+    }
   }
 }

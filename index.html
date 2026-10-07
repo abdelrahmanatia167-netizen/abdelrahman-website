@@ -44,7 +44,7 @@ input,textarea,select{outline:none}.dark input,.dark textarea,.dark select{backg
 <div id="adminDrawer" class="drawer fixed inset-y-0 right-0 z-[95] w-full max-w-5xl bg-white dark:bg-slate-950 shadow-2xl border-l border-slate-200 dark:border-slate-800 flex flex-col"><div class="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between"><div><h2 class="font-black text-lg">لوحة التحكم</h2><p class="text-xs text-slate-500">تحكم كامل في محتوى الموقع والطلبات والحسابات.</p></div><div class="flex gap-2"><button id="adminLogout" class="px-3 py-2 rounded-xl bg-rose-100 text-rose-600 dark:bg-rose-950/30">خروج</button><button id="closeAdmin" class="w-10 h-10 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-900"><i class="fa-solid fa-xmark"></i></button></div></div><div class="flex flex-1 min-h-0"><aside class="w-44 sm:w-52 border-l border-slate-200 dark:border-slate-800 p-2 overflow-y-auto scrollbar space-y-1" id="adminTabs"></aside><section class="flex-1 overflow-y-auto scrollbar p-4 sm:p-6" id="adminContent"></section></div></div>
 
 <div id="categoryPage" class="modal fixed inset-0 z-[75] bg-black/75 backdrop-blur-sm items-center justify-center p-3 sm:p-6"><div class="w-full max-w-6xl max-h-[92vh] overflow-y-auto scrollbar glass rounded-[2rem] p-5 sm:p-8"><div class="flex items-center justify-between gap-3 sticky top-0 pb-4 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl z-10"><div><div id="categoryPageKicker" class="text-blue-600 font-bold text-sm">صفحة تخصص الأعمال</div><h3 id="categoryPageTitle" class="text-2xl sm:text-4xl font-black mt-1"></h3></div><button class="closeModal w-11 h-11 rounded-xl bg-slate-200 dark:bg-slate-800" aria-label="رجوع"><i class="fa-solid fa-arrow-right"></i></button></div><p id="categoryPageDesc" class="mt-3 max-w-3xl text-slate-600 dark:text-slate-300 leading-8"></p><div class="mt-5 inline-flex items-center gap-2 text-sm font-bold text-slate-500"><i class="fa-solid fa-images text-blue-600"></i> كل الأعمال في هذا التخصص تُدار بالكامل من لوحة التحكم.</div><div id="categoryPageGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-7"></div></div></div>
-<div id="google_translate_element" aria-hidden="true"></div><div id="toastHost" class="fixed bottom-5 left-5 z-[120] space-y-2"></div>
+<div id="google_translate_element" aria-hidden="true"></div><div id="toastHost" class="fixed bottom-5 left-5 z-[120] space-y-2"></div><div id="cloudStatus" class="fixed bottom-3 left-3 z-[100] px-3 py-2 rounded-xl text-xs font-bold bg-amber-500/90 text-white shadow-lg">☁️ جاري الاتصال بالسحابة…</div>
 
 <script type="module">
 import {initializeApp} from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js';
@@ -83,13 +83,13 @@ onAuthStateChanged(auth,async u=>{currentUser=u;if(u){try{const snap=await getDo
 function setupReviewStars(){const box=$('reviewStars');if(!box)return;box.innerHTML=[1,2,3,4,5].map(n=>`<button type="button" data-star="${n}" class="reviewStar text-slate-300 hover:text-amber-400" aria-label="${n}">★</button>`).join('');const paint=n=>document.querySelectorAll('.reviewStar').forEach(b=>b.classList.toggle('text-amber-400',+b.dataset.star<=n));document.querySelectorAll('.reviewStar').forEach(b=>b.onclick=()=>{const n=+b.dataset.star;$('reviewRating').value=n;paint(n)});paint(5)}
 setupReviewStars();
 $('addReview').onclick=async()=>{const author=$('reviewAuthor').value.trim()||'عميل';const text=$('reviewText').value.trim();const rating=Math.max(1,Math.min(5,Number($('reviewRating').value)||5));if(!text)return toast('اكتب الرأي أولاً',false);try{await addDoc(collection(db,'reviews'),{author,text,rating,uid:currentUser?.uid||null,createdAt:serverTimestamp()});$('reviewText').value='';toast('تم نشر رأيك');}catch(e){toast('تعذر نشر الرأي. تأكد من إعداد Firebase.',false)}};
-onSnapshot(query(collection(db,'reviews'),orderBy('createdAt','desc')),s=>{reviews=s.docs.map(d=>({id:d.id,...d.data()}));renderReviews();});
+onSnapshot(query(collection(db,'reviews'),orderBy('createdAt','desc')),s=>{reviews=s.docs.map(d=>({id:d.id,...d.data()}));renderReviews();if(currentLang==='en')setTimeout(()=>translatePage(),150)},e=>{console.warn('reviews sync',e);renderReviews();});
 function renderReviews(){$('reviewsGrid').innerHTML=reviews.map(r=>`<div class="glass rounded-2xl p-5"><div class="flex justify-between"><b>${esc(r.author||'عميل')}</b><span class="text-amber-500">${'★'.repeat(Number(r.rating)||5)}</span></div><p class="mt-3 text-slate-600 dark:text-slate-300 leading-7">“${esc(r.text)}”</p></div>`).join('')||'<div class="text-center text-slate-500 md:col-span-3">لا توجد آراء بعد.</div>'}
 $('contactForm').onsubmit=async e=>{e.preventDefault();try{await addDoc(collection(db,'contacts'),{name:$('contactName').value,contact:$('contactMethod').value,service:$('contactService').value,details:$('contactDetails').value,uid:currentUser?.uid||null,createdAt:serverTimestamp(),read:false});toast('تم إرسال طلبك بنجاح');e.target.reset()}catch{toast('تعذر إرسال الطلب',false)}};
 document.addEventListener('click',e=>{const c=e.target.closest('.catBtn');if(c){selectedCategory=c.dataset.cat;if(selectedCategory!=='all')openCategoryPage(selectedCategory);render()}const sc=e.target.closest('.serviceCard');if(sc){const cat=state.categories.find(c=>c.id===sc.dataset.service);if(cat)openCategoryPage(cat.id)}const p=e.target.closest('.projectOpen');if(p){const x=state.projects[Number(p.dataset.id)];$('projectModalImg').src=x.img;$('projectModalTitle').textContent=x.title;$('projectModalDesc').textContent=x.desc;show('projectModal')}});
 function openCategoryPage(id){const c=state.categories.find(x=>x.id===id);if(!c)return;const list=state.projects.filter(p=>p.category===id);$('categoryPageTitle').textContent=c.name;$('categoryPageDesc').textContent=c.description||'استعرض مجموعة من الأعمال الخاصة بهذا التخصص.';$('categoryPageGrid').innerHTML=list.map(p=>`<article class="glass rounded-3xl overflow-hidden group"><div class="h-56 overflow-hidden"><img src="${esc(p.img)}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"></div><div class="p-5"><h4 class="font-black text-lg">${esc(p.title)}</h4><p class="text-sm text-slate-500 mt-2 leading-6">${esc(p.desc)}</p></div></article>`).join('')||'<div class="sm:col-span-2 lg:col-span-3 text-center py-12 text-slate-500">لا توجد أعمال مضافة لهذا القسم حتى الآن.</div>';translatePage();show('categoryPage')}
 
-$('adminLoginBtn').onclick=async()=>{const pass=$('adminPassword').value.trim();if(!pass)return toast('اكتب كلمة المرور',false);try{await signInWithEmailAndPassword(auth,ADMIN_EMAIL,pass);isAdmin=true;hide('adminLogin');startAdminStreams();openAdmin();toast('تم الدخول للوحة التحكم')}catch(e){$('adminLoginMsg').textContent=authMsg(e)+' — لو دي أول مرة، أنشئ حساب الإدارة بنفس البريد داخل Firebase Authentication.'}};
+$('adminLoginBtn').onclick=async()=>{const pass=$('adminPassword').value.trim();if(!pass)return toast('اكتب كلمة المرور',false);try{await signInWithEmailAndPassword(auth,ADMIN_EMAIL,pass);isAdmin=true;await ensureSiteDocument();startAdminStreams();hide('adminLogin');openAdmin();toast('تم الدخول للوحة التحكم — السحابة متصلة')}catch(e){console.error(e);$('adminLoginMsg').textContent=authMsg(e)+' — تأكد من وجود حساب الإدارة وتفعيل Firebase Authentication وFirestore.';showCloudError(e)}};
 $('adminLogout').onclick=async()=>{isAdmin=false;adminUnsubs.forEach(fn=>fn&&fn());adminUnsubs=[];await signOut(auth);hideAdmin()};$('closeAdmin').onclick=hideAdmin;
 function openAdmin(){renderAdmin();$('adminDrawer').classList.add('show')}function hideAdmin(){$('adminDrawer').classList.remove('show')}
 const tabs=[['general','الموقع'],['skills','المهارات'],['services','الخدمات'],['portfolio','الأعمال والأقسام'],['experience','الخبرة'],['reviews','الآراء'],['contacts','طلبات التواصل'],['users','الأشخاص المسجلون'],['messages','المحادثات'],['security','الأمان']];
@@ -108,15 +108,38 @@ if(t==='messages')return `<div class="space-y-3">${messages.map(m=>`<div class="
 return `<div class="max-w-xl space-y-5"><div class="glass rounded-2xl p-5"><h3 class="font-black">تغيير كلمة مرور لوحة التحكم</h3><p class="text-xs text-slate-500 mt-1">البريد الإداري مخفي عن الزوار. كلمة المرور تُدار عبر Firebase Authentication ولا يتم عرضها هنا.</p>${field('oldAdminPass','كلمة المرور الحالية','','password')}${field('newAdminPass','كلمة المرور الجديدة','','password')}${field('newAdminPass2','تأكيد كلمة المرور الجديدة','','password')}<button id="changeAdminPass" class="mt-3 px-5 py-3 rounded-xl bg-blue-600 text-white font-bold">تغيير كلمة المرور</button></div></div>`}
 function uploadField(id,label,val,key){return `<label class="block"><span class="block text-xs font-bold text-slate-500 mb-1">${label}</span><div class="flex gap-2"><input id="${id}" value="${esc(val)}" class="flex-1 p-3 rounded-xl border"><input id="${id}File" data-key="${key}" type="file" accept="image/*" class="w-36 text-xs"></div></label>`}
 async function saveState(){
+  if(!auth.currentUser || auth.currentUser.email.toLowerCase()!==ADMIN_EMAIL.toLowerCase()){
+    toast('افتح لوحة التحكم أولاً بحساب الإدارة قبل الحفظ.',false); throw new Error('admin-auth-required');
+  }
   try{
     await setDoc(siteRef,state,{merge:false});
+    const verify=await getDoc(siteRef);
+    if(!verify.exists()) throw new Error('site-document-not-found-after-save');
+    state={...defaults,...verify.data(),social:{...defaults.social,...(verify.data().social||{})}};
+    setCloudStatus('☁️ محفوظ على السحابة • التحديثات لحظية','ok');
     toast('تم حفظ التعديلات على السحابة — ستظهر للزوار تلقائياً');
   }catch(e){
     console.error('saveState',e);
-    toast('لم يتم الحفظ على السحابة. تأكد من اتصال Firebase وصلاحيات Firestore.',false);
+    showCloudError(e);
+    toast('لم يتم الحفظ على السحابة. '+friendlyCloudError(e),false);
     throw e;
   }
 }
+function setCloudStatus(text,type='ok'){
+  const el=$('cloudStatus'); if(!el)return;
+  const cls=type==='ok'?'bg-emerald-600/90':type==='warn'?'bg-amber-500/90':'bg-rose-600/90';
+  el.textContent=text; el.className='fixed bottom-3 left-3 z-[100] px-3 py-2 rounded-xl text-xs font-bold '+cls+' text-white shadow-lg';
+}
+function friendlyCloudError(e){
+  const c=e?.code||'';
+  if(c.includes('permission-denied')) return 'صلاحيات Firestore تمنع الوصول. انشر ملف firestore.rules الموجود داخل النسخة الجديدة.';
+  if(c.includes('failed-precondition')) return 'Firestore غير مفعّل أو قاعدة البيانات غير منشأة في مشروع Firebase.';
+  if(c.includes('not-found')) return 'قاعدة Firestore غير موجودة في مشروع Firebase.';
+  if(c.includes('unavailable')) return 'الاتصال بخدمة Firebase غير متاح الآن.';
+  return 'تأكد من تفعيل Firestore واستخدام نفس مشروع Firebase الموجود في الكود.';
+}
+function showCloudError(e){setCloudStatus('⚠️ '+friendlyCloudError(e),'error')}
+
 function bindAdmin(){
 if(activeTab==='general'){$('saveGeneral').onclick=async()=>{state.name=$('aName').value;state.title=$('aTitle').value;state.badge=$('aBadge').value;state.email=$('aEmail').value;state.phone=$('aPhone').value;state.whatsapp=$('aWhatsapp').value;state.location=$('aLocation').value;state.mapUrl=$('aMapUrl').value;state.website=$('aWebsite').value;state.social={facebook:$('aFacebook').value,instagram:$('aInstagram').value,whatsapp:$('aWhatsappSocial').value||('https://wa.me/'+String(state.whatsapp||'').replace(/\D/g,'')),behance:$('aBehance').value,linkedin:$('aLinkedin').value,x:$('aX').value};state.aboutHeading=$('aAboutHeading').value;state.bio=$('aBio').value;state.aboutDetail=$('aAboutDetail').value;for(const [id,key] of [['aLogo','logo'],['aProfile','profileImg']]){const f=$(id+'File').files[0];if(f){const r=ref(storage,'site/'+Date.now()+'-'+f.name);await uploadBytes(r,f);state[key]=await getDownloadURL(r)}else state[key]=$(id).value}await saveState();render()}}
 if(activeTab==='skills'){$('addSkill').onclick=()=>{state.skills.push({name:'مهارة جديدة',percent:80});renderAdmin()};document.querySelectorAll('.delSkill').forEach(b=>b.onclick=()=>{state.skills.splice(+b.dataset.i,1);renderAdmin()});$('saveSkills').onclick=async()=>{document.querySelectorAll('.skillName').forEach(x=>state.skills[+x.dataset.i].name=x.value);document.querySelectorAll('.skillPct').forEach(x=>state.skills[+x.dataset.i].percent=+x.value);await saveState();render()}}
@@ -134,31 +157,44 @@ if(activeTab==='security')$('changeAdminPass').onclick=async()=>{const oldP=$('o
 }
 function authMsg(e){const c=e?.code||'';return ({'auth/invalid-credential':'بيانات الدخول غير صحيحة','auth/wrong-password':'كلمة المرور غير صحيحة','auth/user-not-found':'حساب الإدارة غير موجود','auth/email-already-in-use':'الحساب موجود بالفعل','auth/weak-password':'كلمة المرور ضعيفة','auth/too-many-requests':'محاولات كثيرة، حاول لاحقاً'})[c]||'حدث خطأ في تسجيل الدخول'}
 let siteUnsub=null;
+async function ensureSiteDocument(){
+  if(!auth.currentUser || auth.currentUser.email.toLowerCase()!==ADMIN_EMAIL.toLowerCase()) return false;
+  const snap=await getDoc(siteRef);
+  if(!snap.exists()){
+    await setDoc(siteRef,defaults,{merge:false});
+    state={...defaults};
+    return true;
+  }
+  return false;
+}
 function startSiteSync(){
-  const status=$('cloudStatus'); if(status){status.textContent='☁️ جاري الاتصال بالسحابة…';status.className='fixed bottom-3 left-3 z-[100] px-3 py-2 rounded-xl text-xs font-bold bg-amber-500/90 text-white shadow-lg'}
+  setCloudStatus('☁️ جاري الاتصال بالسحابة…','warn');
   siteUnsub?.();
-  siteUnsub=onSnapshot(siteRef, async s=>{
+  siteUnsub=onSnapshot(siteRef, s=>{
     try{
       if(s.exists()){
         const d=s.data()||{};
-        state={...defaults,...d,social:{...defaults.social,...(d.social||{})}}; if(!state.social.whatsapp && state.whatsapp) state.social.whatsapp='https://wa.me/'+String(state.whatsapp).replace(/\D/g,'');
+        state={...defaults,...d,social:{...defaults.social,...(d.social||{})}};
+        if(!state.social.whatsapp && state.whatsapp) state.social.whatsapp='https://wa.me/'+String(state.whatsapp).replace(/\D/g,'');
+        setCloudStatus('☁️ متصل بالسحابة • التحديثات لحظية','ok');
       }else{
-        await setDoc(siteRef,defaults,{merge:false});
         state={...defaults};
+        setCloudStatus('☁️ السحابة جاهزة • اضغط حفظ من لوحة التحكم لأول مرة','warn');
       }
       render();
       window.dispatchEvent(new CustomEvent('siteCloudSynced'));
+      setTimeout(()=>translatePage(),180);
     }catch(e){
-      console.error('site snapshot error',e);
-      render();
+      console.error('site snapshot error',e); showCloudError(e); render();
     }
   }, e=>{
     console.error('site cloud sync error',e);
+    showCloudError(e);
     render();
-    const status=$('cloudStatus'); if(status){status.textContent='⚠️ تعذر الاتصال بالسحابة';status.className='fixed bottom-3 left-3 z-[100] px-3 py-2 rounded-xl text-xs font-bold bg-rose-600/90 text-white shadow-lg'} toast('تعذر الاتصال بقاعدة البيانات السحابية. تأكد من تفعيل Firestore ونشر firestore.rules.',false);
   });
 }
 function loadSite(){ startSiteSync(); }
+
 let adminUnsubs=[];
 function startAdminStreams(){adminUnsubs.forEach(fn=>fn&&fn());adminUnsubs=[];adminUnsubs.push(onSnapshot(query(collection(db,'contacts'),orderBy('createdAt','desc')),s=>{contacts=s.docs.map(d=>({id:d.id,...d.data()}));if(activeTab==='contacts')renderAdmin()}));adminUnsubs.push(onSnapshot(collection(db,'users'),s=>{users=s.docs.map(d=>({id:d.id,...d.data()}));if(activeTab==='users')renderAdmin()}));adminUnsubs.push(onSnapshot(query(collection(db,'messages'),orderBy('createdAt','desc')),s=>{messages=s.docs.map(d=>({id:d.id,...d.data()}));if(activeTab==='messages')renderAdmin()}));}
 let chatUnsub=null;
@@ -171,7 +207,7 @@ function googleTranslateElementInit(){
   try{
     new google.translate.TranslateElement({pageLanguage:'ar',includedLanguages:'ar,en',autoDisplay:false,multilanguagePage:true},'google_translate_element');
     googleTranslateReady=true;
-    setTimeout(()=>applyGoogleLanguage(currentLang),250);
+    setTimeout(()=>applyGoogleLanguage(currentLang),300);
   }catch(e){console.warn('Google Translate init failed',e)}
 }
 window.googleTranslateElementInit=googleTranslateElementInit;
@@ -179,7 +215,8 @@ function loadGoogleTranslate(){
   if(window.google?.translate?.TranslateElement){googleTranslateElementInit();return}
   const sc=document.createElement('script');
   sc.src='https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-  sc.async=true; sc.onerror=()=>{toast('خدمة الترجمة غير متاحة حاليًا. سيتم إبقاء الموقع بالعربية.',false)};
+  sc.async=true;
+  sc.onerror=()=>setCloudStatus('⚠️ تعذر تحميل خدمة الترجمة — الموقع يعمل بالعربية','warn');
   document.head.appendChild(sc);
 }
 function applyGoogleLanguage(lang){
@@ -188,39 +225,33 @@ function applyGoogleLanguage(lang){
   const run=()=>{
     const combo=document.querySelector('.goog-te-combo');
     if(combo){
-      if(combo.value!==target){combo.value=target;combo.dispatchEvent(new Event('change'));}
+      if(combo.value!==target){combo.value=target;combo.dispatchEvent(new Event('change'))}
       document.documentElement.lang=target;
       document.documentElement.dir=target==='en'?'ltr':'rtl';
       if($('langBtn'))$('langBtn').textContent=target==='en'?'عربي':'EN';
-      return;
+      return true;
     }
-    if(tries++<30)setTimeout(run,150);
+    if(tries++<40){setTimeout(run,200)}
+    return false;
   };
   run();
+}
+function translatePage(){
+  if(currentLang==='en') setTimeout(()=>applyGoogleLanguage('en'),80);
+  else setTimeout(()=>applyGoogleLanguage('ar'),80);
 }
 function setLanguage(lang){
   currentLang=lang==='en'?'en':'ar';
   localStorage.setItem('siteLang',currentLang);
-  // Cookie makes the preference survive navigation/reloads on GitHub Pages.
-  const domain=location.hostname;
   const value=`/ar/${currentLang}`;
-  document.cookie=`googtrans=${value};path=/;max-age=31536000`;
-  document.cookie=`googtrans=${value};domain=${domain};path=/;max-age=31536000`;
-  applyGoogleLanguage(currentLang);
-  // Re-apply after Firebase renders dynamic content or an internal page opens.
-  setTimeout(()=>applyGoogleLanguage(currentLang),100);
-  setTimeout(()=>applyGoogleLanguage(currentLang),500);
-  setTimeout(()=>applyGoogleLanguage(currentLang),1200);
+  document.cookie=`googtrans=${value};path=/;max-age=31536000;SameSite=Lax`;
+  // Reload once so Google Translate processes the complete page, including dynamic content.
+  document.documentElement.lang=currentLang;
+  document.documentElement.dir=currentLang==='en'?'ltr':'rtl';
+  location.reload();
 }
 $('langBtn').onclick=()=>setLanguage(currentLang==='ar'?'en':'ar');
-window.addEventListener('siteCloudSynced',()=>{
-  const el=$('cloudStatus');
-  if(el){el.textContent='☁️ متصل بالسحابة • التحديثات لحظية';el.className='fixed bottom-3 left-3 z-[100] px-3 py-2 rounded-xl text-xs font-bold bg-emerald-600/90 text-white shadow-lg'}
-  if(currentLang==='en')setTimeout(()=>applyGoogleLanguage('en'),80);
-});
-// Whenever the SPA changes a page or re-renders, ask Google Translate to process the new DOM.
-const observer=new MutationObserver(()=>{if(currentLang==='en')setTimeout(()=>applyGoogleLanguage('en'),80)});
-observer.observe(document.body,{childList:true,subtree:true});
+window.addEventListener('siteCloudSynced',()=>{setTimeout(()=>translatePage(),120)});
 loadGoogleTranslate();
 loadSite();
 </script></body></html>
