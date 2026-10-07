@@ -714,10 +714,102 @@
         <span id="toastMsg" class="font-medium text-sm">تم تنفيذ الإجراء بنجاح</span>
     </div>
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, updatePassword, EmailAuthProvider, reauthenticateWithCredential } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+    <script type="module">import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+import { getFirestore, collection, addDoc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+;
+// تشغيل الميزات الجديدة
+const btnClientLogin = document.getElementById('btnClientLogin');
+if(btnClientLogin) {
+  btnClientLogin.addEventListener('click', async () => {
+    const email = document.getElementById('clientEmail').value;
+    const pass = document.getElementById('clientPass').value;
+    try {
+      await signInWithEmailAndPassword(auth, email, pass);
+      alert('تم تسجيل الدخول بنجاح!');
+    } catch(err) {
+      try {
+        await createUserWithEmailAndPassword(auth, email, pass);
+        alert('تم إنشاء حسابك الجديد وتسجيل الدخول!');
+      } catch(e) { alert('خطأ في تسجيل الدخول: ' + e.message); }
+    }
+  });
+}
+
+onAuthStateChanged(auth, (user) => {
+  const loginFormArea = document.getElementById('loginFormArea');
+  const clientProfileArea = document.getElementById('clientProfileArea');
+  const profileEmail = document.getElementById('profileEmail');
+  if (user) {
+    if(loginFormArea) loginFormArea.classList.add('hidden');
+    if(clientProfileArea) clientProfileArea.classList.remove('hidden');
+    if(profileEmail) profileEmail.innerText = user.email;
+  } else {
+    if(loginFormArea) loginFormArea.classList.remove('hidden');
+    if(clientProfileArea) clientProfileArea.classList.add('hidden');
+  }
+});
+
+const btnSubmitReview = document.getElementById('btnSubmitReview');
+if(btnSubmitReview) {
+  btnSubmitReview.addEventListener('click', async () => {
+    const text = document.getElementById('reviewText').value;
+    const author = document.getElementById('reviewAuthor').value || 'عميل مميز';
+    if(!text) return alert('يرجى كتابة الرأي أولاً');
+    
+    await addDoc(collection(db, "reviews"), {
+      text: text,
+      author: author,
+      createdAt: new Date()
+    });
+    document.getElementById('reviewText').value = '';
+    alert('تم إضافة رأيك بنجاح! ✨');
+  });
+}
+
+onSnapshot(collection(db, "reviews"), (snapshot) => {
+  const container = document.getElementById('reviewsContainer');
+  if(!container) return;
+  container.innerHTML = '';
+  snapshot.forEach((doc) => {
+    const data = doc.data();
+    container.innerHTML += `
+      <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl text-right mb-2">
+        <p class="text-slate-300 text-sm mb-2">"${data.text}"</p>
+        <span class="text-xs text-cyan-400 font-bold">- ${data.author}</span>
+      </div>
+    `;
+  });
+});
+
+const btnSendChat = document.getElementById('btnSendChat');
+if(btnSendChat) {
+  btnSendChat.addEventListener('click', async () => {
+    const input = document.getElementById('chatInput');
+    if(!input.value) return;
+    await addDoc(collection(db, "messages"), {
+      text: input.value,
+      sender: auth.currentUser ? auth.currentUser.email : 'زائر',
+      createdAt: new Date()
+    });
+    input.value = '';
+  });
+}
+
+onSnapshot(collection(db, "messages"), (snapshot) => {
+  const chatMessages = document.getElementById('chatMessages');
+  if(!chatMessages) return;
+  chatMessages.innerHTML = '';
+  snapshot.forEach((doc) => {
+    const msg = doc.data();
+    chatMessages.innerHTML += `
+      <div class="bg-slate-800 text-slate-200 p-2 rounded-lg max-w-[85%] text-xs mb-1">
+        <span class="text-[10px] text-cyan-400 block">${msg.sender}</span>
+        ${msg.text}
+      </div>
+    `;
+  });
+});
 
         // Translation dictionary for fixed static strings
         const translations = {
@@ -1683,6 +1775,69 @@
         window.updateProject = updateProject;
     </script>
 <!-- مستطيل أسفل الشاشة يتجه لليصلار بعبارة عبدالرحمن عطية -->
+    <!-- ================= 1. نافذة تسجيل الدخول والبروفايل للعميل ================= -->
+<div id="clientAuthModal" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4">
+  <div class="bg-slate-900 border border-slate-700 p-6 rounded-2xl max-w-md w-full text-right text-white relative">
+    <button onclick="document.getElementById('clientAuthModal').classList.add('hidden')" class="absolute top-4 left-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+    <h3 class="text-xl font-bold mb-4 text-cyan-400" id="authTitle">تسجيل دخول العميل</h3>
+    
+    <div id="loginFormArea">
+      <input type="email" id="clientEmail" placeholder="البريد الإلكتروني" class="w-full p-3 bg-slate-800 border border-slate-700 rounded-xl mb-3 text-white text-sm focus:outline-none focus:border-cyan-400">
+      <input type="password" id="clientPass" placeholder="كلمة المرور" class="w-full p-3 bg-slate-800 border border-slate-700 rounded-xl mb-4 text-white text-sm focus:outline-none focus:border-cyan-400">
+      <button id="btnClientLogin" class="w-full py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl font-bold hover:opacity-90 transition">دخول</button>
+      <p class="text-xs text-slate-400 mt-3 text-center">معندكش حساب؟ <a href="#" id="toggleAuthMode" class="text-cyan-400 underline">إنشاء حساب جديد</a></p>
+    </div>
+
+    <!-- البروفايل الشخصي للعميل بعد الدخول -->
+    <div id="clientProfileArea" class="hidden text-center">
+      <div class="w-16 h-16 bg-cyan-500/20 border border-cyan-400 text-cyan-400 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl font-bold" id="userAvatar">U</div>
+      <h4 class="font-bold text-lg" id="profileEmail">user@example.com</h4>
+      <p class="text-xs text-slate-400 mb-4">مرحباً بك في صفحتك الشخصية بـ موقع عبدالرحمن عطيه</p>
+      <button id="btnClientLogout" class="px-5 py-2 bg-red-500/20 text-red-400 border border-red-500/40 rounded-xl text-sm hover:bg-red-500/30">تسجيل الخروج</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= 2. قسم آراء العملاء التفاعلي ================= -->
+<section class="py-12 max-w-6xl mx-auto px-4">
+  <h2 class="text-2xl font-bold text-center text-white mb-6">آراء <span class="text-cyan-400">العملاء</span></h2>
+  
+  <!-- نموذج إضافة رأي -->
+  <div class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl max-w-xl mx-auto mb-8">
+    <textarea id="reviewText" rows="3" placeholder="اكتب رأيك في خدماتنا..." class="w-full p-3 bg-slate-800 border border-slate-700 rounded-xl text-white text-sm mb-3 focus:outline-none focus:border-cyan-400 resize-none"></textarea>
+    <div class="flex justify-between items-center">
+      <input type="text" id="reviewAuthor" placeholder="اسمك الكريم" class="p-2 bg-slate-800 border border-slate-700 rounded-lg text-white text-xs w-1/2 focus:outline-none">
+      <button id="btnSubmitReview" class="px-5 py-2 bg-cyan-500 hover:bg-cyan-600 text-white rounded-lg text-xs font-bold transition">نشر الرأي ✨</button>
+    </div>
+  </div>
+
+  <!-- عرض الآراء -->
+  <div id="reviewsContainer" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <!-- بتنزل الآراء هنا تلقائياً من Firebase -->
+  </div>
+</section>
+
+<!-- ================= 3. الشات المباشر (Live Chat Widget) ================= -->
+<div class="fixed bottom-16 left-4 z-50">
+  <button onclick="document.getElementById('chatBoxWindow').classList.toggle('hidden')" class="w-14 h-14 bg-gradient-to-tr from-pink-500 to-cyan-400 rounded-full flex items-center justify-center text-white shadow-lg hover:scale-105 transition">
+    <i class="fa-solid fa-comments text-2xl"></i>
+  </button>
+
+  <div id="chatBoxWindow" class="hidden absolute bottom-16 left-0 w-80 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden flex flex-col h-96">
+    <div class="bg-slate-800 p-3 border-b border-slate-700 flex justify-between items-center text-white">
+      <span class="font-bold text-sm text-cyan-400">محادثة مباشرة مع عبدالرحمن</span>
+      <button onclick="document.getElementById('chatBoxWindow').classList.add('hidden')" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div id="chatMessages" class="flex-1 p-3 overflow-y-auto space-y-2 text-xs">
+      <div class="bg-slate-800 text-slate-300 p-2 rounded-lg max-w-[80%]">أهلاً بك! كيف يمكنني مساعدتك في تصميمك اليوم؟</div>
+    </div>
+    <div class="p-2 bg-slate-800 border-t border-slate-700 flex gap-2">
+      <input type="text" id="chatInput" placeholder="اكتب رسالتك..." class="flex-1 p-2 bg-slate-900 border border-slate-700 rounded-lg text-white text-xs focus:outline-none">
+      <button id="btnSendChat" class="px-3 bg-cyan-500 text-white rounded-lg text-xs"><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+  </div>
+</div>
+
     <!-- الشريط المتحرك في أسفل الصفحة -->
 <div style="width: 100%; background: #0d0f12; border-top: 2px solid #00d2ff; overflow: hidden; white-space: nowrap; padding: 12px 0; margin-top: 40px; box-shadow: 0 -4px 15px rgba(0,212,255,0.2);">
   <div style="display: inline-block; padding-left: 100%; animation: marquee 16s linear infinite; font-size: 16px; font-weight: bold; color: #fff;">
