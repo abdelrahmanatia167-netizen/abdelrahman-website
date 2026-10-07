@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-<style>
+<style>.goog-te-banner-frame.skiptranslate{display:none!important}.goog-te-gadget{font-size:0!important}.goog-te-gadget-icon{display:none!important}body{top:0!important}.goog-tooltip,.goog-text-highlight{display:none!important}#google_translate_element{position:fixed!important;left:-10000px!important;top:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important;opacity:0!important;pointer-events:none!important}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:Cairo,Arial,sans-serif;transition:background .25s,color .25s}.glass{background:rgba(255,255,255,.78);backdrop-filter:blur(14px);border:1px solid rgba(15,23,42,.08)}.dark .glass{background:rgba(15,23,42,.72);border-color:rgba(148,163,184,.13)}
 .gradient{background:linear-gradient(135deg,#2563eb,#7c3aed,#06b6d4);-webkit-background-clip:text;background-clip:text;color:transparent}.ticker{white-space:nowrap;overflow:hidden}.ticker-track{display:inline-flex;min-width:200%;animation:move 18s linear infinite}@keyframes move{from{transform:translateX(0)}to{transform:translateX(50%)}}
 .modal{display:none}.modal.show{display:flex}.drawer{transform:translateX(110%);transition:.3s}.drawer.show{transform:translateX(0)}.toast{animation:toast 3s ease both}@keyframes toast{0%{opacity:0;transform:translateY(10px)}10%,90%{opacity:1;transform:none}100%{opacity:0;transform:translateY(10px)}}
@@ -44,7 +44,7 @@ input,textarea,select{outline:none}.dark input,.dark textarea,.dark select{backg
 <div id="adminDrawer" class="drawer fixed inset-y-0 right-0 z-[95] w-full max-w-5xl bg-white dark:bg-slate-950 shadow-2xl border-l border-slate-200 dark:border-slate-800 flex flex-col"><div class="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between"><div><h2 class="font-black text-lg">لوحة التحكم</h2><p class="text-xs text-slate-500">تحكم كامل في محتوى الموقع والطلبات والحسابات.</p></div><div class="flex gap-2"><button id="adminLogout" class="px-3 py-2 rounded-xl bg-rose-100 text-rose-600 dark:bg-rose-950/30">خروج</button><button id="closeAdmin" class="w-10 h-10 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-900"><i class="fa-solid fa-xmark"></i></button></div></div><div class="flex flex-1 min-h-0"><aside class="w-44 sm:w-52 border-l border-slate-200 dark:border-slate-800 p-2 overflow-y-auto scrollbar space-y-1" id="adminTabs"></aside><section class="flex-1 overflow-y-auto scrollbar p-4 sm:p-6" id="adminContent"></section></div></div>
 
 <div id="categoryPage" class="modal fixed inset-0 z-[75] bg-black/75 backdrop-blur-sm items-center justify-center p-3 sm:p-6"><div class="w-full max-w-6xl max-h-[92vh] overflow-y-auto scrollbar glass rounded-[2rem] p-5 sm:p-8"><div class="flex items-center justify-between gap-3 sticky top-0 pb-4 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl z-10"><div><div id="categoryPageKicker" class="text-blue-600 font-bold text-sm">صفحة تخصص الأعمال</div><h3 id="categoryPageTitle" class="text-2xl sm:text-4xl font-black mt-1"></h3></div><button class="closeModal w-11 h-11 rounded-xl bg-slate-200 dark:bg-slate-800" aria-label="رجوع"><i class="fa-solid fa-arrow-right"></i></button></div><p id="categoryPageDesc" class="mt-3 max-w-3xl text-slate-600 dark:text-slate-300 leading-8"></p><div class="mt-5 inline-flex items-center gap-2 text-sm font-bold text-slate-500"><i class="fa-solid fa-images text-blue-600"></i> كل الأعمال في هذا التخصص تُدار بالكامل من لوحة التحكم.</div><div id="categoryPageGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-7"></div></div></div>
-<div id="toastHost" class="fixed bottom-5 left-5 z-[120] space-y-2"></div>
+<div id="google_translate_element" aria-hidden="true"></div><div id="toastHost" class="fixed bottom-5 left-5 z-[120] space-y-2"></div>
 
 <script type="module">
 import {initializeApp} from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js';
@@ -135,6 +135,7 @@ if(activeTab==='security')$('changeAdminPass').onclick=async()=>{const oldP=$('o
 function authMsg(e){const c=e?.code||'';return ({'auth/invalid-credential':'بيانات الدخول غير صحيحة','auth/wrong-password':'كلمة المرور غير صحيحة','auth/user-not-found':'حساب الإدارة غير موجود','auth/email-already-in-use':'الحساب موجود بالفعل','auth/weak-password':'كلمة المرور ضعيفة','auth/too-many-requests':'محاولات كثيرة، حاول لاحقاً'})[c]||'حدث خطأ في تسجيل الدخول'}
 let siteUnsub=null;
 function startSiteSync(){
+  const status=$('cloudStatus'); if(status){status.textContent='☁️ جاري الاتصال بالسحابة…';status.className='fixed bottom-3 left-3 z-[100] px-3 py-2 rounded-xl text-xs font-bold bg-amber-500/90 text-white shadow-lg'}
   siteUnsub?.();
   siteUnsub=onSnapshot(siteRef, async s=>{
     try{
@@ -154,7 +155,7 @@ function startSiteSync(){
   }, e=>{
     console.error('site cloud sync error',e);
     render();
-    toast('تعذر الاتصال بقاعدة البيانات السحابية. تأكد من تفعيل Firestore ونشر firestore.rules.',false);
+    const status=$('cloudStatus'); if(status){status.textContent='⚠️ تعذر الاتصال بالسحابة';status.className='fixed bottom-3 left-3 z-[100] px-3 py-2 rounded-xl text-xs font-bold bg-rose-600/90 text-white shadow-lg'} toast('تعذر الاتصال بقاعدة البيانات السحابية. تأكد من تفعيل Firestore ونشر firestore.rules.',false);
   });
 }
 function loadSite(){ startSiteSync(); }
@@ -165,10 +166,61 @@ function startChat(){if(!currentUser||currentUser.isAnonymous)return;chatUnsub?.
 $('chatToggle').onclick=()=>{ $('chatPanel').classList.toggle('hidden'); const u=auth.currentUser||currentUser; if(!u){show('clientModal');toast('سجّل الدخول أولاً لبدء المحادثة',false)} else startChat()};$('chatClose').onclick=()=>$('chatPanel').classList.add('hidden');$('chatSend').onclick=async()=>{const u=auth.currentUser||currentUser;if(!u||u.isAnonymous){show('clientModal');return toast('سجّل الدخول أولاً لإرسال رسالة',false)}const text=$('chatInput').value.trim();if(!text)return;const btn=$('chatSend');btn.disabled=true;try{await addDoc(collection(db,'messages'),{uid:u.uid,text,sender:u.email||'عميل',fromAdmin:false,createdAt:serverTimestamp()});$('chatInput').value='';startChat();toast('تم إرسال الرسالة بنجاح')}catch(e){console.error(e);toast('تعذر إرسال الرسالة. انشر ملف firestore.rules الجديد ثم جرّب مرة أخرى.',false)}finally{btn.disabled=false}};$('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();$('chatSend').click()}});
 
 let currentLang=localStorage.getItem('siteLang')||'ar';
-const tr={
-'الرئيسية':'Home','عني':'About','خدماتي':'Services','أعمالي':'Portfolio','الخبرة':'Experience','الآراء':'Reviews','تواصل':'Contact','حسابي':'My Account','الإدارة':'Admin','الخدمات':'Services','معرض الأعمال':'Portfolio','الكل':'All','آراء العملاء':'Client Reviews','تواصل معي':'Contact Me','تواصل معي عبر الواتساب':'Contact me on WhatsApp','استعرض أعمالي':'View My Work','عني وعن مسيرتي':'About My Journey','الخبرة والمسار المهني':'Experience & Career','إرسال الطلب':'Send Request','الاسم':'Name','رقم الهاتف':'Phone Number','البريد الإلكتروني':'Email','كلمة المرور (6 أحرف على الأقل)':'Password (6+ characters)','دخول':'Login','إنشاء حساب':'Create Account','تسجيل الخروج':'Log out','نشر الرأي':'Publish Review','اكتب رأيك...':'Write your review...','اسمك':'Your name','الهاتف / واتساب':'Phone / WhatsApp','تابعني':'Follow me','محادثة مباشرة':'Live Chat','اكتب رسالتك...':'Type your message...','إرسال':'Send','قسم الأعمال':'Work Category','عرض التفاصيل ←':'View details →','استعرض الأعمال المرتبطة ←':'Explore related work →','لا توجد أعمال مضافة لهذا القسم حتى الآن.':'No work has been added to this category yet.','أضف روابط حساباتك من لوحة التحكم.':'Add your social links from the admin panel.','جميع الحقوق محفوظة © ':'All rights reserved © ','البريد أو الهاتف وكلمة المرور':'Email or phone and password','اكتب البريد أو رقم الهاتف وكلمة المرور':'Enter email or phone and password','تم تسجيل الدخول':'Logged in successfully','تم إنشاء الحساب بنجاح':'Account created successfully','تم إرسال الرسالة':'Message sent successfully','تم نشر رأيك':'Your review was published','اكتب الرأي أولاً':'Write your review first','تم إرسال طلبك بنجاح':'Your request was sent successfully','تابعني على منصات التواصل':'Follow me on social platforms','روابط حساباتي الرسمية، ويمكن تعديلها بالكامل من لوحة التحكم.':'My official account links. You can edit them completely from the admin panel.','للطلبات والاستفسارات المباشرة: الموقع الجغرافي، الهاتف، البريد الإلكتروني.':'For direct requests and inquiries: website, phone, and email.','الاسم غير مسجل، استخدم الاسم كما كتبته عند إنشاء الحساب':'Name not found. Use the same name you used when creating the account','رقم الهاتف غير مسجل':'Phone number is not registered','تم إرسال رابط إعادة تعيين كلمة المرور':'Password reset link sent','تحديث تسجيل الدخول بالاسم والهاتف':'Update name and phone login','إرسال إعادة تعيين':'Send password reset','كلمة المرور: محمية':'Password: Protected','قسم الأعمال':'Work category','إغلاق':'Close','دخول لوحة التحكم':'Admin Login','كلمة المرور':'Password','محادثة مباشرة':'Live Chat','تواصل مع عبدالرحمن':'Chat with Abdelrahman'};
-function translatePage(){const toEn=currentLang==='en';document.documentElement.lang=toEn?'en':'ar';document.documentElement.dir=toEn?'ltr':'rtl';document.querySelectorAll('[data-i18n]').forEach(el=>{const key=el.dataset.i18n;if(tr[key])el.textContent=toEn?tr[key]:key});const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);nodes.forEach(n=>{const el=n.parentElement;if(!el||['SCRIPT','STYLE'].includes(el.tagName))return;const raw=(el.dataset.arText||n.nodeValue||'').trim();if(!el.dataset.arText)el.dataset.arText=raw;if(tr[raw]&&n.nodeValue.trim()===raw)n.nodeValue=toEn?tr[raw]:raw});document.querySelectorAll('input,textarea').forEach(el=>{if(el.dataset.arPlaceholder===undefined)el.dataset.arPlaceholder=el.placeholder;const ar=el.dataset.arPlaceholder?.trim();if(ar&&tr[ar])el.placeholder=toEn?tr[ar]:ar});if($('langBtn'))$('langBtn').textContent=toEn?'عربي':'EN'}
-$('langBtn').onclick=()=>{currentLang=currentLang==='ar'?'en':'ar';localStorage.setItem('siteLang',currentLang);translatePage()};
-window.addEventListener('siteCloudSynced',()=>{const el=$('cloudStatus');if(el){el.textContent='☁️ متصل بالسحابة';el.className='fixed bottom-3 left-3 z-[100] px-3 py-2 rounded-xl text-xs font-bold bg-emerald-600/90 text-white shadow-lg'}});
+let googleTranslateReady=false;
+function googleTranslateElementInit(){
+  try{
+    new google.translate.TranslateElement({pageLanguage:'ar',includedLanguages:'ar,en',autoDisplay:false,multilanguagePage:true},'google_translate_element');
+    googleTranslateReady=true;
+    setTimeout(()=>applyGoogleLanguage(currentLang),250);
+  }catch(e){console.warn('Google Translate init failed',e)}
+}
+window.googleTranslateElementInit=googleTranslateElementInit;
+function loadGoogleTranslate(){
+  if(window.google?.translate?.TranslateElement){googleTranslateElementInit();return}
+  const sc=document.createElement('script');
+  sc.src='https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+  sc.async=true; sc.onerror=()=>{toast('خدمة الترجمة غير متاحة حاليًا. سيتم إبقاء الموقع بالعربية.',false)};
+  document.head.appendChild(sc);
+}
+function applyGoogleLanguage(lang){
+  const target=lang==='en'?'en':'ar';
+  let tries=0;
+  const run=()=>{
+    const combo=document.querySelector('.goog-te-combo');
+    if(combo){
+      if(combo.value!==target){combo.value=target;combo.dispatchEvent(new Event('change'));}
+      document.documentElement.lang=target;
+      document.documentElement.dir=target==='en'?'ltr':'rtl';
+      if($('langBtn'))$('langBtn').textContent=target==='en'?'عربي':'EN';
+      return;
+    }
+    if(tries++<30)setTimeout(run,150);
+  };
+  run();
+}
+function setLanguage(lang){
+  currentLang=lang==='en'?'en':'ar';
+  localStorage.setItem('siteLang',currentLang);
+  // Cookie makes the preference survive navigation/reloads on GitHub Pages.
+  const domain=location.hostname;
+  const value=`/ar/${currentLang}`;
+  document.cookie=`googtrans=${value};path=/;max-age=31536000`;
+  document.cookie=`googtrans=${value};domain=${domain};path=/;max-age=31536000`;
+  applyGoogleLanguage(currentLang);
+  // Re-apply after Firebase renders dynamic content or an internal page opens.
+  setTimeout(()=>applyGoogleLanguage(currentLang),100);
+  setTimeout(()=>applyGoogleLanguage(currentLang),500);
+  setTimeout(()=>applyGoogleLanguage(currentLang),1200);
+}
+$('langBtn').onclick=()=>setLanguage(currentLang==='ar'?'en':'ar');
+window.addEventListener('siteCloudSynced',()=>{
+  const el=$('cloudStatus');
+  if(el){el.textContent='☁️ متصل بالسحابة • التحديثات لحظية';el.className='fixed bottom-3 left-3 z-[100] px-3 py-2 rounded-xl text-xs font-bold bg-emerald-600/90 text-white shadow-lg'}
+  if(currentLang==='en')setTimeout(()=>applyGoogleLanguage('en'),80);
+});
+// Whenever the SPA changes a page or re-renders, ask Google Translate to process the new DOM.
+const observer=new MutationObserver(()=>{if(currentLang==='en')setTimeout(()=>applyGoogleLanguage('en'),80)});
+observer.observe(document.body,{childList:true,subtree:true});
+loadGoogleTranslate();
 loadSite();
 </script></body></html>
