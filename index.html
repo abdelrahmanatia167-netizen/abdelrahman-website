@@ -90,6 +90,15 @@
             transform: translateY(-1px);
         }
 
+
+        .ticker-wrap{width:100%;overflow:hidden;background:#090a0f;border-top:1px solid rgba(0,210,255,.45);border-bottom:1px solid rgba(0,210,255,.18);padding:9px 0;box-shadow:0 0 24px rgba(0,212,255,.10)}
+        .ticker-track{display:flex;width:max-content;animation:tickerLoop 18s linear infinite}
+        .ticker-item{white-space:nowrap;padding:0 30px;font-size:14px;font-weight:800;color:#eafcff}
+        @keyframes tickerLoop{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+        .admin-section{border:1px solid rgba(148,163,184,.16);background:rgba(15,23,42,.55);padding:12px;border-radius:14px}
+        .admin-input{width:100%;padding:9px;border-radius:10px;border:1px solid rgba(148,163,184,.22);background:rgba(2,6,23,.65);color:white;font-size:12px;outline:none}
+        .admin-input:focus{border-color:#22d3ee}
+
         .ticker-wrap {
             width: 100%;
             overflow: hidden;
@@ -156,6 +165,9 @@
                         <span id="langToggleText" class="tracking-wide">English</span>
                     </button>
 
+                    <button id="accountMenuBtn" class="p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" title="حساب العميل">
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </button>
                     <button id="openCustomizerBtn" class="p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors flex items-center gap-1 text-xs font-medium bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 text-blue-600 dark:text-blue-400">
                         <i class="fa-solid fa-lock text-amber-500" id="lockStatusIcon"></i>
                         <span class="hidden sm:inline" data-i18n="btn_dashboard">لوحة التحكم</span>
@@ -173,7 +185,19 @@
             </div>
         </div>
 
-        <div id="mobileMenu" class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md px-4 pt-2 pb-4 space-y-2">
+                <div id="accountMenu" class="hidden absolute top-16 left-4 z-40 w-64 rounded-2xl bg-slate-900 border border-slate-700 shadow-2xl p-3 text-right text-white">
+            <div id="accountMenuGuest" class="space-y-2">
+                <button id="accountLoginBtn" class="w-full py-2.5 rounded-xl bg-cyan-500 text-white text-xs font-bold">تسجيل دخول / إنشاء حساب</button>
+            </div>
+            <div id="accountMenuUser" class="hidden space-y-2">
+                <div class="text-xs text-slate-400">الحساب الحالي</div>
+                <div id="accountMenuName" class="font-bold text-cyan-300 text-sm"></div>
+                <button id="accountProfileBtn" class="w-full py-2 rounded-xl bg-slate-800 text-xs font-bold">الملف الشخصي</button>
+                <button id="accountLogoutBtn" class="w-full py-2 rounded-xl bg-red-500/15 text-red-300 text-xs font-bold">تسجيل الخروج</button>
+            </div>
+        </div>
+
+<div id="mobileMenu" class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md px-4 pt-2 pb-4 space-y-2">
             <a href="#hero" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" data-i18n="nav_home">الرئيسية</a>
             <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" data-i18n="nav_about">عني</a>
             <a href="#services" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" data-i18n="nav_services">خدماتي</a>
@@ -182,6 +206,13 @@
             <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" data-i18n="nav_contact">تواصل معي</a>
         </div>
     </header>
+    <div class="ticker-wrap" aria-label="عبدالرحمن عطية مصمم جرافيك">
+        <div class="ticker-track">
+            <span class="ticker-item">عبدالرحمن عطية • مصمم جرافيك</span><span class="ticker-item">عبدالرحمن عطية • مصمم جرافيك</span><span class="ticker-item">عبدالرحمن عطية • مصمم جرافيك</span><span class="ticker-item">عبدالرحمن عطية • مصمم جرافيك</span>
+            <span class="ticker-item">عبدالرحمن عطية • مصمم جرافيك</span><span class="ticker-item">عبدالرحمن عطية • مصمم جرافيك</span><span class="ticker-item">عبدالرحمن عطية • مصمم جرافيك</span><span class="ticker-item">عبدالرحمن عطية • مصمم جرافيك</span>
+        </div>
+    </div>
+
 
     <section id="hero" class="relative py-16 lg:py-28 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -406,14 +437,16 @@
         <h3 class="text-xl font-bold mb-4 text-cyan-400">بوابة العملاء</h3>
         
         <div id="loginFormArea" class="space-y-3">
-          <input type="email" id="clientEmail" placeholder="البريد الإلكتروني" class="w-full p-3 bg-slate-800 border border-slate-700 rounded-xl text-white text-sm focus:outline-none">
+          <input type="text" id="clientName" placeholder="الاسم الكامل (لإنشاء حساب)" class="w-full p-3 bg-slate-800 border border-slate-700 rounded-xl text-white text-sm focus:outline-none">
+          <input type="text" id="clientPhone" placeholder="رقم الهاتف (لإنشاء حساب)" class="w-full p-3 bg-slate-800 border border-slate-700 rounded-xl text-white text-sm focus:outline-none">
+          <input type="text" id="clientIdentifier" placeholder="البريد أو الاسم أو الهاتف" class="w-full p-3 bg-slate-800 border border-slate-700 rounded-xl text-white text-sm focus:outline-none">
           <input type="password" id="clientPass" placeholder="كلمة المرور" class="w-full p-3 bg-slate-800 border border-slate-700 rounded-xl text-white text-sm focus:outline-none">
           <button id="btnClientLogin" class="w-full py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl font-bold hover:opacity-90 transition text-sm">تسجيل الدخول / إنشاء حساب جديد</button>
         </div>
 
         <div id="clientProfileArea" class="hidden text-center space-y-3">
           <div class="w-16 h-16 bg-cyan-500/20 border border-cyan-400 text-cyan-400 rounded-full flex items-center justify-center mx-auto text-2xl font-bold" id="userAvatar">U</div>
-          <h4 class="font-bold text-sm text-cyan-300" id="profileEmail">user@example.com</h4>
+          <h4 class="font-bold text-sm text-cyan-300" id="profileName">العميل</h4><div class="text-xs text-slate-400" id="profileEmail">user@example.com</div>
           <p class="text-xs text-slate-400">مرحباً بك في لوحة عملاء عبدالرحمن عطيه</p>
           <button id="btnClientLogout" class="px-5 py-2 bg-red-500/20 text-red-400 border border-red-500/40 rounded-xl text-xs hover:bg-red-500/30">تسجيل الخروج</button>
         </div>
@@ -447,6 +480,7 @@
                 <h3 class="text-lg font-bold">تسجيل الدخول لوحة التحكم</h3>
             </div>
             <form id="passwordForm" class="space-y-4">
+                <input type="email" id="adminEmail" value="abdelrahmanatia167@gmail.com" class="w-full p-3 rounded-xl border dark:bg-slate-800 text-sm" placeholder="بريد المدير">
                 <input type="password" id="inputAdminPassword" placeholder="كلمة المرور" required class="w-full p-3 rounded-xl border dark:bg-slate-800 text-sm text-center">
                 <p id="passwordError" class="text-rose-500 text-xs text-center hidden">كلمة المرور غير صحيحة!</p>
                 <button type="submit" class="w-full py-3 bg-blue-600 text-white rounded-xl text-sm font-bold shadow-md">دخول اللوحة</button>
@@ -454,24 +488,73 @@
         </div>
     </div>
 
-    <div id="customizerDrawer" class="fixed inset-y-0 left-0 z-50 w-full sm:w-96 bg-white dark:bg-slate-900 border-r shadow-2xl transform -translate-x-full transition-transform duration-300 flex flex-col">
-        <div class="p-4 border-b flex items-center justify-between bg-slate-50 dark:bg-slate-900">
-            <h3 class="font-bold text-sm">لوحة التحكم الكاملة</h3>
-            <button id="closeCustomizerBtn" class="text-slate-400 hover:text-slate-200"><i class="fa-solid fa-xmark text-base"></i></button>
+    <div id="customizerDrawer" class="fixed inset-y-0 left-0 z-[60] w-full sm:w-[460px] bg-slate-950 text-white border-r border-slate-800 shadow-2xl transform -translate-x-full transition-transform duration-300 flex flex-col">
+        <div class="p-4 border-b border-slate-800 flex items-center justify-between">
+            <div><h3 class="font-black">لوحة التحكم</h3><p class="text-[10px] text-slate-400">كل التعديلات المهمة تُحفظ على Firebase</p></div>
+            <button id="closeCustomizerBtn" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+        </div>
+        <div class="p-3 border-b border-slate-800 flex gap-2 overflow-x-auto">
+            <button class="admin-tab px-3 py-2 rounded-lg bg-cyan-500 text-xs font-bold" data-tab="site">الموقع</button>
+            <button class="admin-tab px-3 py-2 rounded-lg bg-slate-800 text-xs font-bold" data-tab="services">الخدمات</button>
+            <button class="admin-tab px-3 py-2 rounded-lg bg-slate-800 text-xs font-bold" data-tab="projects">الأعمال</button>
+            <button class="admin-tab px-3 py-2 rounded-lg bg-slate-800 text-xs font-bold" data-tab="reviews">الآراء</button>
+            <button class="admin-tab px-3 py-2 rounded-lg bg-slate-800 text-xs font-bold" data-tab="messages">الرسائل</button>
         </div>
         <div class="p-4 overflow-y-auto flex-1 space-y-4 text-xs">
-            <h4 class="font-bold text-blue-500">تعديل نصوص وبيانات الموقع</h4>
-            <input type="text" id="editName" placeholder="الاسم" class="w-full p-2 border rounded dark:bg-slate-800">
-            <input type="text" id="editTitle" placeholder="المسمى الوظيفي" class="w-full p-2 border rounded dark:bg-slate-800">
-            <textarea id="editBio" placeholder="النبذة" rows="3" class="w-full p-2 border rounded dark:bg-slate-800"></textarea>
-            <button id="saveCustomChanges" class="w-full py-2 bg-emerald-600 text-white rounded font-bold">حفظ التعديلات وتحديث الموقع</button>
+            <div id="adminTabSite" class="admin-tab-panel space-y-3">
+                <div class="admin-section space-y-2">
+                    <h4 class="font-bold text-cyan-300">بيانات الموقع</h4>
+                    <input id="editName" class="admin-input" placeholder="الاسم">
+                    <input id="editTitle" class="admin-input" placeholder="المسمى الوظيفي">
+                    <textarea id="editBio" class="admin-input" rows="4" placeholder="النبذة"></textarea>
+                    <input id="editBadge" class="admin-input" placeholder="الشارة">
+                    <button id="saveCustomChanges" class="w-full py-2.5 bg-emerald-600 rounded-xl font-bold">حفظ التعديلات</button>
+                </div>
+            </div>
+            <div id="adminTabServices" class="admin-tab-panel hidden space-y-3">
+                <div class="admin-section space-y-2">
+                    <h4 class="font-bold text-cyan-300">إضافة خدمة</h4>
+                    <input id="serviceTitle" class="admin-input" placeholder="اسم الخدمة">
+                    <textarea id="serviceDesc" class="admin-input" rows="2" placeholder="وصف الخدمة"></textarea>
+                    <input id="serviceIcon" class="admin-input" placeholder="أيقونة Font Awesome مثل fa-palette" value="fa-palette">
+                    <button id="addServiceBtn" class="w-full py-2 bg-cyan-600 rounded-xl font-bold">إضافة</button>
+                </div>
+                <div id="adminServicesList" class="space-y-2"></div>
+            </div>
+            <div id="adminTabProjects" class="admin-tab-panel hidden space-y-3">
+                <div class="admin-section space-y-2">
+                    <h4 class="font-bold text-cyan-300">إضافة / تعديل عمل</h4>
+                    <input id="projectEditId" type="hidden">
+                    <input id="projectTitle" class="admin-input" placeholder="اسم العمل">
+                    <select id="projectCategory" class="admin-input"><option value="social">سوشيال ميديا</option><option value="branding">هوية بصرية</option><option value="print">مطبوعات وتغليف</option></select>
+                    <textarea id="projectDesc" class="admin-input" rows="2" placeholder="وصف العمل"></textarea>
+                    <input id="projectImg" class="admin-input" placeholder="رابط الصورة (اختياري)">
+                    <input id="projectFile" type="file" accept="image/*" class="w-full text-[11px]">
+                    <button id="saveProjectBtn" class="w-full py-2 bg-cyan-600 rounded-xl font-bold">حفظ العمل</button>
+                    <button id="cancelProjectBtn" class="hidden w-full py-2 bg-slate-800 rounded-xl font-bold">إلغاء التعديل</button>
+                </div>
+                <div id="adminProjectsList" class="space-y-2"></div>
+            </div>
+            <div id="adminTabReviews" class="admin-tab-panel hidden space-y-3">
+                <div id="adminReviewsList" class="space-y-2"></div>
+            </div>
+            <div id="adminTabMessages" class="admin-tab-panel hidden space-y-3">
+                <div id="adminMessagesList" class="space-y-2"></div>
+                <div class="admin-section space-y-2">
+                    <h4 class="font-bold text-cyan-300">الرد على العميل</h4>
+                    <input id="replyTarget" type="hidden">
+                    <textarea id="replyText" class="admin-input" rows="3" placeholder="اكتب ردك..."></textarea>
+                    <button id="sendAdminReply" class="w-full py-2 bg-emerald-600 rounded-xl font-bold">إرسال الرد</button>
+                </div>
+            </div>
         </div>
     </div>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, onSnapshot, collection, addDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getFirestore, doc, setDoc, getDoc, deleteDoc, onSnapshot, collection, addDoc, query, orderBy, where, getDocs, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-storage.js";
 
         const translations = {
             ar: {
@@ -533,13 +616,16 @@
         };
 
         const ADMIN_EMAIL = 'abdelrahmanatia167@gmail.com';
-        let db = null, auth = null, docRef = null;
+        let db = null, auth = null, storage = null, docRef = null;
+        let currentUser = null;
+        let selectedChatUser = null;
 
         async function initFirebaseSync() {
             try {
                 const app = initializeApp(firebaseConfig);
                 auth = getAuth(app);
                 db = getFirestore(app);
+                storage = getStorage(app);
                 docRef = doc(db, 'artifacts', 'abdelrahman-website', 'public', 'data', 'config', 'siteState');
 
                 onSnapshot(docRef, (docSnap) => {
@@ -550,64 +636,78 @@
                 });
 
                 document.getElementById('btnClientLogin').onclick = async () => {
-                    const email = document.getElementById('clientEmail').value;
+                    const identifier = document.getElementById('clientIdentifier').value.trim();
                     const pass = document.getElementById('clientPass').value;
-                    if (!email || !pass) return alert('يرجى ملء البريد وكلمة المرور');
-                    try {
-                        await signInWithEmailAndPassword(auth, email, pass);
-                        alert('تم تسجيل الدخول بنجاح!');
+                    const name = document.getElementById('clientName').value.trim();
+                    const phone = document.getElementById('clientPhone').value.trim();
+                    if(!identifier || !pass) return alert('اكتب البريد/الاسم/الهاتف وكلمة المرور');
+                    try{
+                        let email = identifier;
+                        if(!identifier.includes('@')){
+                            const key = await idHash(identifier);
+                            const refDoc = await getDoc(doc(db,'loginIdentifiers',key));
+                            if(!refDoc.exists()) throw new Error('الاسم أو الهاتف غير موجود');
+                            email = refDoc.data().email;
+                        }
+                        await signInWithEmailAndPassword(auth,email,pass);
                         document.getElementById('clientAuthModal').classList.add('hidden');
-                    } catch(e) {
-                        try {
-                            await createUserWithEmailAndPassword(auth, email, pass);
-                            alert('تم إنشاء الحساب وتسجيل الدخول بنجاح!');
-                            document.getElementById('clientAuthModal').classList.add('hidden');
-                        } catch(err) { alert('خطأ: ' + err.message); }
+                    }catch(loginErr){
+                        if(identifier.includes('@') && name && phone){
+                            try{
+                                const cred=await createUserWithEmailAndPassword(auth,identifier,pass);
+                                await setDoc(doc(db,'users',cred.user.uid),{name,phone,email:identifier,createdAt:serverTimestamp()});
+                                await setDoc(doc(db,'loginIdentifiers',await idHash(name)),{email:identifier,uid:cred.user.uid});
+                                await setDoc(doc(db,'loginIdentifiers',await idHash(phone)),{email:identifier,uid:cred.user.uid});
+                                alert('تم إنشاء الحساب بنجاح ✅');
+                                document.getElementById('clientAuthModal').classList.add('hidden');
+                            }catch(e){alert('تعذر إنشاء الحساب: '+e.message)}
+                        }else alert('بيانات الدخول غير صحيحة. ولإنشاء حساب جديد اكتب الاسم والهاتف مع البريد.');
                     }
                 };
 
                 document.getElementById('btnClientLogout').onclick = () => signOut(auth);
 
-                onAuthStateChanged(auth, (user) => {
-                    if (user) {
+                onAuthStateChanged(auth, async (user) => {
+                    currentUser=user; isAuthenticated=!!user && user.email?.toLowerCase()===ADMIN_EMAIL.toLowerCase();
+                    if(user){
                         document.getElementById('loginFormArea').classList.add('hidden');
                         document.getElementById('clientProfileArea').classList.remove('hidden');
-                        document.getElementById('profileEmail').innerText = user.email;
-                        document.getElementById('userAvatar').innerText = user.email.charAt(0).toUpperCase();
-                    } else {
+                        let profile=null; try{const p=await getDoc(doc(db,'users',user.uid)); if(p.exists()) profile=p.data();}catch(e){}
+                        document.getElementById('profileEmail').innerText=user.email;
+                        document.getElementById('profileName').innerText=profile?.name||user.email;
+                        document.getElementById('userAvatar').innerText=(profile?.name||user.email).charAt(0).toUpperCase();
+                        document.getElementById('accountMenuGuest').classList.add('hidden');document.getElementById('accountMenuUser').classList.remove('hidden');
+                        document.getElementById('accountMenuName').textContent=profile?.name||user.email;
+                        if(isAuthenticated){document.getElementById('lockStatusIcon').className='fa-solid fa-lock-open text-emerald-400';}
+                        listenCustomerMessages(user.uid);
+                    }else{
                         document.getElementById('loginFormArea').classList.remove('hidden');
                         document.getElementById('clientProfileArea').classList.add('hidden');
+                        document.getElementById('accountMenuGuest').classList.remove('hidden');document.getElementById('accountMenuUser').classList.add('hidden');
                     }
                 });
 
                 document.getElementById('btnSendChat').onclick = async () => {
-                    const input = document.getElementById('chatInput');
-                    if (!input.value.trim()) return;
-                    try {
-                        await addDoc(collection(db, "messages"), {
-                            text: input.value,
-                            sender: auth?.currentUser ? auth.currentUser.email : 'زائر',
-                            createdAt: new Date()
-                        });
-                        input.value = '';
-                    } catch(e) { alert('خطأ في إرسال الرسالة'); }
+                    const input=document.getElementById('chatInput'), text=input.value.trim();
+                    if(!text)return;
+                    if(!currentUser){openClientAuth();return;}
+                    try{await addDoc(collection(db,'messages'),{uid:currentUser.uid,text,sender:currentUser.email,isAdmin:false,createdAt:serverTimestamp()});input.value='';}
+                    catch(e){alert('تعذر إرسال الرسالة. تأكد من تسجيل الدخول.');}
                 };
-
-                onSnapshot(query(collection(db, "messages"), orderBy("createdAt", "asc")), (snapshot) => {
-                    const box = document.getElementById('chatMessages');
-                    box.innerHTML = '<div class="bg-slate-800 text-slate-300 p-2 rounded-lg max-w-[80%]">أهلاً بك! كيف يمكنني مساعدتك اليوم؟</div>';
-                    snapshot.forEach(doc => {
-                        const m = doc.data();
-                        box.innerHTML += `<div class="bg-slate-800 text-slate-200 p-2 rounded-lg max-w-[85%] text-xs mb-1"><span class="text-[10px] text-cyan-400 block font-bold">${m.sender}</span>${m.text}</div>`;
-                    });
-                    box.scrollTop = box.scrollHeight;
-                });
+                function listenCustomerMessages(uid){
+                    if(!db)return;
+                    onSnapshot(query(collection(db,'messages'),where('uid','==',uid),orderBy('createdAt','asc')),snap=>{
+                        const box=document.getElementById('chatMessages');box.innerHTML='';
+                        snap.forEach(d=>{const m=d.data();const mine=!m.isAdmin;box.innerHTML+=`<div class="${mine?'bg-cyan-600 mr-auto':'bg-slate-800 ml-auto'} text-white p-2 rounded-lg max-w-[82%]">${esc(m.text)}</div>`});
+                        box.scrollTop=box.scrollHeight;
+                    },()=>{});
+                }
 
                 document.getElementById('btnSubmitReview').onclick = async () => {
                     const text = document.getElementById('reviewText').value;
                     const author = document.getElementById('reviewAuthor').value || 'عميل';
                     if (!text) return alert('اكتب رأيك أولاً');
-                    await addDoc(collection(db, "reviews"), { text, author, createdAt: new Date() });
+                    await addDoc(collection(db, "reviews"), { text, author, createdAt: serverTimestamp(), uid: currentUser?.uid || null });
                     document.getElementById('reviewText').value = '';
                     document.getElementById('reviewAuthor').value = '';
                     alert('تم نشر رأيك بنجاح!');
@@ -637,6 +737,65 @@
 
             } catch(e) { console.log('Firebase offline mode'); }
         }
+
+        async function persistSiteState(){
+            if(!db || !auth?.currentUser || auth.currentUser.email?.toLowerCase() !== ADMIN_EMAIL.toLowerCase()) throw new Error('سجّل دخول المدير أولاً');
+            await setDoc(docRef, appState, {merge:true});
+            localStorage.setItem('site_custom_state_v5', JSON.stringify(appState));
+        }
+        const esc = (v='') => String(v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+        const idHash = async (value) => {
+            const data = new TextEncoder().encode(String(value).trim().toLowerCase());
+            const hash = await crypto.subtle.digest('SHA-256', data);
+            return [...new Uint8Array(hash)].map(b=>b.toString(16).padStart(2,'0')).join('');
+        };
+        function openClientAuth(){ const m=document.getElementById('clientAuthModal'); m.classList.remove('hidden'); m.classList.add('flex'); }
+        async function hydrateAdmin(){
+            if(!isAuthenticated) return;
+            document.getElementById('editName').value=appState.name||'';
+            document.getElementById('editTitle').value=appState.title||'';
+            document.getElementById('editBio').value=appState.bio||'';
+            document.getElementById('editBadge').value=appState.badge||'';
+            renderAdminServices(); renderAdminProjects(); loadAdminReviews(); loadAdminMessages();
+        }
+        function renderAdminServices(){
+            const c=document.getElementById('adminServicesList'); if(!c) return;
+            c.innerHTML=(appState.services||[]).map((x,i)=>`<div class="admin-section"><div class="font-bold">${esc(x.title)}</div><div class="text-slate-400 mt-1">${esc(x.desc)}</div><div class="flex gap-2 mt-2"><button onclick="editService(${i})" class="flex-1 py-1.5 bg-slate-800 rounded-lg">تعديل</button><button onclick="removeService(${i})" class="flex-1 py-1.5 bg-red-500/15 text-red-300 rounded-lg">حذف</button></div></div>`).join('');
+        }
+        window.editService=(i)=>{const x=appState.services[i]; const t=prompt('اسم الخدمة',x.title); if(t===null)return; const d=prompt('وصف الخدمة',x.desc); if(d===null)return; x.title=t;x.desc=d; persistSiteState().then(()=>{renderSite();renderAdminServices();});};
+        window.removeService=(i)=>{if(!confirm('حذف الخدمة؟'))return; appState.services.splice(i,1); persistSiteState().then(()=>{renderSite();renderAdminServices();});};
+        document.getElementById('addServiceBtn').onclick=async()=>{const title=document.getElementById('serviceTitle').value.trim(); if(!title)return alert('اكتب اسم الخدمة'); appState.services.push({title,desc:document.getElementById('serviceDesc').value.trim(),icon:document.getElementById('serviceIcon').value.trim()||'fa-star'}); await persistSiteState(); document.getElementById('serviceTitle').value='';document.getElementById('serviceDesc').value='';renderSite();renderAdminServices();};
+        function renderAdminProjects(){
+            const c=document.getElementById('adminProjectsList'); if(!c)return;
+            c.innerHTML=(appState.projects||[]).map((x,i)=>`<div class="admin-section"><div class="font-bold">${esc(x.title)}</div><div class="text-slate-400">${esc(x.category)}</div><div class="flex gap-2 mt-2"><button onclick="editProject(${i})" class="flex-1 py-1.5 bg-slate-800 rounded-lg">تعديل</button><button onclick="removeProject(${i})" class="flex-1 py-1.5 bg-red-500/15 text-red-300 rounded-lg">حذف</button></div></div>`).join('');
+        }
+        window.editProject=(i)=>{const x=appState.projects[i];document.getElementById('projectEditId').value=i;document.getElementById('projectTitle').value=x.title||'';document.getElementById('projectCategory').value=x.category||'social';document.getElementById('projectDesc').value=x.desc||'';document.getElementById('projectImg').value=x.img||'';document.getElementById('cancelProjectBtn').classList.remove('hidden');};
+        window.removeProject=(i)=>{if(!confirm('حذف العمل؟'))return;appState.projects.splice(i,1);persistSiteState().then(()=>{renderSite();renderAdminProjects();});};
+        document.getElementById('cancelProjectBtn').onclick=()=>{document.getElementById('projectEditId').value='';document.getElementById('projectTitle').value='';document.getElementById('projectDesc').value='';document.getElementById('projectImg').value='';document.getElementById('cancelProjectBtn').classList.add('hidden');};
+        document.getElementById('saveProjectBtn').onclick=async()=>{
+            const title=document.getElementById('projectTitle').value.trim(); if(!title)return alert('اكتب اسم العمل');
+            let img=document.getElementById('projectImg').value.trim();
+            const file=document.getElementById('projectFile').files[0];
+            if(file){ if(!storage)return alert('Firebase Storage غير متصل'); const r=ref(storage,`portfolio/${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]/g,'_')}`); await uploadBytes(r,file); img=await getDownloadURL(r); }
+            if(!img) return alert('ضع رابط صورة أو اختر صورة');
+            const obj={title,category:document.getElementById('projectCategory').value,desc:document.getElementById('projectDesc').value.trim(),descFull:document.getElementById('projectDesc').value.trim(),img};
+            const i=document.getElementById('projectEditId').value;
+            if(i==='') appState.projects.push(obj); else appState.projects[Number(i)]=obj;
+            await persistSiteState(); document.getElementById('cancelProjectBtn').click(); document.getElementById('projectFile').value=''; renderSite();renderAdminProjects(); alert('تم حفظ العمل للجميع ✅');
+        };
+        async function loadAdminReviews(){
+            if(!db||!isAuthenticated)return; const snap=await getDocs(query(collection(db,'reviews'),orderBy('createdAt','desc'))); const c=document.getElementById('adminReviewsList');
+            c.innerHTML=''; snap.forEach(d=>{const r=d.data();c.innerHTML+=`<div class="admin-section"><div class="font-bold">${esc(r.author||'عميل')}</div><div class="text-slate-300 mt-1">${esc(r.text)}</div><button onclick="deleteReview('${d.id}')" class="mt-2 w-full py-1.5 bg-red-500/15 text-red-300 rounded-lg">حذف الرأي</button></div>`});
+        }
+        window.deleteReview=async(id)=>{if(!confirm('حذف الرأي؟'))return;await deleteDoc(doc(db,'reviews',id));loadAdminReviews();};
+        async function loadAdminMessages(){
+            if(!db||!isAuthenticated)return; const snap=await getDocs(query(collection(db,'messages'),orderBy('createdAt','desc'))); const c=document.getElementById('adminMessagesList'); const seen=new Map();
+            snap.forEach(d=>{const m=d.data(); if(!m.isAdmin && !seen.has(m.uid)){seen.set(m.uid,m)}});
+            c.innerHTML=[...seen.entries()].map(([uid,m])=>`<button onclick="selectChat('${esc(uid)}')" class="admin-section w-full text-right"><div class="font-bold">${esc(m.sender||'عميل')}</div><div class="text-slate-400 mt-1 truncate">${esc(m.text)}</div></button>`).join('')||'<div class="text-slate-500">لا توجد رسائل بعد.</div>';
+        }
+        window.selectChat=(uid)=>{selectedChatUser=uid;document.getElementById('replyTarget').value=uid;document.getElementById('replyText').focus();};
+        document.getElementById('sendAdminReply').onclick=async()=>{const text=document.getElementById('replyText').value.trim(),uid=document.getElementById('replyTarget').value;if(!text||!uid)return alert('اختر عميلاً واكتب الرد');await addDoc(collection(db,'messages'),{uid,text,sender:ADMIN_EMAIL,isAdmin:true,createdAt:serverTimestamp()});document.getElementById('replyText').value='';alert('تم إرسال الرد ✅');};
+        document.querySelectorAll('.admin-tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.admin-tab').forEach(x=>x.classList.replace('bg-cyan-500','bg-slate-800'));b.classList.replace('bg-slate-800','bg-cyan-500');document.querySelectorAll('.admin-tab-panel').forEach(x=>x.classList.add('hidden'));document.getElementById('adminTab'+b.dataset.tab[0].toUpperCase()+b.dataset.tab.slice(1)).classList.remove('hidden');if(b.dataset.tab==='messages')loadAdminMessages();if(b.dataset.tab==='reviews')loadAdminReviews();});
 
         function renderSite() {
             const isEn = appState.currentLang === 'en';
@@ -771,27 +930,39 @@
         document.getElementById('closePasswordModalBtn').onclick = () => document.getElementById('passwordModal').classList.remove('flex', 'hidden');
         document.getElementById('closeCustomizerBtn').onclick = () => document.getElementById('customizerDrawer').classList.add('-translate-x-full');
 
-        document.getElementById('passwordForm').onsubmit = (e) => {
+        document.getElementById('passwordForm').onsubmit = async (e) => {
             e.preventDefault();
-            if (document.getElementById('inputAdminPassword').value === '1234') {
+            const email = (document.getElementById('adminEmail')?.value || 'abdelrahmanatia167@gmail.com').trim();
+            const pass = document.getElementById('inputAdminPassword').value;
+            try {
+                await signInWithEmailAndPassword(auth, email, pass);
+                if (auth.currentUser?.email?.toLowerCase() !== ADMIN_EMAIL.toLowerCase()) throw new Error('ليس لديك صلاحية الإدارة');
                 isAuthenticated = true;
                 document.getElementById('passwordModal').classList.remove('flex', 'hidden');
                 document.getElementById('customizerDrawer').classList.remove('-translate-x-full');
                 document.getElementById('lockStatusIcon').className = 'fa-solid fa-lock-open text-emerald-400';
-            } else {
+                hydrateAdmin();
+            } catch(err) {
+                document.getElementById('passwordError').textContent = err.message.includes('صلاحية') ? err.message : 'بيانات الدخول غير صحيحة';
                 document.getElementById('passwordError').classList.remove('hidden');
             }
         };
 
-        document.getElementById('saveCustomChanges').onclick = () => {
+        document.getElementById('saveCustomChanges').onclick = async () => {
             appState.headerName = document.getElementById('editName').value || appState.headerName;
             appState.title = document.getElementById('editTitle').value || appState.title;
             appState.bio = document.getElementById('editBio').value || appState.bio;
-            localStorage.setItem('site_custom_state_v5', JSON.stringify(appState));
+            appState.badge = document.getElementById('editBadge').value || appState.badge;
+            await persistSiteState();
             renderSite();
-            alert('تم الحفظ بنجاح!');
+            alert('تم الحفظ على الموقع للجميع ✅');
         };
 
+        document.getElementById('accountMenuBtn').onclick=()=>document.getElementById('accountMenu').classList.toggle('hidden');
+        document.getElementById('accountLoginBtn').onclick=()=>{document.getElementById('accountMenu').classList.add('hidden');openClientAuth();};
+        document.getElementById('accountProfileBtn').onclick=()=>openClientAuth();
+        document.getElementById('accountLogoutBtn').onclick=()=>signOut(auth);
+        document.getElementById('profileAvatar')?.addEventListener('click',openClientAuth);
         renderSite();
         initFirebaseSync();
     </script>

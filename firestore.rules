@@ -1,0 +1,43 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function admin() {
+      return signedIn() && request.auth.token.email == 'abdelrahmanatia167@gmail.com';
+    }
+
+    match /artifacts/abdelrahman-website/public/data/config/siteState {
+      allow read: if true;
+      allow write: if admin();
+    }
+
+    match /users/{uid} {
+      allow read, write: if signedIn() && (request.auth.uid == uid || admin());
+    }
+
+    // Publicly readable identifier index contains only email + uid.
+    // It lets a client log in using the registered name or phone without
+    // exposing a list/query of customer profiles.
+    match /loginIdentifiers/{id} {
+      allow read: if true;
+      allow create: if signedIn() && request.resource.data.uid == request.auth.uid;
+      allow update, delete: if signedIn() && resource.data.uid == request.auth.uid;
+    }
+
+    match /reviews/{id} {
+      allow read, create: if true;
+      allow update, delete: if admin();
+    }
+
+    match /messages/{id} {
+      allow create: if signedIn() && (request.resource.data.uid == request.auth.uid || admin());
+      allow read: if admin() || (signedIn() && resource.data.uid == request.auth.uid);
+      allow update, delete: if admin();
+    }
+
+    match /contacts/{id} {
+      allow create: if true;
+      allow read, update, delete: if admin();
+    }
+  }
+}
