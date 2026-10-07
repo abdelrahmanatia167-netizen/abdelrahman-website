@@ -38,6 +38,59 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+  /* خلفية جرافيك شفافة حماسية */
+  body {
+    background-color: #0d0f12; /* أو لون خلفية موقعك الحالي */
+    background-image: 
+      radial-gradient(circle at 20% 20%, rgba(255, 0, 128, 0.08) 0%, transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.08) 0%, transparent 40%),
+      linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+    background-attachment: fixed;
+  }
+
+  /* الشريط والمستطيل المتحرك أسفل الشاشة */
+  .footer-ticker-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(90deg, #111, #1a1a2e, #111);
+    border-top: 2px solid #00d2ff;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 10px 0;
+    z-index: 9999;
+    box-shadow: 0 -4px 15px rgba(0, 212, 255, 0.2);
+  }
+
+  .footer-ticker-text {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 18s linear infinite;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    letter-spacing: 1px;
+  }
+
+  .footer-ticker-text span {
+    background: linear-gradient(45deg, #ff007f, #00d2ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 4px 12px;
+    border: 1px solid rgba(0, 212, 255, 0.5);
+    border-radius: 6px;
+    margin: 0 10px;
+  }
+
+  @keyframes marquee {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+  }
+</style>
+
         body {
             font-family: 'Tajawal', 'Cairo', 'Inter', sans-serif;
             transition: background-color 0.3s, color 0.3s;
@@ -1681,5 +1734,13 @@
         window.updateService = updateService;
         window.updateProject = updateProject;
     </script>
+<!-- مستطيل أسفل الشاشة يتجه لليصلار بعبارة عبدالرحمن عطية -->
+<div class="footer-ticker-container">
+  <div class="footer-ticker-text">
+    <span>عبدالرحمن عطيه - مصمم جرافيك</span>
+    ✨ تصميمات احترافية ✨ هويات بصرية ✨ إعلانات سوشيال ميديا ✨
+    <span>عبدالرحمن عطيه - مصمم جرافيك</span>
+  </div>
+</div>
 </body>
 </html>
