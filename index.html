@@ -38,10 +38,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-
         body {
             font-family: 'Tajawal', 'Cairo', 'Inter', sans-serif;
             transition: background-color 0.3s, color 0.3s;
+            background-color: #0b0d11 !important;
+            background-image: 
+              radial-gradient(circle at 15% 15%, rgba(0, 212, 255, 0.08) 0%, transparent 45%),
+              radial-gradient(circle at 85% 85%, rgba(255, 0, 128, 0.08) 0%, transparent 45%),
+              linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px) !important;
+            background-size: 100% 100%, 100% 100%, 30px 30px, 30px 30px !important;
+            background-attachment: fixed !important;
         }
         
         .gradient-text {
@@ -77,7 +84,6 @@
             background-color: rgba(59, 130, 246, 0.1);
         }
 
-        /* Language Toggle Button Effects */
         .lang-switch-btn {
             background: rgba(59, 130, 246, 0.08);
             border: 1px solid rgba(59, 130, 246, 0.2);
@@ -88,7 +94,6 @@
             transform: translateY(-1px);
         }
 
-        /* LTR tweaks */
         [dir="ltr"] .space-x-reverse > :not([hidden]) ~ :not([hidden]) {
             --tw-space-x-reverse: 0;
         }
@@ -106,6 +111,35 @@
             right: auto;
             left: -0.625rem;
         }
+
+        .ticker-wrap {
+            width: 100%;
+            overflow: hidden;
+            background: #090a0f;
+            border-top: 2px solid #00d2ff;
+            padding: 12px 0;
+            margin-top: 30px;
+            box-shadow: 0 -5px 20px rgba(0,212,255,0.25);
+        }
+
+        .ticker-move {
+            display: flex;
+            width: max-content;
+            animation: tickerLoop 10s linear infinite;
+        }
+
+        .ticker-item {
+            white-space: nowrap;
+            padding: 0 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        @keyframes tickerLoop {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col antialiased selection:bg-blue-500 selection:text-white">
@@ -119,7 +153,6 @@
     <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-white/70 dark:bg-slate-900/70 border-b border-slate-200/50 dark:border-slate-800/50 transition-all">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
-                <!-- Brand / Logo -->
                 <div class="flex items-center gap-3">
                     <a href="#hero" class="flex items-center gap-2.5 group">
                         <div id="logoContainer" class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-purple-600 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-blue-500/20 overflow-hidden group-hover:scale-105 transition-transform">
@@ -130,7 +163,6 @@
                     </a>
                 </div>
 
-                <!-- Desktop Navigation Links -->
                 <nav class="hidden md:flex items-center space-x-1 space-x-reverse text-sm font-medium" id="desktopNav">
                     <a href="#hero" class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" data-i18n="nav_home">الرئيسية</a>
                     <a href="#about" class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" data-i18n="nav_about">عني</a>
@@ -141,8 +173,11 @@
                 </nav>
 
                 <div class="flex items-center gap-2">
-                    <!-- Modern Standalone Language Switcher Button (AR / EN) -->
-                    <button id="langToggleBtn" class="lang-switch-btn px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-2 text-slate-700 dark:text-slate-200 shadow-sm" title="تغيير اللغة / Change Language">
+                    <button id="btnOpenClientAuth" onclick="document.getElementById('clientAuthModal').classList.remove('hidden')" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/20 transition">
+                        <i class="fa-solid fa-user-check"></i> دخول العميل
+                    </button>
+
+                    <button id="langToggleBtn" class="lang-switch-btn px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-2 text-slate-700 dark:text-slate-200 shadow-sm">
                         <i class="fa-solid fa-globe text-blue-500 text-sm"></i>
                         <span id="langToggleText" class="tracking-wide">English</span>
                     </button>
@@ -152,7 +187,7 @@
                         <span class="hidden sm:inline" data-i18n="btn_dashboard">لوحة التحكم</span>
                     </button>
 
-                    <button id="themeToggleBtn" class="p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" title="الوضع الداكن/الفاتح">
+                    <button id="themeToggleBtn" class="p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
                         <i class="fa-solid fa-moon dark:hidden"></i>
                         <i class="fa-solid fa-sun hidden dark:block text-amber-400"></i>
                     </button>
@@ -164,7 +199,6 @@
             </div>
         </div>
 
-        <!-- Mobile Drawer Navigation -->
         <div id="mobileMenu" class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md px-4 pt-2 pb-4 space-y-2">
             <a href="#hero" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" data-i18n="nav_home">الرئيسية</a>
             <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" data-i18n="nav_about">عني</a>
@@ -178,8 +212,6 @@
     <section id="hero" class="relative py-16 lg:py-28 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                
-                <!-- Main Text Content -->
                 <div class="lg:col-span-7 space-y-6 text-center lg:text-start">
                     <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800/60 text-blue-600 dark:text-blue-400 text-sm font-medium shadow-sm">
                         <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -199,9 +231,8 @@
                         مصمم جرافيك محترف بخبرة تتجاوز 6 سنوات في صناعة التصاميم الإبداعية، تصاميم السوشيال ميديا، الهويات البصرية المتكاملة، والمطبوعات. أساعد البراندات والشركات على جذب العملاء وتحقيق أعلى نسبة مبيعات من خلال محتوى بصري احترافي ومبتكر.
                     </p>
 
-                    <!-- Action Buttons -->
                     <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
-                        <a href="https://wa.me/201279879021" target="_blank" id="btnHireMe" class="px-7 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 hover:-translate-y-0.5 transition-all flex items-center gap-2">
+                        <a href="https://wa.me/201279879021" target="_blank" id="btnHireMe" class="px-7 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold shadow-lg shadow-emerald-500/30 hover:-translate-y-0.5 transition-all flex items-center gap-2">
                             <i class="fa-brands fa-whatsapp text-lg"></i>
                             <span id="btnHireMeText" data-i18n="btn_whatsapp">تواصل معي عبر الواتساب</span>
                         </a>
@@ -211,11 +242,10 @@
                         </a>
                     </div>
 
-                    <!-- Social Icons -->
                     <div class="flex items-center justify-center lg:justify-start gap-3 pt-6 text-slate-500 dark:text-slate-400" id="socialLinksContainer">
-                        <a id="linkFacebook" href="https://www.facebook.com/share/1DiZq66Hkm/" target="_blank" class="p-2.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-600 transition-colors" title="Facebook"><i class="fa-brands fa-facebook text-xl"></i></a>
-                        <a id="linkInstagram" href="https://www.instagram.com/abdelrahman.atia3?stkn=MXdhdXd1aDlnc2N4Mg==" target="_blank" class="p-2.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-pink-500 transition-colors" title="Instagram"><i class="fa-brands fa-instagram text-xl"></i></a>
-                        <a id="linkWhatsapp" href="https://wa.me/201279879021" target="_blank" class="p-2.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-emerald-500 transition-colors" title="WhatsApp"><i class="fa-brands fa-whatsapp text-xl"></i></a>
+                        <a id="linkFacebook" href="https://www.facebook.com/share/1DiZq66Hkm/" target="_blank" class="p-2.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-600 transition-colors"><i class="fa-brands fa-facebook text-xl"></i></a>
+                        <a id="linkInstagram" href="https://www.instagram.com/abdelrahman.atia3?stkn=MXdhdXd1aDlnc2N4Mg==" target="_blank" class="p-2.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-pink-500 transition-colors"><i class="fa-brands fa-instagram text-xl"></i></a>
+                        <a id="linkWhatsapp" href="https://wa.me/201279879021" target="_blank" class="p-2.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-emerald-500 transition-colors"><i class="fa-brands fa-whatsapp text-xl"></i></a>
                     </div>
                 </div>
 
@@ -227,7 +257,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -247,7 +276,6 @@
                         التصميم بالنسبة لي ليس مجرد دمج للألوان والصور، بل هو اللغة البصرية التي تخاطب بها جمهورك وتبرز قيمة منتجاتك. خلال أكثر من 6 سنوات من العمل المتواصل، قدمت مئات الحملات الإعلانية وتصاميم المطبوعات والهويات التي صنعت فرقاً حقيقياً في نجاح عميلاتي وشركاتهم.
                     </p>
 
-                    <!-- Stats Grid -->
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4">
                         <div class="p-4 rounded-xl glass-card border border-slate-200/80 dark:border-slate-800 text-center">
                             <span class="text-3xl font-black text-blue-600 dark:text-blue-400 block mb-1" id="stat1Value">6+</span>
@@ -268,10 +296,7 @@
                     </div>
                 </div>
 
-                <!-- Skills Bars -->
-                <div class="lg:col-span-6 space-y-5" id="skillsContainer">
-                    <!-- Dynamic skills progress injected via JavaScript -->
-                </div>
+                <div class="lg:col-span-6 space-y-5" id="skillsContainer"></div>
             </div>
         </div>
     </section>
@@ -283,10 +308,7 @@
                 <div class="w-16 h-1 bg-blue-600 mx-auto rounded-full mb-4"></div>
                 <p class="text-slate-600 dark:text-slate-400" data-i18n="services_subtitle">تصاميم إبداعية متكاملة تغطي كافة متطلبات نشاطك التجاري</p>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="servicesGrid">
-                <!-- Services Cards Injected Dynamically -->
-            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="servicesGrid"></div>
         </div>
     </section>
 
@@ -298,7 +320,6 @@
                 <p class="text-slate-600 dark:text-slate-400" data-i18n="portfolio_subtitle">نماذج إبداعية من أحدث المشاريع والإعلانات التي صممتها مؤخراً</p>
             </div>
 
-            <!-- Filter Tabs -->
             <div class="flex flex-wrap items-center justify-center gap-2 mb-10" id="filterBtnContainer">
                 <button class="filter-btn active px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-blue-600 text-white" data-filter="all" data-i18n="filter_all">الكل</button>
                 <button class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-blue-500 hover:text-white" data-filter="social" data-i18n="filter_social">سوشيال ميديا وإعلانات</button>
@@ -306,13 +327,24 @@
                 <button class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-blue-500 hover:text-white" data-filter="print" data-i18n="filter_print">مطبوعات وتغليف</button>
             </div>
 
-            <!-- Portfolio Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsGrid">
-                <!-- Projects Injected Dynamically -->
-            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsGrid"></div>
         </div>
     </section>
 
+    <section class="py-16 max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-extrabold text-center text-white mb-2">آراء <span class="text-cyan-400">العملاء</span></h2>
+      <div class="w-16 h-1 bg-cyan-400 mx-auto rounded-full mb-8"></div>
+      
+      <div class="bg-slate-900/80 border border-slate-800 p-5 rounded-2xl max-w-xl mx-auto mb-8 shadow-xl">
+        <textarea id="reviewText" rows="3" placeholder="اكتب رأيك في خدماتنا وتصاميمنا..." class="w-full p-3 bg-slate-800 border border-slate-700 rounded-xl text-white text-sm mb-3 focus:outline-none focus:border-cyan-400 resize-none"></textarea>
+        <div class="flex justify-between items-center">
+          <input type="text" id="reviewAuthor" placeholder="اسمك الكريم" class="p-2.5 bg-slate-800 border border-slate-700 rounded-lg text-white text-xs w-1/2 focus:outline-none">
+          <button id="btnSubmitReview" class="px-5 py-2.5 bg-cyan-500 hover:bg-cyan-600 text-white rounded-lg text-xs font-bold transition">نشر الرأي ✨</button>
+        </div>
+      </div>
+
+      <div id="reviewsContainer" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+    </section>
     <section id="experience" class="py-20">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -320,9 +352,7 @@
                 <div class="w-16 h-1 bg-blue-600 mx-auto rounded-full mb-4"></div>
             </div>
 
-            <div class="relative border-r-2 border-blue-500/30 dark:border-blue-500/20 mr-4 md:mr-8 space-y-10" id="experienceTimeline">
-                <!-- Timeline items injected dynamically -->
-            </div>
+            <div class="relative border-r-2 border-blue-500/30 dark:border-blue-500/20 mr-4 md:mr-8 space-y-10" id="experienceTimeline"></div>
         </div>
     </section>
 
@@ -335,7 +365,6 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-                <!-- Contact Info Cards -->
                 <div class="lg:col-span-5 space-y-6">
                     <div class="p-6 rounded-2xl glass-card border border-slate-200/80 dark:border-slate-800 flex items-center gap-4">
                         <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center text-xl shrink-0">
@@ -368,7 +397,6 @@
                     </div>
                 </div>
 
-                <!-- Interactive Message Form -->
                 <div class="lg:col-span-7">
                     <form id="contactForm" class="p-8 rounded-2xl glass-card border border-slate-200/80 dark:border-slate-800 space-y-4">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -407,12 +435,69 @@
         </div>
     </section>
 
+    <!-- الشات المباشر -->
+    <div class="fixed bottom-16 left-4 z-50">
+      <button onclick="document.getElementById('chatBoxWindow').classList.toggle('hidden')" class="w-14 h-14 bg-gradient-to-tr from-pink-500 to-cyan-400 rounded-full flex items-center justify-center text-white shadow-lg hover:scale-105 transition">
+        <i class="fa-solid fa-comments text-2xl"></i>
+      </button>
+
+      <div id="chatBoxWindow" class="hidden absolute bottom-16 left-0 w-80 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden flex flex-col h-96">
+        <div class="bg-slate-800 p-3 border-b border-slate-700 flex justify-between items-center text-white">
+          <span class="font-bold text-sm text-cyan-400">محادثة مباشرة مع عبدالرحمن</span>
+          <button onclick="document.getElementById('chatBoxWindow').classList.add('hidden')" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div id="chatMessages" class="flex-1 p-3 overflow-y-auto space-y-2 text-xs">
+          <div class="bg-slate-800 text-slate-300 p-2 rounded-lg max-w-[80%]">أهلاً بك! كيف يمكنني مساعدتك في تصميمك اليوم؟</div>
+        </div>
+        <div class="p-2 bg-slate-800 border-t border-slate-700 flex gap-2">
+          <input type="text" id="chatInput" placeholder="اكتب رسالتك..." class="flex-1 p-2 bg-slate-900 border border-slate-700 rounded-lg text-white text-xs focus:outline-none">
+          <button id="btnSendChat" class="px-3 bg-cyan-500 text-white rounded-lg text-xs"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- نافذة تسجيل دخول العميل -->
+    <div id="clientAuthModal" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4">
+      <div class="bg-slate-900 border border-slate-700 p-6 rounded-2xl max-w-md w-full text-right text-white relative">
+        <button onclick="document.getElementById('clientAuthModal').classList.add('hidden')" class="absolute top-4 left-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+        <h3 class="text-xl font-bold mb-4 text-cyan-400">حساب العميل</h3>
+        
+        <div id="loginFormArea">
+          <input type="email" id="clientEmail" placeholder="البريد الإلكتروني" class="w-full p-3 bg-slate-800 border border-slate-700 rounded-xl mb-3 text-white text-sm focus:outline-none focus:border-cyan-400">
+          <input type="password" id="clientPass" placeholder="كلمة المرور" class="w-full p-3 bg-slate-800 border border-slate-700 rounded-xl mb-4 text-white text-sm focus:outline-none focus:border-cyan-400">
+          <button id="btnClientLogin" class="w-full py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl font-bold hover:opacity-90 transition">تسجيل الدخول / إنشاء حساب</button>
+        </div>
+
+        <div id="clientProfileArea" class="hidden text-center">
+          <div class="w-16 h-16 bg-cyan-500/20 border border-cyan-400 text-cyan-400 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl font-bold" id="userAvatar">U</div>
+          <h4 class="font-bold text-lg" id="profileEmail">user@example.com</h4>
+          <p class="text-xs text-slate-400 mb-4">مرحباً بك في موقع عبدالرحمن عطيه</p>
+          <button id="btnClientLogout" class="px-5 py-2 bg-red-500/20 text-red-400 border border-red-500/40 rounded-xl text-sm hover:bg-red-500/30">تسجيل الخروج</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- الشريط المتحرك المستمر -->
+    <div class="ticker-wrap">
+      <div class="ticker-move">
+        <div class="ticker-item">
+          <span style="background: linear-gradient(45deg, #ff007f, #00d2ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; border: 1px solid rgba(0,212,255,0.5); padding: 4px 14px; border-radius: 6px;">عبدالرحمن عطيه - مصمم جرافيك</span>
+          ✨ تصميمات احترافية ✨ هويات بصرية ✨ إعلانات سوشيال ميديا ✨
+        </div>
+        <div class="ticker-item">
+          <span style="background: linear-gradient(45deg, #ff007f, #00d2ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; border: 1px solid rgba(0,212,255,0.5); padding: 4px 14px; border-radius: 6px;">عبدالرحمن عطيه - مصمم جرافيك</span>
+          ✨ تصميمات احترافية ✨ هويات بصرية ✨ إعلانات سوشيال ميديا ✨
+        </div>
+      </div>
+    </div>
+
     <footer class="py-8 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-center text-sm text-slate-500">
         <div class="max-w-7xl mx-auto px-4">
             <p><span data-i18n="footer_rights">جميع الحقوق محفوظة ©</span> <span id="footerName">عبدالرحمن عطيه</span> 2026 | <span data-i18n="footer_role">مصمم جرافيك احترافي</span></p>
         </div>
     </footer>
 
+    <!-- Modals -->
     <div id="passwordModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden items-center justify-center p-4">
         <div class="bg-white dark:bg-slate-900 rounded-2xl max-w-sm w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-800 relative">
             <button id="closePasswordModalBtn" class="absolute top-4 left-4 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
@@ -439,7 +524,6 @@
     </div>
 
     <div id="customizerDrawer" class="fixed inset-y-0 left-0 z-50 w-full sm:w-96 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 shadow-2xl transform -translate-x-full transition-transform duration-300 flex flex-col">
-        <!-- Header -->
         <div class="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-slate-50 dark:bg-slate-900/50">
             <div class="flex items-center gap-2">
                 <i class="fa-solid fa-sliders text-blue-600"></i>
@@ -455,7 +539,6 @@
             </div>
         </div>
 
-        <!-- Navigation Tabs inside Control Panel -->
         <div class="flex border-b border-slate-200 dark:border-slate-800 bg-slate-100/50 dark:bg-slate-800/50 overflow-x-auto text-xs font-bold scrollbar-none">
             <button class="tab-btn active px-3 py-2.5 whitespace-nowrap border-b-2 border-transparent transition-all" data-tab="tab-logo" data-i18n="tab_security">اللوجو والأمان</button>
             <button class="tab-btn px-3 py-2.5 whitespace-nowrap border-b-2 border-transparent transition-all" data-tab="tab-hero" data-i18n="tab_hero">الواجهة والأنقسام</button>
@@ -467,226 +550,93 @@
         </div>
 
         <div class="p-4 overflow-y-auto flex-1 space-y-4">
-            
-            <!-- Tab 1: Logo & Password Security -->
             <div id="tab-logo" class="tab-content space-y-4">
                 <h4 class="font-bold text-xs text-blue-500">إعدادات الشعار والأمان</h4>
-                
                 <div class="p-3 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 rounded-xl space-y-2">
                     <label class="block text-xs font-bold text-amber-800 dark:text-amber-300">تغيير كلمة سر لوحة التحكم</label>
                     <input type="password" id="inputCurrentPass" placeholder="كلمة السر الحالية" class="w-full p-2 rounded-lg border dark:bg-slate-800 text-xs">
                     <input type="password" id="inputNewPass" placeholder="كلمة السر الجديدة" class="w-full p-2 rounded-lg border dark:bg-slate-800 text-xs">
-                    <button id="savePasswordBtn" class="w-full py-1.5 bg-amber-600 text-white rounded-lg text-xs font-bold hover:bg-amber-700 transition-colors">
-                        حفظ كلمة السر الجديدة
-                    </button>
+                    <button id="savePasswordBtn" class="w-full py-1.5 bg-amber-600 text-white rounded-lg text-xs font-bold hover:bg-amber-700 transition-colors">حفظ كلمة السر الجديدة</button>
                 </div>
-
                 <div>
-                    <label class="block text-xs font-bold mb-1">نوع الشعار (Logo Type)</label>
-                    <select id="editLogoType" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs">
-                        <option value="image">صورة شعار (Image Logo)</option>
-                        <option value="text">حرف / اسم (Text Initials)</option>
+                    <label class="block text-xs font-bold mb-1">نوع الشعار</label>
+                    <select id="editLogoType" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 text-xs">
+                        <option value="image">صورة شعار</option>
+                        <option value="text">حرف / اسم</option>
                     </select>
                 </div>
-
                 <div>
-                    <label class="block text-xs font-bold mb-1">صورة اللوجو الخاصة بك</label>
-                    <div class="space-y-2">
-                        <label class="cursor-pointer w-full py-2.5 px-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all shadow-sm active:scale-95">
-                            <i class="fa-solid fa-image text-sm"></i>
-                            <span>اختر وارفِع صورة اللوجو مباشرة من الهاتف</span>
-                            <input type="file" id="uploadLogoFile" accept="image/*" class="hidden">
-                        </label>
-                        <input type="text" id="editLogoUrl" placeholder="أو أدخل رابط صورة خارجي بيدك" class="w-full p-2 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs text-slate-500">
-                    </div>
+                    <label class="block text-xs font-bold mb-1">صورة اللوجو</label>
+                    <input type="file" id="uploadLogoFile" accept="image/*" class="w-full text-xs">
+                    <input type="text" id="editLogoUrl" placeholder="رابط خارجي" class="w-full p-2 rounded-lg border dark:bg-slate-800 text-xs mt-1">
                 </div>
-
                 <div>
-                    <label class="block text-xs font-bold mb-1">اسم الموقع بالأعلى (Header Name)</label>
-                    <input type="text" id="editHeaderName" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs">
+                    <label class="block text-xs font-bold mb-1">اسم الموقع بالأعلى</label>
+                    <input type="text" id="editHeaderName" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 text-xs">
                 </div>
             </div>
 
-            <!-- Tab 2: Hero Section -->
             <div id="tab-hero" class="tab-content hidden space-y-4">
                 <h4 class="font-bold text-xs text-blue-500">تفاصيل الواجهة الرئيسية</h4>
-                
-                <div>
-                    <label class="block text-xs font-bold mb-1">الاسم بالعربية</label>
-                    <input type="text" id="editName" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold mb-1">Name in English</label>
-                    <input type="text" id="editNameEn" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs dir-ltr">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold mb-1">المسمى الوظيفي (عربي)</label>
-                    <input type="text" id="editTitle" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold mb-1">Job Title (English)</label>
-                    <input type="text" id="editTitleEn" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs dir-ltr">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold mb-1">نص حالة التوفر (Badge Status)</label>
-                    <input type="text" id="editBadge" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold mb-1">Availability Badge (English)</label>
-                    <input type="text" id="editBadgeEn" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs dir-ltr">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold mb-1">نبذة تعريفية سريعة (Bio - عربي)</label>
-                    <textarea id="editBio" rows="3" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs"></textarea>
-                </div>
-                <div>
-                    <label class="block text-xs font-bold mb-1">Bio (English)</label>
-                    <textarea id="editBioEn" rows="3" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs dir-ltr"></textarea>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold mb-1">الصورة الشخصية (Profile Image)</label>
-                    <div class="space-y-2">
-                        <label class="cursor-pointer w-full py-2.5 px-3 bg-purple-600 hover:bg-purple-700 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all shadow-sm active:scale-95">
-                            <i class="fa-solid fa-camera text-sm"></i>
-                            <span>اختر وارفِع صورتك الشخصية من الاستوديو</span>
-                            <input type="file" id="uploadProfileFile" accept="image/*" class="hidden">
-                        </label>
-                        <input type="text" id="editImage" placeholder="أو أدخل رابط صورة خارجي بيدك" class="w-full p-2 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs text-slate-500">
-                    </div>
-                </div>
-
-                <div class="pt-2">
-                    <label class="block text-xs font-bold mb-1">روابط وسائل التواصل الاجتماعي</label>
-                    <div class="space-y-2">
-                        <input type="text" id="editFacebook" placeholder="رابط الفيسبوك" class="w-full p-2 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs">
-                        <input type="text" id="editInstagram" placeholder="رابط الانستجرام" class="w-full p-2 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs">
-                        <input type="text" id="editWhatsapp" placeholder="رابط الواتساب" class="w-full p-2 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs">
-                    </div>
-                </div>
+                <input type="text" id="editName" placeholder="الاسم بالعربية" class="w-full p-2 rounded-lg border dark:bg-slate-800 text-xs">
+                <input type="text" id="editNameEn" placeholder="Name in English" class="w-full p-2 rounded-lg border dark:bg-slate-800 text-xs dir-ltr">
+                <input type="text" id="editTitle" placeholder="المسمى الوظيفي" class="w-full p-2 rounded-lg border dark:bg-slate-800 text-xs">
+                <input type="text" id="editTitleEn" placeholder="Job Title" class="w-full p-2 rounded-lg border dark:bg-slate-800 text-xs dir-ltr">
+                <input type="text" id="editBadge" placeholder="حالة التوفر" class="w-full p-2 rounded-lg border dark:bg-slate-800 text-xs">
+                <input type="text" id="editBadgeEn" placeholder="Badge Status" class="w-full p-2 rounded-lg border dark:bg-slate-800 text-xs dir-ltr">
+                <textarea id="editBio" placeholder="نبذة" rows="3" class="w-full p-2 rounded-lg border dark:bg-slate-800 text-xs"></textarea>
+                <textarea id="editBioEn" placeholder="Bio" rows="3" class="w-full p-2 rounded-lg border dark:bg-slate-800 text-xs dir-ltr"></textarea>
+                <input type="file" id="uploadProfileFile" accept="image/*" class="w-full text-xs">
+                <input type="text" id="editImage" placeholder="رابط الصورة الشخصية" class="w-full p-2 rounded-lg border dark:bg-slate-800 text-xs">
+                <input type="text" id="editFacebook" placeholder="فيسبوك" class="w-full p-2 rounded-lg border dark:bg-slate-800 text-xs">
+                <input type="text" id="editInstagram" placeholder="انستجرام" class="w-full p-2 rounded-lg border dark:bg-slate-800 text-xs">
+                <input type="text" id="editWhatsapp" placeholder="واتساب" class="w-full p-2 rounded-lg border dark:bg-slate-800 text-xs">
             </div>
 
-            <!-- Tab 3: About & Skills -->
             <div id="tab-about" class="tab-content hidden space-y-4">
                 <h4 class="font-bold text-xs text-blue-500">نص عني والمهارات</h4>
-
-                <div>
-                    <label class="block text-xs font-bold mb-1">عنوان فقرة عني (عربي)</label>
-                    <input type="text" id="editAboutHeading" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold mb-1">About Title (English)</label>
-                    <input type="text" id="editAboutHeadingEn" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs dir-ltr">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold mb-1">تفاصيل عني الكاملة (عربي)</label>
-                    <textarea id="editAboutDetail" rows="4" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs"></textarea>
-                </div>
-                <div>
-                    <label class="block text-xs font-bold mb-1">About Detail (English)</label>
-                    <textarea id="editAboutDetailEn" rows="4" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs dir-ltr"></textarea>
-                </div>
-
-                <hr class="border-slate-200 dark:border-slate-800 my-2">
-                <h4 class="font-bold text-xs text-purple-500">المهارات التقنية (نسب الإتقان)</h4>
-
-                <div id="skillsEditForm" class="space-y-3">
-                    <!-- Dynamic Skill Sliders -->
-                </div>
+                <input type="text" id="editAboutHeading" placeholder="عنوان عني" class="w-full p-2 rounded-lg border dark:bg-slate-800 text-xs">
+                <input type="text" id="editAboutHeadingEn" placeholder="About Title" class="w-full p-2 rounded-lg border dark:bg-slate-800 text-xs dir-ltr">
+                <textarea id="editAboutDetail" rows="4" placeholder="التفاصيل" class="w-full p-2 rounded-lg border dark:bg-slate-800 text-xs"></textarea>
+                <textarea id="editAboutDetailEn" rows="4" placeholder="Details" class="w-full p-2 rounded-lg border dark:bg-slate-800 text-xs dir-ltr"></textarea>
+                <div id="skillsEditForm" class="space-y-3"></div>
             </div>
 
-            <!-- Tab 4: Services -->
             <div id="tab-services" class="tab-content hidden space-y-4">
-                <div class="flex items-center justify-between">
-                    <h4 class="font-bold text-xs text-blue-500">إدارة الخدمات المضافة</h4>
-                </div>
-                <div id="servicesEditForm" class="space-y-4">
-                    <!-- Dynamic services editor -->
-                </div>
+                <h4 class="font-bold text-xs text-blue-500">إدارة الخدمات</h4>
+                <div id="servicesEditForm" class="space-y-4"></div>
             </div>
 
-            <!-- Tab 5: Portfolio Projects -->
             <div id="tab-portfolio" class="tab-content hidden space-y-4">
                 <div class="flex items-center justify-between">
-                    <h4 class="font-bold text-xs text-blue-500">معرض الأعمال والمشاريع</h4>
-                    <button id="addProjectBtn" class="px-2.5 py-1 bg-emerald-600 text-white rounded text-xs font-bold hover:bg-emerald-700 flex items-center gap-1">
-                        <i class="fa-solid fa-plus"></i> إضافة مشروع
-                    </button>
+                    <h4 class="font-bold text-xs text-blue-500">معرض الأعمال</h4>
+                    <button id="addProjectBtn" class="px-2.5 py-1 bg-emerald-600 text-white rounded text-xs font-bold">+ إضافة مشروع</button>
                 </div>
-                <div id="projectsEditForm" class="space-y-4">
-                    <!-- Dynamic projects editor -->
-                </div>
+                <div id="projectsEditForm" class="space-y-4"></div>
             </div>
 
-            <!-- Tab 6: Contact Info -->
             <div id="tab-contact" class="tab-content hidden space-y-4">
                 <h4 class="font-bold text-xs text-blue-500">بيانات التواصل</h4>
-
-                <div>
-                    <label class="block text-xs font-bold mb-1">البريد الإلكتروني</label>
-                    <input type="email" id="editEmail" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold mb-1">رقم الهاتف / الواتساب</label>
-                    <input type="text" id="editPhone" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold mb-1">العنوان / الموقع الجغرافي (عربي)</label>
-                    <input type="text" id="editLocation" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold mb-1">Location (English)</label>
-                    <input type="text" id="editLocationEn" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs dir-ltr">
-                </div>
+                <input type="email" id="editEmail" placeholder="البريد" class="w-full p-2 rounded-lg border dark:bg-slate-800 text-xs">
+                <input type="text" id="editPhone" placeholder="الهاتف" class="w-full p-2 rounded-lg border dark:bg-slate-800 text-xs">
+                <input type="text" id="editLocation" placeholder="الموقع" class="w-full p-2 rounded-lg border dark:bg-slate-800 text-xs">
+                <input type="text" id="editLocationEn" placeholder="Location" class="w-full p-2 rounded-lg border dark:bg-slate-800 text-xs dir-ltr">
             </div>
 
-            <!-- Tab 7: Multi-Device Cloud Sync & Data Management -->
             <div id="tab-cloud" class="tab-content hidden space-y-4">
-                <h4 class="font-bold text-xs text-emerald-500">مزامنة التعديلات عبر كل الهواتف والأجهزة</h4>
-                
-                <div class="p-3 bg-slate-100 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 rounded-xl space-y-3">
-                    <p class="text-xs leading-relaxed text-slate-600 dark:text-slate-300">
-                        لضمان ظهور جميع التعديلات والصور التي تجريها للعملاء على هواتفهم وأجهزتهم المختلفة فوراً:
-                    </p>
-
-                    <button id="btnSyncCloudNow" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-2 shadow-sm transition-all">
-                        <i class="fa-solid fa-cloud-arrow-up text-sm"></i>
-                        <span>حفظ ومزامنة التعديلات سحابياً الآن</span>
-                    </button>
-
-                    <button id="btnExportDataLink" class="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-2 shadow-sm transition-all">
-                        <i class="fa-solid fa-share-nodes text-sm"></i>
-                        <span>نسخ رابط الموقع المُحدث بالكامل لإرساله للعملاء</span>
-                    </button>
-                </div>
-
-                <div class="p-3 bg-purple-50 dark:bg-purple-950/40 border border-purple-200 dark:border-purple-800/60 rounded-xl space-y-2">
-                    <label class="block text-xs font-bold text-purple-800 dark:text-purple-300">تصدير / استيراد النسخة الاحتياطية (JSON)</label>
-                    <div class="grid grid-cols-2 gap-2">
-                        <button id="btnExportJson" class="py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-xs font-bold transition-colors">
-                            <i class="fa-solid fa-download"></i> تصدير الملف
-                        </button>
-                        <label class="py-2 bg-slate-700 hover:bg-slate-800 text-white rounded-lg text-xs font-bold transition-colors text-center cursor-pointer">
-                            <i class="fa-solid fa-upload"></i> استيراد ملف
-                            <input type="file" id="importJsonFile" accept=".json" class="hidden">
-                        </label>
-                    </div>
-                </div>
+                <h4 class="font-bold text-xs text-emerald-500">مزامنة الأجهزة</h4>
+                <button id="btnSyncCloudNow" class="w-full py-2.5 bg-emerald-600 text-white rounded-xl text-xs font-bold">مزامنة التعديلات سحابياً الآن</button>
+                <button id="btnExportDataLink" class="w-full py-2.5 bg-blue-600 text-white rounded-xl text-xs font-bold">نسخ رابط التعديلات للعملاء</button>
+                <button id="btnExportJson" class="w-full py-2 bg-purple-600 text-white rounded-lg text-xs font-bold">تصدير ملف JSON</button>
+                <label class="block w-full py-2 bg-slate-700 text-white rounded-lg text-xs font-bold text-center cursor-pointer">
+                    استيراد ملف JSON
+                    <input type="file" id="importJsonFile" accept=".json" class="hidden">
+                </label>
             </div>
-
         </div>
 
-        <!-- Footer / Reset Control -->
-        <div class="p-4 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50">
-            <button id="resetCustomizerBtn" class="w-full py-2.5 rounded-xl border border-rose-300 dark:border-rose-900 font-bold text-xs text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors">
-                <i class="fa-solid fa-rotate-left"></i> استعادة الإعدادات الأصلية
-            </button>
+        <div class="p-4 border-t border-slate-200 dark:border-slate-800">
+            <button id="resetCustomizerBtn" class="w-full py-2.5 border border-rose-500 text-rose-500 rounded-xl font-bold text-xs">استعادة الإعدادات الأصلية</button>
         </div>
     </div>
 
@@ -694,344 +644,80 @@
         <div class="bg-white dark:bg-slate-900 rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800">
             <div class="relative h-72 sm:h-96 bg-slate-950 flex items-center justify-center overflow-hidden">
                 <img id="modalImg" src="" alt="Project" class="max-w-full max-h-full object-contain">
-                <button id="closeModalBtn" class="absolute top-4 left-4 w-9 h-9 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-slate-900">
+                <button id="closeModalBtn" class="absolute top-4 left-4 w-9 h-9 rounded-full bg-slate-900/80 text-white flex items-center justify-center">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
             <div class="p-6">
                 <h3 id="modalTitle" class="text-xl font-bold mb-2"></h3>
                 <p id="modalDesc" class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-6"></p>
-                <div class="flex justify-end gap-3">
-                    <button id="dismissModalBtn" class="px-5 py-2.5 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold text-sm" data-i18n="modal_close">إغلاق</button>
+                <div class="flex justify-end">
+                    <button id="dismissModalBtn" class="px-5 py-2.5 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold text-sm">إغلاق</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Notification Toast -->
     <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-emerald-600 text-white px-5 py-3 rounded-xl shadow-xl flex items-center gap-3">
         <i class="fa-solid fa-circle-check text-xl"></i>
-        <span id="toastMsg" class="font-medium text-sm">تم تنفيذ الإجراء بنجاح</span>
+        <span id="toastMsg" class="font-medium text-sm">تم بنجاح</span>
     </div>
 
     <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-  import { getFirestore, collection, addDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, reauthenticateWithCredential, EmailAuthProvider, updatePassword } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, onSnapshot, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-  // التأكد من وجود أوبجكت Firebase الأصلي في موقعك
-  const auth = typeof firebaseAuth !== 'undefined' ? firebaseAuth : (window.auth || null);
-  const db = typeof firebaseDb !== 'undefined' ? firebaseDb : (window.db || null);
-
-  // 1. الشات المباشر
-  document.addEventListener('DOMContentLoaded', () => {
-    const btnSendChat = document.getElementById('btnSendChat');
-    if(btnSendChat && db) {
-      btnSendChat.addEventListener('click', async () => {
-        const input = document.getElementById('chatInput');
-        if(!input || !input.value.trim()) return;
-        try {
-          await addDoc(collection(db, "messages"), {
-            text: input.value,
-            sender: (auth && auth.currentUser) ? auth.currentUser.email : 'زائر',
-            createdAt: new Date()
-          });
-          input.value = '';
-        } catch(e) { console.error(e); }
-      });
-    }
-
-    if(db) {
-      const chatMessages = document.getElementById('chatMessages');
-      if(chatMessages) {
-        onSnapshot(collection(db, "messages"), (snapshot) => {
-          chatMessages.innerHTML = '';
-          snapshot.forEach((doc) => {
-            const msg = doc.data();
-            chatMessages.innerHTML += `
-              <div class="bg-slate-800 text-slate-200 p-2 rounded-lg max-w-[85%] text-xs mb-1">
-                <span class="text-[10px] text-cyan-400 block">${msg.sender || 'زائر'}</span>
-                ${msg.text}
-              </div>
-            `;
-          });
-        });
-      }
-
-      // 2. آراء العملاء
-      const btnSubmitReview = document.getElementById('btnSubmitReview');
-      if(btnSubmitReview) {
-        btnSubmitReview.addEventListener('click', async () => {
-          const text = document.getElementById('reviewText')?.value;
-          const author = document.getElementById('reviewAuthor')?.value || 'عميل مميز';
-          if(!text) return alert('يرجى كتابة الرأي أولاً');
-          try {
-            await addDoc(collection(db, "reviews"), { text, author, createdAt: new Date() });
-            document.getElementById('reviewText').value = '';
-            alert('تم إضافة رأيك بنجاح! ✨');
-          } catch(e) { alert('حصل خطأ أثناء الإرسال'); }
-        });
-      }
-
-      const container = document.getElementById('reviewsContainer');
-      if(container) {
-        onSnapshot(collection(db, "reviews"), (snapshot) => {
-          container.innerHTML = '';
-          snapshot.forEach((doc) => {
-            const data = doc.data();
-            container.innerHTML += `
-              <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl text-right mb-2">
-                <p class="text-slate-300 text-sm mb-2">"${data.text}"</p>
-                <span class="text-xs text-cyan-400 font-bold">- ${data.author}</span>
-              </div>
-            `;
-          });
-        });
-      }
-    }
-  });
-</script>
-// تشغيل الميزات الجديدة
-const btnClientLogin = document.getElementById('btnClientLogin');
-if(btnClientLogin) {
-  btnClientLogin.addEventListener('click', async () => {
-    const email = document.getElementById('clientEmail').value;
-    const pass = document.getElementById('clientPass').value;
-    try {
-      await signInWithEmailAndPassword(auth, email, pass);
-      alert('تم تسجيل الدخول بنجاح!');
-    } catch(err) {
-      try {
-        await createUserWithEmailAndPassword(auth, email, pass);
-        alert('تم إنشاء حسابك الجديد وتسجيل الدخول!');
-      } catch(e) { alert('خطأ في تسجيل الدخول: ' + e.message); }
-    }
-  });
-}
-
-onAuthStateChanged(auth, (user) => {
-  const loginFormArea = document.getElementById('loginFormArea');
-  const clientProfileArea = document.getElementById('clientProfileArea');
-  const profileEmail = document.getElementById('profileEmail');
-  if (user) {
-    if(loginFormArea) loginFormArea.classList.add('hidden');
-    if(clientProfileArea) clientProfileArea.classList.remove('hidden');
-    if(profileEmail) profileEmail.innerText = user.email;
-  } else {
-    if(loginFormArea) loginFormArea.classList.remove('hidden');
-    if(clientProfileArea) clientProfileArea.classList.add('hidden');
-  }
-});
-
-const btnSubmitReview = document.getElementById('btnSubmitReview');
-if(btnSubmitReview) {
-  btnSubmitReview.addEventListener('click', async () => {
-    const text = document.getElementById('reviewText').value;
-    const author = document.getElementById('reviewAuthor').value || 'عميل مميز';
-    if(!text) return alert('يرجى كتابة الرأي أولاً');
-    
-    await addDoc(collection(db, "reviews"), {
-      text: text,
-      author: author,
-      createdAt: new Date()
-    });
-    document.getElementById('reviewText').value = '';
-    alert('تم إضافة رأيك بنجاح! ✨');
-  });
-}
-
-onSnapshot(collection(db, "reviews"), (snapshot) => {
-  const container = document.getElementById('reviewsContainer');
-  if(!container) return;
-  container.innerHTML = '';
-  snapshot.forEach((doc) => {
-    const data = doc.data();
-    container.innerHTML += `
-      <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl text-right mb-2">
-        <p class="text-slate-300 text-sm mb-2">"${data.text}"</p>
-        <span class="text-xs text-cyan-400 font-bold">- ${data.author}</span>
-      </div>
-    `;
-  });
-});
-
-const btnSendChat = document.getElementById('btnSendChat');
-if(btnSendChat) {
-  btnSendChat.addEventListener('click', async () => {
-    const input = document.getElementById('chatInput');
-    if(!input.value) return;
-    await addDoc(collection(db, "messages"), {
-      text: input.value,
-      sender: auth.currentUser ? auth.currentUser.email : 'زائر',
-      createdAt: new Date()
-    });
-    input.value = '';
-  });
-}
-
-onSnapshot(collection(db, "messages"), (snapshot) => {
-  const chatMessages = document.getElementById('chatMessages');
-  if(!chatMessages) return;
-  chatMessages.innerHTML = '';
-  snapshot.forEach((doc) => {
-    const msg = doc.data();
-    chatMessages.innerHTML += `
-      <div class="bg-slate-800 text-slate-200 p-2 rounded-lg max-w-[85%] text-xs mb-1">
-        <span class="text-[10px] text-cyan-400 block">${msg.sender}</span>
-        ${msg.text}
-      </div>
-    `;
-  });
-});
-
-        // Translation dictionary for fixed static strings
         const translations = {
             ar: {
                 page_title: "عبدالرحمن عطيه | مصمم جرافيك ومبدع هويات بصرية",
-                nav_home: "الرئيسية",
-                nav_about: "عني",
-                nav_services: "خدماتي",
-                nav_portfolio: "أعمالي",
-                nav_experience: "الخبرة",
-                nav_contact: "تواصل معي",
-                btn_dashboard: "لوحة التحكم",
-                btn_whatsapp: "تواصل معي عبر الواتساب",
-                btn_portfolio: "استعرض معرِض الأعمال",
-                about_title: "عني وعن مسيرتي في التصميم",
-                about_subtitle: "خبرة متخصصة في ابتكار حلول بصرية فريدة تجمع بين الجمال والهدف التسويقي",
-                services_title: "الخدمات التي أقدمها",
-                services_subtitle: "تصاميم إبداعية متكاملة تغطي كافة متطلبات نشاطك التجاري",
-                portfolio_title: "معرض أعمالي المختارة",
-                portfolio_subtitle: "نماذج إبداعية من أحدث المشاريع والإعلانات التي صممتها مؤخراً",
-                filter_all: "الكل",
-                filter_social: "سوشيال ميديا وإعلانات",
-                filter_branding: "هويات بصرية وشعارات",
-                filter_print: "مطبوعات وتغليف",
-                exp_title: "الخبرة والمسار المهني",
-                contact_title: "تواصل معي الآن",
-                contact_subtitle: "هل تبحث عن تصميم يبرز براندك ويضاعف مبيعاتك؟ يسعدني التحدث معك فوراً",
-                label_email: "البريد الإلكتروني",
-                label_phone: "الهاتف / الواتساب",
-                label_location: "الموقع",
-                form_name: "الاسم الكامل",
-                form_contact: "البريد الإلكتروني / رقم الهاتف",
-                form_service: "نوع الخدمة المطلوبة",
-                opt_social: "تصاميم سوشيال ميديا وإعلانات",
-                opt_branding: "تصميم شعار وهوية بصرية",
-                opt_print: "تصميم مطبوعات وتغليف منتجات",
-                opt_other: "استشارة أو طلب آخر",
-                form_details: "تفاصيل المشروع",
-                form_submit: "إرسال الرسالة الآن",
-                footer_rights: "جميع الحقوق محفوظة ©",
-                footer_role: "مصمم جرافيك احترافي",
-                pass_title: "تسجيل الدخول للوحة التحكم",
-                pass_sub: "أدخل كلمة مرور حساب الإدارة في Firebase لتعديل الموقع",
-                pass_err: "كلمة المرور غير صحيحة!",
-                pass_btn: "دخول اللوحة",
-                cp_title: "لوحة تحكم الموقع الكاملة",
-                tab_security: "اللوجو والأمان",
-                tab_hero: "الواجهة والأنقسام",
-                tab_about: "عني والمهارات",
-                tab_services: "الخدمات",
-                tab_portfolio: "معرض الأعمال",
-                tab_contact: "التواصل",
-                tab_cloud: "مزامنة الأجهزة ☁️",
-                modal_close: "إغلاق",
-                greeting: "مرحباً، أنا"
+                nav_home: "الرئيسية", nav_about: "عني", nav_services: "خدماتي", nav_portfolio: "أعمالي", nav_experience: "الخبرة", nav_contact: "تواصل معي",
+                btn_dashboard: "لوحة التحكم", btn_whatsapp: "تواصل معي عبر الواتساب", btn_portfolio: "استعرض معرِض الأعمال",
+                about_title: "عني وعن مسيرتي في التصميم", about_subtitle: "خبرة متخصصة في ابتكار حلول بصرية فريدة تجمع بين الجمال والهدف التسويقي",
+                services_title: "الخدمات التي أقدمها", services_subtitle: "تصاميم إبداعية متكاملة تغطي كافة متطلبات نشاطك التجاري",
+                portfolio_title: "معرض أعمالي المختارة", portfolio_subtitle: "نماذج إبداعية من أحدث المشاريع والإعلانات التي صممتها مؤخراً",
+                filter_all: "الكل", filter_social: "سوشيال ميديا وإعلانات", filter_branding: "هويات بصرية وشعارات", filter_print: "مطبوعات وتغليف",
+                exp_title: "الخبرة والمسار المهني", contact_title: "تواصل معي الآن", contact_subtitle: "هل تبحث عن تصميم يبرز براندك ويضاعف مبيعاتك؟ يسعدني التحدث معك فوراً",
+                label_email: "البريد الإلكتروني", label_phone: "الهاتف / الواتساب", label_location: "الموقع",
+                form_name: "الاسم الكامل", form_contact: "البريد الإلكتروني / رقم الهاتف", form_service: "نوع الخدمة المطلوبة",
+                opt_social: "تصاميم سوشيال ميديا وإعلانات", opt_branding: "تصميم شعار وهوية بصرية", opt_print: "تصميم مطبوعات وتغليف منتجات", opt_other: "استشارة أو طلب آخر",
+                form_details: "تفاصيل المشروع", form_submit: "إرسال الرسالة الآن", footer_rights: "جميع الحقوق محفوظة ©", footer_role: "مصمم جرافيك احترافي",
+                pass_title: "تسجيل الدخول للوحة التحكم", pass_sub: "أدخل كلمة مرور حساب الإدارة في Firebase لتعديل الموقع", pass_err: "كلمة المرور غير صحيحة!", pass_btn: "دخول اللوحة",
+                cp_title: "لوحة تحكم الموقع الكاملة", tab_security: "اللوجو والأمان", tab_hero: "الواجهة والأنقسام", tab_about: "عني والمهارات", tab_services: "الخدمات", tab_portfolio: "معرض الأعمال", tab_contact: "التواصل", tab_cloud: "مزامنة الأجهزة ☁️", modal_close: "إغلاق", greeting: "مرحباً، أنا"
             },
             en: {
                 page_title: "Abdelrahman Atia | Graphic Designer & Brand Identity Creator",
-                nav_home: "Home",
-                nav_about: "About",
-                nav_services: "Services",
-                nav_portfolio: "Portfolio",
-                nav_experience: "Experience",
-                nav_contact: "Contact",
-                btn_dashboard: "Control Panel",
-                btn_whatsapp: "Chat on WhatsApp",
-                btn_portfolio: "View Portfolio",
-                about_title: "About Me & My Design Journey",
-                about_subtitle: "Specialized expertise in crafting unique visual solutions that combine aesthetics and marketing impact",
-                services_title: "Services I Offer",
-                services_subtitle: "Integrated creative design solutions tailored for your business needs",
-                portfolio_title: "Selected Works Portfolio",
-                portfolio_subtitle: "Creative showcases of recent projects, branding, and advertising campaigns",
-                filter_all: "All",
-                filter_social: "Social Media & Ads",
-                filter_branding: "Branding & Logos",
-                filter_print: "Print & Packaging",
-                exp_title: "Experience & Career Path",
-                contact_title: "Get In Touch Now",
-                contact_subtitle: "Looking for designs that elevate your brand and boost sales? I'm excited to collaborate!",
-                label_email: "Email Address",
-                label_phone: "Phone / WhatsApp",
-                label_location: "Location",
-                form_name: "Full Name",
-                form_contact: "Email or Phone Number",
-                form_service: "Service Required",
-                opt_social: "Social Media & Advertising Designs",
-                opt_branding: "Logo & Brand Identity Design",
-                opt_print: "Print & Product Packaging Design",
-                opt_other: "Consultation or Other Request",
-                form_details: "Project Details",
-                form_submit: "Send Message Now",
-                footer_rights: "All Rights Reserved ©",
-                footer_role: "Professional Graphic Designer",
-                pass_title: "Admin Panel Login",
-                pass_sub: "Enter the Firebase admin account password to edit the site",
-                pass_err: "Incorrect password!",
-                pass_btn: "Login to Panel",
-                cp_title: "Complete Website Control Panel",
-                tab_security: "Logo & Security",
-                tab_hero: "Hero & Bio",
-                tab_about: "About & Skills",
-                tab_services: "Services",
-                tab_portfolio: "Portfolio",
-                tab_contact: "Contact Info",
-                tab_cloud: "Device Sync ☁️",
-                modal_close: "Close",
-                greeting: "Hello, I am"
+                nav_home: "Home", nav_about: "About", nav_services: "Services", nav_portfolio: "Portfolio", nav_experience: "Experience", nav_contact: "Contact",
+                btn_dashboard: "Control Panel", btn_whatsapp: "Chat on WhatsApp", btn_portfolio: "View Portfolio",
+                about_title: "About Me & My Design Journey", about_subtitle: "Specialized expertise in crafting unique visual solutions that combine aesthetics and marketing impact",
+                services_title: "Services I Offer", services_subtitle: "Integrated creative design solutions tailored for your business needs",
+                portfolio_title: "Selected Works Portfolio", portfolio_subtitle: "Creative showcases of recent projects, branding, and advertising campaigns",
+                filter_all: "All", filter_social: "Social Media & Ads", filter_branding: "Branding & Logos", filter_print: "Print & Packaging",
+                exp_title: "Experience & Career Path", contact_title: "Get In Touch Now", contact_subtitle: "Looking for designs that elevate your brand and boost sales? I'm excited to collaborate!",
+                label_email: "Email Address", label_phone: "Phone / WhatsApp", label_location: "Location",
+                form_name: "Full Name", form_contact: "Email or Phone Number", form_service: "Service Required",
+                opt_social: "Social Media & Advertising Designs", opt_branding: "Logo & Brand Identity Design", opt_print: "Print & Product Packaging Design", opt_other: "Consultation or Other Request",
+                form_details: "Project Details", form_submit: "Send Message Now", footer_rights: "All Rights Reserved ©", footer_role: "Professional Graphic Designer",
+                pass_title: "Admin Panel Login", pass_sub: "Enter the Firebase admin account password to edit the site", pass_err: "Incorrect password!", pass_btn: "Login to Panel",
+                cp_title: "Complete Website Control Panel", tab_security: "Logo & Security", tab_hero: "Hero & Bio", tab_about: "About & Skills", tab_services: "Services", tab_portfolio: "Portfolio", tab_contact: "Contact Info", tab_cloud: "Device Sync ☁️", modal_close: "Close", greeting: "Hello, I am"
             }
         };
 
-        // Default application state object
         const defaultState = {
-            currentLang: 'ar',
-            logoType: 'image',
-            logoUrl: '1001809140.jpg',
-            headerName: 'عبدالرحمن عطيه',
-            name: 'عبدالرحمن عطيه',
-            name_en: 'Abdelrahman Atia',
-            title: 'مصمم جرافيك ومبدع هويات بصرية',
-            title_en: 'Graphic Designer & Visual Brand Creator',
-            badge: 'متاح الآن للمشاريع الجديدة والعمل الحر',
-            badge_en: 'Available now for freelance and new projects',
+            currentLang: 'ar', logoType: 'image', logoUrl: '1001809140.jpg', headerName: 'عبدالرحمن عطيه',
+            name: 'عبدالرحمن عطيه', name_en: 'Abdelrahman Atia', title: 'مصمم جرافيك ومبدع هويات بصرية', title_en: 'Graphic Designer & Visual Brand Creator',
+            badge: 'متاح الآن للمشاريع الجديدة والعمل الحر', badge_en: 'Available now for freelance and new projects',
             bio: 'مصمم جرافيك محترف بخبرة تتجاوز 6 سنوات في صناعة التصاميم الإبداعية، تصاميم السوشيال ميديا، الهويات البصرية المتكاملة، والمطبوعات. أساعد البراندات والشركات على جذب العملاء وتحقيق أعلى نسبة مبيعات من خلال محتوى بصري احترافي ومبتكر.',
-            bio_en: 'Professional Graphic Designer with 6+ years of experience in creative design, social media ads, brand identities, and print graphics. Helping brands and businesses engage audiences and drive high conversion.',
-            profileImg: '1001778764.jpg',
-            facebook: 'https://www.facebook.com/share/1DiZq66Hkm/',
-            instagram: 'https://www.instagram.com/abdelrahman.atia3?stkn=MXdhdXd1aDlnc2N4Mg==',
-            whatsapp: 'https://wa.me/201279879021',
-            aboutHeading: 'فن تحويل الأفكار إلى تصاميم بصرية تأثر العقول',
-            aboutHeading_en: 'Transforming Ideas into Captivating Visual Artwork',
+            bio_en: 'Professional Graphic Designer with 6+ years of experience in creative design, social media ads, brand identities, and print graphics.',
+            profileImg: '1001778764.jpg', facebook: 'https://www.facebook.com/share/1DiZq66Hkm/', instagram: 'https://www.instagram.com/abdelrahman.atia3?stkn=MXdhdXd1aDlnc2N4Mg==', whatsapp: 'https://wa.me/201279879021',
+            aboutHeading: 'فن تحويل الأفكار إلى تصاميم بصرية تأثر العقول', aboutHeading_en: 'Transforming Ideas into Captivating Visual Artwork',
             aboutDetail: 'التصميم بالنسبة لي ليس مجرد دمج للألوان والصور، بل هو اللغة البصرية التي تخاطب بها جمهورك وتبرز قيمة منتجاتك. خلال أكثر من 6 سنوات من العمل المتواصل، قدمت مئات الحملات الإعلانية وتصاميم المطبوعات والهويات التي صنعت فرقاً حقيقياً في نجاح عميلاتي وشركاتهم.',
-            aboutDetail_en: 'To me, design is more than just combining colors and images; it is the visual language that connects with your audience. Over 6 years, I have delivered hundreds of ad campaigns, branding assets, and print designs that made a tangible impact.',
-            stat1Val: '6+',
-            stat1Lbl: 'سنوات خبرة',
-            stat1Lbl_en: 'Years Exp.',
-            stat2Val: '250+',
-            stat2Lbl: 'تصميم ناجح',
-            stat2Lbl_en: 'Designs Done',
-            stat3Val: '90+',
-            stat3Lbl: 'عميل سعيد',
-            stat3Lbl_en: 'Happy Clients',
-            stat4Val: '100%',
-            stat4Lbl: 'إتقان وجودة',
-            stat4Lbl_en: 'Quality Work',
-            email: 'abdelrahmanatia167@gmail.com',
-            phone: '+20 127 987 9021',
-            location: 'جمهورية مصر العربية',
-            location_en: 'Arab Republic of Egypt',
+            aboutDetail_en: 'To me, design is more than just combining colors and images; it is the visual language that connects with your audience.',
+            stat1Val: '6+', stat1Lbl: 'سنوات خبرة', stat1Lbl_en: 'Years Exp.',
+            stat2Val: '250+', stat2Lbl: 'تصميم ناجح', stat2Lbl_en: 'Designs Done',
+            stat3Val: '90+', stat3Lbl: 'عميل سعيد', stat3Lbl_en: 'Happy Clients',
+            stat4Val: '100%', stat4Lbl: 'إتقان وجودة', stat4Lbl_en: 'Quality Work',
+            email: 'abdelrahmanatia167@gmail.com', phone: '+20 127 987 9021', location: 'جمهورية مصر العربية', location_en: 'Arab Republic of Egypt',
             skills: [
                 { name: 'تصاميم السوشيال ميديا والإعلانات (Social Media Ads)', name_en: 'Social Media & Advertising Design', percent: 98 },
                 { name: 'تصميم الهويات البصرية والشعارات (Branding & Logos)', name_en: 'Brand Identity & Logo Design', percent: 95 },
@@ -1039,38 +725,14 @@ onSnapshot(collection(db, "messages"), (snapshot) => {
                 { name: 'الدمج والترتيب البصري (Photoshop Manipulation)', name_en: 'Photoshop Image Manipulation', percent: 96 }
             ],
             services: [
-                { title: 'تصاميم السوشيال ميديا والمحتوى الرقمي', title_en: 'Social Media & Digital Content Design', desc: 'تصاميم إعلانية مبتكرة لجميع منصات السوشيال ميديا تضمن لفت انتباه العميل وزيادة التفاعل والمبيعات مع مراعاة الهوية البصرية.', desc_en: 'Eye-catching social media graphics for all platforms designed to maximize engagement, clicks, and sales conversion.', icon: 'fa-palette' },
-                { title: 'تصميم الهويات البصرية والشعارات', title_en: 'Brand Identity & Logo Design', desc: 'بناء هوية بصرية فريدة وشعار يعكس قيم مشروعك ويجعل براندك يتربع على عرش المنافسة في سوق عملك.', desc_en: 'Crafting unique logos and full visual brand guidelines that make your business stand out from competitors.', icon: 'fa-pen-nib' },
-                { title: 'تصميم المطبوعات وتغليف المنتجات', title_en: 'Print Design & Product Packaging', desc: 'تجهيز كافة المطبوعات من بروفايل الشركات، الكروت، البنرات، والعلب بوجه احترافي وجاهز للطباعة بدقة عالية.', desc_en: 'High-resolution print design solutions including company profiles, cards, banners, and print-ready product boxes.', icon: 'fa-box-open' }
+                { title: 'تصاميم السوشيال ميديا والمحتوى الرقمي', title_en: 'Social Media & Digital Content Design', desc: 'تصاميم إعلانية مبتكرة لجميع منصات السوشيال ميديا تضمن لفت انتباه العميل وزيادة التفاعل والمبيعات مع مراعاة الهوية البصرية.', desc_en: 'Eye-catching social media graphics for all platforms designed to maximize engagement.', icon: 'fa-palette' },
+                { title: 'تصميم الهويات البصرية والشعارات', title_en: 'Brand Identity & Logo Design', desc: 'بناء هوية بصرية فريدة وشعار يعكس قيم مشروعك ويجعل براندك يتربع على عرش المنافسة في سوق عملك.', desc_en: 'Crafting unique logos and full visual brand guidelines that make your business stand out.', icon: 'fa-pen-nib' },
+                { title: 'تصميم المطبوعات وتغليف المنتجات', title_en: 'Print Design & Product Packaging', desc: 'تجهيز كافة المطبوعات من بروفايل الشركات، الكروت، البنرات، والعلب بوجه احترافي وجاهز للطباعة بدقة عالية.', desc_en: 'High-resolution print design solutions including company profiles, cards, banners, and product boxes.', icon: 'fa-box-open' }
             ],
             projects: [
-                {
-                    title: 'حملة إعلانية مميزة للسوشيال ميديا',
-                    title_en: 'Premium Social Media Campaign',
-                    category: 'social',
-                    desc: 'سلسلة تصاميم إبداعية لحملة تسويقية تهدف لزيادة المبيعات والوصول المستهدف للجمهور.',
-                    desc_en: 'A series of creative promotional graphics targeted at boosting sales and audience engagement.',
-                    img: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
-                    tags: ['Social Media', 'Photoshop']
-                },
-                {
-                    title: 'هوية بصرية متكاملة لعلامة تجارية',
-                    title_en: 'Complete Brand Visual Identity',
-                    category: 'branding',
-                    desc: 'تصميم الشعار والكروت والملفات الرسمية وألوان البراند بشكل عصري ومميز.',
-                    desc_en: 'Modern logo design, business stationery, brand colors, and guidelines for a corporate client.',
-                    img: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=800&q=80',
-                    tags: ['Branding', 'Illustrator']
-                },
-                {
-                    title: 'تصميم مطبوعات وتغليف منتجات',
-                    title_en: 'Print & Packaging Design Showcase',
-                    category: 'print',
-                    desc: 'تصميم علب وأكياس وتغليف منتجات راقية جاهزة للطباعة فوراً بألوان متناسقة.',
-                    desc_en: 'Elegant product box and package design prepared with press-ready high precision color specs.',
-                    img: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800&q=80',
-                    tags: ['Printing', 'Packaging']
-                }
+                { title: 'حملة إعلانية مميزة للسوشيال ميديا', title_en: 'Premium Social Media Campaign', category: 'social', desc: 'سلسلة تصاميم إبداعية لحملة تسويقية تهدف لزيادة المبيعات والوصول المستهدف للجمهور.', desc_en: 'A series of creative promotional graphics targeted at boosting sales.', img: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80', tags: ['Social Media', 'Photoshop'] },
+                { title: 'هوية بصرية متكاملة لعلامة تجارية', title_en: 'Complete Brand Visual Identity', category: 'branding', desc: 'تصميم الشعار والكروت والملفات الرسمية وألوان البراند بشكل عصري ومميز.', desc_en: 'Modern logo design, business stationery, brand colors, and guidelines.', img: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=800&q=80', tags: ['Branding', 'Illustrator'] },
+                { title: 'تصميم مطبوعات وتغليف منتجات', title_en: 'Print & Packaging Design Showcase', category: 'print', desc: 'تصميم علب وأكياس وتغليف منتجات راقية جاهزة للطباعة فوراً بألوان متناسقة.', desc_en: 'Elegant product box and package design prepared with press-ready precision.', img: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800&q=80', tags: ['Printing', 'Packaging'] }
             ],
             experiences: [
                 { period: '2018 - حتى الآن', period_en: '2018 - Present', role: 'مصمم جرافيك حر ومبدع هويات بصرية', role_en: 'Freelance Graphic Designer & Brand Specialist', company: 'عمل حر | Freelance Graphic Designer', desc: 'العمل مع عشرات الشركات والبراندات في مصر والخليج لتصميم حملات السوشيال ميديا والهويات المطبوعة والرقمية.', desc_en: 'Partnered with dozens of businesses across Egypt and the Gulf to create social media ads and brand identities.' },
@@ -1079,7 +741,6 @@ onSnapshot(collection(db, "messages"), (snapshot) => {
         };
 
         function getInitialState() {
-            // Check if there is state embedded in URL hash (for multi-device sharing via link)
             try {
                 if (window.location.hash && window.location.hash.startsWith('#data=')) {
                     const hashData = decodeURIComponent(window.location.hash.replace('#data=', ''));
@@ -1089,17 +750,11 @@ onSnapshot(collection(db, "messages"), (snapshot) => {
                         return { ...defaultState, ...parsed };
                     }
                 }
-            } catch (e) {
-                console.warn('URL hash state reading failed:', e);
-            }
+            } catch (e) { console.warn(e); }
 
             const stored = localStorage.getItem('site_custom_state_v4');
             if (stored) {
-                try {
-                    return { ...defaultState, ...JSON.parse(stored) };
-                } catch (e) {
-                    return defaultState;
-                }
+                try { return { ...defaultState, ...JSON.parse(stored) }; } catch (e) { return defaultState; }
             }
             return defaultState;
         }
@@ -1107,7 +762,6 @@ onSnapshot(collection(db, "messages"), (snapshot) => {
         let appState = getInitialState();
         let isAuthenticated = false;
 
-        // Firebase configuration for the live public website.
         const firebaseConfig = {
             apiKey: "AIzaSyALctJ_89OZSds1XMlXYN-f9TGtjU-xjlg",
             authDomain: "abdelrahman-website-98d4c.firebaseapp.com",
@@ -1131,140 +785,120 @@ onSnapshot(collection(db, "messages"), (snapshot) => {
                 db = getFirestore(app);
                 docRef = doc(db, 'artifacts', appId, 'public', 'data', 'config', 'siteState');
 
-                // Public visitors can read the site state; only the Firebase admin account can write.
                 onSnapshot(docRef, (docSnap) => {
                     if (docSnap.exists()) {
                         const cloudData = docSnap.data();
                         appState = { ...defaultState, ...cloudData };
                         localStorage.setItem('site_custom_state_v4', JSON.stringify(appState));
                         renderSite();
-                        const drawer = document.getElementById('customizerDrawer');
-                        if (drawer && !drawer.classList.contains('-translate-x-full')) {
-                            fillControlPanelInputs();
-                        }
-                    } else if (auth?.currentUser?.email === ADMIN_EMAIL) {
-                        saveStateToCloud(appState);
                     }
-                }, (error) => {
-                    console.error("Firestore sync error:", error);
                 });
 
+                const btnClientLogin = document.getElementById('btnClientLogin');
+                if (btnClientLogin) {
+                    btnClientLogin.onclick = async () => {
+                        const email = document.getElementById('clientEmail')?.value;
+                        const pass = document.getElementById('clientPass')?.value;
+                        if (!email || !pass) return alert('يرجى كتابة البريد وكلمة المرور');
+                        try {
+                            await signInWithEmailAndPassword(auth, email, pass);
+                            alert('تم تسجيل الدخول بنجاح!');
+                        } catch(err) {
+                            try {
+                                await createUserWithEmailAndPassword(auth, email, pass);
+                                alert('تم إنشاء حسابك وتسجيل الدخول بنجاح!');
+                            } catch(e) { alert('خطأ في تسجيل الدخول: ' + e.message); }
+                        }
+                    };
+                }
+
+                const btnClientLogout = document.getElementById('btnClientLogout');
+                if (btnClientLogout) {
+                    btnClientLogout.onclick = () => signOut(auth);
+                }
+
                 onAuthStateChanged(auth, (user) => {
-                    if (user && user.email === ADMIN_EMAIL) {
-                        console.log('Firebase admin session active.');
+                    const loginArea = document.getElementById('loginFormArea');
+                    const profileArea = document.getElementById('clientProfileArea');
+                    const profileEmail = document.getElementById('profileEmail');
+                    if (user && user.email !== ADMIN_EMAIL) {
+                        if (loginArea) loginArea.classList.add('hidden');
+                        if (profileArea) profileArea.classList.remove('hidden');
+                        if (profileEmail) profileEmail.innerText = user.email;
+                    } else if (!user) {
+                        if (loginArea) loginArea.classList.remove('hidden');
+                        if (profileArea) profileArea.classList.add('hidden');
                     }
-                });        // --- تشغيل الميزات التفاعلية مع Firebase ---
-        
-        // 1. تسجيل دخول العميل
-        const btnClientLogin = document.getElementById('btnClientLogin');
-        if (btnClientLogin) {
-          btnClientLogin.onclick = async () => {
-            const email = document.getElementById('clientEmail')?.value;
-            const pass = document.getElementById('clientPass')?.value;
-            if (!email || !pass) return alert('يرجى إدخال البريد وكلمة المرور');
-            try {
-              await signInWithEmailAndPassword(auth, email, pass);
-              alert('تم تسجيل الدخول بنجاح!');
-            } catch (err) {
-              try {
-                await createUserWithEmailAndPassword(auth, email, pass);
-                alert('تم إنشاء حسابك الجديد وتسجيل الدخول!');
-              } catch (e) { alert('خطأ في تسجيل الدخول: ' + e.message); }
-            }
-          };
-        }
+                });
 
-        // 2. تحديث واجهة البروفايل للعميل
-        onAuthStateChanged(auth, (user) => {
-          const loginArea = document.getElementById('loginFormArea');
-          const profileArea = document.getElementById('clientProfileArea');
-          const profileEmail = document.getElementById('profileEmail');
-          if (user) {
-            if (loginArea) loginArea.classList.add('hidden');
-            if (profileArea) profileArea.classList.remove('hidden');
-            if (profileEmail) profileEmail.innerText = user.email;
-          } else {
-            if (loginArea) loginArea.classList.remove('hidden');
-            if (profileArea) profileArea.classList.add('hidden');
-          }
-        });
+                const btnSendChat = document.getElementById('btnSendChat');
+                if (btnSendChat) {
+                    btnSendChat.onclick = async () => {
+                        const input = document.getElementById('chatInput');
+                        if (!input || !input.value.trim()) return;
+                        try {
+                            await addDoc(collection(db, "messages"), {
+                                text: input.value,
+                                sender: (auth && auth.currentUser) ? auth.currentUser.email : 'زائر',
+                                createdAt: new Date()
+                            });
+                            input.value = '';
+                        } catch(e) { console.error('Chat err:', e); }
+                    };
 
-        // 3. الشات المباشر
-        const btnSendChat = document.getElementById('btnSendChat');
-        if (btnSendChat && db) {
-          btnSendChat.onclick = async () => {
-            const input = document.getElementById('chatInput');
-            if (!input || !input.value.trim()) return;
-            try {
-              await addDoc(collection(db, "messages"), {
-                text: input.value,
-                sender: (auth && auth.currentUser) ? auth.currentUser.email : 'زائر',
-                createdAt: new Date()
-              });
-              input.value = '';
-            } catch (e) { console.error('Chat error:', e); }
-          };
+                    const chatMessages = document.getElementById('chatMessages');
+                    if (chatMessages) {
+                        onSnapshot(collection(db, "messages"), (snapshot) => {
+                            chatMessages.innerHTML = '';
+                            snapshot.forEach((doc) => {
+                                const msg = doc.data();
+                                chatMessages.innerHTML += `
+                                  <div class="bg-slate-800 text-slate-200 p-2 rounded-lg max-w-[85%] text-xs mb-1">
+                                    <span class="text-[10px] text-cyan-400 block">${msg.sender || 'زائر'}</span>
+                                    ${msg.text}
+                                  </div>
+                                `;
+                            });
+                        });
+                    }
+                }
 
-          const chatMessages = document.getElementById('chatMessages');
-          if (chatMessages) {
-            onSnapshot(collection(db, "messages"), (snapshot) => {
-              chatMessages.innerHTML = '';
-              snapshot.forEach((doc) => {
-                const msg = doc.data();
-                chatMessages.innerHTML += `
-                  <div class="bg-slate-800 text-slate-200 p-2 rounded-lg max-w-[85%] text-xs mb-1">
-                    <span class="text-[10px] text-cyan-400 block">${msg.sender || 'زائر'}</span>
-                    ${msg.text}
-                  </div>
-                `;
-              });
-            });
-          }
-        }
+                const btnSubmitReview = document.getElementById('btnSubmitReview');
+                if (btnSubmitReview) {
+                    btnSubmitReview.onclick = async () => {
+                        const text = document.getElementById('reviewText')?.value;
+                        const author = document.getElementById('reviewAuthor')?.value || 'عميل مميز';
+                        if (!text) return alert('يرجى كتابة الرأي أولاً');
+                        try {
+                            await addDoc(collection(db, "reviews"), { text, author, createdAt: new Date() });
+                            document.getElementById('reviewText').value = '';
+                            alert('تم نشر رأيك بنجاح! ✨');
+                        } catch(e) { alert('خطأ أثناء إرسال الرأي'); }
+                    };
 
-        // 4. إرسال وعرض الآراء
-        const btnSubmitReview = document.getElementById('btnSubmitReview');
-        if (btnSubmitReview && db) {
-          btnSubmitReview.onclick = async () => {
-            const text = document.getElementById('reviewText')?.value;
-            const author = document.getElementById('reviewAuthor')?.value || 'عميل مميز';
-            if (!text) return alert('يرجى كتابة الرأي أولاً');
-            try {
-              await addDoc(collection(db, "reviews"), { text, author, createdAt: new Date() });
-              document.getElementById('reviewText').value = '';
-              alert('تم إضافة رأيك بنجاح! ✨');
-            } catch (e) { alert('حصل خطأ أثناء إرسال الرأي'); }
-          };
+                    const container = document.getElementById('reviewsContainer');
+                    if (container) {
+                        onSnapshot(collection(db, "reviews"), (snapshot) => {
+                            container.innerHTML = '';
+                            snapshot.forEach((doc) => {
+                                const data = doc.data();
+                                container.innerHTML += `
+                                  <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl text-right mb-2 shadow">
+                                    <p class="text-slate-300 text-sm mb-2">"${data.text}"</p>
+                                    <span class="text-xs text-cyan-400 font-bold">- ${data.author}</span>
+                                  </div>
+                                `;
+                            });
+                        });
+                    }
+                }
 
-          const container = document.getElementById('reviewsContainer');
-          if (container) {
-            onSnapshot(collection(db, "reviews"), (snapshot) => {
-              container.innerHTML = '';
-              snapshot.forEach((doc) => {
-                const data = doc.data();
-                container.innerHTML += `
-                  <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl text-right mb-2">
-                    <p class="text-slate-300 text-sm mb-2">"${data.text}"</p>
-                    <span class="text-xs text-cyan-400 font-bold">- ${data.author}</span>
-                  </div>
-                `;
-              });
-            });
-          }
-        }
-
-            } catch (err) {
-                console.error("Firebase init failed:", err);
-            }
+            } catch (err) { console.error("Firebase init failed:", err); }
         }
 
         async function saveStateToCloud(data) {
             if (!docRef || !auth?.currentUser) return;
-            try {
-                await setDoc(docRef, data, { merge: true });
-            } catch (err) {
-                console.error("Cloud save failed:", err);
-            }
+            try { await setDoc(docRef, data, { merge: true }); } catch (err) { console.error(err); }
         }
 
         function saveState() {
@@ -1273,51 +907,15 @@ onSnapshot(collection(db, "messages"), (snapshot) => {
             saveStateToCloud(appState);
         }
 
-        // Image compressor helper
-        function compressAndUploadImage(file, callback) {
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = function(evt) {
-                const img = new Image();
-                img.onload = function() {
-                    const canvas = document.createElement('canvas');
-                    let width = img.width;
-                    let height = img.height;
-                    const maxDim = 800;
-                    if (width > maxDim || height > maxDim) {
-                        if (width > height) {
-                            height = Math.round((height * maxDim) / width);
-                            width = maxDim;
-                        } else {
-                            width = Math.round((width * maxDim) / height);
-                            height = maxDim;
-                        }
-                    }
-                    canvas.width = width;
-                    canvas.height = height;
-                    const ctx = canvas.getContext('2d');
-                    ctx.drawImage(img, 0, 0, width, height);
-                    const compressedUrl = canvas.toDataURL('image/jpeg', 0.75);
-                    callback(compressedUrl);
-                };
-                img.src = evt.target.result;
-            };
-            reader.readAsDataURL(file);
-        }
-
         function applyLanguageSettings() {
             const isEn = appState.currentLang === 'en';
             document.documentElement.lang = isEn ? 'en' : 'ar';
             document.documentElement.dir = isEn ? 'ltr' : 'rtl';
 
             const langBtnText = document.getElementById('langToggleText');
-            if (langBtnText) {
-                langBtnText.textContent = isEn ? 'العربية' : 'English';
-            }
+            if (langBtnText) langBtnText.textContent = isEn ? 'العربية' : 'English';
 
-            // Update static data-i18n text nodes
-            const i18nElems = document.querySelectorAll('[data-i18n]');
-            i18nElems.forEach(el => {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if (translations[appState.currentLang]?.[key]) {
                     el.textContent = translations[appState.currentLang][key];
@@ -1327,11 +925,9 @@ onSnapshot(collection(db, "messages"), (snapshot) => {
 
         function renderSite() {
             applyLanguageSettings();
-
             const isEn = appState.currentLang === 'en';
             const dict = translations[appState.currentLang];
 
-            // Logo & Header
             const logoInitials = document.getElementById('logoInitials');
             const logoImg = document.getElementById('logoImg');
             
@@ -1350,7 +946,6 @@ onSnapshot(collection(db, "messages"), (snapshot) => {
             document.getElementById('headerName').textContent = headerNameStr;
             document.getElementById('footerName').textContent = headerNameStr;
 
-            // Hero
             document.getElementById('heroGreeting').textContent = dict.greeting;
             document.getElementById('heroName').textContent = isEn ? (appState.name_en || appState.name) : appState.name;
             document.getElementById('heroTitle').textContent = isEn ? (appState.title_en || appState.title) : appState.title;
@@ -1358,17 +953,6 @@ onSnapshot(collection(db, "messages"), (snapshot) => {
             document.getElementById('heroBio').textContent = isEn ? (appState.bio_en || appState.bio) : appState.bio;
             document.getElementById('profileImage').src = appState.profileImg;
 
-            // Social links
-            const linkFb = document.getElementById('linkFacebook');
-            if (linkFb) linkFb.href = appState.facebook || '#';
-
-            const linkInsta = document.getElementById('linkInstagram');
-            if (linkInsta) linkInsta.href = appState.instagram || '#';
-
-            const linkWa = document.getElementById('linkWhatsapp');
-            if (linkWa) linkWa.href = appState.whatsapp || '#';
-
-            // Stats
             document.getElementById('stat1Value').textContent = appState.stat1Val;
             document.getElementById('stat1Label').textContent = isEn ? (appState.stat1Lbl_en || appState.stat1Lbl) : appState.stat1Lbl;
             document.getElementById('stat2Value').textContent = appState.stat2Val;
@@ -1378,651 +962,118 @@ onSnapshot(collection(db, "messages"), (snapshot) => {
             document.getElementById('stat4Value').textContent = appState.stat4Val;
             document.getElementById('stat4Label').textContent = isEn ? (appState.stat4Lbl_en || appState.stat4Lbl) : appState.stat4Lbl;
 
-            // About
             document.getElementById('aboutHeading').textContent = isEn ? (appState.aboutHeading_en || appState.aboutHeading) : appState.aboutHeading;
             document.getElementById('aboutDetail').textContent = isEn ? (appState.aboutDetail_en || appState.aboutDetail) : appState.aboutDetail;
 
-            // Skills
-            const skillsContainer = document.getElementById('skillsContainer');
-            skillsContainer.innerHTML = appState.skills.map(skill => {
-                const skillName = isEn ? (skill.name_en || skill.name) : skill.name;
-                return `
+            document.getElementById('skillsContainer').innerHTML = appState.skills.map(skill => `
                 <div>
                     <div class="flex justify-between text-sm font-semibold mb-1">
-                        <span>${skillName}</span>
+                        <span>${isEn ? (skill.name_en || skill.name) : skill.name}</span>
                         <span class="text-blue-600 dark:text-blue-400">${skill.percent}%</span>
                     </div>
                     <div class="w-full bg-slate-200 dark:bg-slate-800 h-2.5 rounded-full overflow-hidden">
-                        <div class="bg-gradient-to-r from-blue-600 to-purple-600 h-2.5 rounded-full transition-all duration-500" style="width: ${skill.percent}%"></div>
+                        <div class="bg-gradient-to-r from-blue-600 to-purple-600 h-2.5 rounded-full" style="width: ${skill.percent}%"></div>
                     </div>
                 </div>
-                `;
-            }).join('');
+            `).join('');
 
-            // Services
-            const servicesGrid = document.getElementById('servicesGrid');
-            servicesGrid.innerHTML = appState.services.map(srv => {
-                const srvTitle = isEn ? (srv.title_en || srv.title) : srv.title;
-                const srvDesc = isEn ? (srv.desc_en || srv.desc) : srv.desc;
-                return `
-                <div class="p-8 rounded-2xl glass-card border border-slate-200/80 dark:border-slate-800 hover:-translate-y-2 transition-all duration-300 group">
-                    <div class="w-14 h-14 rounded-2xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+            document.getElementById('servicesGrid').innerHTML = appState.services.map(srv => `
+                <div class="p-8 rounded-2xl glass-card border border-slate-200/80 dark:border-slate-800 hover:-translate-y-2 transition-all group">
+                    <div class="w-14 h-14 rounded-2xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center text-2xl mb-6">
                         <i class="fa-solid ${srv.icon || 'fa-palette'}"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 group-hover:text-blue-600 transition-colors">${srvTitle}</h3>
-                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">${srvDesc}</p>
+                    <h3 class="text-xl font-bold mb-3">${isEn ? (srv.title_en || srv.title) : srv.title}</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">${isEn ? (srv.desc_en || srv.desc) : srv.desc}</p>
                 </div>
-                `;
-            }).join('');
+            `).join('');
 
-            // Projects
-            const projectsGrid = document.getElementById('projectsGrid');
-            projectsGrid.innerHTML = appState.projects.map((proj, idx) => {
-                const projTitle = isEn ? (proj.title_en || proj.title) : proj.title;
-                const projDesc = isEn ? (proj.desc_en || proj.desc) : proj.desc;
-                return `
-                <div class="project-card group rounded-2xl overflow-hidden glass-card border border-slate-200/80 dark:border-slate-800 flex flex-col" data-category="${proj.category}">
-                    <div class="relative overflow-hidden h-60 bg-slate-900">
-                        <img src="${proj.img}" alt="${projTitle}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-blue-900/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
-                            <button onclick="openProjectModal(${idx})" class="p-3 bg-white text-slate-900 rounded-full shadow-lg hover:scale-110 transition-transform">
-                                <i class="fa-solid fa-eye"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between">
-                        <div>
-                            <span class="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider">${getCategoryLabel(proj.category)}</span>
-                            <h3 class="text-lg font-bold mt-1 mb-2">${projTitle}</h3>
-                            <p class="text-slate-600 dark:text-slate-400 text-sm line-clamp-2">${projDesc}</p>
-                        </div>
-                        <div class="flex items-center gap-2 mt-4 pt-4 border-t border-slate-200 dark:border-slate-800 text-xs font-mono text-slate-500">
-                            ${(proj.tags || []).map(tag => `<span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-800">${tag}</span>`).join('')}
-                        </div>
-                    </div>
-                </div>
-                `;
-            }).join('');
-
-            // Experience
-            const experienceTimeline = document.getElementById('experienceTimeline');
-            experienceTimeline.innerHTML = appState.experiences.map(exp => {
-                const periodStr = isEn ? (exp.period_en || exp.period) : exp.period;
-                const roleStr = isEn ? (exp.role_en || exp.role) : exp.role;
-                const compStr = isEn ? (exp.company_en || exp.company) : exp.company;
-                const descStr = isEn ? (exp.desc_en || exp.desc) : exp.desc;
-                return `
+            document.getElementById('projectsGrid').innerHTML = appState.projects.map((proj, idx) => `
+                <div class="project-card group rounded-2xl overflow-hidden glass-card border border-slate-200/80 dark:border-slate-800 flex fl
+                            document.getElementById('experienceTimeline').innerHTML = appState.experiences.map(exp => `
                 <div class="relative pr-8 group">
-                    <div class="absolute -right-2.5 top-1.5 w-5 h-5 rounded-full bg-blue-600 border-4 border-white dark:border-slate-950 group-hover:scale-125 transition-transform"></div>
-                    <div class="p-6 rounded-2xl glass-card border border-slate-200/80 dark:border-slate-800 shadow-sm">
-                        <span class="text-xs font-bold text-blue-600 dark:text-blue-400">${periodStr}</span>
-                        <h3 class="text-xl font-bold mt-1">${roleStr}</h3>
-                        <p class="text-sm text-slate-500 dark:text-slate-400 mt-0.5">${compStr}</p>
-                        <p class="text-slate-600 dark:text-slate-300 text-sm mt-3 leading-relaxed">${descStr}</p>
+                    <div class="absolute -right-2.5 top-1.5 w-5 h-5 rounded-full bg-blue-600 border-4 border-white dark:border-slate-950"></div>
+                    <div class="p-6 rounded-2xl glass-card border border-slate-200/80 dark:border-slate-800">
+                        <span class="text-xs font-bold text-blue-600 dark:text-blue-400">${isEn ? (exp.period_en || exp.period) : exp.period}</span>
+                        <h3 class="text-xl font-bold mt-1">${isEn ? (exp.role_en || exp.role) : exp.role}</h3>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 mt-0.5">${isEn ? (exp.company_en || exp.company) : exp.company}</p>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm mt-3 leading-relaxed">${isEn ? (exp.desc_en || exp.desc) : exp.desc}</p>
                     </div>
                 </div>
-                `;
-            }).join('');
+            `).join('');
 
-            // Contact
             document.getElementById('contactEmail').textContent = appState.email;
-            document.getElementById('contactEmail').href = `mailto:${appState.email}`;
             document.getElementById('contactPhone').textContent = appState.phone;
-            document.getElementById('contactPhone').href = `https://wa.me/${appState.phone.replace(/[^0-9]/g, '')}`;
             document.getElementById('contactLocationText').textContent = isEn ? (appState.location_en || appState.location) : appState.location;
         }
 
-        function getCategoryLabel(cat) {
-            const isEn = appState.currentLang === 'en';
-            if (cat === 'social') return isEn ? 'Social Media & Ads' : 'سوشيال ميديا وإعلانات';
-            if (cat === 'branding') return isEn ? 'Branding & Logos' : 'هويات بصرية وشعارات';
-            if (cat === 'print') return isEn ? 'Print & Packaging' : 'مطبوعات وتغليف';
-            return isEn ? 'Graphic Design' : 'تصميم جرافيك';
-        }
-
-        function fillControlPanelInputs() {
-            document.getElementById('editLogoType').value = appState.logoType || 'image';
-            document.getElementById('editLogoUrl').value = appState.logoUrl || '';
-            document.getElementById('editHeaderName').value = appState.headerName || '';
-            
-            document.getElementById('editName').value = appState.name || '';
-            document.getElementById('editNameEn').value = appState.name_en || '';
-            
-            document.getElementById('editTitle').value = appState.title || '';
-            document.getElementById('editTitleEn').value = appState.title_en || '';
-            
-            document.getElementById('editBadge').value = appState.badge || '';
-            document.getElementById('editBadgeEn').value = appState.badge_en || '';
-            
-            document.getElementById('editBio').value = appState.bio || '';
-            document.getElementById('editBioEn').value = appState.bio_en || '';
-            
-            document.getElementById('editImage').value = appState.profileImg || '';
-            document.getElementById('editFacebook').value = appState.facebook || '';
-            document.getElementById('editInstagram').value = appState.instagram || '';
-            document.getElementById('editWhatsapp').value = appState.whatsapp || '';
-
-            document.getElementById('editAboutHeading').value = appState.aboutHeading || '';
-            document.getElementById('editAboutHeadingEn').value = appState.aboutHeading_en || '';
-            
-            document.getElementById('editAboutDetail').value = appState.aboutDetail || '';
-            document.getElementById('editAboutDetailEn').value = appState.aboutDetail_en || '';
-
-            document.getElementById('editEmail').value = appState.email || '';
-            document.getElementById('editPhone').value = appState.phone || '';
-            
-            document.getElementById('editLocation').value = appState.location || '';
-            document.getElementById('editLocationEn').value = appState.location_en || '';
-
-            // Skills editor
-            const skillsEditForm = document.getElementById('skillsEditForm');
-            skillsEditForm.innerHTML = appState.skills.map((s, i) => `
-                <div class="p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 space-y-2">
-                    <div class="flex justify-between items-center text-xs font-bold">
-                        <span>المهارة ${i + 1}</span>
-                        <span>${s.percent}%</span>
-                    </div>
-                    <input type="text" value="${s.name}" onchange="updateSkillName(${i}, this.value)" placeholder="اسم المهارة (عربي)" class="w-full p-1.5 rounded border dark:bg-slate-900 text-xs">
-                    <input type="text" value="${s.name_en || ''}" onchange="updateSkillNameEn(${i}, this.value)" placeholder="Skill Name (English)" class="w-full p-1.5 rounded border dark:bg-slate-900 text-xs dir-ltr">
-                    <input type="range" min="0" max="100" value="${s.percent}" oninput="updateSkillPercent(${i}, this.value)" class="w-full accent-blue-500">
-                </div>
-            `).join('');
-
-            // Services editor
-            const servicesEditForm = document.getElementById('servicesEditForm');
-            servicesEditForm.innerHTML = appState.services.map((srv, i) => `
-                <div class="p-3 rounded-lg border dark:bg-slate-800 dark:border-slate-700 space-y-2">
-                    <span class="text-xs font-bold block">الخدمة ${i + 1}</span>
-                    <input type="text" value="${srv.title}" onchange="updateService(${i}, 'title', this.value)" placeholder="عنوان الخدمة (عربي)" class="w-full p-1.5 rounded border dark:bg-slate-900 text-xs font-bold">
-                    <input type="text" value="${srv.title_en || ''}" onchange="updateService(${i}, 'title_en', this.value)" placeholder="Service Title (English)" class="w-full p-1.5 rounded border dark:bg-slate-900 text-xs font-bold dir-ltr">
-                    <textarea onchange="updateService(${i}, 'desc', this.value)" placeholder="وصف الخدمة (عربي)" class="w-full p-1.5 rounded border dark:bg-slate-900 text-xs" rows="2">${srv.desc}</textarea>
-                    <textarea onchange="updateService(${i}, 'desc_en', this.value)" placeholder="Service Description (English)" class="w-full p-1.5 rounded border dark:bg-slate-900 text-xs dir-ltr" rows="2">${srv.desc_en || ''}</textarea>
-                </div>
-            `).join('');
-
-            // Projects editor
-            const projectsEditForm = document.getElementById('projectsEditForm');
-            projectsEditForm.innerHTML = appState.projects.map((proj, i) => `
-                <div class="p-3 rounded-lg border dark:bg-slate-800 dark:border-slate-700 space-y-2 relative">
-                    <div class="flex justify-between items-center">
-                        <span class="text-xs font-bold">المشروع ${i + 1}</span>
-                        <button onclick="deleteProject(${i})" class="text-rose-500 text-xs hover:underline"><i class="fa-solid fa-trash"></i> حذف</button>
-                    </div>
-                    <input type="text" value="${proj.title}" onchange="updateProject(${i}, 'title', this.value)" placeholder="عنوان المشروع (عربي)" class="w-full p-1.5 rounded border dark:bg-slate-900 text-xs font-bold">
-                    <input type="text" value="${proj.title_en || ''}" onchange="updateProject(${i}, 'title_en', this.value)" placeholder="Project Title (English)" class="w-full p-1.5 rounded border dark:bg-slate-900 text-xs font-bold dir-ltr">
-                    
-                    <select onchange="updateProject(${i}, 'category', this.value)" class="w-full p-1.5 rounded border dark:bg-slate-900 text-xs">
-                        <option value="social" ${proj.category === 'social' ? 'selected' : ''}>سوشيال ميديا وإعلانات</option>
-                        <option value="branding" ${proj.category === 'branding' ? 'selected' : ''}>هويات بصرية وشعارات</option>
-                        <option value="print" ${proj.category === 'print' ? 'selected' : ''}>مطبوعات وتغليف</option>
-                    </select>
-
-                    <div class="space-y-1">
-                        <label class="block text-[11px] font-bold text-slate-400">صورة المشروع</label>
-                        <label class="cursor-pointer w-full py-2 px-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-bold flex items-center justify-center gap-2 transition-all shadow-sm active:scale-95">
-                            <i class="fa-solid fa-cloud-arrow-up"></i>
-                            <span>اختر وارفِع صورة من جهازك/هاتفك</span>
-                            <input type="file" accept="image/*" class="hidden" onchange="uploadProjectImageDirectly(${i}, this)">
-                        </label>
-                        <input type="text" value="${proj.img && proj.img.startsWith('data:') ? 'صورة تم رفعها محلياً' : proj.img}" onchange="updateProject(${i}, 'img', this.value)" placeholder="أو أدخل رابط صورة خارجي بيدك" class="w-full p-1.5 rounded border dark:bg-slate-900 text-xs text-slate-500">
-                    </div>
-
-                    <textarea onchange="updateProject(${i}, 'desc', this.value)" placeholder="وصف المشروع (عربي)" class="w-full p-1.5 rounded border dark:bg-slate-900 text-xs" rows="2">${proj.desc}</textarea>
-                    <textarea onchange="updateProject(${i}, 'desc_en', this.value)" placeholder="Project Description (English)" class="w-full p-1.5 rounded border dark:bg-slate-900 text-xs dir-ltr" rows="2">${proj.desc_en || ''}</textarea>
-                </div>
-            `).join('');
-        }
-
-        // Language Button Listener
-        document.getElementById('langToggleBtn').addEventListener('click', () => {
-            appState.currentLang = appState.currentLang === 'ar' ? 'en' : 'ar';
-            saveState();
-            showToast(appState.currentLang === 'ar' ? 'تم التغيير إلى اللغة العربية' : 'Switched to English');
-        });
-
-        // Direct File Upload Listeners
-        document.getElementById('uploadLogoFile').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                compressAndUploadImage(file, function(compressedUrl) {
-                    appState.logoUrl = compressedUrl;
-                    appState.logoType = 'image';
-                    saveState();
-                    fillControlPanelInputs();
-                    showToast('تم رفع صورة اللوجو ومزامنتها بنجاح!');
-                });
-            }
-        });
-
-        document.getElementById('uploadProfileFile').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                compressAndUploadImage(file, function(compressedUrl) {
-                    appState.profileImg = compressedUrl;
-                    saveState();
-                    fillControlPanelInputs();
-                    showToast('تم رفع صورتك الشخصية ومزامنتها بنجاح!');
-                });
-            }
-        });
-
-        function uploadProjectImageDirectly(index, fileInput) {
-            const file = fileInput.files[0];
-            if (file) {
-                compressAndUploadImage(file, function(compressedUrl) {
-                    appState.projects[index].img = compressedUrl;
-                    saveState();
-                    fillControlPanelInputs();
-                    showToast('تم رفع صورة المشروع ومزامنتها بنجاح!');
-                });
-            }
-        }
-
-        function updateSkillName(index, val) {
-            appState.skills[index].name = val;
-            saveState();
-        }
-        function updateSkillNameEn(index, val) {
-            appState.skills[index].name_en = val;
-            saveState();
-        }
-        function updateSkillPercent(index, val) {
-            appState.skills[index].percent = Number(val);
-            saveState();
-        }
-
-        function updateService(index, key, val) {
-            appState.services[index][key] = val;
-            saveState();
-        }
-
-        function updateProject(index, key, val) {
-            appState.projects[index][key] = val;
-            saveState();
-        }
-
-        function deleteProject(index) {
-            appState.projects.splice(index, 1);
-            saveState();
-            fillControlPanelInputs();
-            showToast('تم حذف المشروع بنجاح');
-        }
-
-        document.getElementById('addProjectBtn').addEventListener('click', () => {
-            appState.projects.push({
-                title: 'مشروع تصميم جديد',
-                title_en: 'New Design Project',
-                category: 'social',
-                desc: 'تفاصيل المشروع الجديد واهدافه البصرية...',
-                desc_en: 'Details of the new visual design project...',
-                img: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
-                tags: ['Design']
-            });
-            saveState();
-            fillControlPanelInputs();
-            showToast('تمت إضافة مشروع جديد');
-        });
-
-        const bindings = [
-            ['editLogoType', 'logoType'],
-            ['editLogoUrl', 'logoUrl'],
-            ['editHeaderName', 'headerName'],
-            ['editName', 'name'],
-            ['editNameEn', 'name_en'],
-            ['editTitle', 'title'],
-            ['editTitleEn', 'title_en'],
-            ['editBadge', 'badge'],
-            ['editBadgeEn', 'badge_en'],
-            ['editBio', 'bio'],
-            ['editBioEn', 'bio_en'],
-            ['editImage', 'profileImg'],
-            ['editFacebook', 'facebook'],
-            ['editInstagram', 'instagram'],
-            ['editWhatsapp', 'whatsapp'],
-            ['editAboutHeading', 'aboutHeading'],
-            ['editAboutHeadingEn', 'aboutHeading_en'],
-            ['editAboutDetail', 'aboutDetail'],
-            ['editAboutDetailEn', 'aboutDetail_en'],
-            ['editEmail', 'email'],
-            ['editPhone', 'phone'],
-            ['editLocation', 'location'],
-            ['editLocationEn', 'location_en']
-        ];
-
-        bindings.forEach(([elemId, stateKey]) => {
-            const el = document.getElementById(elemId);
-            if (el) {
-                el.addEventListener('input', (e) => {
-                    appState[stateKey] = e.target.value;
-                    saveState();
-                });
-            }
-        });
-
-        // Control Panel Tabs logic
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        const tabContents = document.querySelectorAll('.tab-content');
-
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                tabBtns.forEach(b => b.classList.remove('active'));
-                tabContents.forEach(c => c.classList.add('hidden'));
-
-                btn.classList.add('active');
-                const targetTab = btn.getAttribute('data-tab');
-                document.getElementById(targetTab).classList.remove('hidden');
-            });
-        });
-
-        // Auth & Drawer Modals
-        const openCustomizerBtn = document.getElementById('openCustomizerBtn');
-        const customizerDrawer = document.getElementById('customizerDrawer');
-        const closeCustomizerBtn = document.getElementById('closeCustomizerBtn');
-        const passwordModal = document.getElementById('passwordModal');
-        const closePasswordModalBtn = document.getElementById('closePasswordModalBtn');
-        const passwordForm = document.getElementById('passwordForm');
-        const passwordError = document.getElementById('passwordError');
-        const inputAdminPassword = document.getElementById('inputAdminPassword');
-        const lockStatusIcon = document.getElementById('lockStatusIcon');
-        const lockControlPanelBtn = document.getElementById('lockControlPanelBtn');
-
-        openCustomizerBtn.addEventListener('click', () => {
-            if (isAuthenticated) {
-                fillControlPanelInputs();
-                customizerDrawer.classList.remove('-translate-x-full');
-            } else {
-                passwordModal.classList.remove('hidden');
-                passwordModal.classList.add('flex');
-                inputAdminPassword.focus();
-            }
-        });
-
-        closePasswordModalBtn.addEventListener('click', () => {
-            passwordModal.classList.add('hidden');
-            passwordModal.classList.remove('flex');
-            passwordError.classList.add('hidden');
-        });
-
-        passwordForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const entered = inputAdminPassword.value.trim();
-            if (!entered) return;
-
-            try {
-                await signInWithEmailAndPassword(auth, ADMIN_EMAIL, entered);
-                isAuthenticated = true;
-                passwordModal.classList.add('hidden');
-                passwordModal.classList.remove('flex');
-                passwordError.classList.add('hidden');
-                inputAdminPassword.value = '';
-
-                lockStatusIcon.className = 'fa-solid fa-lock-open text-emerald-500';
-                fillControlPanelInputs();
-                customizerDrawer.classList.remove('-translate-x-full');
-                showToast('تم تسجيل الدخول بنجاح للوحة التحكم');
-            } catch (err) {
-                console.error('Firebase admin login failed:', err);
-                passwordError.classList.remove('hidden');
-            }
-        });
-
-        lockControlPanelBtn.addEventListener('click', () => {
-            isAuthenticated = false;
-            lockStatusIcon.className = 'fa-solid fa-lock text-amber-500';
-            customizerDrawer.classList.add('-translate-x-full');
-            showToast('تم قفل لوحة التحكم');
-        });
-
-        closeCustomizerBtn.addEventListener('click', () => {
-            customizerDrawer.classList.add('-translate-x-full');
-        });
-
-        document.getElementById('savePasswordBtn').addEventListener('click', async () => {
-            const cur = document.getElementById('inputCurrentPass').value;
-            const newP = document.getElementById('inputNewPass').value;
-
-            if (!auth?.currentUser || auth.currentUser.email !== ADMIN_EMAIL) {
-                showToast('سجّل الدخول للوحة التحكم أولاً');
-                return;
-            }
-            if (!newP || newP.length < 6) {
-                showToast('كلمة المرور يجب أن تكون 6 أحرف/أرقام على الأقل');
-                return;
-            }
-
-            try {
-                const credential = EmailAuthProvider.credential(ADMIN_EMAIL, cur);
-                await reauthenticateWithCredential(auth.currentUser, credential);
-                await updatePassword(auth.currentUser, newP);
-                document.getElementById('inputCurrentPass').value = '';
-                document.getElementById('inputNewPass').value = '';
-                showToast('تم تغيير كلمة مرور Firebase بنجاح!');
-            } catch (err) {
-                console.error('Password update failed:', err);
-                showToast('تعذر تغيير كلمة المرور. تأكد من كلمة المرور الحالية.');
-            }
-        });
-
-        document.getElementById('btnSyncCloudNow').addEventListener('click', async () => {
-            saveState();
-            showToast('تم مزامنة التعديلات سحابياً لجميع الأجهزة!');
-        });
-
-        document.getElementById('btnExportDataLink').addEventListener('click', () => {
-            const stateString = JSON.stringify(appState);
-            const encoded = encodeURIComponent(stateString);
-            const shareableUrl = `${window.location.origin}${window.location.pathname}#data=${encoded}`;
-            
-            navigator.clipboard.writeText(shareableUrl).then(() => {
-                showToast('تم نسخ رابط التعديلات الشامل إلى الحافظة!');
-            }).catch(() => {
-                showToast('تعذر النسخ التلقائي، تم توفير البيانات سحابياً');
-            });
-        });
-
-        document.getElementById('btnExportJson').addEventListener('click', () => {
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(appState, null, 2));
-            const downloadAnchor = document.createElement('a');
-            downloadAnchor.setAttribute("href", dataStr);
-            downloadAnchor.setAttribute("download", `website_config_${appState.name}.json`);
-            document.body.appendChild(downloadAnchor);
-            downloadAnchor.click();
-            downloadAnchor.remove();
-            showToast('تم تحميل ملف النسخة الاحتياطية بنجاح!');
-        });
-
-        document.getElementById('importJsonFile').addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = function(evt) {
-                try {
-                    const imported = JSON.parse(evt.target.result);
-                    appState = { ...defaultState, ...imported };
-                    saveState();
-                    fillControlPanelInputs();
-                    showToast('تم استيراد النسخة الاحتياطية وتحديث الموقع بنجاح!');
-                } catch (err) {
-                    showToast('ملف غير صالِح!');
-                }
-            };
-            reader.readAsText(file);
-        });
-
-        // Reset settings
-        document.getElementById('resetCustomizerBtn').addEventListener('click', () => {
-            appState = JSON.parse(JSON.stringify(defaultState));
-            saveState();
-            fillControlPanelInputs();
-            showToast('تم استعادة الضبط الافتراضي للموقع');
-        });
-
-        // Dark mode
-        document.getElementById('themeToggleBtn').addEventListener('click', () => {
-            document.documentElement.classList.toggle('dark');
-        });
-
-        // Mobile Menu
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        document.querySelectorAll('.mobile-nav-link').forEach(l => {
-            l.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-        });
-
-        // Portfolio filtering
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => {
-                    b.classList.remove('bg-blue-600', 'text-white', 'active');
-                    b.classList.add('bg-slate-200', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
-                });
-
-                btn.classList.add('bg-blue-600', 'text-white', 'active');
-                btn.classList.remove('bg-slate-200', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
-
-                const filter = btn.getAttribute('data-filter');
-                document.querySelectorAll('.project-card').forEach(card => {
-                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
-
-        const projectModal = document.getElementById('projectModal');
-        function openProjectModal(index) {
+        window.openProjectModal = function(index) {
             const proj = appState.projects[index];
             if (!proj) return;
             const isEn = appState.currentLang === 'en';
             document.getElementById('modalTitle').textContent = isEn ? (proj.title_en || proj.title) : proj.title;
             document.getElementById('modalDesc').textContent = isEn ? (proj.desc_en || proj.desc) : proj.desc;
             document.getElementById('modalImg').src = proj.img;
-            projectModal.classList.remove('hidden');
-            projectModal.classList.add('flex');
-        }
+            document.getElementById('projectModal').classList.remove('hidden');
+            document.getElementById('projectModal').classList.add('flex');
+        };
 
-        function hideModal() {
-            projectModal.classList.add('hidden');
-            projectModal.classList.remove('flex');
-        }
+        document.getElementById('closeModalBtn').onclick = () => {
+            document.getElementById('projectModal').classList.add('hidden');
+            document.getElementById('projectModal').classList.remove('flex');
+        };
+        document.getElementById('dismissModalBtn').onclick = document.getElementById('closeModalBtn').onclick;
 
-        document.getElementById('closeModalBtn').addEventListener('click', hideModal);
-        document.getElementById('dismissModalBtn').addEventListener('click', hideModal);
+        const openCustomizerBtn = document.getElementById('openCustomizerBtn');
+        const customizerDrawer = document.getElementById('customizerDrawer');
+        const passwordModal = document.getElementById('passwordModal');
 
-        // Toast Helper
-        function showToast(msg) {
-            const toast = document.getElementById('toast');
-            document.getElementById('toastMsg').textContent = msg;
-            toast.classList.remove('translate-y-20', 'opacity-0');
-            setTimeout(() => {
-                toast.classList.add('translate-y-20', 'opacity-0');
-            }, 3000);
-        }
+        openCustomizerBtn.onclick = () => {
+            if (isAuthenticated) {
+                customizerDrawer.classList.remove('-translate-x-full');
+            } else {
+                passwordModal.classList.remove('hidden');
+                passwordModal.classList.add('flex');
+            }
+        };
 
-        // Contact Form Submission
-        document.getElementById('contactForm').addEventListener('submit', (e) => {
+        document.getElementById('closePasswordModalBtn').onclick = () => {
+            passwordModal.classList.add('hidden');
+            passwordModal.classList.remove('flex');
+        };
+
+        document.getElementById('passwordForm').onsubmit = async (e) => {
             e.preventDefault();
-            const isEn = appState.currentLang === 'en';
-            showToast(isEn ? 'Thank you! Your message has been submitted successfully.' : 'شكراً لتواصلك! تم إرسال طلبك بنجاح وسنتواصل معك قريباً.');
-            e.target.reset();
-        });
+            const pass = document.getElementById('inputAdminPassword').value;
+            try {
+                await signInWithEmailAndPassword(auth, ADMIN_EMAIL, pass);
+                isAuthenticated = true;
+                passwordModal.classList.add('hidden');
+                customizerDrawer.classList.remove('-translate-x-full');
+                document.getElementById('lockStatusIcon').className = 'fa-solid fa-lock-open text-emerald-500';
+            } catch(err) {
+                document.getElementById('passwordError').classList.remove('hidden');
+            }
+        };
+
+        document.getElementById('closeCustomizerBtn').onclick = () => {
+            customizerDrawer.classList.add('-translate-x-full');
+        };
+
+        document.getElementById('langToggleBtn').onclick = () => {
+            appState.currentLang = appState.currentLang === 'ar' ? 'en' : 'ar';
+            saveState();
+        };
+
+        document.getElementById('themeToggleBtn').onclick = () => {
+            document.documentElement.classList.toggle('dark');
+        };
+
+        document.getElementById('mobileMenuBtn').onclick = () => {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        };
 
         renderSite();
         initFirebaseSync();
-
-        // Expose functions for inline HTML event handlers
-        window.openProjectModal = openProjectModal;
-        window.deleteProject = deleteProject;
-        window.uploadProjectImageDirectly = uploadProjectImageDirectly;
-        window.updateSkillName = updateSkillName;
-        window.updateSkillNameEn = updateSkillNameEn;
-        window.updateSkillPercent = updateSkillPercent;
-        window.updateService = updateService;
-        window.updateProject = updateProject;
     </script>
-<!-- مستطيل أسفل الشاشة يتجه لليصلار بعبارة عبدالرحمن عطية -->
-    <!-- ================= 1. نافذة تسجيل الدخول والبروفايل للعميل ================= -->
-<div id="clientAuthModal" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4">
-  <div class="bg-slate-900 border border-slate-700 p-6 rounded-2xl max-w-md w-full text-right text-white relative">
-    <button onclick="document.getElementById('clientAuthModal').classList.add('hidden')" class="absolute top-4 left-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
-    <h3 class="text-xl font-bold mb-4 text-cyan-400" id="authTitle">تسجيل دخول العميل</h3>
-    
-    <div id="loginFormArea">
-      <input type="email" id="clientEmail" placeholder="البريد الإلكتروني" class="w-full p-3 bg-slate-800 border border-slate-700 rounded-xl mb-3 text-white text-sm focus:outline-none focus:border-cyan-400">
-      <input type="password" id="clientPass" placeholder="كلمة المرور" class="w-full p-3 bg-slate-800 border border-slate-700 rounded-xl mb-4 text-white text-sm focus:outline-none focus:border-cyan-400">
-      <button id="btnClientLogin" class="w-full py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl font-bold hover:opacity-90 transition">دخول</button>
-      <p class="text-xs text-slate-400 mt-3 text-center">معندكش حساب؟ <a href="#" id="toggleAuthMode" class="text-cyan-400 underline">إنشاء حساب جديد</a></p>
-    </div>
-
-    <!-- البروفايل الشخصي للعميل بعد الدخول -->
-    <div id="clientProfileArea" class="hidden text-center">
-      <div class="w-16 h-16 bg-cyan-500/20 border border-cyan-400 text-cyan-400 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl font-bold" id="userAvatar">U</div>
-      <h4 class="font-bold text-lg" id="profileEmail">user@example.com</h4>
-      <p class="text-xs text-slate-400 mb-4">مرحباً بك في صفحتك الشخصية بـ موقع عبدالرحمن عطيه</p>
-      <button id="btnClientLogout" class="px-5 py-2 bg-red-500/20 text-red-400 border border-red-500/40 rounded-xl text-sm hover:bg-red-500/30">تسجيل الخروج</button>
-    </div>
-  </div>
-</div>
-
-<!-- ================= 2. قسم آراء العملاء التفاعلي ================= -->
-<section class="py-12 max-w-6xl mx-auto px-4">
-  <h2 class="text-2xl font-bold text-center text-white mb-6">آراء <span class="text-cyan-400">العملاء</span></h2>
-  
-  <!-- نموذج إضافة رأي -->
-  <div class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl max-w-xl mx-auto mb-8">
-    <textarea id="reviewText" rows="3" placeholder="اكتب رأيك في خدماتنا..." class="w-full p-3 bg-slate-800 border border-slate-700 rounded-xl text-white text-sm mb-3 focus:outline-none focus:border-cyan-400 resize-none"></textarea>
-    <div class="flex justify-between items-center">
-      <input type="text" id="reviewAuthor" placeholder="اسمك الكريم" class="p-2 bg-slate-800 border border-slate-700 rounded-lg text-white text-xs w-1/2 focus:outline-none">
-      <button id="btnSubmitReview" class="px-5 py-2 bg-cyan-500 hover:bg-cyan-600 text-white rounded-lg text-xs font-bold transition">نشر الرأي ✨</button>
-    </div>
-  </div>
-
-  <!-- عرض الآراء -->
-  <div id="reviewsContainer" class="grid grid-cols-1 md:grid-cols-3 gap-4">
-    <!-- بتنزل الآراء هنا تلقائياً من Firebase -->
-  </div>
-</section>
-
-<!-- ================= 3. الشات المباشر (Live Chat Widget) ================= -->
-<div class="fixed bottom-16 left-4 z-50">
-  <button onclick="document.getElementById('chatBoxWindow').classList.toggle('hidden')" class="w-14 h-14 bg-gradient-to-tr from-pink-500 to-cyan-400 rounded-full flex items-center justify-center text-white shadow-lg hover:scale-105 transition">
-    <i class="fa-solid fa-comments text-2xl"></i>
-  </button>
-
-  <div id="chatBoxWindow" class="hidden absolute bottom-16 left-0 w-80 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden flex flex-col h-96">
-    <div class="bg-slate-800 p-3 border-b border-slate-700 flex justify-between items-center text-white">
-      <span class="font-bold text-sm text-cyan-400">محادثة مباشرة مع عبدالرحمن</span>
-      <button onclick="document.getElementById('chatBoxWindow').classList.add('hidden')" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
-    </div>
-    <div id="chatMessages" class="flex-1 p-3 overflow-y-auto space-y-2 text-xs">
-      <div class="bg-slate-800 text-slate-300 p-2 rounded-lg max-w-[80%]">أهلاً بك! كيف يمكنني مساعدتك في تصميمك اليوم؟</div>
-    </div>
-    <div class="p-2 bg-slate-800 border-t border-slate-700 flex gap-2">
-      <input type="text" id="chatInput" placeholder="اكتب رسالتك..." class="flex-1 p-2 bg-slate-900 border border-slate-700 rounded-lg text-white text-xs focus:outline-none">
-      <button id="btnSendChat" class="px-3 bg-cyan-500 text-white rounded-lg text-xs"><i class="fa-solid fa-paper-plane"></i></button>
-    </div>
-  </div>
-</div>
-
-    <!-- الشريط المتحرك في أسفل الصفحة -->
-<div style="width: 100%; background: #0d0f12; border-top: 2px solid #00d2ff; overflow: hidden; white-space: nowrap; padding: 12px 0; margin-top: 40px; box-shadow: 0 -4px 15px rgba(0,212,255,0.2);">
-  <div style="display: inline-block; padding-left: 100%; animation: marquee 16s linear infinite; font-size: 16px; font-weight: bold; color: #fff;">
-    <span style="background: linear-gradient(45deg, #ff007f, #00d2ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; border: 1px solid rgba(0,212,255,0.5); padding: 4px 14px; border-radius: 6px; margin: 0 10px;">عبدالرحمن عطيه - مصمم جرافيك</span>
-    ✨ تصميمات احترافية ✨ هويات بصرية ✨ إعلانات سوشيال ميديا ✨
-    <span style="background: linear-gradient(45deg, #ff007f, #00d2ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; border: 1px solid rgba(0,212,255,0.5); padding: 4px 14px; border-radius: 6px; margin: 0 10px;">عبدالرحمن عطيه - مصمم جرافيك</span>
-  </div>
-</div>
-<style>
-  @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-100%); }
-  }
-</style>
 </body>
 </html>
