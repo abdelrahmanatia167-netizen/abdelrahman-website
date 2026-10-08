@@ -1,22 +1,18 @@
-V18 - Abdelrahman Website
+عبدالرحمن عطيه — V14
 
-Same Firebase system as V17.
+التعديلات في هذه النسخة:
+1) معرض الأعمال يعتمد على رفع الصور من الجهاز فقط، وليس روابط الصور.
+2) الصورة الرئيسية للعمل تخص «عرض التفاصيل» فقط.
+3) صور الشغل الإضافية تظهر في «رؤية المزيد» فقط، ولا يتم خلط الصورة الرئيسية معها.
+4) يمكن اختيار عدد كبير من الصور دفعة واحدة، بما في ذلك 100 صورة أو أكثر حسب مساحة Firebase Storage وسرعة الاتصال.
+5) لوحة التحكم تعرض كل عميل كمحادثة واحدة مثل Messenger، مع قائمة محادثات وآخر رسالة وعدد الرسائل الجديدة.
+6) رد المشرف يُحفظ كرسالة جديدة داخل نفس محادثة العميل ويظهر للعميل، ولا يتم حذفه تلقائياً.
+7) تم إصلاح صلاحية Firestore التي كانت تمنع المشرف من إنشاء رسالة الرد.
+8) توجد شارة/تنبيه للرسائل الجديدة عند العميل وعند المشرف، مع إشعار المتصفح إذا سمح المستخدم بذلك.
+9) عند فتح محادثة معينة من لوحة التحكم، تُعلّم رسائل العميل في هذه المحادثة كمقروءة فقط، بدل مسحها أو تحويل كل الرسائل إلى قائمة منفصلة.
+10) أضيفت تأثيرات ضغط جرافيكية في كل نقرات الموقع تقريباً.
+11) تم تعطيل النسخ والسحب وقائمة الزر الأيمن واختصارات النسخ/الحفظ خارج حقول الإدخال. هذا يمنع الاستخدام العادي للنسخ، لكنه لا يمكن أن يمنع التقاط الشاشة أو أدوات المطور بنسبة 100% لأن الموقع يعمل داخل متصفح العميل.
 
-Fixes:
-- Admin button/login flow made more reliable and opens the dashboard after successful Firebase Auth.
-- Dashboard opens before rendering its tabs so a rendering error does not make the whole dashboard appear unresponsive.
-- Gallery uploads are processed in small parallel batches (4 at a time) instead of one-by-one, reducing long waits.
-- Uploads require the authenticated admin session.
-- Firebase Storage and Firestore remain the same system; no Cloudinary was added.
-
-Important:
-Firebase Storage must be enabled/available in the Firebase project for image uploads. If Firebase shows an Upgrade/Billing requirement for Storage, code changes cannot bypass that service requirement.
-
-Deploy:
-Upload index.html and rules files as usual. If rules were changed, publish firestore.rules and storage.rules in Firebase.
-
-
-V19 hotfix:
-- Firebase Storage is now initialized lazily, so a project that has not enabled Storage does not prevent the rest of the site/admin login from starting.
-- The admin icon has a fallback click handler, so the login modal can still open if another startup component fails.
-- Existing Firebase Auth/Firestore system and admin email remain unchanged.
+بعد رفع الملفات إلى GitHub:
+- انشر firestore.rules الموجودة في هذه النسخة من Firebase Console > Firestore Database > Rules.
+- لا توجد حاجة لتغيير Storage Rules؛ النسخة تستخدم المسارات projects/covers وprojects/gallery وهي مسموحة بالفعل في storage.rules.
