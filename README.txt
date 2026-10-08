@@ -14,3 +14,9 @@ Firebase Storage must be enabled/available in the Firebase project for image upl
 
 Deploy:
 Upload index.html and rules files as usual. If rules were changed, publish firestore.rules and storage.rules in Firebase.
+
+
+V19 hotfix:
+- Firebase Storage is now initialized lazily, so a project that has not enabled Storage does not prevent the rest of the site/admin login from starting.
+- The admin icon has a fallback click handler, so the login modal can still open if another startup component fails.
+- Existing Firebase Auth/Firestore system and admin email remain unchanged.
