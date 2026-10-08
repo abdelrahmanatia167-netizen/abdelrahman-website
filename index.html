@@ -43,7 +43,6 @@
             position: relative;
         }
 
-        /* Graphic Background Elements */
         .bg-graphic-circle {
             position: absolute;
             width: 350px;
@@ -64,7 +63,6 @@
             100% { transform: translateY(30px) scale(1.1); }
         }
 
-        /* Header & Nav */
         header {
             display: flex;
             justify-content: space-between;
@@ -114,7 +112,6 @@
             box-shadow: 0 6px 20px rgba(13, 110, 253, 0.5);
         }
 
-        /* Hero Section */
         .hero {
             text-align: center;
             padding: 80px 20px 50px;
@@ -138,7 +135,6 @@
             margin-bottom: 30px;
         }
 
-        /* Portfolio Grid */
         .portfolio-section {
             padding: 50px 5%;
         }
@@ -202,7 +198,6 @@
             line-height: 1.5;
         }
 
-        /* Floating Chat Widget */
         .chat-widget {
             position: fixed;
             bottom: 30px;
@@ -306,7 +301,6 @@
             cursor: pointer;
         }
 
-        /* Control Panel Modal */
         .modal {
             display: none;
             position: fixed;
@@ -355,7 +349,6 @@
     <div class="bg-graphic-circle bg-1"></div>
     <div class="bg-graphic-circle bg-2"></div>
 
-    <!-- Header -->
     <header>
         <div class="logo">
             <i class="fa-solid fa-layer-group" style="color: var(--accent-cyan);"></i>
@@ -367,21 +360,18 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <h1 id="hero-title">تصاميم عصريّة تجذب العميل وتبرز علامتك التجارية</h1>
         <p id="hero-desc">نقدم لك أحدث تصاميم السوشيال ميديا والهويات البصرية بلمسات جرافيكية فريدة وألوان جاذبة تساعدك على التميز والتصدر في مجالك.</p>
     </section>
 
-    <!-- Portfolio Section -->
     <section class="portfolio-section">
         <h2 class="section-title" id="portfolio-title">معرض الأعمال</h2>
         <div class="portfolio-grid" id="portfolio-grid">
-            <!-- Dynamic Items Loaded Here -->
+            <!-- Items Loaded Here -->
         </div>
     </section>
 
-    <!-- Chatbot Widget -->
     <div class="chat-widget">
         <div class="chat-box" id="chatBox">
             <div class="chat-header">
@@ -399,7 +389,6 @@
         <button class="chat-btn" onclick="toggleChat()"><i class="fa-solid fa-comments"></i></button>
     </div>
 
-    <!-- Admin Panel Modal -->
     <div class="modal" id="adminModal">
         <div class="modal-content">
             <h2 style="margin-bottom: 20px;">لوحة التحكم في النصوص والأعمال</h2>
@@ -441,7 +430,6 @@
     </div>
 
     <script>
-        // Data Store
         let defaultData = {
             logo: "إبداع",
             heroTitle: "تصاميم عصريّة تجذب العميل وتبرز علامتك التجارية",
@@ -452,14 +440,12 @@
             ]
         };
 
-        // Load Stored Data
         function loadData() {
             let saved = JSON.parse(localStorage.getItem('site_data')) || defaultData;
             document.getElementById('site-logo-text').innerText = saved.logo;
             document.getElementById('hero-title').innerText = saved.heroTitle;
             document.getElementById('hero-desc').innerText = saved.heroDesc;
             
-            // Populate Inputs in Modal
             document.getElementById('input-logo').value = saved.logo;
             document.getElementById('input-hero-title').value = saved.heroTitle;
             document.getElementById('input-hero-desc').value = saved.heroDesc;
@@ -467,7 +453,6 @@
             renderPortfolio(saved.works);
         }
 
-        // Render Portfolio
         function renderPortfolio(works) {
             const grid = document.getElementById('portfolio-grid');
             grid.innerHTML = '';
@@ -484,49 +469,15 @@
             });
         }
 
-        // Toggle Theme
         function toggleTheme() {
             const body = document.body;
             const currentTheme = body.getAttribute('data-theme');
             body.setAttribute('data-theme', currentTheme === 'dark' ? 'light' : 'dark');
         }
 
-        // Modal Controls
         function openAdminModal() { document.getElementById('adminModal').style.display = 'flex'; }
         function closeAdminModal() { document.getElementById('adminModal').style.display = 'none'; }
 
-        // Save Admin Changes & New Images
-        function saveAdminChanges() {
-            let saved = JSON.parse(localStorage.getItem('site_data')) || defaultData;
-            saved.logo = document.getElementById('input-logo').value;
-            saved.heroTitle = document.getElementById('input-hero-title').value;
-            saved.heroDesc = document.getElementById('input-hero-desc').value;
-
-            const fileInput = document.getElementById('work-img-file');
-            const titleInput = document.getElementById('work-title').value;
-            const descInput = document.getElementById('work-desc').value;
-
-            if (fileInput.files && fileInput.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    saved.works.push({
-                        title: titleInput || "عمل جديد",
-                        desc: descInput || "وصف العمل الجديد",
-                        img: e.target.result
-                    });
-                    localStorage.setItem('site_data', JSON.stringify(saved));
-                    loadData();
-                    closeAdminModal();
-                };
-                reader.readAsDataURL(fileInput.files[0]);
-            } else {
-                localStorage.setItem('site_data', JSON.stringify(saved));
-                loadData();
-                closeAdminModal();
-            }
-        }
-
-        // Chat Widget Script (Fixed Response Logic)
         function toggleChat() {
             const box = document.getElementById('chatBox');
             box.style.display = box.style.display === 'flex' ? 'none' : 'flex';
@@ -547,7 +498,6 @@
 
             msgContainer.scrollTop = msgContainer.scrollHeight;
 
-            // Generate Instant Response without errors
             setTimeout(() => {
                 let botReply = "يسعدنا تواصلك معنا! يمكنك الاستفسار عن التصاميم والأسعار من خلال خيارات التواصل أو لوحة التحكم.";
                 if (txt.includes("سعر") || txt.includes("تكلفة")) {
@@ -562,5 +512,72 @@
 
         window.onload = loadData;
     </script>
+
+    <!-- ========================================== -->
+    <!-- كود Firebase المضاف للربط المباشر وقواعد البيانات -->
+    <!-- ========================================== -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+      // بيانات مشروك الخاصة بـ Firebase
+      const firebaseConfig = {
+          apiKey: "YOUR_API_KEY",
+          authDomain: "abdelrahman-website.firebaseapp.com",
+          projectId: "abdelrahman-website",
+          storageBucket: "abdelrahman-website.appspot.com",
+          messagingSenderId: "YOUR_SENDER_ID",
+          appId: "YOUR_APP_ID"
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      // ربط دالة الحفظ مع Firestore بدون الحاجة لـ Storage
+      window.saveAdminChanges = async function() {
+          const titleInput = document.getElementById('work-title').value;
+          const descInput = document.getElementById('work-desc').value;
+          const fileInput = document.getElementById('work-img-file');
+
+          let saved = JSON.parse(localStorage.getItem('site_data')) || defaultData;
+          saved.logo = document.getElementById('input-logo').value;
+          saved.heroTitle = document.getElementById('input-hero-title').value;
+          saved.heroDesc = document.getElementById('input-hero-desc').value;
+
+          if (fileInput.files && fileInput.files[0]) {
+              const reader = new FileReader();
+              reader.onload = async function(e) {
+                  const base64Image = e.target.result;
+
+                  try {
+                      await addDoc(collection(db, "portfolio"), {
+                          title: titleInput || "عمل جديد",
+                          desc: descInput || "وصف العمل",
+                          imgUrl: base64Image,
+                          createdAt: new Date()
+                      });
+                  } catch (err) {
+                      console.log("حفظ محلي فقط:", err);
+                  }
+
+                  saved.works.push({
+                      title: titleInput || "عمل جديد",
+                      desc: descInput || "وصف العمل",
+                      img: base64Image
+                  });
+
+                  localStorage.setItem('site_data', JSON.stringify(saved));
+                  loadData();
+                  closeAdminModal();
+                  alert("تم حفظ العمل بنجاح!");
+              };
+              reader.readAsDataURL(fileInput.files[0]);
+          } else {
+              localStorage.setItem('site_data', JSON.stringify(saved));
+              loadData();
+              closeAdminModal();
+          }
+      };
+    </script>
 </body>
-  </html>
+</html>
