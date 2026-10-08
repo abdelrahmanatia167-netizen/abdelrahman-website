@@ -56,7 +56,7 @@ service cloud.firestore {
 
     // Customer/admin chat with unread/read flags.
     match /messages/{id} {
-      allow create: if signedIn() && request.resource.data.uid == request.auth.uid;
+      allow create: if (signedIn() && request.resource.data.uid == request.auth.uid) || (isAdmin() && request.resource.data.uid is string);
       allow read: if isAdmin() || (signedIn() && resource.data.uid == request.auth.uid);
       allow update: if isAdmin()
                     || (signedIn()
