@@ -9,10 +9,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <style>
-*{box-sizing:border-box}body{-webkit-user-select:none;user-select:none}input,textarea,select,button{-webkit-user-select:text;user-select:text}img{-webkit-user-drag:none;user-drag:none}html{scroll-behavior:smooth}body{font-family:Cairo,Arial,sans-serif;transition:background .25s,color .25s}.glass{background:rgba(255,255,255,.92);backdrop-filter:none;border:1px solid rgba(15,23,42,.08)}.dark .glass{background:rgba(15,23,42,.94);border-color:rgba(148,163,184,.13)}
+*{box-sizing:border-box}body{-webkit-user-select:none;user-select:none}input,textarea,select,button{-webkit-user-select:text;user-select:text}img{-webkit-user-drag:none;user-drag:none}html{scroll-behavior:smooth}body{font-family:Cairo,Arial,sans-serif;transition:background .25s,color .25s}.glass{background:rgba(255,255,255,.78);backdrop-filter:blur(14px);border:1px solid rgba(15,23,42,.08)}.dark .glass{background:rgba(15,23,42,.72);border-color:rgba(148,163,184,.13)}
 .gradient{background:linear-gradient(135deg,#2563eb,#7c3aed,#06b6d4);-webkit-background-clip:text;background-clip:text;color:transparent}.ticker{white-space:nowrap;overflow:hidden}.ticker-track{display:inline-flex;min-width:200%;animation:move 18s linear infinite}@keyframes move{from{transform:translateX(0)}to{transform:translateX(50%)}}
 .modal{display:none;pointer-events:none}.modal.show{display:flex;pointer-events:auto}.drawer{transform:translateX(110%);transition:.3s}.drawer.show{transform:translateX(0)}.toast{animation:toast 3s ease both}@keyframes toast{0%{opacity:0;transform:translateY(10px)}10%,90%{opacity:1;transform:none}100%{opacity:0;transform:translateY(10px)}}
-input,textarea,select{outline:none}.dark input,.dark textarea,.dark select{background:#0f172a;color:#e2e8f0;border-color:#334155}.dark .soft{background:#0f172a}.light-bg{background:#f8fafc}.dark .light-bg{background:#020617}.bg-motion{position:absolute;inset:0;overflow:hidden}.bg-motion span{position:absolute;border:1px solid rgba(37,99,235,.12);border-radius:30%;animation:none}.dark .bg-motion span{border-color:rgba(96,165,250,.13)}.bg-motion span:nth-child(1){width:180px;height:180px;left:7%;top:12%;transform:rotate(18deg)}.bg-motion span:nth-child(2){width:120px;height:120px;right:12%;top:28%;animation-delay:-5s;transform:rotate(45deg)}.bg-motion span:nth-child(3){width:220px;height:220px;right:2%;bottom:4%;animation-delay:-9s;transform:rotate(12deg)}.bg-motion span:nth-child(4){width:90px;height:90px;left:35%;bottom:10%;animation-delay:-12s;transform:rotate(30deg)}@keyframes floatShape{0%,100%{translate:0 0 rotate(0deg);opacity:.35}50%{translate:0 -24px rotate(25deg);opacity:.75}}.admin-tab.active{background:#2563eb;color:#fff}.scrollbar::-webkit-scrollbar{width:7px}.scrollbar::-webkit-scrollbar-thumb{background:#64748b;border-radius:10px}.click-ripple{position:fixed;pointer-events:none;width:18px;height:18px;border:2px solid rgba(37,99,235,.65);border-radius:999px;transform:translate(-50%,-50%) scale(.3);animation:clickBurst .55s ease-out forwards;z-index:9999}.click-spark{position:fixed;pointer-events:none;width:7px;height:7px;border-radius:999px;background:currentColor;transform:translate(-50%,-50%);animation:sparkFly .65s ease-out forwards;z-index:9999}@keyframes clickBurst{to{opacity:0;transform:translate(-50%,-50%) scale(5)}}@keyframes sparkFly{to{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(.15)}}
+input,textarea,select{outline:none}.dark input,.dark textarea,.dark select{background:#0f172a;color:#e2e8f0;border-color:#334155}.dark .soft{background:#0f172a}.light-bg{background:#f8fafc}.dark .light-bg{background:#020617}.bg-motion{position:absolute;inset:0;overflow:hidden}.bg-motion span{position:absolute;border:1px solid rgba(37,99,235,.12);border-radius:30%;animation:floatShape 16s ease-in-out infinite}.dark .bg-motion span{border-color:rgba(96,165,250,.13)}.bg-motion span:nth-child(1){width:180px;height:180px;left:7%;top:12%;transform:rotate(18deg)}.bg-motion span:nth-child(2){width:120px;height:120px;right:12%;top:28%;animation-delay:-5s;transform:rotate(45deg)}.bg-motion span:nth-child(3){width:220px;height:220px;right:2%;bottom:4%;animation-delay:-9s;transform:rotate(12deg)}.bg-motion span:nth-child(4){width:90px;height:90px;left:35%;bottom:10%;animation-delay:-12s;transform:rotate(30deg)}@keyframes floatShape{0%,100%{translate:0 0 rotate(0deg);opacity:.35}50%{translate:0 -24px rotate(25deg);opacity:.75}}.admin-tab.active{background:#2563eb;color:#fff}.scrollbar::-webkit-scrollbar{width:7px}.scrollbar::-webkit-scrollbar-thumb{background:#64748b;border-radius:10px}.click-ripple{position:fixed;pointer-events:none;width:18px;height:18px;border:2px solid rgba(37,99,235,.65);border-radius:999px;transform:translate(-50%,-50%) scale(.3);animation:clickBurst .55s ease-out forwards;z-index:9999}.click-spark{position:fixed;pointer-events:none;width:7px;height:7px;border-radius:999px;background:currentColor;transform:translate(-50%,-50%);animation:sparkFly .65s ease-out forwards;z-index:9999}@keyframes clickBurst{to{opacity:0;transform:translate(-50%,-50%) scale(5)}}@keyframes sparkFly{to{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(.15)}}
 .review-card{position:relative;overflow:hidden;transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease}.review-card:hover{transform:translateY(-6px) rotate(.25deg);box-shadow:0 24px 70px rgba(15,23,42,.14)}.review-card:before{content:"";position:absolute;inset:-60% auto auto -20%;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(37,99,235,.18),transparent 68%);pointer-events:none}.review-stars{letter-spacing:.12em;text-shadow:0 4px 16px rgba(245,158,11,.18)}.action-fx{position:fixed;inset:0;pointer-events:none;z-index:10000;overflow:hidden}.action-orb{position:absolute;width:10px;height:10px;border-radius:999px;background:rgba(59,130,246,.9);animation:orbFly .75s cubic-bezier(.2,.8,.2,1) forwards}@keyframes orbFly{0%{opacity:0;transform:translate(0,0) scale(.2)}15%{opacity:1}100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(.05)}}.modal.show>div{animation:modalIn .42s cubic-bezier(.2,.8,.2,1)}@keyframes modalIn{from{opacity:0;transform:translateY(18px) scale(.96)}to{opacity:1;transform:none}}.portfolio-cover{aspect-ratio:16/10;overflow:hidden;background:#e2e8f0}.portfolio-cover img{transition:transform .7s cubic-bezier(.2,.8,.2,1)}.portfolio-card:hover .portfolio-cover img{transform:scale(1.055)}.portfolio-card .portfolio-empty{background:linear-gradient(135deg,rgba(37,99,235,.12),rgba(14,165,233,.08));}
 .notify-dot{min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:#ef4444;color:#fff;font-size:10px;line-height:18px;text-align:center;font-weight:900;box-shadow:0 0 0 3px rgba(239,68,68,.12);animation:notifyPulse 1.4s ease-in-out infinite}@keyframes notifyPulse{50%{transform:scale(1.12);box-shadow:0 0 0 7px rgba(239,68,68,0)}}
 .site-en .text-right{text-align:left}.site-en .text-left{text-align:right}
@@ -29,25 +29,23 @@ input,textarea,select{outline:none}.dark input,.dark textarea,.dark select{backg
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
 #adminBtn{pointer-events:auto!important;position:relative!important;z-index:9999!important;display:flex!important;align-items:center!important;justify-content:center!important}
 #adminBtn i{pointer-events:none}
-#siteAdminSidebar{position:fixed;right:14px;top:82px;width:180px;z-index:9980;padding:6px;border:1px solid rgba(148,163,184,.22);background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-radius:20px;box-shadow:0 12px 35px rgba(15,23,42,.10)}
-.dark #siteAdminSidebar{background:rgba(2,6,23,.94);border-color:rgba(51,65,85,.55)}
-#siteAdminSidebar button{cursor:pointer}
-@media(max-width:767px){#siteAdminSidebar{display:none}}
+
+#adminSideEntry button{cursor:pointer} @media(max-width:767px){#adminSideEntry{display:none!important}}
 </style>
 </head>
-<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 min-h-screen"><aside id="siteAdminSidebar" aria-label="الشريط الجانبي الإداري">
-  <button type="button" id="siteAdminSidebarBtn" data-open-admin class="group w-full flex items-center gap-3 px-3 py-3 rounded-2xl text-right font-black hover:bg-blue-50 dark:hover:bg-blue-950/30 text-slate-700 dark:text-slate-200">
-    <span class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-lg"><i class="fa-solid fa-gauge-high"></i></span>
-    <span><span class="block text-sm">لوحة التحكم</span><span class="block text-[10px] text-slate-400 font-bold">دخول مباشر</span></span>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 min-h-screen">
+<aside id="adminSideEntry" aria-label="لوحة التحكم" class="fixed right-3 top-1/2 -translate-y-1/2 z-[9985] hidden md:block">
+  <button id="adminSideEntryBtn" type="button" class="flex items-center gap-2 px-3 py-3 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-xl hover:border-blue-500 hover:text-blue-600 font-black">
+    <span class="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center"><i class="fa-solid fa-gauge-high"></i></span>
+    <span class="text-sm">لوحة التحكم</span>
   </button>
 </aside>
-
 <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none"><div class="absolute -top-32 -left-32 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div><div class="absolute top-1/3 -right-32 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div><div class="absolute bottom-0 left-1/3 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div><div class="bg-motion"><span></span><span></span><span></span><span></span></div></div>
 <header class="sticky top-0 z-[9990] border-b border-slate-200/70 dark:border-slate-800/80 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl"><div class="max-w-7xl mx-auto px-4"><div class="h-16 flex items-center justify-between gap-3">
 <a href="#home" class="shrink-0"><div class="w-11 h-11 sm:w-12 sm:h-12 rounded-full p-[2px] bg-gradient-to-br from-blue-500 via-purple-500 to-cyan-400 shadow-lg"><div class="w-full h-full rounded-full overflow-hidden bg-white dark:bg-slate-900"><img id="headerLogo" src="1001809140.jpg" loading="eager" decoding="async" class="w-full h-full object-cover" alt="Logo"></div></div></a>
-<nav class="hidden md:flex items-center gap-1 text-sm font-semibold"><a class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#home">الرئيسية</a><a class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#about">عني</a><a class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#services">خدماتي</a><a class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#portfolio">أعمالي</a><a class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#experience">الخبرة</a><a class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#reviews">الآراء</a><a class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#contact">تواصل</a><button type="button" id="adminNavBtn" data-open-admin class="admin-direct-btn px-3 py-2 rounded-lg text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-950/30 font-black"><i class="fa-solid fa-gauge-high ml-1"></i>لوحة التحكم</button></nav>
+<nav class="hidden md:flex items-center gap-1 text-sm font-semibold"><a class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#home">الرئيسية</a><a class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#about">عني</a><a class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#services">خدماتي</a><a class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#portfolio">أعمالي</a><a class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#experience">الخبرة</a><a class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#reviews">الآراء</a><a class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#contact">تواصل</a><button type="button" data-open-admin class="px-3 py-2 rounded-lg text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-950/30 font-black"><i class="fa-solid fa-gauge-high ml-1"></i>لوحة التحكم</button></nav>
 <div class="flex items-center gap-2"><button id="langBtn" class="min-w-10 h-10 px-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 font-bold text-xs" title="English / عربي">EN</button><button id="themeBtn" class="w-10 h-10 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800"><i class="fa-solid fa-sun dark:hidden"></i><i class="fa-solid fa-moon hidden dark:inline"></i></button><button id="clientBtn" class="w-10 h-10 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800" title="حسابي"><i class="fa-solid fa-user"></i></button><button id="adminBtn" type="button" class="relative z-[9999] w-10 h-10 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 active:scale-95 transition cursor-pointer flex items-center justify-center" title="الإعدادات / لوحة التحكم" aria-label="الإعدادات / لوحة التحكم"><i class="fa-solid fa-gear pointer-events-none"></i></button><button id="mobileBtn" class="md:hidden w-10 h-10 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800"><i class="fa-solid fa-bars"></i></button></div></div></div>
-<div id="mobileNav" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 p-3 space-y-1"><a class="block p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#home">الرئيسية</a><a class="block p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#about">عني</a><a class="block p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#services">خدماتي</a><a class="block p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#portfolio">أعمالي</a><a class="block p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#experience">الخبرة</a><a class="block p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#reviews">الآراء</a><a class="block p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#contact">تواصل</a><button type="button" id="adminMobileBtn" data-open-admin class="admin-direct-btn w-full text-right p-3 rounded-lg text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-950/30 font-black"><i class="fa-solid fa-gauge-high ml-2"></i>لوحة التحكم</button></div></header>
+<div id="mobileNav" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 p-3 space-y-1"><a class="block p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#home">الرئيسية</a><a class="block p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#about">عني</a><a class="block p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#services">خدماتي</a><a class="block p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#portfolio">أعمالي</a><a class="block p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#experience">الخبرة</a><a class="block p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#reviews">الآراء</a><a class="block p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#contact">تواصل</a><button type="button" data-open-admin class="w-full text-right p-3 rounded-lg text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-950/30 font-black"><i class="fa-solid fa-gauge-high ml-2"></i>لوحة التحكم</button><button id="adminSideMobileBtn" type="button" class="w-full text-right p-3 rounded-lg text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-950/30 font-black"><i class="fa-solid fa-gauge-high ml-2"></i>لوحة التحكم</button></div></header>
 <div class="ticker bg-slate-900 text-white dark:bg-black py-2 text-xs sm:text-sm font-bold"><div class="ticker-track"><span class="mx-10">عبدالرحمن عطيه • مصمم جرافيك</span><span class="mx-10">عبدالرحمن عطيه • مصمم جرافيك</span><span class="mx-10">عبدالرحمن عطيه • مصمم جرافيك</span><span class="mx-10">عبدالرحمن عطيه • مصمم جرافيك</span><span class="mx-10">عبدالرحمن عطيه • مصمم جرافيك</span><span class="mx-10">عبدالرحمن عطيه • مصمم جرافيك</span></div></div>
 <main id="home">
 <section class="max-w-7xl mx-auto px-4 py-16 sm:py-24"><div class="grid lg:grid-cols-12 gap-12 items-center"><div class="lg:col-span-7 text-center lg:text-right"><span id="badge" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-700 dark:bg-blue-950/40 dark:text-blue-300 border border-blue-100 dark:border-blue-900 text-sm font-bold"><i class="fa-solid fa-circle text-emerald-500 text-[8px]"></i></span><h1 class="mt-6 text-4xl sm:text-6xl font-black leading-tight"><span>مرحباً، أنا</span><br><span id="heroName" class="gradient"></span></h1><h2 id="heroTitle" class="mt-5 text-xl sm:text-2xl font-bold text-slate-600 dark:text-slate-300"></h2><p id="heroBio" class="mt-5 max-w-2xl mx-auto lg:mx-0 text-slate-600 dark:text-slate-400 leading-8"></p><div class="mt-7 flex flex-wrap justify-center lg:justify-start gap-3"><a id="heroWhatsapp" target="_blank" class="px-6 py-3 rounded-xl bg-emerald-600 text-white font-bold hover:bg-emerald-700"><i class="fa-brands fa-whatsapp ml-2"></i>تواصل معي عبر الواتساب</a><a href="#portfolio" class="px-6 py-3 rounded-xl glass font-bold">استعرض أعمالي</a></div></div><div class="lg:col-span-5 flex justify-center"><div class="relative w-72 h-72 sm:w-80 sm:h-80"><div class="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-blue-600 to-purple-600 rotate-6 blur-md opacity-50"></div><div class="relative w-full h-full rounded-[2rem] overflow-hidden border-4 border-white dark:border-slate-800 shadow-2xl bg-slate-200 dark:bg-slate-900"><img id="profileImage" loading="eager" decoding="async" class="w-full h-full object-cover object-top" src="1001778764.jpg" alt="profile"></div></div></div></div></section>
@@ -92,7 +90,7 @@ const $=id=>document.getElementById(id); const esc=s=>String(s??'').replace(/[&<
 const txt=(ar,en)=>currentLang==='en'?(en||ar):ar; const fieldB=(id,label,ar,en='')=>`<div class="grid sm:grid-cols-2 gap-2"><label class="block"><span class="block text-xs font-bold text-slate-500 mb-1">${label} — عربي</span><input id="${id}" value="${esc(ar)}" class="w-full p-2.5 rounded-xl border"></label><label class="block"><span class="block text-xs font-bold text-slate-500 mb-1">${label} — English</span><input id="${id}En" value="${esc(en)}" class="w-full p-2.5 rounded-xl border" dir="ltr"></label></div>`;
 
 function toast(msg,ok=true){const d=document.createElement('div');d.className='toast px-4 py-3 rounded-xl shadow-xl text-sm font-bold '+(ok?'bg-emerald-600':'bg-rose-600')+' text-white';d.textContent=msg;$('toastHost').appendChild(d);setTimeout(()=>d.remove(),3200)}
-function actionFx(x=window.innerWidth/2,y=window.innerHeight/2){const host=document.createElement('div');host.className='action-fx';for(let i=0;i<10;i++){const o=document.createElement('span');o.className='action-orb';o.style.left=x+'px';o.style.top=y+'px';const a=Math.PI*2*i/10,d=40+Math.random()*90;o.style.setProperty('--tx',Math.cos(a)*d+'px');o.style.setProperty('--ty',Math.sin(a)*d+'px');host.appendChild(o)}document.body.appendChild(host);setTimeout(()=>host.remove(),850)} function show(id){const el=$(id);if(el)el.classList.add('show')} function hide(id){const el=$(id);if(el)el.classList.remove('show');if(!document.querySelector('.modal.show')&&!$('adminDrawer')?.classList.contains('show'))document.body.style.overflow=''}
+function actionFx(x=window.innerWidth/2,y=window.innerHeight/2){const host=document.createElement('div');host.className='action-fx';for(let i=0;i<10;i++){const o=document.createElement('span');o.className='action-orb';o.style.left=x+'px';o.style.top=y+'px';const a=Math.PI*2*i/10,d=40+Math.random()*90;o.style.setProperty('--tx',Math.cos(a)*d+'px');o.style.setProperty('--ty',Math.sin(a)*d+'px');host.appendChild(o)}document.body.appendChild(host);setTimeout(()=>host.remove(),850)} function show(id){const el=$(id);el.classList.add('show');actionFx()} function hide(id){$(id).classList.remove('show')}
 function render(){
 state.ui=state.ui||{};const ui=state.ui;document.querySelectorAll('nav a').forEach((a,i)=>{const k=['navHome','navAbout','navServices','navPortfolio','navExperience','navReviews','navContact'][i%7];if(k&&ui[k])a.textContent=txt(ui[k],ui['en'+k.charAt(0).toUpperCase()+k.slice(1)]||'')});const ids=[['uiPortfolioHeading','portfolio',ui.portfolioHeading,ui.enPortfolioHeading],['uiReviewsHeading','reviews',ui.reviewsHeading,ui.enReviewsHeading],['uiServicesHeading','services',ui.servicesHeading,ui.enServicesHeading],['uiExperienceHeading','experience',ui.experienceHeading,ui.enExperienceHeading],['uiContactHeading','contact',ui.contactHeading,ui.enContactHeading]];ids.forEach(([_,sec,ar,en])=>{const h=document.querySelector('#'+sec+' h2');if(h&&ar)h.textContent=txt(ar,en)});const ri=document.querySelector('#reviews .text-center p');if(ri&&ui.reviewsIntro)ri.textContent=txt(ui.reviewsIntro,ui.enReviewsIntro);$('headerLogo').src=state.logo||defaults.logo;$('profileImage').src=state.profileImg||defaults.profileImg;$('heroName').textContent=txt(state.name,state.enName);$('heroTitle').textContent=txt(state.title,state.enTitle);$('badge').innerHTML='<i class="fa-solid fa-circle text-emerald-500 text-[8px]"></i> '+esc(txt(state.badge,state.enBadge));$('heroBio').textContent=txt(state.bio,state.enBio);$('aboutHeading').textContent=txt(state.aboutHeading,state.enAboutHeading);$('aboutDetail').textContent=txt(state.aboutDetail,state.enAboutDetail);$('footerName').textContent=state.name;$('heroWhatsapp').href='https://wa.me/'+String(state.whatsapp||'').replace(/\D/g,'');
 $('skillsList').innerHTML=state.skills.map(s=>`<div class="glass rounded-2xl p-5"><div class="flex justify-between gap-3 font-bold text-sm"><span>${esc(s.name)}</span><span class="text-blue-600">${s.percent}%</span></div><div class="mt-3 h-2.5 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden"><div class="h-full bg-gradient-to-r from-blue-600 to-cyan-400 rounded-full" style="width:${Math.max(0,Math.min(100,s.percent))}%"></div></div></div>`).join('');
@@ -107,20 +105,21 @@ if(localStorage.getItem('theme')==='light')document.documentElement.classList.re
 $('mobileBtn').onclick=()=>$('mobileNav').classList.toggle('hidden');
 $('clientBtn').onclick=()=>{show('clientModal')};
 function openAdminLogin(){
-  try{
-    if(isAdmin&&auth.currentUser){openAdmin();return}
-    const m=$('adminLogin');
-    if(!m)return;
-    m.classList.add('show');
-    m.style.display='flex';
-    m.style.pointerEvents='auto';
-    m.style.visibility='visible';
-    m.style.opacity='1';
-    m.style.zIndex='99999';
-    document.body.style.overflow='hidden';
-    setTimeout(()=>{$('adminPassword')?.focus();},80);
-  }catch(err){console.error('admin open',err)}
+  const m=$('adminLogin');
+  if(!m)return;
+  m.classList.add('show');
+  m.style.removeProperty('display');
+  m.style.removeProperty('pointer-events');
+  document.body.style.overflow='hidden';
+  setTimeout(()=>{$('adminPassword')?.focus();},60);
 }
+function bindAdminEntry(el){
+  if(!el)return;
+  el.onclick=(e)=>{e.preventDefault();e.stopPropagation();openAdminLogin()};
+}
+bindAdminEntry($('adminBtn'));
+bindAdminEntry($('adminSideEntryBtn'));
+bindAdminEntry($('adminSideMobileBtn'));
 window.__openAdminClick=openAdminLogin;
 function closeModalElement(el){
   if(!el)return;
@@ -134,7 +133,7 @@ function closeModalElement(el){
     const p=$('adminPassword'); if(p)p.value='';
     const msg=$('adminLoginMsg'); if(msg)msg.textContent='';
   }
-  if(!document.querySelector('.modal.show') && !$('adminDrawer')?.classList.contains('show'))document.body.style.overflow='';
+  if(!document.querySelector('.modal.show') && !$('adminDrawer').classList.contains('show'))document.body.style.overflow='';
 }
 document.querySelectorAll('.closeModal').forEach(b=>b.addEventListener('click',(e)=>{e.preventDefault();e.stopPropagation();closeModalElement(b.closest('.modal'));}));
 
@@ -162,8 +161,8 @@ function openCategoryPage(id){const c=state.categories.find(x=>x.id===id);if(!c)
 
 $('adminLoginBtn').onclick=async()=>{const pass=$('adminPassword').value.trim();if(!pass)return toast('اكتب كلمة المرور',false);try{const cred=await signInWithEmailAndPassword(auth,ADMIN_EMAIL,pass);isAdmin=!!(cred?.user&&cred.user.email?.toLowerCase()===ADMIN_EMAIL.toLowerCase());if('Notification' in window&&Notification.permission==='default'){Notification.requestPermission().catch(()=>{})}await ensureSiteDocument();startAdminStreams();hide('adminLogin');openAdmin();toast('تم الدخول للوحة التحكم — السحابة متصلة')}catch(e){console.error(e);$('adminLoginMsg').textContent=authMsg(e)+' — تأكد من وجود حساب الإدارة وتفعيل Firebase Authentication وFirestore.';showCloudError(e)}};
 $('adminLogout').onclick=async()=>{isAdmin=false;adminUnsubs.forEach(fn=>fn&&fn());adminUnsubs=[];try{await signOut(auth)}catch(e){console.error(e)}hideAdmin();toast('تم تسجيل الخروج من لوحة التحكم')};$('closeAdmin').onclick=()=>hideAdmin();
-function openAdmin(){try{activeTab='dashboard';$('adminDrawer').classList.add('show');document.body.style.overflow='hidden';renderAdmin();setCloudStatus('☁️ متصل بالسحابة • التحديثات لحظية','ok')}catch(e){console.error('openAdmin/renderAdmin',e);$('adminDrawer').classList.add('show');document.body.style.overflow='hidden';setCloudStatus('⚠️ لوحة التحكم فتحت لكن حدث خطأ في جزء من المحتوى','error')}}function hideAdmin(){const d=$('adminDrawer');d.classList.remove('show');document.body.style.overflow='';}
-const tabs=[['dashboard','لوحة التحكم'],['general','الموقع'],['content','نصوص الموقع'],['skills','المهارات'],['services','الخدمات'],['experience','الخبرة'],['reviews','الآراء'],['contacts','طلبات التواصل'],['users','الأشخاص المسجلون'],['messages','المحادثات'],['security','الأمان'],['portfolio','الأعمال والأقسام']];
+function openAdmin(){const d=$('adminDrawer');if(!d)return;d.classList.add('show');document.body.style.overflow='hidden';setCloudStatus('☁️ جاري تجهيز لوحة التحكم…','ok');requestAnimationFrame(()=>{try{activeTab='dashboard';renderAdmin();setCloudStatus('☁️ متصل بالسحابة • التحديثات لحظية','ok')}catch(e){console.error('openAdmin/renderAdmin',e);setCloudStatus('⚠️ اللوحة فتحت لكن حدث خطأ في المحتوى','error')}})}function hideAdmin(){const d=$('adminDrawer');if(d)d.classList.remove('show');document.body.style.overflow='';}
+const tabs=[['dashboard','لوحة التحكم'],['general','الموقع'],['content','نصوص الموقع'],['skills','المهارات'],['services','الخدمات'],['portfolio','الأعمال والأقسام'],['experience','الخبرة'],['reviews','الآراء'],['contacts','طلبات التواصل'],['users','الأشخاص المسجلون'],['messages','المحادثات'],['security','الأمان']];
 function renderAdmin(){ $('adminTabs').innerHTML=tabs.map(t=>`<button class="admin-tab w-full text-right px-3 py-2.5 rounded-xl font-bold ${activeTab===t[0]?'active':''}" data-tab="${t[0]}"><i class="fa-solid ${icon(t[0])} ml-2"></i>${t[1]}${t[0]==='messages'&&adminUnreadMessages?` <span class="notify-dot float-left">${adminUnreadMessages>99?'99+':adminUnreadMessages}</span>`:''}</button>`).join('');$('adminContent').innerHTML=adminView(activeTab);document.querySelectorAll('.admin-tab').forEach(b=>b.onclick=()=>{activeTab=b.dataset.tab;renderAdmin()});document.querySelectorAll('[data-tab-jump]').forEach(b=>b.onclick=()=>{activeTab=b.dataset.tabJump;renderAdmin()});bindAdmin();translatePage()}
 function icon(t){return {dashboard:'fa-gauge-high',general:'fa-pen',skills:'fa-chart-column',services:'fa-layer-group',portfolio:'fa-images',experience:'fa-briefcase',reviews:'fa-star',contacts:'fa-envelope',users:'fa-users',messages:'fa-comments',security:'fa-shield-halved'}[t]}
 const field=(id,label,val,type='text')=>`<label class="block"><span class="block text-xs font-bold text-slate-500 mb-1">${label}</span>${type==='textarea'?`<textarea id="${id}" rows="4" class="w-full p-3 rounded-xl border">${esc(val)}</textarea>`:`<input id="${id}" type="${type}" value="${esc(val)}" class="w-full p-3 rounded-xl border">`}</label>`;
@@ -282,7 +281,7 @@ function startSiteSync(){
 function loadSite(){ startSiteSync(); }
 
 let adminUnsubs=[];
-function startAdminStreams(){adminUnsubs.forEach(fn=>fn&&fn());adminUnsubs=[];adminUnsubs.push(onSnapshot(collection(db,'contacts'),s=>{contacts=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.createdAt?.seconds||0)-(a.createdAt?.seconds||0));if(activeTab==='contacts')renderAdmin()}));adminUnsubs.push(onSnapshot(collection(db,'users'),s=>{users=s.docs.map(d=>({id:d.id,...d.data()}));if(activeTab==='users')renderAdmin()}));adminUnsubs.push(onSnapshot(collection(db,'messages'),s=>{messages=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.createdAt?.seconds||0)-(a.createdAt?.seconds||0));adminUnreadMessages=messages.filter(m=>!m.fromAdmin&&!m.readByAdmin).length;updateChatBadges();const newest=messages.find(m=>!m.fromAdmin&&!m.readByAdmin);if(newest&&!previousAdminMessageIds.has(newest.id)&&previousAdminMessageIds.size)notifyUser('رسالة جديدة من عميل',newest.text);previousAdminMessageIds=new Set(messages.map(m=>m.id));if(activeTab==='messages')renderAdmin();}));adminUnsubs.push(onSnapshot(collection(db,'projectImages'),s=>{projectImages=s.docs.map(d=>({id:d.id,...d.data()}));if(activeTab==='portfolio')renderAdmin() }));adminUnsubs.push(onSnapshot(collection(db,'reviews'),s=>{adminReviews=s.docs.map(d=>({id:d.id,...d.data()}));if(activeTab==='reviews')renderAdmin()}));}
+function startAdminStreams(){adminUnsubs.forEach(fn=>fn&&fn());adminUnsubs=[];adminUnsubs.push(onSnapshot(collection(db,'contacts'),s=>{contacts=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.createdAt?.seconds||0)-(a.createdAt?.seconds||0));if(activeTab==='contacts')renderAdmin()}));adminUnsubs.push(onSnapshot(collection(db,'users'),s=>{users=s.docs.map(d=>({id:d.id,...d.data()}));if(activeTab==='users')renderAdmin()}));adminUnsubs.push(onSnapshot(collection(db,'messages'),s=>{messages=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.createdAt?.seconds||0)-(a.createdAt?.seconds||0));adminUnreadMessages=messages.filter(m=>!m.fromAdmin&&!m.readByAdmin).length;updateChatBadges();const newest=messages.find(m=>!m.fromAdmin&&!m.readByAdmin);if(newest&&!previousAdminMessageIds.has(newest.id)&&previousAdminMessageIds.size)notifyUser('رسالة جديدة من عميل',newest.text);previousAdminMessageIds=new Set(messages.map(m=>m.id));if(activeTab==='messages')renderAdmin();}));adminUnsubs.push(onSnapshot(collection(db,'reviews'),s=>{adminReviews=s.docs.map(d=>({id:d.id,...d.data()}));if(activeTab==='reviews')renderAdmin()}));}
 let chatUnsub=null;
 function updateChatBadges(){const adminTab=document.querySelector('[data-tab="messages"]');if(adminTab){adminTab.querySelector('.notify-dot')?.remove();if(adminUnreadMessages)adminTab.insertAdjacentHTML('beforeend',`<span class="notify-dot float-left">${adminUnreadMessages>99?'99+':adminUnreadMessages}</span>`)}const toggle=$('chatToggle');if(toggle){toggle.querySelector('.notify-dot')?.remove();if(clientUnreadMessages){toggle.classList.add('relative');toggle.insertAdjacentHTML('beforeend',`<span class="notify-dot absolute -top-1 -right-1">${clientUnreadMessages>99?'99+':clientUnreadMessages}</span>`)}}}
 function notifyUser(title,body){try{if('Notification' in window&&Notification.permission==='granted')new Notification(title,{body})}catch(e){}toast(body)}
@@ -334,56 +333,5 @@ function setLanguage(lang){
 $('langBtn').onclick=()=>setLanguage(currentLang==='ar'?'en':'ar');
 window.addEventListener('siteCloudSynced',()=>{setTimeout(translatePage,80)});
 loadSite();
-</script>
-<script>
-/* DIRECT ADMIN LAUNCHER: completely independent of portfolio/gallery navigation. */
-(function(){
-  function openDirect(){
-    var m=document.getElementById('adminLogin');
-    if(!m)return false;
-    m.classList.add('show');
-    m.style.setProperty('display','flex','important');
-    m.style.setProperty('pointer-events','auto','important');
-    m.style.setProperty('visibility','visible','important');
-    m.style.setProperty('opacity','1','important');
-    m.style.setProperty('z-index','99999','important');
-    document.body.style.overflow='hidden';
-    var p=document.getElementById('adminPassword');
-    if(p)setTimeout(function(){p.focus();},50);
-    return true;
-  }
-  function closeDirect(){
-    var m=document.getElementById('adminLogin');
-    if(!m)return;
-    m.classList.remove('show');
-    m.style.removeProperty('display');
-    m.style.removeProperty('pointer-events');
-    m.style.removeProperty('visibility');
-    m.style.removeProperty('opacity');
-    m.style.removeProperty('z-index');
-    document.body.style.overflow='';
-  }
-  window.openAdminDirect=openDirect;
-  window.closeAdminDirect=closeDirect;
-
-  document.addEventListener('click',function(e){
-    var b=e.target.closest && e.target.closest('#adminBtn,#adminNavBtn,#adminMobileBtn,#siteAdminSidebarBtn,[data-open-admin]');
-    if(!b)return;
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    var nav=document.getElementById('mobileNav');
-    if(nav)nav.classList.add('hidden');
-    openDirect();
-  },true);
-
-  document.addEventListener('click',function(e){
-    var x=e.target.closest && e.target.closest('#adminLogin .closeModal,#closeAdmin');
-    if(!x)return;
-    if(x.id==='closeAdmin')return;
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    closeDirect();
-  },true);
-})();
 </script>
 </body></html>
