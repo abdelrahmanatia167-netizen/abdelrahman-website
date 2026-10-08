@@ -27,16 +27,16 @@ input,textarea,select{outline:none}.dark input,.dark textarea,.dark select{backg
 .gallery-thumb{transition:transform .4s cubic-bezier(.2,.8,.2,1),filter .4s ease}
 .gallery-thumb:hover{transform:scale(1.045);filter:saturate(1.08)}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
-#adminBtn{pointer-events:auto!important;position:relative;z-index:200!important}
+#adminBtn{pointer-events:auto!important;position:relative!important;z-index:9999!important;display:flex!important;align-items:center!important;justify-content:center!important}
 #adminBtn i{pointer-events:none}
 </style>
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 min-h-screen">
 <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none"><div class="absolute -top-32 -left-32 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div><div class="absolute top-1/3 -right-32 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div><div class="absolute bottom-0 left-1/3 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div><div class="bg-motion"><span></span><span></span><span></span><span></span></div></div>
-<header class="sticky top-0 z-40 border-b border-slate-200/70 dark:border-slate-800/80 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl"><div class="max-w-7xl mx-auto px-4"><div class="h-16 flex items-center justify-between gap-3">
+<header class="sticky top-0 z-[9990] border-b border-slate-200/70 dark:border-slate-800/80 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl"><div class="max-w-7xl mx-auto px-4"><div class="h-16 flex items-center justify-between gap-3">
 <a href="#home" class="shrink-0"><div class="w-11 h-11 sm:w-12 sm:h-12 rounded-full p-[2px] bg-gradient-to-br from-blue-500 via-purple-500 to-cyan-400 shadow-lg"><div class="w-full h-full rounded-full overflow-hidden bg-white dark:bg-slate-900"><img id="headerLogo" src="1001809140.jpg" loading="eager" decoding="async" class="w-full h-full object-cover" alt="Logo"></div></div></a>
 <nav class="hidden md:flex items-center gap-1 text-sm font-semibold"><a class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#home">الرئيسية</a><a class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#about">عني</a><a class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#services">خدماتي</a><a class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#portfolio">أعمالي</a><a class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#experience">الخبرة</a><a class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#reviews">الآراء</a><a class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#contact">تواصل</a></nav>
-<div class="flex items-center gap-2"><button id="langBtn" class="min-w-10 h-10 px-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 font-bold text-xs" title="English / عربي">EN</button><button id="themeBtn" class="w-10 h-10 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800"><i class="fa-solid fa-sun dark:hidden"></i><i class="fa-solid fa-moon hidden dark:inline"></i></button><button id="clientBtn" class="w-10 h-10 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800" title="حسابي"><i class="fa-solid fa-user"></i></button><button id="adminBtn" type="button" class="relative z-[200] w-10 h-10 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 active:scale-95 transition cursor-pointer" title="الإعدادات / لوحة التحكم" aria-label="الإعدادات / لوحة التحكم" onclick="event.preventDefault();event.stopPropagation();var m=document.getElementById('adminLogin');if(m){m.classList.add('show');m.style.display='flex';m.style.pointerEvents='auto';}"><i class="fa-solid fa-gear"></i></button><button id="mobileBtn" class="md:hidden w-10 h-10 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800"><i class="fa-solid fa-bars"></i></button></div></div></div>
+<div class="flex items-center gap-2"><button id="langBtn" class="min-w-10 h-10 px-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 font-bold text-xs" title="English / عربي">EN</button><button id="themeBtn" class="w-10 h-10 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800"><i class="fa-solid fa-sun dark:hidden"></i><i class="fa-solid fa-moon hidden dark:inline"></i></button><button id="clientBtn" class="w-10 h-10 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800" title="حسابي"><i class="fa-solid fa-user"></i></button><button id="adminBtn" type="button" class="relative z-[9999] w-10 h-10 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 active:scale-95 transition cursor-pointer flex items-center justify-center" title="الإعدادات / لوحة التحكم" aria-label="الإعدادات / لوحة التحكم"><i class="fa-solid fa-gear pointer-events-none"></i></button><button id="mobileBtn" class="md:hidden w-10 h-10 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800"><i class="fa-solid fa-bars"></i></button></div></div></div>
 <div id="mobileNav" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 p-3 space-y-1"><a class="block p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#home">الرئيسية</a><a class="block p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#about">عني</a><a class="block p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#services">خدماتي</a><a class="block p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#portfolio">أعمالي</a><a class="block p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#experience">الخبرة</a><a class="block p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#reviews">الآراء</a><a class="block p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#contact">تواصل</a></div></header>
 <div class="ticker bg-slate-900 text-white dark:bg-black py-2 text-xs sm:text-sm font-bold"><div class="ticker-track"><span class="mx-10">عبدالرحمن عطيه • مصمم جرافيك</span><span class="mx-10">عبدالرحمن عطيه • مصمم جرافيك</span><span class="mx-10">عبدالرحمن عطيه • مصمم جرافيك</span><span class="mx-10">عبدالرحمن عطيه • مصمم جرافيك</span><span class="mx-10">عبدالرحمن عطيه • مصمم جرافيك</span><span class="mx-10">عبدالرحمن عطيه • مصمم جرافيك</span></div></div>
 <main id="home">
@@ -95,7 +95,40 @@ $('visualStatsGrid').innerHTML=[{label:'المشاريع',value:state.projects.l
 $('themeBtn').onclick=()=>{document.documentElement.classList.toggle('dark');state.theme=document.documentElement.classList.contains('dark')?'dark':'light';localStorage.setItem('theme',state.theme)};
 if(localStorage.getItem('theme')==='light')document.documentElement.classList.remove('dark');
 $('mobileBtn').onclick=()=>$('mobileNav').classList.toggle('hidden');
-$('clientBtn').onclick=()=>{show('clientModal')};window.__openAdminClick=(e)=>{try{e?.preventDefault?.();e?.stopPropagation?.();const m=$('adminLogin');if(isAdmin&&auth.currentUser){openAdmin();return}if(m){m.classList.add('show');m.style.display='flex';m.style.pointerEvents='auto';setTimeout(()=>$('adminPassword')?.focus(),80)}}catch(err){console.error('admin button',err);const m=document.getElementById('adminLogin');if(m){m.classList.add('show');m.style.display='flex'}}};document.querySelectorAll('.closeModal').forEach(b=>b.onclick=()=>{b.closest('.modal')?.classList.remove('show')});
+$('clientBtn').onclick=()=>{show('clientModal')};
+function openAdminLogin(){
+  try{
+    if(isAdmin&&auth.currentUser){openAdmin();return}
+    const m=$('adminLogin');
+    if(!m)return;
+    m.classList.add('show');
+    m.style.display='flex';
+    m.style.pointerEvents='auto';
+    m.style.visibility='visible';
+    m.style.opacity='1';
+    m.style.zIndex='99999';
+    document.body.style.overflow='hidden';
+    setTimeout(()=>{$('adminPassword')?.focus();},80);
+  }catch(err){console.error('admin open',err)}
+}
+$('adminBtn').onclick=(e)=>{e.preventDefault();e.stopPropagation();openAdminLogin()};
+window.__openAdminClick=openAdminLogin;
+function closeModalElement(el){
+  if(!el)return;
+  el.classList.remove('show');
+  el.style.removeProperty('display');
+  el.style.removeProperty('pointer-events');
+  el.style.removeProperty('visibility');
+  el.style.removeProperty('opacity');
+  el.style.removeProperty('z-index');
+  if(el.id==='adminLogin'){
+    const p=$('adminPassword'); if(p)p.value='';
+    const msg=$('adminLoginMsg'); if(msg)msg.textContent='';
+  }
+  if(!document.querySelector('.modal.show') && !$('adminDrawer').classList.contains('show'))document.body.style.overflow='';
+}
+document.querySelectorAll('.closeModal').forEach(b=>b.addEventListener('click',(e)=>{e.preventDefault();e.stopPropagation();closeModalElement(b.closest('.modal'));}));
+
 const norm=s=>String(s||'').trim().toLowerCase().replace(/\s+/g,' ');
 const phoneNorm=s=>String(s||'').replace(/\D/g,'');
 const loginIndexId=(kind,value)=>kind+'_'+btoa(unescape(encodeURIComponent(norm(value)))).replace(/[^a-zA-Z0-9_-]/g,'_');
@@ -119,8 +152,8 @@ async function deleteProjectImage(id){if(!isAdmin)return;try{const snap=await ge
 function openCategoryPage(id){const c=state.categories.find(x=>x.id===id);if(!c)return;const list=state.projects.filter(p=>p.category===id);$('categoryPageTitle').textContent=txt(c.name,c.enName);$('categoryPageDesc').textContent=txt(c.description,c.enDescription)||'استعرض مجموعة من الأعمال الخاصة بهذا التخصص.';$('categoryPageGrid').innerHTML=list.map(p=>{const i=state.projects.indexOf(p);return `<article class="portfolio-card glass rounded-3xl overflow-hidden group"><div class="p-6"><div class="portfolio-cover rounded-2xl mb-5">${p.img?`<img src="${esc(p.img)}" loading="lazy" class="w-full h-full object-cover" alt="">`:`<div class="portfolio-empty w-full h-full flex items-center justify-center text-blue-600 text-3xl"><i class="fa-solid fa-folder-open"></i></div>`}</div><h4 class="font-black text-lg">${esc(txt(p.title,p.enTitle))}</h4><p class="text-sm text-slate-500 mt-2 leading-6">${esc(txt(p.desc,p.enDesc))}</p><div class="flex gap-2 mt-5"><button class="projectOpen flex-1 px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 font-bold text-sm" data-id="${i}">عرض التفاصيل</button><button class="projectMore flex-1 px-3 py-2 rounded-xl bg-blue-600 text-white font-bold text-sm" data-id="${i}">فتح المعرض</button></div></div></article>`}).join('')||'<div class="sm:col-span-2 lg:col-span-3 text-center py-12 text-slate-500">لا توجد أعمال مضافة لهذا القسم حتى الآن.</div>';translatePage();show('categoryPage')}
 
 $('adminLoginBtn').onclick=async()=>{const pass=$('adminPassword').value.trim();if(!pass)return toast('اكتب كلمة المرور',false);try{const cred=await signInWithEmailAndPassword(auth,ADMIN_EMAIL,pass);isAdmin=!!(cred?.user&&cred.user.email?.toLowerCase()===ADMIN_EMAIL.toLowerCase());if('Notification' in window&&Notification.permission==='default'){Notification.requestPermission().catch(()=>{})}await ensureSiteDocument();startAdminStreams();hide('adminLogin');openAdmin();toast('تم الدخول للوحة التحكم — السحابة متصلة')}catch(e){console.error(e);$('adminLoginMsg').textContent=authMsg(e)+' — تأكد من وجود حساب الإدارة وتفعيل Firebase Authentication وFirestore.';showCloudError(e)}};
-$('adminLogout').onclick=async()=>{isAdmin=false;adminUnsubs.forEach(fn=>fn&&fn());adminUnsubs=[];await signOut(auth);hideAdmin()};$('closeAdmin').onclick=hideAdmin;
-function openAdmin(){try{$('adminDrawer').classList.add('show');renderAdmin();setCloudStatus('☁️ متصل بالسحابة • التحديثات لحظية','ok')}catch(e){console.error('openAdmin/renderAdmin',e);$('adminDrawer').classList.add('show');setCloudStatus('⚠️ لوحة التحكم فتحت لكن حدث خطأ في جزء من المحتوى','error')}}function hideAdmin(){$('adminDrawer').classList.remove('show')}
+$('adminLogout').onclick=async()=>{isAdmin=false;adminUnsubs.forEach(fn=>fn&&fn());adminUnsubs=[];try{await signOut(auth)}catch(e){console.error(e)}hideAdmin();toast('تم تسجيل الخروج من لوحة التحكم')};$('closeAdmin').onclick=()=>hideAdmin();
+function openAdmin(){try{$('adminDrawer').classList.add('show');renderAdmin();setCloudStatus('☁️ متصل بالسحابة • التحديثات لحظية','ok')}catch(e){console.error('openAdmin/renderAdmin',e);$('adminDrawer').classList.add('show');setCloudStatus('⚠️ لوحة التحكم فتحت لكن حدث خطأ في جزء من المحتوى','error')}}function hideAdmin(){const d=$('adminDrawer');d.classList.remove('show');document.body.style.overflow='';}
 const tabs=[['general','الموقع'],['content','نصوص الموقع'],['skills','المهارات'],['services','الخدمات'],['portfolio','الأعمال والأقسام'],['experience','الخبرة'],['reviews','الآراء'],['contacts','طلبات التواصل'],['users','الأشخاص المسجلون'],['messages','المحادثات'],['security','الأمان']];
 function renderAdmin(){ $('adminTabs').innerHTML=tabs.map(t=>`<button class="admin-tab w-full text-right px-3 py-2.5 rounded-xl font-bold ${activeTab===t[0]?'active':''}" data-tab="${t[0]}"><i class="fa-solid ${icon(t[0])} ml-2"></i>${t[1]}${t[0]==='messages'&&adminUnreadMessages?` <span class="notify-dot float-left">${adminUnreadMessages>99?'99+':adminUnreadMessages}</span>`:''}</button>`).join('');$('adminContent').innerHTML=adminView(activeTab);document.querySelectorAll('.admin-tab').forEach(b=>b.onclick=()=>{activeTab=b.dataset.tab;renderAdmin()});bindAdmin();translatePage()}
 function icon(t){return {general:'fa-pen',skills:'fa-chart-column',services:'fa-layer-group',portfolio:'fa-images',experience:'fa-briefcase',reviews:'fa-star',contacts:'fa-envelope',users:'fa-users',messages:'fa-comments',security:'fa-shield-halved'}[t]}
@@ -294,27 +327,15 @@ window.addEventListener('siteCloudSynced',()=>{setTimeout(translatePage,80)});
 loadSite();
 </script><script>
 (function(){
-  function openAdminNow(e){
-    if(e){e.preventDefault();e.stopImmediatePropagation();}
-    var m=document.getElementById('adminLogin');
-    if(!m) return;
-    m.classList.add('show');
-    m.style.setProperty('display','flex','important');
-    m.style.setProperty('pointer-events','auto','important');
-    m.style.setProperty('visibility','visible','important');
-    m.style.setProperty('opacity','1','important');
-    m.style.setProperty('z-index','99999','important');
-    document.body.style.overflow='hidden';
-    var p=document.getElementById('adminPassword');
-    if(p) setTimeout(function(){p.focus();},100);
-  }
+  // Final safety net: the admin button is a real button and opens independently.
   function bind(){
     var b=document.getElementById('adminBtn');
-    if(!b) return setTimeout(bind,50);
-    b.onclick=openAdminNow;
-    b.addEventListener('pointerup',openAdminNow,true);
-    b.addEventListener('touchend',openAdminNow,{capture:true,passive:false});
-    window.__openAdminClick=openAdminNow;
+    if(!b)return;
+    b.onclick=function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      if(typeof window.__openAdminClick==='function') window.__openAdminClick();
+    };
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',bind); else bind();
 })();
