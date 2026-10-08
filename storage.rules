@@ -1,16 +1,16 @@
 rules_version = '2';
 service firebase.storage {
   match /b/{bucket}/o {
-    function isAdmin() {
-      return request.auth != null && request.auth.token.email == 'abdelrahmanatia167@gmail.com';
-    }
+    function isAdmin() { return request.auth != null && request.auth.token.email == 'abdelrahmanatia167@gmail.com'; }
     match /site/{allPaths=**} {
       allow read: if true;
-      allow write: if isAdmin();
+      allow create, update: if isAdmin() && request.resource.size < 20 * 1024 * 1024 && request.resource.contentType.matches('image/.*');
+      allow delete: if isAdmin();
     }
     match /projects/{allPaths=**} {
       allow read: if true;
-      allow write: if isAdmin();
+      allow create, update: if isAdmin() && request.resource.size < 20 * 1024 * 1024 && request.resource.contentType.matches('image/.*');
+      allow delete: if isAdmin();
     }
   }
 }

@@ -2,16 +2,12 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     function signedIn() { return request.auth != null; }
-    function isAdmin() {
-      return signedIn() && request.auth.token.email != null
-        && request.auth.token.email == 'abdelrahmanatia167@gmail.com';
-    }
+    function isAdmin() { return signedIn() && request.auth.token.email == 'abdelrahmanatia167@gmail.com'; }
 
     match /artifacts/abdelrahman-website/public/data/config/siteState {
       allow read: if true;
       allow create, update, delete: if isAdmin();
     }
-
     match /site/content {
       allow read: if true;
       allow create, update, delete: if isAdmin();
@@ -49,12 +45,14 @@ service cloud.firestore {
       allow delete: if isAdmin();
     }
 
+    // WhatsApp-style 1-to-1 client/admin conversations.
     match /messages/{id} {
       allow create: if (signedIn() && request.resource.data.uid == request.auth.uid && request.resource.data.fromAdmin == false)
                     || (isAdmin() && request.resource.data.uid is string && request.resource.data.fromAdmin == true);
       allow read: if isAdmin() || (signedIn() && resource.data.uid == request.auth.uid);
       allow update: if isAdmin()
-                    || (signedIn() && resource.data.uid == request.auth.uid
+                    || (signedIn()
+                        && resource.data.uid == request.auth.uid
                         && resource.data.fromAdmin == true
                         && request.resource.data.uid == resource.data.uid
                         && request.resource.data.text == resource.data.text
@@ -69,8 +67,6 @@ service cloud.firestore {
       allow create, update, delete: if isAdmin();
     }
 
-    match /{document=**} {
-      allow read, write: if false;
-    }
+    match /{document=**} { allow read, write: if false; }
   }
 }
