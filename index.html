@@ -1,256 +1,1741 @@
-<!doctype html>
-<html lang="ar" dir="rtl" class="dark">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth dark">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>عبدالرحمن عطيه | مصمم جرافيك</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<script>tailwind.config={darkMode:'class',theme:{extend:{fontFamily:{sans:['Cairo','Tajawal','Arial','sans-serif']}}}}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-<style>
-*{box-sizing:border-box}body{-webkit-user-select:none;user-select:none}input,textarea,select,button{-webkit-user-select:text;user-select:text}img{-webkit-user-drag:none;user-drag:none}html{scroll-behavior:smooth}body{font-family:Cairo,Arial,sans-serif;transition:background .25s,color .25s}.glass{background:rgba(255,255,255,.78);backdrop-filter:blur(14px);border:1px solid rgba(15,23,42,.08)}.dark .glass{background:rgba(15,23,42,.72);border-color:rgba(148,163,184,.13)}
-.gradient{background:linear-gradient(135deg,#2563eb,#7c3aed,#06b6d4);-webkit-background-clip:text;background-clip:text;color:transparent}.ticker{white-space:nowrap;overflow:hidden}.ticker-track{display:inline-flex;min-width:200%;animation:move 18s linear infinite}@keyframes move{from{transform:translateX(0)}to{transform:translateX(50%)}}
-.modal{display:none}.modal.show{display:flex}.drawer{transform:translateX(110%);transition:.3s}.drawer.show{transform:translateX(0)}.toast{animation:toast 3s ease both}@keyframes toast{0%{opacity:0;transform:translateY(10px)}10%,90%{opacity:1;transform:none}100%{opacity:0;transform:translateY(10px)}}
-input,textarea,select{outline:none}.dark input,.dark textarea,.dark select{background:#0f172a;color:#e2e8f0;border-color:#334155}.dark .soft{background:#0f172a}.light-bg{background:#f8fafc}.dark .light-bg{background:#020617}.bg-motion{position:absolute;inset:0;overflow:hidden}.bg-motion span{position:absolute;border:1px solid rgba(37,99,235,.12);border-radius:30%;animation:floatShape 16s ease-in-out infinite}.dark .bg-motion span{border-color:rgba(96,165,250,.13)}.bg-motion span:nth-child(1){width:180px;height:180px;left:7%;top:12%;transform:rotate(18deg)}.bg-motion span:nth-child(2){width:120px;height:120px;right:12%;top:28%;animation-delay:-5s;transform:rotate(45deg)}.bg-motion span:nth-child(3){width:220px;height:220px;right:2%;bottom:4%;animation-delay:-9s;transform:rotate(12deg)}.bg-motion span:nth-child(4){width:90px;height:90px;left:35%;bottom:10%;animation-delay:-12s;transform:rotate(30deg)}@keyframes floatShape{0%,100%{translate:0 0 rotate(0deg);opacity:.35}50%{translate:0 -24px rotate(25deg);opacity:.75}}.admin-tab.active{background:#2563eb;color:#fff}.scrollbar::-webkit-scrollbar{width:7px}.scrollbar::-webkit-scrollbar-thumb{background:#64748b;border-radius:10px}.click-ripple{position:fixed;pointer-events:none;width:18px;height:18px;border:2px solid rgba(37,99,235,.65);border-radius:999px;transform:translate(-50%,-50%) scale(.3);animation:clickBurst .55s ease-out forwards;z-index:9999}.click-spark{position:fixed;pointer-events:none;width:7px;height:7px;border-radius:999px;background:currentColor;transform:translate(-50%,-50%);animation:sparkFly .65s ease-out forwards;z-index:9999}@keyframes clickBurst{to{opacity:0;transform:translate(-50%,-50%) scale(5)}}@keyframes sparkFly{to{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(.15)}}.notify-dot{min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:#ef4444;color:#fff;font-size:10px;line-height:18px;text-align:center;font-weight:900;box-shadow:0 0 0 3px rgba(239,68,68,.12);animation:notifyPulse 1.4s ease-in-out infinite}@keyframes notifyPulse{50%{transform:scale(1.12);box-shadow:0 0 0 7px rgba(239,68,68,0)}}
-.site-en .text-right{text-align:left}.site-en .text-left{text-align:right}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">عبدالرحمن عطيه | مصمم جرافيك ومبدع هويات بصرية</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0284c7',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Tajawal', 'Cairo', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Tajawal', 'Cairo', 'Inter', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        
+        .dark .glass-card {
+            background: rgba(15, 23, 42, 0.75);
+        }
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+            border-radius: 4px;
+        }
+
+        .tab-btn.active {
+            border-color: #3b82f6;
+            color: #3b82f6;
+            background-color: rgba(59, 130, 246, 0.1);
+        }
+
+        /* Language Toggle Button Effects */
+        .lang-switch-btn {
+            background: rgba(59, 130, 246, 0.08);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .lang-switch-btn:hover {
+            background: rgba(59, 130, 246, 0.18);
+            transform: translateY(-1px);
+        }
+
+        /* LTR tweaks */
+        [dir="ltr"] .space-x-reverse > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 0;
+        }
+        [dir="ltr"] .border-r-2 {
+            border-right-width: 0px;
+            border-left-width: 2px;
+            margin-right: 0px;
+            margin-left: 1.5rem;
+        }
+        [dir="ltr"] .relative.pr-8 {
+            padding-right: 0px;
+            padding-left: 2rem;
+        }
+        [dir="ltr"] .absolute.-right-2\.5 {
+            right: auto;
+            left: -0.625rem;
+        }
+    </style>
 </head>
-<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 min-h-screen">
-<div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none"><div class="absolute -top-32 -left-32 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div><div class="absolute top-1/3 -right-32 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div><div class="absolute bottom-0 left-1/3 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div><div class="bg-motion"><span></span><span></span><span></span><span></span></div></div>
-<header class="sticky top-0 z-40 border-b border-slate-200/70 dark:border-slate-800/80 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl"><div class="max-w-7xl mx-auto px-4"><div class="h-16 flex items-center justify-between gap-3">
-<a href="#home" class="shrink-0"><div class="w-11 h-11 sm:w-12 sm:h-12 rounded-full p-[2px] bg-gradient-to-br from-blue-500 via-purple-500 to-cyan-400 shadow-lg"><div class="w-full h-full rounded-full overflow-hidden bg-white dark:bg-slate-900"><img id="headerLogo" src="1001809140.jpg" class="w-full h-full object-cover" alt="Logo"></div></div></a>
-<nav class="hidden md:flex items-center gap-1 text-sm font-semibold"><a class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#home">الرئيسية</a><a class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#about">عني</a><a class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#services">خدماتي</a><a class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#portfolio">أعمالي</a><a class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#experience">الخبرة</a><a class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#reviews">الآراء</a><a class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#contact">تواصل</a></nav>
-<div class="flex items-center gap-2"><button id="langBtn" class="min-w-10 h-10 px-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 font-bold text-xs" title="English / عربي">EN</button><button id="themeBtn" class="w-10 h-10 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800"><i class="fa-solid fa-sun dark:hidden"></i><i class="fa-solid fa-moon hidden dark:inline"></i></button><button id="clientBtn" class="w-10 h-10 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800" title="حسابي"><i class="fa-solid fa-user"></i></button><button id="adminBtn" class="w-10 h-10 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800" title="الإدارة"><i class="fa-solid fa-ellipsis-vertical"></i></button><button id="mobileBtn" class="md:hidden w-10 h-10 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800"><i class="fa-solid fa-bars"></i></button></div></div></div>
-<div id="mobileNav" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 p-3 space-y-1"><a class="block p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#home">الرئيسية</a><a class="block p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#about">عني</a><a class="block p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#services">خدماتي</a><a class="block p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#portfolio">أعمالي</a><a class="block p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#experience">الخبرة</a><a class="block p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#reviews">الآراء</a><a class="block p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="#contact">تواصل</a></div></header>
-<div class="ticker bg-slate-900 text-white dark:bg-black py-2 text-xs sm:text-sm font-bold"><div class="ticker-track"><span class="mx-10">عبدالرحمن عطيه • مصمم جرافيك</span><span class="mx-10">عبدالرحمن عطيه • مصمم جرافيك</span><span class="mx-10">عبدالرحمن عطيه • مصمم جرافيك</span><span class="mx-10">عبدالرحمن عطيه • مصمم جرافيك</span><span class="mx-10">عبدالرحمن عطيه • مصمم جرافيك</span><span class="mx-10">عبدالرحمن عطيه • مصمم جرافيك</span></div></div>
-<main id="home">
-<section class="max-w-7xl mx-auto px-4 py-16 sm:py-24"><div class="grid lg:grid-cols-12 gap-12 items-center"><div class="lg:col-span-7 text-center lg:text-right"><span id="badge" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-700 dark:bg-blue-950/40 dark:text-blue-300 border border-blue-100 dark:border-blue-900 text-sm font-bold"><i class="fa-solid fa-circle text-emerald-500 text-[8px]"></i></span><h1 class="mt-6 text-4xl sm:text-6xl font-black leading-tight"><span>مرحباً، أنا</span><br><span id="heroName" class="gradient"></span></h1><h2 id="heroTitle" class="mt-5 text-xl sm:text-2xl font-bold text-slate-600 dark:text-slate-300"></h2><p id="heroBio" class="mt-5 max-w-2xl mx-auto lg:mx-0 text-slate-600 dark:text-slate-400 leading-8"></p><div class="mt-7 flex flex-wrap justify-center lg:justify-start gap-3"><a id="heroWhatsapp" target="_blank" class="px-6 py-3 rounded-xl bg-emerald-600 text-white font-bold hover:bg-emerald-700"><i class="fa-brands fa-whatsapp ml-2"></i>تواصل معي عبر الواتساب</a><a href="#portfolio" class="px-6 py-3 rounded-xl glass font-bold">استعرض أعمالي</a></div></div><div class="lg:col-span-5 flex justify-center"><div class="relative w-72 h-72 sm:w-80 sm:h-80"><div class="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-blue-600 to-purple-600 rotate-6 blur-md opacity-50"></div><div class="relative w-full h-full rounded-[2rem] overflow-hidden border-4 border-white dark:border-slate-800 shadow-2xl bg-slate-200 dark:bg-slate-900"><img id="profileImage" class="w-full h-full object-cover object-top" src="1001778764.jpg" alt="profile"></div></div></div></div></section>
-<section id="about" class="py-20 bg-slate-100/70 dark:bg-slate-900/40"><div class="max-w-7xl mx-auto px-4"><div class="text-center mb-12"><h2 class="text-3xl sm:text-4xl font-black">عني وعن مسيرتي</h2><div class="w-16 h-1 bg-blue-600 rounded-full mx-auto mt-4"></div></div><div class="grid lg:grid-cols-2 gap-10 items-start"><div class="glass rounded-3xl p-7"><h3 id="aboutHeading" class="text-2xl font-black mb-4"></h3><p id="aboutDetail" class="text-slate-600 dark:text-slate-300 leading-8"></p></div><div id="skillsList" class="space-y-5"></div></div></div></section>
-<section id="services" class="py-20"><div class="max-w-7xl mx-auto px-4"><div class="text-center mb-12"><h2 class="text-3xl sm:text-4xl font-black">الخدمات</h2><p class="text-slate-500 mt-3">يمكنك التحكم في كل خدمة من لوحة الإدارة.</p></div><div id="servicesGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div></div></section>
-<section id="portfolio" class="py-20 bg-slate-100/70 dark:bg-slate-900/40"><div class="max-w-7xl mx-auto px-4"><div class="text-center mb-10"><h2 class="text-3xl sm:text-4xl font-black">معرض الأعمال</h2><p class="text-slate-500 mt-3">أقسام منظمة، وصور تجريبية مؤقتة لحين رفع أعمالك.</p></div><div id="categoryButtons" class="flex flex-wrap justify-center gap-2 mb-8"></div><div id="projectsGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div></div></section>
-<section id="experience" class="py-20"><div class="max-w-4xl mx-auto px-4"><div class="text-center mb-12"><h2 class="text-3xl sm:text-4xl font-black">الخبرة والمسار المهني</h2></div><div id="experienceList" class="space-y-5"></div></div></section>
-<section id="reviews" class="py-20 bg-slate-100/70 dark:bg-slate-900/40"><div class="max-w-6xl mx-auto px-4"><div class="text-center mb-10"><h2 class="text-3xl sm:text-4xl font-black">آراء العملاء</h2><p class="text-slate-500 mt-3">يمكن للعميل إضافة رأيه، ويمكنك إدارة الآراء من لوحة التحكم.</p></div><div class="glass rounded-3xl p-5 max-w-2xl mx-auto mb-8"><div class="grid sm:grid-cols-2 gap-3"><input id="reviewAuthor" class="p-3 rounded-xl border border-slate-200 dark:border-slate-700" placeholder="اسمك"><div id="reviewStars" class="p-3 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center justify-center gap-2 text-2xl" aria-label="اختر تقييمك"></div><input id="reviewRating" type="hidden" value="5"></div><textarea id="reviewText" rows="3" class="mt-3 w-full p-3 rounded-xl border border-slate-200 dark:border-slate-700" placeholder="اكتب رأيك..."></textarea><button id="addReview" class="mt-3 w-full py-3 rounded-xl bg-blue-600 text-white font-bold">نشر الرأي</button></div><div id="reviewsGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-5"></div></div></section>
-<section id="social" class="py-14 bg-slate-100/60 dark:bg-slate-900/30"><div class="max-w-7xl mx-auto px-4"><div class="text-center mb-8"><h2 class="text-3xl font-black">تابعني على منصات التواصل</h2><p class="text-slate-500 mt-3">روابط حساباتي الرسمية، من فضلكم المتابعة فضلًا وليس أمرًا.</p></div><div id="socialLinksMain" class="flex flex-wrap justify-center gap-4"></div></div></section>
-<section id="contact" class="py-20"><div class="max-w-7xl mx-auto px-4"><div class="text-center mb-12"><h2 class="text-3xl sm:text-4xl font-black">تواصل معي</h2><p class="text-slate-500 mt-3">للطلبات والاستفسارات المباشرة: الموقع الجغرافي، الهاتف، البريد الإلكتروني.</p></div><div class="grid lg:grid-cols-5 gap-8"><div class="lg:col-span-2 space-y-4"><div class="glass rounded-2xl p-5"><div class="text-xs text-slate-500">الموقع الجغرافي</div><div class="flex items-center gap-3"><i class="fa-solid fa-location-dot text-rose-600"></i><a id="contactLocation" target="_blank" rel="noopener noreferrer" class="font-bold break-all"></a></div></div><div class="glass rounded-2xl p-5"><div class="text-xs text-slate-500">الهاتف / واتساب</div><div class="flex items-center gap-3"><i class="fa-solid fa-phone text-emerald-600"></i><a id="contactPhone" target="_blank" class="font-bold"></a></div></div><div class="glass rounded-2xl p-5"><div class="text-xs text-slate-500">البريد الإلكتروني</div><div class="flex items-center gap-3"><i class="fa-solid fa-envelope text-purple-600"></i><a id="contactEmail" class="font-bold break-all"></a></div></div></div><form id="contactForm" class="lg:col-span-3 glass rounded-3xl p-7 space-y-4"><div class="grid sm:grid-cols-2 gap-4"><input id="contactName" required class="p-3 rounded-xl border border-slate-200 dark:border-slate-700" placeholder="الاسم"><input id="contactMethod" required class="p-3 rounded-xl border border-slate-200 dark:border-slate-700" placeholder="البريد أو الهاتف"></div><select id="contactService" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-700"></select><textarea id="contactDetails" required rows="5" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-700" placeholder="تفاصيل المشروع"></textarea><button class="w-full py-3 rounded-xl bg-blue-600 text-white font-bold">إرسال الطلب</button></form></div></div></section>
-</main>
-<div id="chatWidget" class="fixed bottom-5 left-5 z-[60]"><button id="chatToggle" class="w-14 h-14 rounded-full bg-gradient-to-br from-blue-600 to-cyan-500 text-white shadow-2xl flex items-center justify-center"><i class="fa-solid fa-comments text-xl"></i></button><div id="chatPanel" class="hidden absolute bottom-16 left-0 w-80 sm:w-96 glass rounded-3xl overflow-hidden shadow-2xl"><div class="p-4 bg-slate-900 text-white flex justify-between items-center"><div><b>محادثة مباشرة</b><div class="text-[10px] text-slate-400">تواصل مع عبدالرحمن</div></div><button id="chatClose"><i class="fa-solid fa-xmark"></i></button></div><div id="chatMessages" class="h-72 overflow-y-auto scrollbar p-3 space-y-2"></div><div class="p-3 border-t border-slate-200 dark:border-slate-800 flex gap-2"><input id="chatInput" class="flex-1 p-2.5 rounded-xl border text-sm" placeholder="اكتب رسالتك..."><button id="chatSend" class="w-11 rounded-xl bg-blue-600 text-white"><i class="fa-solid fa-paper-plane"></i></button></div></div></div><footer class="border-t border-slate-200 dark:border-slate-800 py-8 text-center text-sm text-slate-500"><span>جميع الحقوق محفوظة © </span><span id="footerName"></span><span> 2026</span></footer>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col antialiased selection:bg-blue-500 selection:text-white">
 
-<div id="clientModal" class="modal fixed inset-0 z-[80] bg-black/70 backdrop-blur-sm items-center justify-center p-4"><div class="w-full max-w-md glass rounded-3xl p-6 relative"><button class="closeModal absolute left-4 top-4 text-slate-500"><i class="fa-solid fa-xmark"></i></button><h3 class="text-2xl font-black mb-5">حساب العميل</h3><div id="clientAuthForm" class="space-y-3"><input id="clientName" class="w-full p-3 rounded-xl border" placeholder="الاسم"><input id="clientPhone" class="w-full p-3 rounded-xl border" placeholder="رقم الهاتف"><input id="clientEmail" type="email" class="w-full p-3 rounded-xl border" placeholder="البريد الإلكتروني"><input id="clientPassword" type="password" class="w-full p-3 rounded-xl border" placeholder="كلمة المرور (6 أحرف على الأقل)"><div class="grid grid-cols-2 gap-2"><button id="clientLogin" class="py-3 rounded-xl bg-blue-600 text-white font-bold">دخول</button><button id="clientRegister" class="py-3 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 font-bold">إنشاء حساب</button></div></div><div id="clientProfile" class="hidden space-y-4"><div id="profileAvatar" class="w-16 h-16 rounded-full bg-blue-600 text-white flex items-center justify-center text-2xl font-black mx-auto"></div><div class="text-center"><div id="profileName" class="font-black text-xl"></div><div id="profileEmail" class="text-sm text-slate-500"></div><div id="profilePhone" class="text-sm text-slate-500"></div></div><button id="logoutBtn" class="w-full py-3 rounded-xl bg-rose-600 text-white font-bold">تسجيل الخروج</button></div></div></div>
+    <div class="fixed inset-0 overflow-hidden pointer-events-none -z-10">
+        <div class="absolute -top-40 -left-40 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl dark:bg-blue-600/15"></div>
+        <div class="absolute top-1/3 -right-40 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl dark:bg-purple-600/15"></div>
+        <div class="absolute -bottom-40 left-1/3 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl dark:bg-pink-600/15"></div>
+    </div>
 
-<div id="projectModal" class="modal fixed inset-0 z-[70] bg-black/75 backdrop-blur-sm items-center justify-center p-4"><div class="w-full max-w-3xl glass rounded-3xl overflow-hidden"><div class="h-72 sm:h-96 bg-slate-200 dark:bg-slate-900 flex items-center justify-center"><img id="projectModalImg" class="w-full h-full object-cover"></div><div class="p-6"><h3 id="projectModalTitle" class="text-2xl font-black"></h3><p id="projectModalDesc" class="mt-3 text-slate-600 dark:text-slate-300 leading-8"></p><button class="closeModal mt-5 px-5 py-2.5 rounded-xl bg-slate-200 dark:bg-slate-800 font-bold">إغلاق</button></div></div></div>
+    <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-white/70 dark:bg-slate-900/70 border-b border-slate-200/50 dark:border-slate-800/50 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Brand / Logo -->
+                <div class="flex items-center gap-3">
+                    <a href="#hero" class="flex items-center gap-2.5 group">
+                        <div id="logoContainer" class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-purple-600 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-blue-500/20 overflow-hidden group-hover:scale-105 transition-transform">
+                            <span id="logoInitials">ع</span>
+                            <img id="logoImg" src="1001809140.jpg" alt="Logo" class="w-full h-full object-cover">
+                        </div>
+                        <span class="text-xl font-bold tracking-tight" id="headerName">عبدالرحمن عطيه</span>
+                    </a>
+                </div>
 
-<div id="projectDetailPage" class="modal fixed inset-0 z-[78] bg-black/80 backdrop-blur-sm items-center justify-center p-3 sm:p-6"><div class="w-full max-w-6xl max-h-[94vh] overflow-y-auto scrollbar glass rounded-[2rem] p-5 sm:p-8"><div class="flex items-center justify-between gap-3 sticky top-0 pb-4 bg-white/85 dark:bg-slate-950/85 backdrop-blur-xl z-10"><div><div class="text-blue-600 font-bold text-sm">معرض العمل</div><h3 id="projectDetailTitle" class="text-2xl sm:text-4xl font-black mt-1"></h3></div><button class="closeModal w-11 h-11 rounded-xl bg-slate-200 dark:bg-slate-800" aria-label="إغلاق"><i class="fa-solid fa-xmark"></i></button></div><p id="projectDetailDesc" class="mt-3 max-w-4xl text-slate-600 dark:text-slate-300 leading-8"></p><div id="projectDetailGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-7"></div></div></div>
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-1 space-x-reverse text-sm font-medium" id="desktopNav">
+                    <a href="#hero" class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" data-i18n="nav_home">الرئيسية</a>
+                    <a href="#about" class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" data-i18n="nav_about">عني</a>
+                    <a href="#services" class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" data-i18n="nav_services">خدماتي</a>
+                    <a href="#portfolio" class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" data-i18n="nav_portfolio">أعمالي</a>
+                    <a href="#experience" class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" data-i18n="nav_experience">الخبرة</a>
+                    <a href="#contact" class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" data-i18n="nav_contact">تواصل معي</a>
+                </nav>
 
-<div id="adminLogin" class="modal fixed inset-0 z-[90] bg-black/80 backdrop-blur-sm items-center justify-center p-4"><div class="w-full max-w-sm glass rounded-3xl p-7 relative"><button class="closeModal absolute left-4 top-4 text-slate-500"><i class="fa-solid fa-xmark"></i></button><div class="text-center"><div class="w-14 h-14 mx-auto rounded-full bg-blue-600/10 text-blue-600 flex items-center justify-center text-2xl"><i class="fa-solid fa-shield-halved"></i></div><h3 class="text-xl font-black mt-4">دخول لوحة التحكم</h3><p class="text-xs text-slate-500 mt-2">البريد الإداري مخفي ولا يظهر للزوار.</p></div><input id="adminPassword" type="password" class="w-full p-3 rounded-xl border mt-5" placeholder="كلمة المرور"><button id="adminLoginBtn" class="w-full py-3 mt-3 rounded-xl bg-blue-600 text-white font-bold">دخول</button><p id="adminLoginMsg" class="text-xs text-rose-500 mt-3 text-center"></p></div></div>
+                <div class="flex items-center gap-2">
+                    <!-- Modern Standalone Language Switcher Button (AR / EN) -->
+                    <button id="langToggleBtn" class="lang-switch-btn px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-2 text-slate-700 dark:text-slate-200 shadow-sm" title="تغيير اللغة / Change Language">
+                        <i class="fa-solid fa-globe text-blue-500 text-sm"></i>
+                        <span id="langToggleText" class="tracking-wide">English</span>
+                    </button>
 
-<div id="adminDrawer" class="drawer fixed inset-y-0 right-0 z-[95] w-full max-w-5xl bg-white dark:bg-slate-950 shadow-2xl border-l border-slate-200 dark:border-slate-800 flex flex-col"><div class="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between gap-3"><div><h2 class="font-black text-lg">لوحة التحكم</h2><p class="text-xs text-slate-500">تحكم كامل في محتوى الموقع والطلبات والحسابات.</p></div><div class="flex items-center gap-2"><div id="cloudStatus" class="px-3 py-2 rounded-xl text-xs font-bold bg-amber-500/90 text-white shadow-lg">☁️ جاري الاتصال…</div><button id="adminLogout" class="px-3 py-2 rounded-xl bg-rose-100 text-rose-600 dark:bg-rose-950/30">خروج</button><button id="closeAdmin" class="w-10 h-10 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-900"><i class="fa-solid fa-xmark"></i></button></div></div><div class="flex flex-1 min-h-0"><aside class="w-44 sm:w-52 border-l border-slate-200 dark:border-slate-800 p-2 overflow-y-auto scrollbar space-y-1" id="adminTabs"></aside><section class="flex-1 overflow-y-auto scrollbar p-4 sm:p-6" id="adminContent"></section></div></div>
+                    <button id="openCustomizerBtn" class="p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors flex items-center gap-1.5 text-sm font-medium bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 text-blue-600 dark:text-blue-400">
+                        <i class="fa-solid fa-lock text-amber-500" id="lockStatusIcon"></i>
+                        <span class="hidden sm:inline" data-i18n="btn_dashboard">لوحة التحكم</span>
+                    </button>
 
-<div id="categoryPage" class="modal fixed inset-0 z-[75] bg-black/75 backdrop-blur-sm items-center justify-center p-3 sm:p-6"><div class="w-full max-w-6xl max-h-[92vh] overflow-y-auto scrollbar glass rounded-[2rem] p-5 sm:p-8"><div class="flex items-center justify-between gap-3 sticky top-0 pb-4 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl z-10"><div><div id="categoryPageKicker" class="text-blue-600 font-bold text-sm">صفحة تخصص الأعمال</div><h3 id="categoryPageTitle" class="text-2xl sm:text-4xl font-black mt-1"></h3></div><button class="closeModal w-11 h-11 rounded-xl bg-slate-200 dark:bg-slate-800" aria-label="رجوع"><i class="fa-solid fa-arrow-right"></i></button></div><p id="categoryPageDesc" class="mt-3 max-w-3xl text-slate-600 dark:text-slate-300 leading-8"></p><div class="mt-5 inline-flex items-center gap-2 text-sm font-bold text-slate-500"><i class="fa-solid fa-images text-blue-600"></i> كل الأعمال في هذا التخصص تُدار بالكامل من لوحة التحكم.</div><div id="categoryPageGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-7"></div></div></div>
-<div id="toastHost" class="fixed bottom-5 left-5 z-[120] space-y-2"></div>
+                    <button id="themeToggleBtn" class="p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" title="الوضع الداكن/الفاتح">
+                        <i class="fa-solid fa-moon dark:hidden"></i>
+                        <i class="fa-solid fa-sun hidden dark:block text-amber-400"></i>
+                    </button>
 
-<script type="module">
-import {initializeApp} from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js';
-import {getAuth,signInWithEmailAndPassword,createUserWithEmailAndPassword,onAuthStateChanged,signOut,updatePassword,reauthenticateWithCredential,EmailAuthProvider,sendPasswordResetEmail} from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js';
-import {getFirestore,doc,getDoc,getDocs,setDoc,collection,addDoc,deleteDoc,onSnapshot,query,orderBy,where,serverTimestamp} from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js';
-import {getStorage,ref,uploadBytes,getDownloadURL} from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-storage.js';
-const firebaseConfig={apiKey:'AIzaSyALctJ_89OZSds1XMlXYN-f9TGtjU-xjlg',authDomain:'abdelrahman-website-98d4c.firebaseapp.com',projectId:'abdelrahman-website-98d4c',storageBucket:'abdelrahman-website-98d4c.firebasestorage.app',messagingSenderId:'1046099191095',appId:'1:1046099191095:web:9640fa5a45305c27f066b2'};
-const ADMIN_EMAIL='abdelrahmanatia167@gmail.com';
-const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app),storage=getStorage(app);
-const siteRef=doc(db,'artifacts','abdelrahman-website','public','data','config','siteState');
-const defaults={name:'عبدالرحمن عطيه',title:'مصمم جرافيك ومبدع هويات بصرية',badge:'متاح الآن للمشاريع الجديدة والعمل الحر',bio:'مصمم جرافيك محترف بخبرة تتجاوز 6 سنوات في صناعة التصاميم الإبداعية، تصاميم السوشيال ميديا، الهويات البصرية والمطبوعات.',aboutHeading:'فن تحويل الأفكار إلى تصاميم بصرية تأثر العقول',aboutDetail:'التصميم بالنسبة لي ليس مجرد دمج للألوان والصور، بل هو لغة بصرية تساعد البراند على الظهور بشكل احترافي والوصول إلى جمهوره.',logo:'1001809140.jpg',profileImg:'1001778764.jpg',email:'abdelrahmanatia167@gmail.com',phone:'+20 127 987 9021',whatsapp:'201279879021',website:'https://abdelrahmanatia167-netizen.github.io/abdelrahman-website/',location:'مصر',mapUrl:'',social:{facebook:'https://facebook.com/',instagram:'',whatsapp:'https://wa.me/201279879021',behance:'',linkedin:'',x:''},skills:[{name:'تصاميم السوشيال ميديا والإعلانات',percent:98},{name:'الهويات البصرية والشعارات',percent:95},{name:'المطبوعات والتغليف',percent:92}],categories:[{id:'social',name:'سوشيال ميديا وإعلانات',description:'تصميمات سوشيال ميديا تشد الانتباه من أول ثانية، وتخلي البراند يظهر بشكل احترافي ومتناسق ويحوّل الفكرة لرسالة بصرية واضحة.'},{id:'branding',name:'هويات بصرية وشعارات',description:'هوية بصرية متكاملة تعكس شخصية البراند، من الشعار والألوان إلى أسلوب الاستخدام، عشان تفضل العلامة ثابتة ومميزة في ذهن العميل.'},{id:'print',name:'مطبوعات وتغليف',description:'تصميمات مطبوعات وتغليف جاهزة للتنفيذ، باهتمام بالتفاصيل والمقاسات والتكوين، بحيث المنتج يطلع بشكل احترافي في الواقع.'}],services:[{category:'social',title:'تصاميم السوشيال ميديا والمحتوى الرقمي',desc:'تصميمات سوشيال ميديا تخطف العين وتوصل الرسالة بسرعة، مع نظام بصري متناسق يخلي حسابك شكله احترافي ويقوّي حضور البراند.',icon:'fa-palette'},{category:'branding',title:'تصميم الهويات البصرية والشعارات',desc:'هوية بصرية مش مجرد لوجو؛ بنبني شكل متكامل للبراند من الشعار والألوان والخطوط والتطبيقات عشان العميل يفتكرك من أول نظرة.',icon:'fa-pen-nib'},{category:'print',title:'تصميم المطبوعات وتغليف المنتجات',desc:'مطبوعات وتغليف يجمع بين الشكل الجذاب والدقة في التنفيذ، من الكروت والبروشورات إلى العبوات والستيكرات والمواد الدعائية.',icon:'fa-box-open'}],projects:[{title:'حملة سوشيال ميديا',category:'social',desc:'نموذج تجريبي مؤقت لحين رفع العمل الحقيقي.',img:'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1000&q=80'},{title:'هوية بصرية',category:'branding',desc:'نموذج تجريبي مؤقت لحين رفع العمل الحقيقي.',img:'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=1000&q=80'},{title:'تغليف منتجات',category:'print',desc:'نموذج تجريبي مؤقت لحين رفع العمل الحقيقي.',img:'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=1000&q=80'},{title:'إعلان إبداعي',category:'social',desc:'صورة تجريبية قابلة للاستبدال من لوحة التحكم.',img:'https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=1000&q=80'},{title:'شعار تجريبي',category:'branding',desc:'صورة تجريبية قابلة للاستبدال من لوحة التحكم.',img:'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1000&q=80'},{title:'علبة منتج',category:'print',desc:'صورة تجريبية قابلة للاستبدال من لوحة التحكم.',img:'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=1000&q=80'}],experiences:[{period:'2018 - حتى الآن',role:'مصمم جرافيك حر ومبدع هويات بصرية',company:'Freelance',desc:'العمل مع شركات وبراندات في مصر والخليج.'}],theme:'dark'};
-let state={...defaults,projects:defaults.projects.map((p,i)=>({...p,id:p.id||('p'+i)}) )},currentUser=null,isAdmin=false,activeTab='general',selectedCategory='all',reviews=[],adminReviews=[],contacts=[],users=[],messages=[],projectImages=[],selectedChatUid='',previousAdminMessageIds=new Set();
-let adminUnreadMessages=0,clientUnreadMessages=0,previousMessageIds=new Set();
-const $=id=>document.getElementById(id); const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
-function toast(msg,ok=true){const d=document.createElement('div');d.className='toast px-4 py-3 rounded-xl shadow-xl text-sm font-bold '+(ok?'bg-emerald-600':'bg-rose-600')+' text-white';d.textContent=msg;$('toastHost').appendChild(d);setTimeout(()=>d.remove(),3200)}
-function show(id){$(id).classList.add('show')} function hide(id){$(id).classList.remove('show')}
-function render(){
-$('headerLogo').src=state.logo||defaults.logo;$('profileImage').src=state.profileImg||defaults.profileImg;$('heroName').textContent=state.name;$('heroTitle').textContent=state.title;$('badge').innerHTML='<i class="fa-solid fa-circle text-emerald-500 text-[8px]"></i> '+esc(state.badge);$('heroBio').textContent=state.bio;$('aboutHeading').textContent=state.aboutHeading;$('aboutDetail').textContent=state.aboutDetail;$('footerName').textContent=state.name;$('heroWhatsapp').href='https://wa.me/'+String(state.whatsapp||'').replace(/\D/g,'');
-$('skillsList').innerHTML=state.skills.map(s=>`<div class="glass rounded-2xl p-5"><div class="flex justify-between gap-3 font-bold text-sm"><span>${esc(s.name)}</span><span class="text-blue-600">${s.percent}%</span></div><div class="mt-3 h-2.5 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden"><div class="h-full bg-gradient-to-r from-blue-600 to-cyan-400 rounded-full" style="width:${Math.max(0,Math.min(100,s.percent))}%"></div></div></div>`).join('');
-$('servicesGrid').innerHTML=state.services.map((s,i)=>`<article class="glass rounded-3xl p-7 hover:-translate-y-1 transition cursor-pointer serviceCard" data-service="${esc(s.category||state.categories[i]?.id||'social')}"><div class="w-14 h-14 rounded-2xl bg-blue-600/10 text-blue-600 flex items-center justify-center text-2xl"><i class="fa-solid ${esc(s.icon)}"></i></div><h3 class="text-xl font-black mt-5">${esc(s.title)}</h3><p class="mt-3 text-slate-600 dark:text-slate-400 leading-7">${esc(s.desc)}</p><span class="inline-block mt-4 text-blue-600 font-bold text-sm">استعرض الأعمال المرتبطة ←</span></article>`).join('');
-$('categoryButtons').innerHTML=`<button data-cat="all" class="catBtn px-4 py-2 rounded-xl font-bold ${selectedCategory==='all'?'bg-blue-600 text-white':'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800'}">الكل</button>`+state.categories.map(c=>`<button data-cat="${esc(c.id)}" class="catBtn px-4 py-2 rounded-xl font-bold ${selectedCategory===c.id?'bg-blue-600 text-white':'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800'}">${esc(c.name)}</button>`).join('');
-const list=selectedCategory==='all'?state.projects:state.projects.filter(p=>p.category===selectedCategory);$('projectsGrid').innerHTML=list.map((p)=>{const i=state.projects.indexOf(p);return `<article class="glass rounded-3xl overflow-hidden group"><div class="h-56 overflow-hidden bg-slate-200 dark:bg-slate-900"><img src="${esc(p.img)}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"></div><div class="p-5"><h3 class="font-black text-lg">${esc(p.title)}</h3><p class="text-sm text-slate-500 mt-2 leading-6">${esc(p.desc)}</p><div class="flex flex-wrap gap-2 mt-4"><button class="projectOpen flex-1 min-w-[120px] px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 font-bold text-sm" data-id="${i}">عرض التفاصيل ←</button><button class="projectMore flex-1 min-w-[120px] px-3 py-2 rounded-xl bg-blue-600 text-white font-bold text-sm" data-id="${i}">رؤية المزيد ✨</button></div></div></article>`}).join('');
-$('experienceList').innerHTML=state.experiences.map(e=>`<div class="glass rounded-3xl p-6"><span class="text-blue-600 font-bold text-sm">${esc(e.period)}</span><h3 class="text-xl font-black mt-1">${esc(e.role)}</h3><p class="text-sm text-slate-500">${esc(e.company)}</p><p class="mt-3 text-slate-600 dark:text-slate-300 leading-7">${esc(e.desc)}</p></div>`).join('');
-translatePage();$('contactEmail').textContent=state.email;$('contactEmail').href='mailto:'+state.email;$('contactPhone').textContent=state.phone;$('contactPhone').href='tel:'+String(state.phone||'').replace(/[^+\d]/g,'');$('contactLocation').textContent=state.location||'—';$('contactLocation').href=state.mapUrl||'#';$('contactLocation').style.pointerEvents=state.mapUrl?'auto':'none';const socials=[['facebook','fa-brands fa-facebook-f','فيسبوك'],['instagram','fa-brands fa-instagram','إنستجرام'],['whatsapp','fa-brands fa-whatsapp','واتساب'],['behance','fa-brands fa-behance','Behance'],['linkedin','fa-brands fa-linkedin-in','LinkedIn'],['x','fa-brands fa-x-twitter','X']];const socialHtml=socials.filter(x=>state.social?.[x[0]]).map(x=>`<a href="${esc(state.social[x[0]])}" target="_blank" rel="noopener noreferrer" title="${x[2]}" class="w-12 h-12 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-xl shadow-sm hover:-translate-y-1 hover:bg-blue-600 hover:text-white transition"><i class="${x[1]}"></i></a>`).join('')||'<span class="text-sm text-slate-500">أضف روابط حساباتك من لوحة التحكم.</span>';if($('socialLinksMain'))$('socialLinksMain').innerHTML=socialHtml;if($('socialLinks'))$('socialLinks').innerHTML=socialHtml;$('contactService').innerHTML=state.services.map(s=>`<option>${esc(s.title)}</option>`).join('');
-}
-$('themeBtn').onclick=()=>{document.documentElement.classList.toggle('dark');state.theme=document.documentElement.classList.contains('dark')?'dark':'light';localStorage.setItem('theme',state.theme)};
-if(localStorage.getItem('theme')==='light')document.documentElement.classList.remove('dark');
-$('mobileBtn').onclick=()=>$('mobileNav').classList.toggle('hidden');
-$('clientBtn').onclick=()=>{show('clientModal')};$('adminBtn').onclick=()=>isAdmin?openAdmin():show('adminLogin');document.querySelectorAll('.closeModal').forEach(b=>b.onclick=()=>{b.closest('.modal')?.classList.remove('show')});
-const norm=s=>String(s||'').trim().toLowerCase().replace(/\s+/g,' ');
-const phoneNorm=s=>String(s||'').replace(/\D/g,'');
-const loginIndexId=(kind,value)=>kind+'_'+btoa(unescape(encodeURIComponent(norm(value)))).replace(/[^a-zA-Z0-9_-]/g,'_');
-$('clientRegister').onclick=async()=>{const name=$('clientName').value.trim(),phone=$('clientPhone').value.trim(),email=$('clientEmail').value.trim(),pass=$('clientPassword').value;if(!name||!email||pass.length<6)return toast('اكتب الاسم والبريد وكلمة مرور 6 أحرف على الأقل',false);try{const cred=await createUserWithEmailAndPassword(auth,email,pass);const payload={uid:cred.user.uid,name,phone,email,createdAt:serverTimestamp()};await setDoc(doc(db,'users',cred.user.uid),payload);if(phone)await setDoc(doc(db,'loginIndex',loginIndexId('phone',phoneNorm(phone))),{uid:cred.user.uid,email,name,kind:'phone'});if(name)await setDoc(doc(db,'loginIndex',loginIndexId('name',name)),{uid:cred.user.uid,email,name,kind:'name'});toast('تم إنشاء الحساب وتسجيل الدخول بنجاح');}catch(e){toast(authMsg(e),false)}};
-if('Notification' in window&&Notification.permission==='default'){setTimeout(()=>Notification.requestPermission().catch(()=>{}),1200)}
-$('clientLogin').onclick=async()=>{const loginId=$('clientEmail').value.trim(),pass=$('clientPassword').value;if(!loginId||!pass)return toast('اكتب البريد أو الاسم أو رقم الهاتف وكلمة المرور',false);try{let email=loginId;if(!loginId.includes('@')){const kind=/^\+?\d[\d\s-]{5,}$/.test(loginId)?'phone':'name';const key=kind==='phone'?phoneNorm(loginId):loginId;const idx=await getDoc(doc(db,'loginIndex',loginIndexId(kind,key)));if(!idx.exists())return toast(kind==='phone'?'رقم الهاتف غير مسجل':'الاسم غير مسجل، استخدم الاسم كما كتبته عند إنشاء الحساب',false);email=idx.data().email}await signInWithEmailAndPassword(auth,email,pass);toast('تم تسجيل الدخول بنجاح');hide('clientModal');}catch(e){toast(authMsg(e),false)}};
-$('logoutBtn').onclick=()=>signOut(auth);
-onAuthStateChanged(auth,async u=>{currentUser=u;if(u){try{const snap=await getDoc(doc(db,'users',u.uid));const p=snap.exists()?snap.data():{};$('clientAuthForm').classList.add('hidden');$('clientProfile').classList.remove('hidden');$('profileAvatar').textContent=(p.name||u.email||'U').charAt(0);$('profileName').textContent=p.name||'عميل';$('profileEmail').textContent=u.email||'';$('profilePhone').textContent=p.phone||'';startChat();}catch{startChat()}}else{chatUnsub?.();chatUnsub=null;$('clientAuthForm').classList.remove('hidden');$('clientProfile').classList.add('hidden')}});
-function setupReviewStars(){const box=$('reviewStars');if(!box)return;box.innerHTML=[1,2,3,4,5].map(n=>`<button type="button" data-star="${n}" class="reviewStar text-slate-300 hover:text-amber-400" aria-label="${n}">★</button>`).join('');const paint=n=>document.querySelectorAll('.reviewStar').forEach(b=>b.classList.toggle('text-amber-400',+b.dataset.star<=n));document.querySelectorAll('.reviewStar').forEach(b=>b.onclick=()=>{const n=+b.dataset.star;$('reviewRating').value=n;paint(n)});paint(5)}
-setupReviewStars();
-$('addReview').onclick=async()=>{const author=$('reviewAuthor').value.trim()||'عميل';const text=$('reviewText').value.trim();const rating=Math.max(1,Math.min(5,Number($('reviewRating').value)||5));if(!text)return toast('اكتب الرأي أولاً',false);try{await addDoc(collection(db,'reviews'),{author,text,rating,uid:currentUser?.uid||null,approved:false,createdAt:serverTimestamp()});$('reviewText').value='';toast('تم نشر رأيك');}catch(e){toast('تعذر نشر الرأي. تأكد من إعداد Firebase.',false)}};
-onSnapshot(query(collection(db,'reviews'),where('approved','==',true)),s=>{reviews=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.createdAt?.seconds||0)-(a.createdAt?.seconds||0));renderReviews();if(currentLang==='en')setTimeout(()=>translatePage(),150)},e=>{console.warn('reviews sync',e);renderReviews();});
-onSnapshot(collection(db,'projectImages'),s=>{projectImages=s.docs.map(d=>({id:d.id,...d.data()}));if($('projectDetailPage')?.classList.contains('show')){const title=$('projectDetailTitle').textContent;const idx=state.projects.findIndex(p=>p.title===title);if(idx>=0)openProjectDetail(idx)}},e=>console.warn('project images sync',e));
-function renderReviews(){$('reviewsGrid').innerHTML=reviews.map(r=>`<div class="glass rounded-2xl p-5"><div class="flex justify-between"><b>${esc(r.author||'عميل')}</b><span class="text-amber-500">${'★'.repeat(Number(r.rating)||5)}</span></div><p class="mt-3 text-slate-600 dark:text-slate-300 leading-7">“${esc(r.text)}”</p></div>`).join('')||'<div class="text-center text-slate-500 md:col-span-3">لا توجد آراء بعد.</div>'}
-$('contactForm').onsubmit=async e=>{e.preventDefault();try{await addDoc(collection(db,'contacts'),{name:$('contactName').value,contact:$('contactMethod').value,service:$('contactService').value,details:$('contactDetails').value,uid:currentUser?.uid||null,createdAt:serverTimestamp(),read:false});toast('تم إرسال طلبك بنجاح');e.target.reset()}catch{toast('تعذر إرسال الطلب',false)}};
-document.addEventListener('click',e=>{const c=e.target.closest('.catBtn');if(c){selectedCategory=c.dataset.cat;if(selectedCategory!=='all')openCategoryPage(selectedCategory);render()}const sc=e.target.closest('.serviceCard');if(sc){const cat=state.categories.find(c=>c.id===sc.dataset.service);if(cat)openCategoryPage(cat.id)}const p=e.target.closest('.projectOpen');if(p){const x=state.projects[Number(p.dataset.id)];if(!x)return;$('projectModalImg').src=x.img;$('projectModalTitle').textContent=x.title;$('projectModalDesc').textContent=x.desc;show('projectModal')}const more=e.target.closest('.projectMore');if(more){openProjectDetail(Number(more.dataset.id))}const delg=e.target.closest('.delGallery');if(delg){deleteProjectImage(delg.dataset.id)}});
-async function openProjectDetail(index){const p=state.projects[index];if(!p)return;$('projectDetailTitle').textContent=p.title;$('projectDetailDesc').textContent=p.desc||'';const imgs=projectImages.filter(x=>x.projectId===String(index)||x.projectId===p.id||x.projectIndex===index).sort((a,b)=>(a.order||0)-(b.order||0));const all=imgs.map(x=>x.url).filter(Boolean);$('projectDetailGrid').innerHTML=all.map((url,i)=>`<div class="rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-900 aspect-square group"><img src="${esc(url)}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="${esc(p.title)} ${i+1}"></div>`).join('')||'<div class="col-span-full text-center py-12 text-slate-500">لا توجد صور مضافة لهذا العمل حتى الآن.</div>';translatePage();show('projectDetailPage')}
-async function deleteProjectImage(id){if(!isAdmin)return;try{await deleteDoc(doc(db,'projectImages',id));toast('تم حذف الصورة من معرض العمل')}catch(e){toast('تعذر حذف الصورة',false)}}
-function openCategoryPage(id){const c=state.categories.find(x=>x.id===id);if(!c)return;const list=state.projects.filter(p=>p.category===id);$('categoryPageTitle').textContent=c.name;$('categoryPageDesc').textContent=c.description||'استعرض مجموعة من الأعمال الخاصة بهذا التخصص.';$('categoryPageGrid').innerHTML=list.map(p=>`<article class="glass rounded-3xl overflow-hidden group"><div class="h-56 overflow-hidden"><img src="${esc(p.img)}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"></div><div class="p-5"><h4 class="font-black text-lg">${esc(p.title)}</h4><p class="text-sm text-slate-500 mt-2 leading-6">${esc(p.desc)}</p></div></article>`).join('')||'<div class="sm:col-span-2 lg:col-span-3 text-center py-12 text-slate-500">لا توجد أعمال مضافة لهذا القسم حتى الآن.</div>';translatePage();show('categoryPage')}
+                    <button id="mobileMenuBtn" class="md:hidden p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
+                        <i class="fa-solid fa-bars text-xl" id="menuIcon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
 
-$('adminLoginBtn').onclick=async()=>{const pass=$('adminPassword').value.trim();if(!pass)return toast('اكتب كلمة المرور',false);try{await signInWithEmailAndPassword(auth,ADMIN_EMAIL,pass);isAdmin=true;if('Notification' in window&&Notification.permission==='default'){Notification.requestPermission().catch(()=>{})}await ensureSiteDocument();startAdminStreams();hide('adminLogin');openAdmin();toast('تم الدخول للوحة التحكم — السحابة متصلة')}catch(e){console.error(e);$('adminLoginMsg').textContent=authMsg(e)+' — تأكد من وجود حساب الإدارة وتفعيل Firebase Authentication وFirestore.';showCloudError(e)}};
-$('adminLogout').onclick=async()=>{isAdmin=false;adminUnsubs.forEach(fn=>fn&&fn());adminUnsubs=[];await signOut(auth);hideAdmin()};$('closeAdmin').onclick=hideAdmin;
-function openAdmin(){renderAdmin();$('adminDrawer').classList.add('show');setCloudStatus('☁️ متصل بالسحابة • التحديثات لحظية','ok')}function hideAdmin(){$('adminDrawer').classList.remove('show')}
-const tabs=[['general','الموقع'],['skills','المهارات'],['services','الخدمات'],['portfolio','الأعمال والأقسام'],['experience','الخبرة'],['reviews','الآراء'],['contacts','طلبات التواصل'],['users','الأشخاص المسجلون'],['messages','المحادثات'],['security','الأمان']];
-function renderAdmin(){ $('adminTabs').innerHTML=tabs.map(t=>`<button class="admin-tab w-full text-right px-3 py-2.5 rounded-xl font-bold ${activeTab===t[0]?'active':''}" data-tab="${t[0]}"><i class="fa-solid ${icon(t[0])} ml-2"></i>${t[1]}${t[0]==='messages'&&adminUnreadMessages?` <span class="notify-dot float-left">${adminUnreadMessages>99?'99+':adminUnreadMessages}</span>`:''}</button>`).join('');$('adminContent').innerHTML=adminView(activeTab);document.querySelectorAll('.admin-tab').forEach(b=>b.onclick=()=>{activeTab=b.dataset.tab;renderAdmin()});bindAdmin();translatePage()}
-function icon(t){return {general:'fa-pen',skills:'fa-chart-column',services:'fa-layer-group',portfolio:'fa-images',experience:'fa-briefcase',reviews:'fa-star',contacts:'fa-envelope',users:'fa-users',messages:'fa-comments',security:'fa-shield-halved'}[t]}
-const field=(id,label,val,type='text')=>`<label class="block"><span class="block text-xs font-bold text-slate-500 mb-1">${label}</span>${type==='textarea'?`<textarea id="${id}" rows="4" class="w-full p-3 rounded-xl border">${esc(val)}</textarea>`:`<input id="${id}" type="${type}" value="${esc(val)}" class="w-full p-3 rounded-xl border">`}</label>`;
-function adminView(t){if(t==='general')return `<div class="grid lg:grid-cols-2 gap-4">${field('aName','الاسم',state.name)}${field('aTitle','المسمى',state.title)}${field('aBadge','الشريط التعريفي',state.badge)}${field('aEmail','بريد التواصل',state.email,'email')}${field('aPhone','الهاتف',state.phone)}${field('aWhatsapp','رقم واتساب بدون +',state.whatsapp)}${field('aLocation','الموقع الجغرافي',state.location||'مصر')}${field('aMapUrl','رابط خرائط Google للموقع (اختياري)',state.mapUrl||'')}${field('aWebsite','رابط الموقع',state.website||'')}${field('aFacebook','رابط فيسبوك',state.social?.facebook||'')}${field('aInstagram','رابط إنستجرام',state.social?.instagram||'')}${field('aWhatsappSocial','رابط واتساب للحسابات الاجتماعية',state.social?.whatsapp||'')}${field('aBehance','رابط Behance',state.social?.behance||'')}${field('aLinkedin','رابط LinkedIn',state.social?.linkedin||'')}${field('aX','رابط X',state.social?.x||'')}${field('aAboutHeading','عنوان عني',state.aboutHeading)}<div class="lg:col-span-2">${field('aBio','النبذة',state.bio,'textarea')}</div><div class="lg:col-span-2">${field('aAboutDetail','تفاصيل عني',state.aboutDetail,'textarea')}</div><div class="lg:col-span-2 grid sm:grid-cols-2 gap-4">${uploadField('aLogo','اللوجو',state.logo,'logo')}${uploadField('aProfile','الصورة الشخصية',state.profileImg,'profile')}</div></div><button id="saveGeneral" class="mt-5 px-6 py-3 bg-blue-600 text-white rounded-xl font-bold">حفظ كل بيانات الموقع</button>`;
-if(t==='skills')return `<div class="space-y-3">${state.skills.map((s,i)=>`<div class="glass p-4 rounded-2xl grid sm:grid-cols-[1fr_100px_50px] gap-2 items-center"><input class="skillName p-2 rounded-lg border" data-i="${i}" value="${esc(s.name)}"><input class="skillPct p-2 rounded-lg border" data-i="${i}" type="number" min="0" max="100" value="${s.percent}"><button class="delSkill text-rose-500" data-i="${i}"><i class="fa-solid fa-trash"></i></button></div>`).join('')}</div><div class="flex gap-2 mt-4"><button id="addSkill" class="px-4 py-2 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 font-bold">إضافة مهارة</button><button id="saveSkills" class="px-4 py-2 rounded-xl bg-blue-600 text-white font-bold">حفظ</button></div>`;
-if(t==='services')return `<div class="space-y-4">${state.services.map((s,i)=>`<div class="glass rounded-2xl p-4"><div class="grid sm:grid-cols-3 gap-2"><input class="srvTitle p-2 rounded-lg border" data-i="${i}" value="${esc(s.title)}"><input class="srvIcon p-2 rounded-lg border" data-i="${i}" value="${esc(s.icon)}"><button class="delSrv p-2 rounded-lg bg-rose-100 text-rose-600" data-i="${i}">حذف الخدمة</button></div><textarea class="srvDesc mt-2 w-full p-2 rounded-lg border" data-i="${i}" rows="2">${esc(s.desc)}</textarea></div>`).join('')}</div><div class="flex gap-2 mt-4"><button id="addService" class="px-4 py-2 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 font-bold">إضافة خدمة</button><button id="saveServices" class="px-4 py-2 rounded-xl bg-blue-600 text-white font-bold">حفظ</button></div>`;
-if(t==='portfolio')return `<div class="mb-5"><h3 class="font-black text-lg">الأقسام</h3><div class="space-y-2 mt-3">${state.categories.map((c,i)=>`<div class="glass rounded-2xl p-3 space-y-2"><input class="catName w-full p-2 rounded-lg border" data-i="${i}" value="${esc(c.name)}"><textarea class="catDesc w-full p-2 rounded-lg border" data-i="${i}" rows="2">${esc(c.description||'')}</textarea><button class="delCat px-3 rounded-lg bg-rose-100 text-rose-600" data-i="${i}">حذف</button></div>`).join('')}</div><button id="addCat" class="mt-3 px-4 py-2 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 font-bold">إضافة قسم</button><button id="saveCats" class="mt-3 mr-2 px-4 py-2 rounded-xl bg-blue-600 text-white font-bold">حفظ الأقسام</button></div><hr class="border-slate-200 dark:border-slate-800 my-5"><h3 class="font-black text-lg">الأعمال والمعارض</h3><p class="text-sm text-slate-500 mt-2">ارفع صور الشغل نفسها من جهازك. يمكنك اختيار 100 صورة أو أكثر في المرة الواحدة حسب مساحة التخزين المتاحة.</p><div class="space-y-4 mt-3">${state.projects.map((p,i)=>{const gal=projectImages.filter(x=>x.projectId===p.id||x.projectId===String(i)||x.projectIndex===i);return `<div class="glass rounded-2xl p-4"><div class="grid sm:grid-cols-2 gap-2">${field('pTitle'+i,'العنوان',p.title)}${field('pCat'+i,'القسم',p.category)}<div><span class="block text-xs font-bold text-slate-500 mb-1">الصورة الرئيسية (عرض التفاصيل)</span><input class="pCoverFile w-full text-xs p-2 rounded-xl border" data-i="${i}" type="file" accept="image/*"><div class="text-[10px] text-slate-400 mt-1">${p.img?'تم رفع صورة رئيسية بالفعل — اختر صورة جديدة لاستبدالها.':'لم يتم رفع صورة رئيسية بعد.'}</div></div><div class="flex items-end"><label class="w-full"><span class="block text-xs font-bold text-slate-500 mb-1">صور الشغل للـ«رؤية المزيد» (اختيار متعدد)</span><input class="pGalleryFile w-full text-xs p-2 rounded-xl border" data-i="${i}" type="file" accept="image/*" multiple></label></div></div>${field('pDesc'+i,'الوصف',p.desc,'textarea')}<div class="mt-3 text-xs text-slate-500">صور المعرض الحالية: <b>${gal.length}</b></div><div class="mt-3 grid grid-cols-2 sm:grid-cols-4 gap-2">${gal.map(g=>`<div class="relative rounded-xl overflow-hidden aspect-square bg-slate-100 dark:bg-slate-900"><img src="${esc(g.url)}" class="w-full h-full object-cover" loading="lazy"><button class="delGallery absolute top-2 left-2 w-8 h-8 rounded-full bg-rose-600 text-white" data-id="${g.id}" title="حذف الصورة"><i class="fa-solid fa-trash text-xs"></i></button></div>`).join('')}</div><button class="delProject mt-4 px-4 py-2 rounded-xl bg-rose-100 text-rose-600 font-bold" data-i="${i}">حذف العمل</button></div>`}).join('')}</div><button id="addProject" class="mt-4 px-4 py-2 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 font-bold">إضافة عمل</button><button id="saveProjects" class="mt-4 mr-2 px-4 py-2 rounded-xl bg-blue-600 text-white font-bold">حفظ الأعمال والصور</button>`;
-if(t==='experience')return `<div class="space-y-4">${state.experiences.map((e,i)=>`<div class="glass rounded-2xl p-4"><div class="grid sm:grid-cols-3 gap-2">${field('ePeriod'+i,'الفترة',e.period)}${field('eRole'+i,'الدور',e.role)}${field('eCompany'+i,'الشركة',e.company)}</div>${field('eDesc'+i,'الوصف',e.desc,'textarea')}<button class="delExp mt-2 px-4 py-2 rounded-xl bg-rose-100 text-rose-600" data-i="${i}">حذف</button></div>`).join('')}</div><button id="addExp" class="mt-4 px-4 py-2 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 font-bold">إضافة خبرة</button><button id="saveExp" class="mt-4 mr-2 px-4 py-2 rounded-xl bg-blue-600 text-white font-bold">حفظ</button>`;
-if(t==='reviews')return `<div class="space-y-3">${adminReviews.length?adminReviews.map(r=>`<div class="glass rounded-2xl p-4 flex justify-between gap-4"><div><div class="flex items-center gap-2 flex-wrap"><b>${esc(r.author||'عميل')}</b><span class="text-amber-500">${'★'.repeat(Number(r.rating)||5)}</span><span class="text-xs px-2 py-1 rounded-lg ${r.approved?'bg-emerald-100 text-emerald-700':'bg-amber-100 text-amber-700'}">${r.approved?'منشور':'في انتظار الموافقة'}</span></div><p class="mt-2 text-sm text-slate-500">${esc(r.text)}</p></div><div class="flex gap-2 items-start">${!r.approved?`<button class="approveReview px-3 py-1.5 rounded-lg bg-emerald-600 text-white text-xs font-bold" data-id="${r.id}">موافقة</button>`:''}<button class="rejectReview px-3 py-1.5 rounded-lg bg-rose-100 text-rose-600 text-xs font-bold" data-id="${r.id}">رفض</button></div></div>`).join(''):'<p class="text-slate-500">لا توجد آراء حالياً.</p>'}</div><div class="mt-6 glass rounded-2xl p-4"><h4 class="font-black">إضافة رأي من الإدارة</h4>${field('newReviewAuthor','الاسم','عميل')}${field('newReviewText','الرأي','','textarea')}<div class="text-sm font-bold">التقييم من 1 إلى 5 نجوم</div><div id="adminReviewStars" class="flex gap-2 text-2xl"><button type="button" data-r="1" class="adminStar text-slate-300">★</button><button type="button" data-r="2" class="adminStar text-slate-300">★</button><button type="button" data-r="3" class="adminStar text-slate-300">★</button><button type="button" data-r="4" class="adminStar text-slate-300">★</button><button type="button" data-r="5" class="adminStar text-amber-400">★</button></div><input id="newReviewRating" type="hidden" value="5"><button id="adminAddReview" class="mt-3 px-4 py-2 rounded-xl bg-blue-600 text-white font-bold">إضافة ونشر</button></div>`;
-if(t==='contacts')return `<div class="space-y-3">${contacts.map(c=>`<div class="glass rounded-2xl p-4"><div class="flex justify-between"><b>${esc(c.name)}</b><span class="text-xs text-slate-500">${c.read?'تمت القراءة':'جديد'}</span></div><p class="text-sm mt-2">${esc(c.service)}</p><p class="text-sm text-slate-500">${esc(c.contact)}</p><p class="mt-2 leading-7">${esc(c.details)}</p><button class="markContact mt-3 px-3 py-1.5 rounded-lg bg-blue-100 text-blue-600 text-xs" data-id="${c.id}">تحديد كمقروء</button></div>`).join('')||'<p class="text-slate-500">لا توجد طلبات.</p>'}</div>`;
-if(t==='users')return `<div class="mb-4 p-4 rounded-2xl bg-amber-50 text-amber-800 dark:bg-amber-950/30 dark:text-amber-200 text-sm"><b>مهم:</b> كلمة المرور الأصلية لا يمكن عرضها من Firebase حتى للمشرف. أضفت بدلاً منها زر إعادة تعيين آمن، وزر حذف بيانات الحساب. حذف حساب تسجيل الدخول نفسه من Firebase يحتاج Firebase Admin SDK/وظيفة خادم، وليس من المتصفح مباشرة.</div><button id="syncLoginIndex" class="mb-4 px-4 py-2 rounded-xl bg-blue-600 text-white font-bold">تحديث تسجيل الدخول بالاسم والهاتف</button><div class="space-y-3">${users.map(u=>`<div class="glass rounded-2xl p-4"><div class="font-black">${esc(u.name||'بدون اسم')}</div><div class="text-sm text-slate-500 mt-1">${esc(u.email||'')} ${u.phone?' • '+esc(u.phone):''}</div><div class="text-xs text-slate-400 mt-2">UID: ${esc(u.uid||'')}</div><div class="flex flex-wrap gap-2 mt-3"><span class="px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs">كلمة المرور: غير قابلة للعرض</span><button class="resetUserPass px-3 py-1.5 rounded-lg bg-amber-100 text-amber-700 text-xs font-bold" data-email="${esc(u.email||'')}">إعادة تعيين كلمة المرور</button><button class="deleteUserData px-3 py-1.5 rounded-lg bg-rose-100 text-rose-600 text-xs font-bold" data-id="${esc(u.id||u.uid||'')}">حذف بيانات الحساب</button></div></div>`).join('')||'<p class="text-slate-500">لا توجد حسابات بعد.</p>'}</div>`;
-if(t==='messages'){const groups={};messages.forEach(m=>{const uid=m.uid||'unknown';if(!groups[uid])groups[uid]=[];groups[uid].push(m)});const convs=Object.entries(groups).map(([uid,arr])=>{arr.sort((a,b)=>(a.createdAt?.seconds||0)-(b.createdAt?.seconds||0));const last=arr[arr.length-1];const unread=arr.filter(m=>!m.fromAdmin&&!m.readByAdmin).length;const u=users.find(x=>x.uid===uid)||{};return {uid,arr,last,unread,name:u.name||last?.sender||'عميل',email:u.email||''}}).sort((a,b)=>(b.last?.createdAt?.seconds||0)-(a.last?.createdAt?.seconds||0));const selected=selectedChatUid&&groups[selectedChatUid]?selectedChatUid:(convs[0]?.uid||'');const c=convs.find(x=>x.uid===selected);return `<div class="mb-4 p-4 rounded-2xl bg-blue-50 text-blue-800 dark:bg-blue-950/30 dark:text-blue-200 text-sm">${adminUnreadMessages?`🔔 عندك <b>${adminUnreadMessages}</b> رسالة جديدة من العملاء.`:'لا توجد رسائل جديدة حالياً.'}</div><div class="grid lg:grid-cols-[300px_1fr] gap-4 min-h-[520px]"><div class="glass rounded-2xl p-3 overflow-y-auto"><h3 class="font-black mb-3">محادثات العملاء</h3><div class="space-y-2">${convs.map(x=>`<button class="chatConv w-full text-right p-3 rounded-xl ${x.uid===selected?'bg-blue-600 text-white':'hover:bg-slate-100 dark:hover:bg-slate-900'}" data-uid="${esc(x.uid)}"><div class="flex justify-between gap-2"><b class="truncate">${esc(x.name)}</b>${x.unread?`<span class="notify-dot">${x.unread>99?'99+':x.unread}</span>`:''}</div><div class="text-[11px] opacity-70 truncate mt-1">${esc(x.last?.text||'')}</div></button>`).join('')||'<p class="text-slate-500 text-sm">لا توجد محادثات.</p>'}</div></div><div class="glass rounded-2xl p-4 flex flex-col"><div class="pb-3 border-b border-slate-200 dark:border-slate-800"><b>${esc(c?.name||'اختر محادثة')}</b><div class="text-xs text-slate-500">${esc(c?.email||'')}</div></div><div id="adminChatThread" class="flex-1 overflow-y-auto py-4 space-y-2 max-h-[390px]">${c?.arr.map(m=>`<div class="max-w-[82%] p-3 rounded-2xl text-sm ${m.fromAdmin?'bg-blue-600 text-white ml-auto':'bg-slate-100 dark:bg-slate-900'}"><div>${esc(m.text)}</div><div class="text-[9px] opacity-60 mt-1">${m.fromAdmin?'أنت':'العميل'}</div></div>`).join('')||'<p class="text-center text-slate-500 text-sm">اختر عميلًا لعرض المحادثة.</p>'}</div>${c?`<div class="pt-3 border-t border-slate-200 dark:border-slate-800 flex gap-2"><input id="adminReplyInput" class="flex-1 p-3 rounded-xl border" placeholder="اكتب ردك للعميل..."><button id="sendSelectedReply" data-uid="${esc(c.uid)}" class="px-4 rounded-xl bg-blue-600 text-white font-bold">إرسال</button></div>`:''}</div></div>`}
-return `<div class="max-w-xl space-y-5"><div class="glass rounded-2xl p-5"><h3 class="font-black">تغيير كلمة مرور لوحة التحكم</h3><p class="text-xs text-slate-500 mt-1">البريد الإداري مخفي عن الزوار. كلمة المرور تُدار عبر Firebase Authentication ولا يتم عرضها هنا.</p>${field('oldAdminPass','كلمة المرور الحالية','','password')}${field('newAdminPass','كلمة المرور الجديدة','','password')}${field('newAdminPass2','تأكيد كلمة المرور الجديدة','','password')}<button id="changeAdminPass" class="mt-3 px-5 py-3 rounded-xl bg-blue-600 text-white font-bold">تغيير كلمة المرور</button></div></div>`}
-function uploadField(id,label,val,key){return `<label class="block"><span class="block text-xs font-bold text-slate-500 mb-1">${label}</span><div class="flex gap-2"><input id="${id}" value="${esc(val)}" class="flex-1 p-3 rounded-xl border"><input id="${id}File" data-key="${key}" type="file" accept="image/*" class="w-36 text-xs"></div></label>`}
-async function saveState(){
-  if(!auth.currentUser || auth.currentUser.email.toLowerCase()!==ADMIN_EMAIL.toLowerCase()){
-    toast('افتح لوحة التحكم أولاً بحساب الإدارة قبل الحفظ.',false); throw new Error('admin-auth-required');
-  }
-  try{
-    await setDoc(siteRef,state,{merge:false});
-    const verify=await getDoc(siteRef);
-    if(!verify.exists()) throw new Error('site-document-not-found-after-save');
-    state={...defaults,...verify.data(),social:{...defaults.social,...(verify.data().social||{})}};
-    setCloudStatus('☁️ محفوظ على السحابة • التحديثات لحظية','ok');
-    toast('تم حفظ التعديلات على السحابة — ستظهر للزوار تلقائياً');
-  }catch(e){
-    console.error('saveState',e);
-    showCloudError(e);
-    toast('لم يتم الحفظ على السحابة. '+friendlyCloudError(e),false);
-    throw e;
-  }
-}
-function setCloudStatus(text,type='ok'){
-  const el=$('cloudStatus'); if(!el)return;
-  const cls=type==='ok'?'bg-emerald-600/90':type==='warn'?'bg-amber-500/90':'bg-rose-600/90';
-  el.textContent=text; el.className='fixed bottom-3 left-3 z-[100] px-3 py-2 rounded-xl text-xs font-bold '+cls+' text-white shadow-lg';
-}
-function friendlyCloudError(e){
-  const c=e?.code||'';
-  if(c.includes('permission-denied')) return 'Firebase موجود، لكن صلاحيات Firestore الحالية لا تسمح للموقع بالوصول. انشر ملف firestore.rules من هذه النسخة مرة واحدة.';
-  if(c.includes('failed-precondition')) return 'Firestore موجود لكن قاعدة البيانات غير مهيأة بالكامل في مشروع Firebase.';
-  if(c.includes('not-found')) return 'مشروع Firebase موجود، لكن خدمة Firestore غير متاحة في هذا المشروع.';
-  if(c.includes('unavailable')) return 'الاتصال بـ Firebase انقطع مؤقتًا. جرّب تحديث الصفحة.';
-  return 'تعذر الاتصال ببيانات الموقع في Firebase. تأكد من نشر firestore.rules واستخدام مشروع abdelrahman-website-98d4c.';
-}
-function showCloudError(e){setCloudStatus('⚠️ '+friendlyCloudError(e),'error')}
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobileMenu" class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md px-4 pt-2 pb-4 space-y-2">
+            <a href="#hero" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" data-i18n="nav_home">الرئيسية</a>
+            <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" data-i18n="nav_about">عني</a>
+            <a href="#services" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" data-i18n="nav_services">خدماتي</a>
+            <a href="#portfolio" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" data-i18n="nav_portfolio">أعمالي</a>
+            <a href="#experience" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" data-i18n="nav_experience">الخبرة</a>
+            <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" data-i18n="nav_contact">تواصل معي</a>
+        </div>
+    </header>
 
-function bindAdmin(){
-if(activeTab==='general'){$('saveGeneral').onclick=async()=>{state.name=$('aName').value;state.title=$('aTitle').value;state.badge=$('aBadge').value;state.email=$('aEmail').value;state.phone=$('aPhone').value;state.whatsapp=$('aWhatsapp').value;state.location=$('aLocation').value;state.mapUrl=$('aMapUrl').value;state.website=$('aWebsite')?.value||state.website||'';state.social={facebook:$('aFacebook').value,instagram:$('aInstagram').value,whatsapp:$('aWhatsappSocial').value||('https://wa.me/'+String(state.whatsapp||'').replace(/\D/g,'')),behance:$('aBehance').value,linkedin:$('aLinkedin').value,x:$('aX').value};state.aboutHeading=$('aAboutHeading').value;state.bio=$('aBio').value;state.aboutDetail=$('aAboutDetail').value;for(const [id,key] of [['aLogo','logo'],['aProfile','profileImg']]){const f=$(id+'File').files[0];if(f){const r=ref(storage,'site/'+Date.now()+'-'+f.name);await uploadBytes(r,f);state[key]=await getDownloadURL(r)}else state[key]=$(id).value}await saveState();render()}}
-if(activeTab==='skills'){$('addSkill').onclick=()=>{state.skills.push({name:'مهارة جديدة',percent:80});renderAdmin()};document.querySelectorAll('.delSkill').forEach(b=>b.onclick=()=>{state.skills.splice(+b.dataset.i,1);renderAdmin()});$('saveSkills').onclick=async()=>{document.querySelectorAll('.skillName').forEach(x=>state.skills[+x.dataset.i].name=x.value);document.querySelectorAll('.skillPct').forEach(x=>state.skills[+x.dataset.i].percent=+x.value);await saveState();render()}}
-if(activeTab==='services'){$('addService').onclick=()=>{state.services.push({title:'خدمة جديدة',desc:'وصف الخدمة',icon:'fa-star'});renderAdmin()};document.querySelectorAll('.delSrv').forEach(b=>b.onclick=()=>{state.services.splice(+b.dataset.i,1);renderAdmin()});$('saveServices').onclick=async()=>{document.querySelectorAll('.srvTitle').forEach(x=>state.services[+x.dataset.i].title=x.value);document.querySelectorAll('.srvIcon').forEach(x=>state.services[+x.dataset.i].icon=x.value);document.querySelectorAll('.srvDesc').forEach(x=>state.services[+x.dataset.i].desc=x.value);await saveState();render()}}
-if(activeTab==='portfolio'){$('addCat').onclick=()=>{state.categories.push({id:'cat'+Date.now(),name:'قسم جديد',description:''});renderAdmin()};document.querySelectorAll('.delCat').forEach(b=>b.onclick=()=>{state.categories.splice(+b.dataset.i,1);renderAdmin()});$('saveCats').onclick=async()=>{document.querySelectorAll('.catName').forEach(x=>state.categories[+x.dataset.i].name=x.value);document.querySelectorAll('.catDesc').forEach(x=>state.categories[+x.dataset.i].description=x.value);await saveState();render()};$('addProject').onclick=()=>{state.projects.push({id:'p'+Date.now(),title:'عمل جديد',category:state.categories[0]?.id||'social',desc:'وصف العمل',img:''});renderAdmin()};document.querySelectorAll('.delProject').forEach(b=>b.onclick=async()=>{const i=+b.dataset.i;const p=state.projects[i];for(const g of projectImages.filter(x=>x.projectId===p.id||x.projectIndex===i)){try{await deleteDoc(doc(db,'projectImages',g.id))}catch(e){}}state.projects.splice(i,1);await saveState();renderAdmin()});$('saveProjects').onclick=async()=>{try{for(let i=0;i<state.projects.length;i++){state.projects[i].title=$('pTitle'+i).value;state.projects[i].category=$('pCat'+i).value;state.projects[i].desc=$('pDesc'+i).value;const coverInput=document.querySelector('.pCoverFile[data-i="'+i+'"]');if(coverInput?.files?.[0]){const f=coverInput.files[0];const safeName=f.name.replace(/[^a-zA-Z0-9._-]/g,'_');const r=ref(storage,'projects/covers/'+state.projects[i].id+'/'+Date.now()+'-'+safeName);await uploadBytes(r,f);state.projects[i].img=await getDownloadURL(r);}const input=document.querySelector('.pGalleryFile[data-i="'+i+'"]');const files=[...(input?.files||[])];for(let j=0;j<files.length;j++){const f=files[j];const safeName=f.name.replace(/[^a-zA-Z0-9._-]/g,'_');const r=ref(storage,'projects/gallery/'+state.projects[i].id+'/'+Date.now()+'-'+j+'-'+safeName);await uploadBytes(r,f);const url=await getDownloadURL(r);await addDoc(collection(db,'projectImages'),{projectId:state.projects[i].id,projectIndex:i,url,createdAt:serverTimestamp(),order:Date.now()+j});}}await saveState();toast('تم حفظ الأعمال ورفع الصور بنجاح');render()}catch(e){console.error(e);toast('تعذر حفظ الأعمال أو رفع الصور: '+(e?.message||'تحقق من Storage Rules'),false)}}}
-if(activeTab==='experience'){$('addExp').onclick=()=>{state.experiences.push({period:'2026',role:'خبرة جديدة',company:'شركة',desc:'الوصف'});renderAdmin()};document.querySelectorAll('.delExp').forEach(b=>b.onclick=()=>{state.experiences.splice(+b.dataset.i,1);renderAdmin()});$('saveExp').onclick=async()=>{for(let i=0;i<state.experiences.length;i++){state.experiences[i].period=$('ePeriod'+i).value;state.experiences[i].role=$('eRole'+i).value;state.experiences[i].company=$('eCompany'+i).value;state.experiences[i].desc=$('eDesc'+i).value}await saveState();render()}}
-if(activeTab==='reviews'){document.querySelectorAll('.adminStar').forEach(b=>b.onclick=()=>{const n=+b.dataset.r;document.querySelectorAll('.adminStar').forEach(x=>x.classList.toggle('text-amber-400',+x.dataset.r<=n));document.querySelectorAll('.adminStar').forEach(x=>x.classList.toggle('text-slate-300',+x.dataset.r>n));$('newReviewRating').value=n});$('adminAddReview').onclick=async()=>{const text=$('newReviewText').value.trim();if(!text)return toast('اكتب الرأي أولاً',false);await addDoc(collection(db,'reviews'),{author:$('newReviewAuthor').value||'عميل',text,rating:+$('newReviewRating').value||5,approved:true,createdAt:serverTimestamp()});toast('تمت إضافة الرأي ونشره');renderAdmin()};document.querySelectorAll('.approveReview').forEach(b=>b.onclick=async()=>{await setDoc(doc(db,'reviews',b.dataset.id),{approved:true},{merge:true});toast('تمت الموافقة على الرأي')});document.querySelectorAll('.rejectReview').forEach(b=>b.onclick=async()=>{await deleteDoc(doc(db,'reviews',b.dataset.id));toast('تم رفض وحذف الرأي')})}
-if(activeTab==='users'){$('syncLoginIndex')?.addEventListener('click',async()=>{try{for(const u of users){if(u.phone)await setDoc(doc(db,'loginIndex',loginIndexId('phone',phoneNorm(u.phone))),{uid:u.uid,email:u.email,name:u.name||'',kind:'phone'});if(u.name)await setDoc(doc(db,'loginIndex',loginIndexId('name',u.name)),{uid:u.uid,email:u.email,name:u.name||'',kind:'name'});}toast('تم تحديث تسجيل الدخول بالاسم والهاتف')}catch(e){toast('تعذر تحديث فهرس تسجيل الدخول',false)}});document.querySelectorAll('.resetUserPass').forEach(b=>b.onclick=async()=>{try{await sendPasswordResetEmail(auth,b.dataset.email);toast('تم إرسال رابط إعادة تعيين كلمة المرور')}catch(e){toast('تعذر إرسال رابط إعادة التعيين',false)}});document.querySelectorAll('.deleteUserData').forEach(b=>b.onclick=async()=>{if(!confirm('حذف بيانات الحساب من الموقع؟ هذا لا يحذف حساب Firebase Authentication نفسه.'))return;try{await deleteDoc(doc(db,'users',b.dataset.id));toast('تم حذف بيانات الحساب من الموقع')}catch(e){toast('تعذر حذف بيانات الحساب',false)}})}
-if(activeTab==='contacts')document.querySelectorAll('.markContact').forEach(b=>b.onclick=async()=>{await setDoc(doc(db,'contacts',b.dataset.id),{read:true},{merge:true});toast('تم تحديث الطلب')});
-if(activeTab==='messages'){document.querySelectorAll('.chatConv').forEach(b=>b.onclick=()=>{selectedChatUid=b.dataset.uid;renderAdmin();});$('sendSelectedReply')?.addEventListener('click',async()=>{const uid=$('sendSelectedReply').dataset.uid;const text=$('adminReplyInput').value.trim();if(!uid||!text)return;try{await addDoc(collection(db,'messages'),{uid,text,sender:'الإدارة',fromAdmin:true,readByClient:false,readByAdmin:true,createdAt:serverTimestamp()});$('adminReplyInput').value='';toast('تم إرسال الرد وحفظه في المحادثة');}catch(e){console.error(e);toast('تعذر إرسال الرد: '+(e?.message||''),false)}});document.querySelectorAll('.chatConv').forEach(b=>{if(b.dataset.uid===selectedChatUid){messages.filter(m=>m.uid===selectedChatUid&&!m.fromAdmin&&!m.readByAdmin).forEach(m=>setDoc(doc(db,'messages',m.id),{readByAdmin:true},{merge:true}).catch(()=>{}));}})}
-if(activeTab==='security')$('changeAdminPass').onclick=async()=>{const oldP=$('oldAdminPass').value,newP=$('newAdminPass').value,newP2=$('newAdminPass2').value;if(newP.length<6||newP!==newP2)return toast('كلمة المرور الجديدة يجب أن تكون 6 أحرف على الأقل ومتطابقة',false);try{const cred=EmailAuthProvider.credential(ADMIN_EMAIL,oldP);await reauthenticateWithCredential(auth.currentUser,cred);await updatePassword(auth.currentUser,newP);toast('تم تغيير كلمة مرور الإدارة بنجاح')}catch(e){toast(authMsg(e),false)}};
-}
-function authMsg(e){const c=e?.code||'';return ({'auth/invalid-credential':'بيانات الدخول غير صحيحة','auth/wrong-password':'كلمة المرور غير صحيحة','auth/user-not-found':'حساب الإدارة غير موجود','auth/email-already-in-use':'الحساب موجود بالفعل','auth/weak-password':'كلمة المرور ضعيفة','auth/too-many-requests':'محاولات كثيرة، حاول لاحقاً'})[c]||'حدث خطأ في تسجيل الدخول'}
-let siteUnsub=null;
-async function ensureSiteDocument(){
-  if(!auth.currentUser || auth.currentUser.email.toLowerCase()!==ADMIN_EMAIL.toLowerCase()) return false;
-  const snap=await getDoc(siteRef);
-  if(!snap.exists()){
-    await setDoc(siteRef,defaults,{merge:false});
-    state={...defaults};
-    return true;
-  }
-  return false;
-}
-function startSiteSync(){
-  setCloudStatus('☁️ جاري الاتصال ببيانات الموقع…','warn');
-  siteUnsub?.();
-  siteUnsub=onSnapshot(siteRef, s=>{
-    try{
-      if(s.exists()){
-        const d=s.data()||{};
-        state={...defaults,...d,social:{...defaults.social,...(d.social||{})}};state.projects=(state.projects||[]).map((p,i)=>({...p,id:p.id||('p'+i)}));
-        if(!state.social.whatsapp && state.whatsapp) state.social.whatsapp='https://wa.me/'+String(state.whatsapp).replace(/\D/g,'');
-        setCloudStatus('☁️ متصل بالسحابة • التحديثات لحظية','ok');
-      }else{
-        state={...defaults};
-        setCloudStatus('☁️ السحابة جاهزة • اضغط حفظ من لوحة التحكم لأول مرة','warn');
-      }
-      render();
-      window.dispatchEvent(new CustomEvent('siteCloudSynced'));
-      setTimeout(()=>translatePage(),180);
-    }catch(e){
-      console.error('site snapshot error',e); showCloudError(e); render();
-    }
-  }, e=>{
-    console.error('site cloud sync error',e);
-    showCloudError(e);
-    render();
-  });
-}
-function loadSite(){ startSiteSync(); }
+    <section id="hero" class="relative py-16 lg:py-28 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Main Text Content -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-start">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800/60 text-blue-600 dark:text-blue-400 text-sm font-medium shadow-sm">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span id="availabilityBadge">متاح الآن للمشاريع الجديدة والعمل الحر</span>
+                    </div>
 
-let adminUnsubs=[];
-function startAdminStreams(){adminUnsubs.forEach(fn=>fn&&fn());adminUnsubs=[];adminUnsubs.push(onSnapshot(query(collection(db,'contacts'),orderBy('createdAt','desc')),s=>{contacts=s.docs.map(d=>({id:d.id,...d.data()}));if(activeTab==='contacts')renderAdmin()}));adminUnsubs.push(onSnapshot(collection(db,'users'),s=>{users=s.docs.map(d=>({id:d.id,...d.data()}));if(activeTab==='users')renderAdmin()}));adminUnsubs.push(onSnapshot(query(collection(db,'messages'),orderBy('createdAt','desc')),s=>{messages=s.docs.map(d=>({id:d.id,...d.data()}));adminUnreadMessages=messages.filter(m=>!m.fromAdmin&&!m.readByAdmin).length;updateChatBadges();const newest=messages.find(m=>!m.fromAdmin&&!m.readByAdmin);if(newest&&!previousAdminMessageIds.has(newest.id)&&previousAdminMessageIds.size)notifyUser('رسالة جديدة من عميل',newest.text);previousAdminMessageIds=new Set(messages.map(m=>m.id));if(activeTab==='messages')renderAdmin();}));adminUnsubs.push(onSnapshot(collection(db,'projectImages'),s=>{projectImages=s.docs.map(d=>({id:d.id,...d.data()}));if(activeTab==='portfolio')renderAdmin() }));adminUnsubs.push(onSnapshot(collection(db,'reviews'),s=>{adminReviews=s.docs.map(d=>({id:d.id,...d.data()}));if(activeTab==='reviews')renderAdmin()}));}
-let chatUnsub=null;
-function updateChatBadges(){const adminTab=document.querySelector('[data-tab="messages"]');if(adminTab){adminTab.querySelector('.notify-dot')?.remove();if(adminUnreadMessages)adminTab.insertAdjacentHTML('beforeend',`<span class="notify-dot float-left">${adminUnreadMessages>99?'99+':adminUnreadMessages}</span>`)}const toggle=$('chatToggle');if(toggle){toggle.querySelector('.notify-dot')?.remove();if(clientUnreadMessages){toggle.classList.add('relative');toggle.insertAdjacentHTML('beforeend',`<span class="notify-dot absolute -top-1 -right-1">${clientUnreadMessages>99?'99+':clientUnreadMessages}</span>`)}}}
-function notifyUser(title,body){try{if('Notification' in window&&Notification.permission==='granted')new Notification(title,{body})}catch(e){}toast(body)}
-function startChat(){if(!currentUser||currentUser.isAnonymous)return;chatUnsub?.();chatUnsub=onSnapshot(query(collection(db,'messages'),where('uid','==',currentUser.uid)),s=>{const docs=s.docs.map(d=>({id:d.id,...d.data()}));const arr=docs.sort((a,b)=>(a.createdAt?.seconds||0)-(b.createdAt?.seconds||0));clientUnreadMessages=arr.filter(m=>m.fromAdmin&&!m.readByClient).length;updateChatBadges();const newAdmin=arr.filter(m=>m.fromAdmin&&!previousMessageIds.has(m.id));if(newAdmin.length&&previousMessageIds.size)notifyUser('رسالة جديدة من عبدالرحمن',newAdmin[newAdmin.length-1].text);previousMessageIds=new Set(arr.map(m=>m.id));$('chatMessages').innerHTML=arr.map(m=>`<div class="max-w-[85%] p-2.5 rounded-2xl text-xs ${m.fromAdmin?'bg-blue-600 text-white ml-auto':'bg-slate-200 dark:bg-slate-800'}">${esc(m.text)}${m.fromAdmin&&!m.readByClient?'<div class="text-[9px] opacity-80 mt-1">رسالة جديدة</div>':''}</div>`).join('')||'<div class="text-center text-xs text-slate-500">ابدأ المحادثة برسالة.</div>';$('chatMessages').scrollTop=$('chatMessages').scrollHeight})}
-$('chatToggle').onclick=async()=>{ $('chatPanel').classList.toggle('hidden'); const u=auth.currentUser||currentUser; if(!u){show('clientModal');toast('سجّل الدخول أولاً لبدء المحادثة',false)} else {startChat();const unread=await getDocs(query(collection(db,'messages'),where('uid','==',u.uid),where('fromAdmin','==',true),where('readByClient','==',false))).catch(()=>null);if(unread){for(const d of unread.docs)await setDoc(doc(db,'messages',d.id),{readByClient:true},{merge:true});clientUnreadMessages=0;updateChatBadges()}}};$('chatClose').onclick=()=>$('chatPanel').classList.add('hidden');$('chatSend').onclick=async()=>{const u=auth.currentUser||currentUser;if(!u||u.isAnonymous){show('clientModal');return toast('سجّل الدخول أولاً لإرسال رسالة',false)}const text=$('chatInput').value.trim();if(!text)return;const btn=$('chatSend');btn.disabled=true;try{await addDoc(collection(db,'messages'),{uid:u.uid,text,sender:u.email||'عميل',fromAdmin:false,readByAdmin:false,readByClient:true,createdAt:serverTimestamp()});$('chatInput').value='';startChat();toast('تم إرسال الرسالة بنجاح')}catch(e){console.error(e);toast('تعذر إرسال الرسالة. تأكد من نشر قواعد V13.',false)}finally{btn.disabled=false}};$('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();$('chatSend').click()}});
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tight">
+                        <span id="heroGreeting">مرحباً، أنا</span> <br>
+                        <span class="gradient-text" id="heroName">عبدالرحمن عطيه</span>
+                    </h1>
 
-document.addEventListener('click',e=>{if(['INPUT','TEXTAREA','SELECT','OPTION'].includes(e.target.tagName))return;const r=document.createElement('span');r.className='click-ripple';r.style.left=e.clientX+'px';r.style.top=e.clientY+'px';document.body.appendChild(r);for(let i=0;i<4;i++){const s=document.createElement('span');s.className='click-spark';s.style.left=e.clientX+'px';s.style.top=e.clientY+'px';const a=(Math.PI*2*i/4)+(Math.random()-.5)*.4,d=30+Math.random()*24;s.style.color=i%2?'#60a5fa':'#2563eb';s.style.setProperty('--dx',(Math.cos(a)*d)+'px');s.style.setProperty('--dy',(Math.sin(a)*d)+'px');document.body.appendChild(s);setTimeout(()=>s.remove(),700)}setTimeout(()=>r.remove(),600)});
-document.addEventListener('contextmenu',e=>{if(!['INPUT','TEXTAREA'].includes(e.target.tagName))e.preventDefault()});document.addEventListener('dragstart',e=>{if(e.target.tagName==='IMG')e.preventDefault()});document.addEventListener('copy',e=>{if(!['INPUT','TEXTAREA'].includes(document.activeElement?.tagName))e.preventDefault()});document.addEventListener('cut',e=>{if(!['INPUT','TEXTAREA'].includes(document.activeElement?.tagName))e.preventDefault()});document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&['c','x','s','u','a'].includes(e.key.toLowerCase())&&!['INPUT','TEXTAREA'].includes(document.activeElement?.tagName)){e.preventDefault()}if(e.key==='F12')e.preventDefault()});
-let currentLang=localStorage.getItem('siteLang')||'ar';
+                    <div class="text-xl sm:text-2xl font-bold text-slate-600 dark:text-slate-300 flex items-center justify-center lg:justify-start">
+                        <span id="heroTitle" class="border-b-2 border-blue-500 pb-1">مصمم جرافيك ومبدع هويات بصرية</span>
+                    </div>
 
-// Local, built-in bilingual dictionary. No Google Translate or external translation service is used.
-// The site renders its Arabic content normally, then swaps known UI/content phrases locally.
-const LOCAL_TRANSLATIONS={
-'عبدالرحمن عطيه':'Abdelrahman Attia','مصمم جرافيك ومبدع هويات بصرية':'Graphic Designer & Visual Identity Creator','متاح الآن للمشاريع الجديدة والعمل الحر':'Available now for new projects & freelance work','مصمم جرافيك محترف بخبرة تتجاوز 6 سنوات في صناعة التصاميم الإبداعية، تصاميم السوشيال ميديا، الهويات البصرية والمطبوعات.':'Professional graphic designer with over 6 years of experience creating creative designs, social media designs, visual identities, and print materials.','فن تحويل الأفكار إلى تصاميم بصرية تأثر العقول':'The art of turning ideas into visual designs that influence minds','التصميم بالنسبة لي ليس مجرد دمج للألوان والصور، بل هو لغة بصرية تساعد البراند على الظهور بشكل احترافي والوصول إلى جمهوره.':'Design is not just combining colors and images; it is a visual language that helps a brand look professional and reach its audience.','مصر':'Egypt','جميع الحقوق محفوظة © ':'All rights reserved © ','محادثة مباشرة':'Live Chat','تواصل مع عبدالرحمن':'Chat with Abdelrahman','اكتب رسالتك...':'Write your message...','ابدأ المحادثة برسالة.':'Start the conversation with a message.','سجّل الدخول أولاً لبدء المحادثة':'Please log in first to start a chat','سجّل الدخول أولاً لإرسال رسالة':'Please log in first to send a message','تم إرسال الرسالة بنجاح':'Message sent successfully','تعذر إرسال الرسالة. انشر ملف firestore.rules الجديد ثم جرّب مرة أخرى.':'Could not send the message. Publish the latest firestore.rules and try again.','حساب العميل':'Client Account','الاسم':'Name','رقم الهاتف':'Phone number','البريد الإلكتروني':'Email','كلمة المرور (6 أحرف على الأقل)':'Password (at least 6 characters)','دخول':'Log in','إنشاء حساب':'Create account','تسجيل الخروج':'Log out','دخول لوحة التحكم':'Admin Login','البريد الإداري مخفي ولا يظهر للزوار.':'The admin email is hidden from visitors.','كلمة المرور':'Password','لوحة التحكم':'Admin Dashboard','تحكم كامل في محتوى الموقع والطلبات والحسابات.':'Full control over site content, requests, and accounts.','خروج':'Logout','استعرض الأعمال المرتبطة ←':'View related work →','عرض التفاصيل ←':'View details →','الكل':'All','صفحة تخصص الأعمال':'Portfolio Category','رجوع':'Back','كل الأعمال في هذا التخصص تُدار بالكامل من لوحة التحكم.':'All work in this category is fully managed from the admin dashboard.','لا توجد أعمال مضافة لهذا القسم حتى الآن.':'No work has been added to this category yet.','أضف روابط حساباتك من لوحة التحكم.':'Add your social account links from the admin dashboard.','موقعك الجغرافي':'Your location','الهاتف':'Phone','بريد التواصل':'Contact email','رابط خرائط Google للموقع (اختياري)':'Google Maps location link (optional)','حفظ كل بيانات الموقع':'Save all site information','متاح الآن للمشاريع الجديدة والعمل الحر':'Available now for new projects & freelance work','استعرض الأعمال':'View my work','تواصل معي عبر الواتساب':'Contact me on WhatsApp','عنّي':'About me','الخدمات':'Services','الأعمال':'Portfolio','الخبرات':'Experience','التواصل':'Contact','آراء العملاء':'Client reviews','مهاراتي':'My skills','تواصل':'Contact','أرسل طلبك':'Send your request','رسالة':'Message','الخدمة':'Service','إرسال':'Send','تصاميم السوشيال ميديا والإعلانات':'Social Media & Advertising Designs','الهويات البصرية والشعارات':'Visual Identities & Logos','المطبوعات والتغليف':'Print & Packaging Design','سوشيال ميديا وإعلانات':'Social Media & Advertising','هويات بصرية وشعارات':'Visual Identities & Logos','مطبوعات وتغليف':'Print & Packaging','تصاميم السوشيال ميديا والمحتوى الرقمي':'Social Media & Digital Content Design','تصميم الهويات البصرية والشعارات':'Visual Identity & Logo Design','تصميم المطبوعات وتغليف المنتجات':'Print & Product Packaging Design','تصميمات سوشيال ميديا تشد الانتباه من أول ثانية، وتخلي البراند يظهر بشكل احترافي ومتناسق ويحوّل الفكرة لرسالة بصرية واضحة.':'Social media designs that grab attention from the first second, make the brand look professional and consistent, and turn ideas into a clear visual message.','هوية بصرية متكاملة تعكس شخصية البراند، من الشعار والألوان إلى أسلوب الاستخدام، عشان تفضل العلامة ثابتة ومميزة في ذهن العميل.':'A complete visual identity that reflects the brand personality, from logo and colors to usage style, keeping the brand consistent and memorable.','تصميمات مطبوعات وتغليف جاهزة للتنفيذ، باهتمام بالتفاصيل والمقاسات والتكوين، بحيث المنتج يطلع بشكل احترافي في الواقع.':'Print and packaging designs ready for production, with careful attention to details, dimensions, and composition so the final product looks professional.','تصميمات سوشيال ميديا تخطف العين وتوصل الرسالة بسرعة، مع نظام بصري متناسق يخلي حسابك شكله احترافي ويقوّي حضور البراند.':'Eye-catching social media designs that deliver the message quickly, with a consistent visual system that strengthens your brand presence.','هوية بصرية مش مجرد لوجو؛ بنبني شكل متكامل للبراند من الشعار والألوان والخطوط والتطبيقات عشان العميل يفتكرك من أول نظرة.':'A visual identity is more than a logo; we build a complete brand system from the logo, colors, typography, and applications so customers remember you at first glance.','مطبوعات وتغليف يجمع بين الشكل الجذاب والدقة في التنفيذ، من الكروت والبروشورات إلى العبوات والستيكرات والمواد الدعائية.':'Print and packaging that combine attractive design with production accuracy, from cards and brochures to boxes, stickers, and promotional materials.','نموذج تجريبي مؤقت لحين رفع العمل الحقيقي.':'Temporary demo project until the real work is uploaded.','صورة تجريبية قابلة للاستبدال من لوحة التحكم.':'Demo image that can be replaced from the admin dashboard.','حملة سوشيال ميديا':'Social Media Campaign','هوية بصرية':'Visual Identity','تغليف منتجات':'Product Packaging','إعلان إبداعي':'Creative Advertisement','شعار تجريبي':'Demo Logo','علبة منتج':'Product Box','مصمم جرافيك حر ومبدع هويات بصرية':'Freelance Graphic Designer & Visual Identity Creator','العمل مع شركات وبراندات في مصر والخليج.':'Working with companies and brands in Egypt and the Gulf.','2018 - حتى الآن':'2018 - Present','متصل بالسحابة • التحديثات لحظية':'Cloud connected • Live updates','السحابة جاهزة • اضغط حفظ من لوحة التحكم لأول مرة':'Cloud ready • Save from the admin dashboard to initialize it','جاري الاتصال بالسحابة…':'Connecting to cloud…','السحابة غير متصلة':'Cloud disconnected','تعذر تحميل خدمة الترجمة — الموقع يعمل بالعربية':'Local translation is always available — no external translation service is required','استبدال':'Replace','إضافة':'Add','حذف':'Delete','تعديل':'Edit','حفظ':'Save','إلغاء':'Cancel','تأكيد':'Confirm','نعم':'Yes','لا':'No','تقييمك':'Your rating','اختر عدد النجوم':'Choose a star rating','نجمة':'star','نجوم':'stars','أضف رأيك':'Add your review','اسمك':'Your name','اكتب رأيك':'Write your review','تقييم العميل':'Client rating','إضافة رأي':'Add review','حذف الرأي':'Delete review','الرسائل':'Messages','المستخدمون':'Users','الخدمات':'Services','التخصصات':'Categories','الأعمال':'Projects','البيانات العامة':'General','التواصلات':'Contacts','الإدارة':'Admin','الموقع الجغرافي':'Location','السوشيال ميديا':'Social Media','إنستجرام':'Instagram','فيسبوك':'Facebook','واتساب':'WhatsApp','مشاركة':'Share','إغلاق':'Close'
-};
-const EN_TO_AR={}; Object.entries(LOCAL_TRANSLATIONS).forEach(([ar,en])=>{if(en&&!EN_TO_AR[en])EN_TO_AR[en]=ar});
-function localTranslateString(value,toEnglish){
-  const raw=String(value??'');
-  if(!raw.trim()) return raw;
-  const map=toEnglish?LOCAL_TRANSLATIONS:EN_TO_AR;
-  if(map[raw]!==undefined) return map[raw];
-  // Replace longer phrases first so nested phrases translate cleanly.
-  let out=raw;
-  Object.keys(map).sort((a,b)=>b.length-a.length).forEach(k=>{if(k && out.includes(k)) out=out.split(k).join(map[k])});
-  return out;
-}
-function translatePage(){
-  const en=currentLang==='en';
-  document.documentElement.lang=en?'en':'ar';
-  document.documentElement.dir=en?'ltr':'rtl';
-  document.body.classList.toggle('site-en',en);
-  document.querySelectorAll('body *').forEach(el=>{
-    if(['SCRIPT','STYLE','NOSCRIPT'].includes(el.tagName)) return;
-    if(el.children.length===0 && el.childNodes.length){
-      el.childNodes.forEach(n=>{if(n.nodeType===3 && n.nodeValue.trim()) n.nodeValue=localTranslateString(n.nodeValue,en)});
-    }
-    ['placeholder','title','aria-label'].forEach(attr=>{if(el.hasAttribute?.(attr)){const v=el.getAttribute(attr);el.setAttribute(attr,localTranslateString(v,en))}});
-  });
-  if($('langBtn'))$('langBtn').textContent=en?'عربي':'EN';
-}
-function setLanguage(lang){
-  currentLang=lang==='en'?'en':'ar';
-  localStorage.setItem('siteLang',currentLang);
-  // Re-render from the original Arabic source, then apply the local dictionary.
-  render();
-  if($('langBtn'))$('langBtn').textContent=currentLang==='en'?'عربي':'EN';
-  setTimeout(translatePage,20);
-}
-$('langBtn').onclick=()=>setLanguage(currentLang==='ar'?'en':'ar');
-window.addEventListener('siteCloudSynced',()=>{setTimeout(translatePage,80)});
-loadSite();
-</script></body></html>
+                    <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg max-w-2xl leading-relaxed mx-auto lg:mx-0" id="heroBio">
+                        مصمم جرافيك محترف بخبرة تتجاوز 6 سنوات في صناعة التصاميم الإبداعية، تصاميم السوشيال ميديا، الهويات البصرية المتكاملة، والمطبوعات. أساعد البراندات والشركات على جذب العملاء وتحقيق أعلى نسبة مبيعات من خلال محتوى بصري احترافي ومبتكر.
+                    </p>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="https://wa.me/201279879021" target="_blank" id="btnHireMe" class="px-7 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 hover:-translate-y-0.5 transition-all flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            <span id="btnHireMeText" data-i18n="btn_whatsapp">تواصل معي عبر الواتساب</span>
+                        </a>
+                        <a href="#portfolio" id="btnViewWork" class="px-7 py-3.5 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 font-semibold shadow-sm hover:-translate-y-0.5 transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-palette"></i>
+                            <span id="btnViewWorkText" data-i18n="btn_portfolio">استعرض معرِض الأعمال</span>
+                        </a>
+                    </div>
+
+                    <!-- Social Icons -->
+                    <div class="flex items-center justify-center lg:justify-start gap-3 pt-6 text-slate-500 dark:text-slate-400" id="socialLinksContainer">
+                        <a id="linkFacebook" href="https://www.facebook.com/share/1DiZq66Hkm/" target="_blank" class="p-2.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-600 transition-colors" title="Facebook"><i class="fa-brands fa-facebook text-xl"></i></a>
+                        <a id="linkInstagram" href="https://www.instagram.com/abdelrahman.atia3?stkn=MXdhdXd1aDlnc2N4Mg==" target="_blank" class="p-2.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-pink-500 transition-colors" title="Instagram"><i class="fa-brands fa-instagram text-xl"></i></a>
+                        <a id="linkWhatsapp" href="https://wa.me/201279879021" target="_blank" class="p-2.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-emerald-500 transition-colors" title="WhatsApp"><i class="fa-brands fa-whatsapp text-xl"></i></a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-blue-600 to-purple-600 rounded-3xl rotate-6 blur-md opacity-70"></div>
+                        <div class="relative w-full h-full rounded-3xl overflow-hidden border-4 border-white dark:border-slate-800 shadow-2xl bg-slate-900">
+                            <img id="profileImage" src="1001778764.jpg" alt="عبدالرحمن عطيه" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-slate-100/50 dark:bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold mb-4" data-i18n="about_title">عني وعن مسيرتي في التصميم</h2>
+                <div class="w-16 h-1 bg-blue-600 mx-auto rounded-full mb-4"></div>
+                <p class="text-slate-600 dark:text-slate-400" data-i18n="about_subtitle">خبرة متخصصة في ابتكار حلول بصرية فريدة تجمع بين الجمال والهدف التسويقي</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-6 space-y-6">
+                    <h3 class="text-2xl font-bold" id="aboutHeading">فن تحويل الأفكار إلى تصاميم بصرية تأثر العقول</h3>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-base" id="aboutDetail">
+                        التصميم بالنسبة لي ليس مجرد دمج للألوان والصور، بل هو اللغة البصرية التي تخاطب بها جمهورك وتبرز قيمة منتجاتك. خلال أكثر من 6 سنوات من العمل المتواصل، قدمت مئات الحملات الإعلانية وتصاميم المطبوعات والهويات التي صنعت فرقاً حقيقياً في نجاح عميلاتي وشركاتهم.
+                    </p>
+
+                    <!-- Stats Grid -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4">
+                        <div class="p-4 rounded-xl glass-card border border-slate-200/80 dark:border-slate-800 text-center">
+                            <span class="text-3xl font-black text-blue-600 dark:text-blue-400 block mb-1" id="stat1Value">6+</span>
+                            <span class="text-xs text-slate-500 font-bold" id="stat1Label">سنوات خبرة</span>
+                        </div>
+                        <div class="p-4 rounded-xl glass-card border border-slate-200/80 dark:border-slate-800 text-center">
+                            <span class="text-3xl font-black text-purple-600 dark:text-purple-400 block mb-1" id="stat2Value">250+</span>
+                            <span class="text-xs text-slate-500 font-bold" id="stat2Label">تصميم ناجح</span>
+                        </div>
+                        <div class="p-4 rounded-xl glass-card border border-slate-200/80 dark:border-slate-800 text-center">
+                            <span class="text-3xl font-black text-pink-600 dark:text-pink-400 block mb-1" id="stat3Value">90+</span>
+                            <span class="text-xs text-slate-500 font-bold" id="stat3Label">عميل سعيد</span>
+                        </div>
+                        <div class="p-4 rounded-xl glass-card border border-slate-200/80 dark:border-slate-800 text-center">
+                            <span class="text-3xl font-black text-emerald-600 dark:text-emerald-400 block mb-1" id="stat4Value">100%</span>
+                            <span class="text-xs text-slate-500 font-bold" id="stat4Label">إتقان وجودة</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills Bars -->
+                <div class="lg:col-span-6 space-y-5" id="skillsContainer">
+                    <!-- Dynamic skills progress injected via JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold mb-4" data-i18n="services_title">الخدمات التي أقدمها</h2>
+                <div class="w-16 h-1 bg-blue-600 mx-auto rounded-full mb-4"></div>
+                <p class="text-slate-600 dark:text-slate-400" data-i18n="services_subtitle">تصاميم إبداعية متكاملة تغطي كافة متطلبات نشاطك التجاري</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="servicesGrid">
+                <!-- Services Cards Injected Dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="py-20 bg-slate-100/50 dark:bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-3xl sm:text-4xl font-extrabold mb-4" data-i18n="portfolio_title">معرض أعمالي المختارة</h2>
+                <div class="w-16 h-1 bg-blue-600 mx-auto rounded-full mb-4"></div>
+                <p class="text-slate-600 dark:text-slate-400" data-i18n="portfolio_subtitle">نماذج إبداعية من أحدث المشاريع والإعلانات التي صممتها مؤخراً</p>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="flex flex-wrap items-center justify-center gap-2 mb-10" id="filterBtnContainer">
+                <button class="filter-btn active px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-blue-600 text-white" data-filter="all" data-i18n="filter_all">الكل</button>
+                <button class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-blue-500 hover:text-white" data-filter="social" data-i18n="filter_social">سوشيال ميديا وإعلانات</button>
+                <button class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-blue-500 hover:text-white" data-filter="branding" data-i18n="filter_branding">هويات بصرية وشعارات</button>
+                <button class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-blue-500 hover:text-white" data-filter="print" data-i18n="filter_print">مطبوعات وتغليف</button>
+            </div>
+
+            <!-- Portfolio Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsGrid">
+                <!-- Projects Injected Dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold mb-4" data-i18n="exp_title">الخبرة والمسار المهني</h2>
+                <div class="w-16 h-1 bg-blue-600 mx-auto rounded-full mb-4"></div>
+            </div>
+
+            <div class="relative border-r-2 border-blue-500/30 dark:border-blue-500/20 mr-4 md:mr-8 space-y-10" id="experienceTimeline">
+                <!-- Timeline items injected dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-slate-100/50 dark:bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold mb-4" data-i18n="contact_title">تواصل معي الآن</h2>
+                <div class="w-16 h-1 bg-blue-600 mx-auto rounded-full mb-4"></div>
+                <p class="text-slate-600 dark:text-slate-400" data-i18n="contact_subtitle">هل تبحث عن تصميم يبرز براندك ويضاعف مبيعاتك؟ يسعدني التحدث معك فوراً</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <!-- Contact Info Cards -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="p-6 rounded-2xl glass-card border border-slate-200/80 dark:border-slate-800 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold text-slate-400 block" data-i18n="label_email">البريد الإلكتروني</span>
+                            <a id="contactEmail" href="mailto:abdelrahmanatia167@gmail.com" class="font-bold text-slate-800 dark:text-slate-100 hover:text-blue-600 dir-ltr text-right block">abdelrahmanatia167@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="p-6 rounded-2xl glass-card border border-slate-200/80 dark:border-slate-800 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold text-slate-400 block" data-i18n="label_phone">الهاتف / الواتساب</span>
+                            <a id="contactPhone" href="https://wa.me/201279879021" target="_blank" class="font-bold text-slate-800 dark:text-slate-100 hover:text-emerald-600 dir-ltr text-right block">+20 127 987 9021</a>
+                        </div>
+                    </div>
+
+                    <div class="p-6 rounded-2xl glass-card border border-slate-200/80 dark:border-slate-800 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold text-slate-400 block" data-i18n="label_location">الموقع</span>
+                            <span id="contactLocationText" class="font-bold text-slate-800 dark:text-slate-100">جمهورية مصر العربية</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Message Form -->
+                <div class="lg:col-span-7">
+                    <form id="contactForm" class="p-8 rounded-2xl glass-card border border-slate-200/80 dark:border-slate-800 space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold mb-1" data-i18n="form_name">الاسم الكامل</label>
+                                <input type="text" required placeholder="مثال: أحمد محمد" id="inputFormName" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 focus:outline-none focus:border-blue-500 text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold mb-1" data-i18n="form_contact">البريد الإلكتروني / رقم الهاتف</label>
+                                <input type="text" required placeholder="وسيلة للتواصل معك" id="inputFormContact" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 focus:outline-none focus:border-blue-500 text-sm">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold mb-1" data-i18n="form_service">نوع الخدمة المطلوبة</label>
+                            <select id="selectFormService" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 focus:outline-none focus:border-blue-500 text-sm">
+                                <option value="social" data-i18n="opt_social">تصاميم سوشيال ميديا وإعلانات</option>
+                                <option value="branding" data-i18n="opt_branding">تصميم شعار وهوية بصرية</option>
+                                <option value="print" data-i18n="opt_print">تصميم مطبوعات وتغليف منتجات</option>
+                                <option value="other" data-i18n="opt_other">استشارة أو طلب آخر</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold mb-1" data-i18n="form_details">تفاصيل المشروع</label>
+                            <textarea rows="4" required placeholder="اكتب فكرة مشروعك ومتطلباتك هنا..." id="textFormDetails" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 focus:outline-none focus:border-blue-500 text-sm"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg shadow-blue-500/30 transition-all text-sm flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span data-i18n="form_submit">إرسال الرسالة الآن</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-8 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-center text-sm text-slate-500">
+        <div class="max-w-7xl mx-auto px-4">
+            <p><span data-i18n="footer_rights">جميع الحقوق محفوظة ©</span> <span id="footerName">عبدالرحمن عطيه</span> 2026 | <span data-i18n="footer_role">مصمم جرافيك احترافي</span></p>
+        </div>
+    </footer>
+
+    <div id="passwordModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-900 rounded-2xl max-w-sm w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-800 relative">
+            <button id="closePasswordModalBtn" class="absolute top-4 left-4 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center text-xl mx-auto mb-3">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <h3 class="text-lg font-bold" data-i18n="pass_title">تسجيل الدخول للوحة التحكم</h3>
+                <p class="text-xs text-slate-500 mt-1" data-i18n="pass_sub">أدخل كلمة المرور لتعديل الموقع (كلمة السر الافتراضية: 123456)</p>
+            </div>
+            
+            <form id="passwordForm" class="space-y-4">
+                <div>
+                    <input type="password" id="inputAdminPassword" placeholder="كلمة المرور" required class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm focus:outline-none focus:border-blue-500 text-center">
+                    <p id="passwordError" class="text-rose-500 text-xs mt-1 text-center hidden" data-i18n="pass_err">كلمة المرور غير صحيحة!</p>
+                </div>
+                <button type="submit" class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-sm font-bold shadow-md transition-all" data-i18n="pass_btn">
+                    دخول اللوحة
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div id="customizerDrawer" class="fixed inset-y-0 left-0 z-50 w-full sm:w-96 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 shadow-2xl transform -translate-x-full transition-transform duration-300 flex flex-col">
+        <!-- Header -->
+        <div class="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-slate-50 dark:bg-slate-900/50">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-sliders text-blue-600"></i>
+                <h3 class="font-bold text-sm" data-i18n="cp_title">لوحة تحكم الموقع الكاملة</h3>
+            </div>
+            <div class="flex items-center gap-2">
+                <button id="lockControlPanelBtn" title="قفل اللوحة" class="p-1.5 text-xs text-amber-500 hover:bg-amber-50 dark:hover:bg-amber-950/40 rounded">
+                    <i class="fa-solid fa-lock"></i>
+                </button>
+                <button id="closeCustomizerBtn" class="p-1.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+                    <i class="fa-solid fa-xmark text-base"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs inside Control Panel -->
+        <div class="flex border-b border-slate-200 dark:border-slate-800 bg-slate-100/50 dark:bg-slate-800/50 overflow-x-auto text-xs font-bold scrollbar-none">
+            <button class="tab-btn active px-3 py-2.5 whitespace-nowrap border-b-2 border-transparent transition-all" data-tab="tab-logo" data-i18n="tab_security">اللوجو والأمان</button>
+            <button class="tab-btn px-3 py-2.5 whitespace-nowrap border-b-2 border-transparent transition-all" data-tab="tab-hero" data-i18n="tab_hero">الواجهة والأنقسام</button>
+            <button class="tab-btn px-3 py-2.5 whitespace-nowrap border-b-2 border-transparent transition-all" data-tab="tab-about" data-i18n="tab_about">عني والمهارات</button>
+            <button class="tab-btn px-3 py-2.5 whitespace-nowrap border-b-2 border-transparent transition-all" data-tab="tab-services" data-i18n="tab_services">الخدمات</button>
+            <button class="tab-btn px-3 py-2.5 whitespace-nowrap border-b-2 border-transparent transition-all" data-tab="tab-portfolio" data-i18n="tab_portfolio">معرض الأعمال</button>
+            <button class="tab-btn px-3 py-2.5 whitespace-nowrap border-b-2 border-transparent transition-all" data-tab="tab-contact" data-i18n="tab_contact">التواصل</button>
+            <button class="tab-btn px-3 py-2.5 whitespace-nowrap border-b-2 border-transparent transition-all" data-tab="tab-cloud" data-i18n="tab_cloud">مزامنة الأجهزة ☁️</button>
+        </div>
+
+        <div class="p-4 overflow-y-auto flex-1 space-y-4">
+            
+            <!-- Tab 1: Logo & Password Security -->
+            <div id="tab-logo" class="tab-content space-y-4">
+                <h4 class="font-bold text-xs text-blue-500">إعدادات الشعار والأمان</h4>
+                
+                <div class="p-3 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 rounded-xl space-y-2">
+                    <label class="block text-xs font-bold text-amber-800 dark:text-amber-300">تغيير كلمة سر لوحة التحكم</label>
+                    <input type="password" id="inputCurrentPass" placeholder="كلمة السر الحالية" class="w-full p-2 rounded-lg border dark:bg-slate-800 text-xs">
+                    <input type="password" id="inputNewPass" placeholder="كلمة السر الجديدة" class="w-full p-2 rounded-lg border dark:bg-slate-800 text-xs">
+                    <button id="savePasswordBtn" class="w-full py-1.5 bg-amber-600 text-white rounded-lg text-xs font-bold hover:bg-amber-700 transition-colors">
+                        حفظ كلمة السر الجديدة
+                    </button>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold mb-1">نوع الشعار (Logo Type)</label>
+                    <select id="editLogoType" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs">
+                        <option value="image">صورة شعار (Image Logo)</option>
+                        <option value="text">حرف / اسم (Text Initials)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold mb-1">صورة اللوجو الخاصة بك</label>
+                    <div class="space-y-2">
+                        <label class="cursor-pointer w-full py-2.5 px-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all shadow-sm active:scale-95">
+                            <i class="fa-solid fa-image text-sm"></i>
+                            <span>اختر وارفِع صورة اللوجو مباشرة من الهاتف</span>
+                            <input type="file" id="uploadLogoFile" accept="image/*" class="hidden">
+                        </label>
+                        <input type="text" id="editLogoUrl" placeholder="أو أدخل رابط صورة خارجي بيدك" class="w-full p-2 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs text-slate-500">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold mb-1">اسم الموقع بالأعلى (Header Name)</label>
+                    <input type="text" id="editHeaderName" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs">
+                </div>
+            </div>
+
+            <!-- Tab 2: Hero Section -->
+            <div id="tab-hero" class="tab-content hidden space-y-4">
+                <h4 class="font-bold text-xs text-blue-500">تفاصيل الواجهة الرئيسية</h4>
+                
+                <div>
+                    <label class="block text-xs font-bold mb-1">الاسم بالعربية</label>
+                    <input type="text" id="editName" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold mb-1">Name in English</label>
+                    <input type="text" id="editNameEn" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs dir-ltr">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold mb-1">المسمى الوظيفي (عربي)</label>
+                    <input type="text" id="editTitle" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold mb-1">Job Title (English)</label>
+                    <input type="text" id="editTitleEn" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs dir-ltr">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold mb-1">نص حالة التوفر (Badge Status)</label>
+                    <input type="text" id="editBadge" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold mb-1">Availability Badge (English)</label>
+                    <input type="text" id="editBadgeEn" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs dir-ltr">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold mb-1">نبذة تعريفية سريعة (Bio - عربي)</label>
+                    <textarea id="editBio" rows="3" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs"></textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold mb-1">Bio (English)</label>
+                    <textarea id="editBioEn" rows="3" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs dir-ltr"></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold mb-1">الصورة الشخصية (Profile Image)</label>
+                    <div class="space-y-2">
+                        <label class="cursor-pointer w-full py-2.5 px-3 bg-purple-600 hover:bg-purple-700 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all shadow-sm active:scale-95">
+                            <i class="fa-solid fa-camera text-sm"></i>
+                            <span>اختر وارفِع صورتك الشخصية من الاستوديو</span>
+                            <input type="file" id="uploadProfileFile" accept="image/*" class="hidden">
+                        </label>
+                        <input type="text" id="editImage" placeholder="أو أدخل رابط صورة خارجي بيدك" class="w-full p-2 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs text-slate-500">
+                    </div>
+                </div>
+
+                <div class="pt-2">
+                    <label class="block text-xs font-bold mb-1">روابط وسائل التواصل الاجتماعي</label>
+                    <div class="space-y-2">
+                        <input type="text" id="editFacebook" placeholder="رابط الفيسبوك" class="w-full p-2 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs">
+                        <input type="text" id="editInstagram" placeholder="رابط الانستجرام" class="w-full p-2 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs">
+                        <input type="text" id="editWhatsapp" placeholder="رابط الواتساب" class="w-full p-2 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 3: About & Skills -->
+            <div id="tab-about" class="tab-content hidden space-y-4">
+                <h4 class="font-bold text-xs text-blue-500">نص عني والمهارات</h4>
+
+                <div>
+                    <label class="block text-xs font-bold mb-1">عنوان فقرة عني (عربي)</label>
+                    <input type="text" id="editAboutHeading" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold mb-1">About Title (English)</label>
+                    <input type="text" id="editAboutHeadingEn" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs dir-ltr">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold mb-1">تفاصيل عني الكاملة (عربي)</label>
+                    <textarea id="editAboutDetail" rows="4" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs"></textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold mb-1">About Detail (English)</label>
+                    <textarea id="editAboutDetailEn" rows="4" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs dir-ltr"></textarea>
+                </div>
+
+                <hr class="border-slate-200 dark:border-slate-800 my-2">
+                <h4 class="font-bold text-xs text-purple-500">المهارات التقنية (نسب الإتقان)</h4>
+
+                <div id="skillsEditForm" class="space-y-3">
+                    <!-- Dynamic Skill Sliders -->
+                </div>
+            </div>
+
+            <!-- Tab 4: Services -->
+            <div id="tab-services" class="tab-content hidden space-y-4">
+                <div class="flex items-center justify-between">
+                    <h4 class="font-bold text-xs text-blue-500">إدارة الخدمات المضافة</h4>
+                </div>
+                <div id="servicesEditForm" class="space-y-4">
+                    <!-- Dynamic services editor -->
+                </div>
+            </div>
+
+            <!-- Tab 5: Portfolio Projects -->
+            <div id="tab-portfolio" class="tab-content hidden space-y-4">
+                <div class="flex items-center justify-between">
+                    <h4 class="font-bold text-xs text-blue-500">معرض الأعمال والمشاريع</h4>
+                    <button id="addProjectBtn" class="px-2.5 py-1 bg-emerald-600 text-white rounded text-xs font-bold hover:bg-emerald-700 flex items-center gap-1">
+                        <i class="fa-solid fa-plus"></i> إضافة مشروع
+                    </button>
+                </div>
+                <div id="projectsEditForm" class="space-y-4">
+                    <!-- Dynamic projects editor -->
+                </div>
+            </div>
+
+            <!-- Tab 6: Contact Info -->
+            <div id="tab-contact" class="tab-content hidden space-y-4">
+                <h4 class="font-bold text-xs text-blue-500">بيانات التواصل</h4>
+
+                <div>
+                    <label class="block text-xs font-bold mb-1">البريد الإلكتروني</label>
+                    <input type="email" id="editEmail" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold mb-1">رقم الهاتف / الواتساب</label>
+                    <input type="text" id="editPhone" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold mb-1">العنوان / الموقع الجغرافي (عربي)</label>
+                    <input type="text" id="editLocation" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold mb-1">Location (English)</label>
+                    <input type="text" id="editLocationEn" class="w-full p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 text-xs dir-ltr">
+                </div>
+            </div>
+
+            <!-- Tab 7: Multi-Device Cloud Sync & Data Management -->
+            <div id="tab-cloud" class="tab-content hidden space-y-4">
+                <h4 class="font-bold text-xs text-emerald-500">مزامنة التعديلات عبر كل الهواتف والأجهزة</h4>
+                
+                <div class="p-3 bg-slate-100 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 rounded-xl space-y-3">
+                    <p class="text-xs leading-relaxed text-slate-600 dark:text-slate-300">
+                        لضمان ظهور جميع التعديلات والصور التي تجريها للعملاء على هواتفهم وأجهزتهم المختلفة فوراً:
+                    </p>
+
+                    <button id="btnSyncCloudNow" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-2 shadow-sm transition-all">
+                        <i class="fa-solid fa-cloud-arrow-up text-sm"></i>
+                        <span>حفظ ومزامنة التعديلات سحابياً الآن</span>
+                    </button>
+
+                    <button id="btnExportDataLink" class="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-2 shadow-sm transition-all">
+                        <i class="fa-solid fa-share-nodes text-sm"></i>
+                        <span>نسخ رابط الموقع المُحدث بالكامل لإرساله للعملاء</span>
+                    </button>
+                </div>
+
+                <div class="p-3 bg-purple-50 dark:bg-purple-950/40 border border-purple-200 dark:border-purple-800/60 rounded-xl space-y-2">
+                    <label class="block text-xs font-bold text-purple-800 dark:text-purple-300">تصدير / استيراد النسخة الاحتياطية (JSON)</label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button id="btnExportJson" class="py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-xs font-bold transition-colors">
+                            <i class="fa-solid fa-download"></i> تصدير الملف
+                        </button>
+                        <label class="py-2 bg-slate-700 hover:bg-slate-800 text-white rounded-lg text-xs font-bold transition-colors text-center cursor-pointer">
+                            <i class="fa-solid fa-upload"></i> استيراد ملف
+                            <input type="file" id="importJsonFile" accept=".json" class="hidden">
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer / Reset Control -->
+        <div class="p-4 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50">
+            <button id="resetCustomizerBtn" class="w-full py-2.5 rounded-xl border border-rose-300 dark:border-rose-900 font-bold text-xs text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors">
+                <i class="fa-solid fa-rotate-left"></i> استعادة الإعدادات الأصلية
+            </button>
+        </div>
+    </div>
+
+    <div id="projectModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-900 rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800">
+            <div class="relative h-72 sm:h-96 bg-slate-950 flex items-center justify-center overflow-hidden">
+                <img id="modalImg" src="" alt="Project" class="max-w-full max-h-full object-contain">
+                <button id="closeModalBtn" class="absolute top-4 left-4 w-9 h-9 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-slate-900">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="p-6">
+                <h3 id="modalTitle" class="text-xl font-bold mb-2"></h3>
+                <p id="modalDesc" class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-6"></p>
+                <div class="flex justify-end gap-3">
+                    <button id="dismissModalBtn" class="px-5 py-2.5 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold text-sm" data-i18n="modal_close">إغلاق</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-emerald-600 text-white px-5 py-3 rounded-xl shadow-xl flex items-center gap-3">
+        <i class="fa-solid fa-circle-check text-xl"></i>
+        <span id="toastMsg" class="font-medium text-sm">تم تنفيذ الإجراء بنجاح</span>
+    </div>
+
+
+    <div id="chatWidget" class="fixed bottom-5 left-5 z-[60] hidden w-[min(92vw,380px)] rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-2xl overflow-hidden">
+      <div class="p-4 bg-slate-900 text-white flex justify-between"><b>محادثة مباشرة</b><button id="closeChatWidget">×</button></div>
+      <div id="chatMessages" class="h-72 overflow-y-auto p-3 space-y-2"></div>
+      <form id="chatForm" class="p-3 flex gap-2"><input id="chatInput" class="flex-1 rounded-xl border p-3 dark:bg-slate-800" placeholder="اكتب رسالتك..."><button class="px-4 rounded-xl bg-blue-600 text-white">إرسال</button></form>
+    </div>
+    <button id="openChatWidget" class="fixed bottom-5 left-5 z-50 w-14 h-14 rounded-full bg-blue-600 text-white shadow-xl hidden">💬</button>
+    <div id="galleryOverlay" class="fixed inset-0 z-[70] hidden bg-black/95 p-4 overflow-y-auto"><div class="max-w-6xl mx-auto"><div class="flex justify-between text-white mb-4"><h2 id="galleryTitle" class="text-2xl font-bold"></h2><button id="closeGallery" class="text-3xl">×</button></div><div id="galleryGrid" class="grid grid-cols-2 md:grid-cols-3 gap-4"></div></div></div>
+    <style>
+      .site-click-burst{position:fixed;pointer-events:none;width:18px;height:18px;border:2px solid currentColor;border-radius:999px;transform:translate(-50%,-50%) scale(.3);animation:burst .55s ease-out forwards;z-index:99999}
+      @keyframes burst{to{transform:translate(-50%,-50%) scale(5);opacity:0}}
+      .graphic-float{animation:floaty 5s ease-in-out infinite}@keyframes floaty{50%{transform:translateY(-8px)}}
+      body{user-select:none} img{user-drag:none;-webkit-user-drag:none}
+    </style>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, onSnapshot, collection, addDoc, query, where, orderBy, serverTimestamp, getDocs, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-storage.js";
+
+        // Translation dictionary for fixed static strings
+        const translations = {
+            ar: {
+                page_title: "عبدالرحمن عطيه | مصمم جرافيك ومبدع هويات بصرية",
+                nav_home: "الرئيسية",
+                nav_about: "عني",
+                nav_services: "خدماتي",
+                nav_portfolio: "أعمالي",
+                nav_experience: "الخبرة",
+                nav_contact: "تواصل معي",
+                btn_dashboard: "لوحة التحكم",
+                btn_whatsapp: "تواصل معي عبر الواتساب",
+                btn_portfolio: "استعرض معرِض الأعمال",
+                about_title: "عني وعن مسيرتي في التصميم",
+                about_subtitle: "خبرة متخصصة في ابتكار حلول بصرية فريدة تجمع بين الجمال والهدف التسويقي",
+                services_title: "الخدمات التي أقدمها",
+                services_subtitle: "تصاميم إبداعية متكاملة تغطي كافة متطلبات نشاطك التجاري",
+                portfolio_title: "معرض أعمالي المختارة",
+                portfolio_subtitle: "نماذج إبداعية من أحدث المشاريع والإعلانات التي صممتها مؤخراً",
+                filter_all: "الكل",
+                filter_social: "سوشيال ميديا وإعلانات",
+                filter_branding: "هويات بصرية وشعارات",
+                filter_print: "مطبوعات وتغليف",
+                exp_title: "الخبرة والمسار المهني",
+                contact_title: "تواصل معي الآن",
+                contact_subtitle: "هل تبحث عن تصميم يبرز براندك ويضاعف مبيعاتك؟ يسعدني التحدث معك فوراً",
+                label_email: "البريد الإلكتروني",
+                label_phone: "الهاتف / الواتساب",
+                label_location: "الموقع",
+                form_name: "الاسم الكامل",
+                form_contact: "البريد الإلكتروني / رقم الهاتف",
+                form_service: "نوع الخدمة المطلوبة",
+                opt_social: "تصاميم سوشيال ميديا وإعلانات",
+                opt_branding: "تصميم شعار وهوية بصرية",
+                opt_print: "تصميم مطبوعات وتغليف منتجات",
+                opt_other: "استشارة أو طلب آخر",
+                form_details: "تفاصيل المشروع",
+                form_submit: "إرسال الرسالة الآن",
+                footer_rights: "جميع الحقوق محفوظة ©",
+                footer_role: "مصمم جرافيك احترافي",
+                pass_title: "تسجيل الدخول للوحة التحكم",
+                pass_sub: "أدخل كلمة المرور لتعديل الموقع (كلمة السر الافتراضية: 123456)",
+                pass_err: "كلمة المرور غير صحيحة!",
+                pass_btn: "دخول اللوحة",
+                cp_title: "لوحة تحكم الموقع الكاملة",
+                tab_security: "اللوجو والأمان",
+                tab_hero: "الواجهة والأنقسام",
+                tab_about: "عني والمهارات",
+                tab_services: "الخدمات",
+                tab_portfolio: "معرض الأعمال",
+                tab_contact: "التواصل",
+                tab_cloud: "مزامنة الأجهزة ☁️",
+                modal_close: "إغلاق",
+                greeting: "مرحباً، أنا"
+            },
+            en: {
+                page_title: "Abdelrahman Atia | Graphic Designer & Brand Identity Creator",
+                nav_home: "Home",
+                nav_about: "About",
+                nav_services: "Services",
+                nav_portfolio: "Portfolio",
+                nav_experience: "Experience",
+                nav_contact: "Contact",
+                btn_dashboard: "Control Panel",
+                btn_whatsapp: "Chat on WhatsApp",
+                btn_portfolio: "View Portfolio",
+                about_title: "About Me & My Design Journey",
+                about_subtitle: "Specialized expertise in crafting unique visual solutions that combine aesthetics and marketing impact",
+                services_title: "Services I Offer",
+                services_subtitle: "Integrated creative design solutions tailored for your business needs",
+                portfolio_title: "Selected Works Portfolio",
+                portfolio_subtitle: "Creative showcases of recent projects, branding, and advertising campaigns",
+                filter_all: "All",
+                filter_social: "Social Media & Ads",
+                filter_branding: "Branding & Logos",
+                filter_print: "Print & Packaging",
+                exp_title: "Experience & Career Path",
+                contact_title: "Get In Touch Now",
+                contact_subtitle: "Looking for designs that elevate your brand and boost sales? I'm excited to collaborate!",
+                label_email: "Email Address",
+                label_phone: "Phone / WhatsApp",
+                label_location: "Location",
+                form_name: "Full Name",
+                form_contact: "Email or Phone Number",
+                form_service: "Service Required",
+                opt_social: "Social Media & Advertising Designs",
+                opt_branding: "Logo & Brand Identity Design",
+                opt_print: "Print & Product Packaging Design",
+                opt_other: "Consultation or Other Request",
+                form_details: "Project Details",
+                form_submit: "Send Message Now",
+                footer_rights: "All Rights Reserved ©",
+                footer_role: "Professional Graphic Designer",
+                pass_title: "Admin Panel Login",
+                pass_sub: "Enter password to edit site (Default: 123456)",
+                pass_err: "Incorrect password!",
+                pass_btn: "Login to Panel",
+                cp_title: "Complete Website Control Panel",
+                tab_security: "Logo & Security",
+                tab_hero: "Hero & Bio",
+                tab_about: "About & Skills",
+                tab_services: "Services",
+                tab_portfolio: "Portfolio",
+                tab_contact: "Contact Info",
+                tab_cloud: "Device Sync ☁️",
+                modal_close: "Close",
+                greeting: "Hello, I am"
+            }
+        };
+
+        // Default application state object
+        const defaultState = {
+            currentLang: 'ar',
+            adminPassword: '123456',
+            logoType: 'image',
+            logoUrl: '1001809140.jpg',
+            headerName: 'عبدالرحمن عطيه',
+            name: 'عبدالرحمن عطيه',
+            name_en: 'Abdelrahman Atia',
+            title: 'مصمم جرافيك ومبدع هويات بصرية',
+            title_en: 'Graphic Designer & Visual Brand Creator',
+            badge: 'متاح الآن للمشاريع الجديدة والعمل الحر',
+            badge_en: 'Available now for freelance and new projects',
+            bio: 'مصمم جرافيك محترف بخبرة تتجاوز 6 سنوات في صناعة التصاميم الإبداعية، تصاميم السوشيال ميديا، الهويات البصرية المتكاملة، والمطبوعات. أساعد البراندات والشركات على جذب العملاء وتحقيق أعلى نسبة مبيعات من خلال محتوى بصري احترافي ومبتكر.',
+            bio_en: 'Professional Graphic Designer with 6+ years of experience in creative design, social media ads, brand identities, and print graphics. Helping brands and businesses engage audiences and drive high conversion.',
+            profileImg: '1001778764.jpg',
+            facebook: 'https://www.facebook.com/share/1DiZq66Hkm/',
+            instagram: 'https://www.instagram.com/abdelrahman.atia3?stkn=MXdhdXd1aDlnc2N4Mg==',
+            whatsapp: 'https://wa.me/201279879021',
+            aboutHeading: 'فن تحويل الأفكار إلى تصاميم بصرية تأثر العقول',
+            aboutHeading_en: 'Transforming Ideas into Captivating Visual Artwork',
+            aboutDetail: 'التصميم بالنسبة لي ليس مجرد دمج للألوان والصور، بل هو اللغة البصرية التي تخاطب بها جمهورك وتبرز قيمة منتجاتك. خلال أكثر من 6 سنوات من العمل المتواصل، قدمت مئات الحملات الإعلانية وتصاميم المطبوعات والهويات التي صنعت فرقاً حقيقياً في نجاح عميلاتي وشركاتهم.',
+            aboutDetail_en: 'To me, design is more than just combining colors and images; it is the visual language that connects with your audience. Over 6 years, I have delivered hundreds of ad campaigns, branding assets, and print designs that made a tangible impact.',
+            stat1Val: '6+',
+            stat1Lbl: 'سنوات خبرة',
+            stat1Lbl_en: 'Years Exp.',
+            stat2Val: '250+',
+            stat2Lbl: 'تصميم ناجح',
+            stat2Lbl_en: 'Designs Done',
+            stat3Val: '90+',
+            stat3Lbl: 'عميل سعيد',
+            stat3Lbl_en: 'Happy Clients',
+            stat4Val: '100%',
+            stat4Lbl: 'إتقان وجودة',
+            stat4Lbl_en: 'Quality Work',
+            email: 'abdelrahmanatia167@gmail.com',
+            phone: '+20 127 987 9021',
+            location: 'جمهورية مصر العربية',
+            location_en: 'Arab Republic of Egypt',
+            skills: [
+                { name: 'تصاميم السوشيال ميديا والإعلانات (Social Media Ads)', name_en: 'Social Media & Advertising Design', percent: 98 },
+                { name: 'تصميم الهويات البصرية والشعارات (Branding & Logos)', name_en: 'Brand Identity & Logo Design', percent: 95 },
+                { name: 'تصميم المطبوعات والتغليف (Print & Packaging)', name_en: 'Print & Packaging Graphics', percent: 92 },
+                { name: 'الدمج والترتيب البصري (Photoshop Manipulation)', name_en: 'Photoshop Image Manipulation', percent: 96 }
+            ],
+            services: [
+                { title: 'تصاميم السوشيال ميديا والمحتوى الرقمي', title_en: 'Social Media & Digital Content Design', desc: 'تصاميم إعلانية مبتكرة لجميع منصات السوشيال ميديا تضمن لفت انتباه العميل وزيادة التفاعل والمبيعات مع مراعاة الهوية البصرية.', desc_en: 'Eye-catching social media graphics for all platforms designed to maximize engagement, clicks, and sales conversion.', icon: 'fa-palette' },
+                { title: 'تصميم الهويات البصرية والشعارات', title_en: 'Brand Identity & Logo Design', desc: 'بناء هوية بصرية فريدة وشعار يعكس قيم مشروعك ويجعل براندك يتربع على عرش المنافسة في سوق عملك.', desc_en: 'Crafting unique logos and full visual brand guidelines that make your business stand out from competitors.', icon: 'fa-pen-nib' },
+                { title: 'تصميم المطبوعات وتغليف المنتجات', title_en: 'Print Design & Product Packaging', desc: 'تجهيز كافة المطبوعات من بروفايل الشركات، الكروت، البنرات، والعلب بوجه احترافي وجاهز للطباعة بدقة عالية.', desc_en: 'High-resolution print design solutions including company profiles, cards, banners, and print-ready product boxes.', icon: 'fa-box-open' }
+            ],
+            projects: [
+                {
+                    title: 'حملة إعلانية مميزة للسوشيال ميديا',
+                    title_en: 'Premium Social Media Campaign',
+                    category: 'social',
+                    desc: 'سلسلة تصاميم إبداعية لحملة تسويقية تهدف لزيادة المبيعات والوصول المستهدف للجمهور.',
+                    desc_en: 'A series of creative promotional graphics targeted at boosting sales and audience engagement.',
+                    img: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
+                    tags: ['Social Media', 'Photoshop']
+                },
+                {
+                    title: 'هوية بصرية متكاملة لعلامة تجارية',
+                    title_en: 'Complete Brand Visual Identity',
+                    category: 'branding',
+                    desc: 'تصميم الشعار والكروت والملفات الرسمية وألوان البراند بشكل عصري ومميز.',
+                    desc_en: 'Modern logo design, business stationery, brand colors, and guidelines for a corporate client.',
+                    img: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=800&q=80',
+                    tags: ['Branding', 'Illustrator']
+                },
+                {
+                    title: 'تصميم مطبوعات وتغليف منتجات',
+                    title_en: 'Print & Packaging Design Showcase',
+                    category: 'print',
+                    desc: 'تصميم علب وأكياس وتغليف منتجات راقية جاهزة للطباعة فوراً بألوان متناسقة.',
+                    desc_en: 'Elegant product box and package design prepared with press-ready high precision color specs.',
+                    img: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800&q=80',
+                    tags: ['Printing', 'Packaging']
+                }
+            ],
+            experiences: [
+                { period: '2018 - حتى الآن', period_en: '2018 - Present', role: 'مصمم جرافيك حر ومبدع هويات بصرية', role_en: 'Freelance Graphic Designer & Brand Specialist', company: 'عمل حر | Freelance Graphic Designer', desc: 'العمل مع عشرات الشركات والبراندات في مصر والخليج لتصميم حملات السوشيال ميديا والهويات المطبوعة والرقمية.', desc_en: 'Partnered with dozens of businesses across Egypt and the Gulf to create social media ads and brand identities.' },
+                { period: '2020 - 2024', period_en: '2020 - 2024', role: 'Senior Graphic Designer', role_en: 'Senior Graphic Designer', company: 'وكالات دعاية وإعلان وتسويق رقمي', company_en: 'Advertising & Digital Marketing Agencies', desc: 'إدارة وتطوير الجانب البصري للحملات الإعلانية الكبرى ومتابعة جودة المطبوعات والتصاميم اليومية.', desc_en: 'Led visual design operations for major ad campaigns while controlling high-precision print production.' }
+            ]
+        };
+
+        function getInitialState() {
+            // Check if there is state embedded in URL hash (for multi-device sharing via link)
+            try {
+                if (window.location.hash && window.location.hash.startsWith('#data=')) {
+                    const hashData = decodeURIComponent(window.location.hash.replace('#data=', ''));
+                    const parsed = JSON.parse(hashData);
+                    if (parsed && typeof parsed === 'object') {
+                        localStorage.setItem('site_custom_state_v4', JSON.stringify(parsed));
+                        return { ...defaultState, ...parsed };
+                    }
+                }
+            } catch (e) {
+                console.warn('URL hash state reading failed:', e);
+            }
+
+            const stored = localStorage.getItem('site_custom_state_v4');
+            if (stored) {
+                try {
+                    return { ...defaultState, ...JSON.parse(stored) };
+                } catch (e) {
+                    return defaultState;
+                }
+            }
+            return defaultState;
+        }
+
+        let appState = getInitialState();
+        let isAuthenticated = false;
+
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'abdelrahman-portfolio';
+        let db = null;
+        let auth = null;
+        let docRef = null;
+
+        const FIREBASE_CONFIG = {
+            apiKey: 'AIzaSyALctJ_89OZSds1XMlXYN-f9TGtjU-xjlg',
+            authDomain: 'abdelrahman-website-98d4c.firebaseapp.com',
+            projectId: 'abdelrahman-website-98d4c',
+            storageBucket: 'abdelrahman-website-98d4c.firebasestorage.app',
+            messagingSenderId: '1046099191095',
+            appId: '1:1046099191095:web:9640fa5a45305c27f066b2'
+        };
+        const ADMIN_EMAIL = 'abdelrahmanatia167@gmail.com';
+        let storage = null;
+        let currentUser = null;
+
+        async function initFirebaseSync() {
+            try {
+                const app = initializeApp(FIREBASE_CONFIG);
+                auth = getAuth(app); db = getFirestore(app); storage = getStorage(app);
+                docRef = doc(db, 'artifacts', 'abdelrahman-website', 'public', 'data', 'config', 'siteState');
+                onAuthStateChanged(auth, u => { currentUser = u; window.currentFirebaseUser = u; updateAuthUI(); });
+                onSnapshot(docRef, snap => {
+                    if (snap.exists()) {
+                        appState = { ...defaultState, ...snap.data() };
+                        localStorage.setItem('site_custom_state_v4', JSON.stringify(appState));
+                        renderSite();
+                        if (isAuthenticated) fillControlPanelInputs();
+                    }
+                }, err => console.error('Firestore sync error', err));
+                await loadPublicReviews();
+            } catch (err) { console.error('Firebase init failed', err); showToast('تعذر الاتصال بالسحابة حالياً'); }
+        }
+
+        async function saveStateToCloud(data) {
+            if (!docRef || !auth?.currentUser) return;
+            try {
+                await setDoc(docRef, data, { merge: true });
+            } catch (err) {
+                console.error("Cloud save failed:", err);
+            }
+        }
+
+        function saveState() {
+            localStorage.setItem('site_custom_state_v4', JSON.stringify(appState));
+            renderSite();
+            saveStateToCloud(appState);
+        }
+
+        // Image compressor helper
+        function compressAndUploadImage(file, callback) {
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    let width = img.width;
+                    let height = img.height;
+                    const maxDim = 800;
+                    if (width > maxDim || height > maxDim) {
+                        if (width > height) {
+                            height = Math.round((height * maxDim) / width);
+                            width = maxDim;
+                        } else {
+                            width = Math.round((width * maxDim) / height);
+                            height = maxDim;
+                        }
+                    }
+                    canvas.width = width;
+                    canvas.height = height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+                    const compressedUrl = canvas.toDataURL('image/jpeg', 0.75);
+                    callback(compressedUrl);
+                };
+                img.src = evt.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function applyLanguageSettings() {
+            const isEn = appState.currentLang === 'en';
+            document.documentElement.lang = isEn ? 'en' : 'ar';
+            document.documentElement.dir = isEn ? 'ltr' : 'rtl';
+
+            const langBtnText = document.getElementById('langToggleText');
+            if (langBtnText) {
+                langBtnText.textContent = isEn ? 'العربية' : 'English';
+            }
+
+            // Update static data-i18n text nodes
+            const i18nElems = document.querySelectorAll('[data-i18n]');
+            i18nElems.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[appState.currentLang]?.[key]) {
+                    el.textContent = translations[appState.currentLang][key];
+                }
+            });
+        }
+
+        function renderSite() {
+            applyLanguageSettings();
+
+            const isEn = appState.currentLang === 'en';
+            const dict = translations[appState.currentLang];
+
+            // Logo & Header
+            const logoInitials = document.getElementById('logoInitials');
+            const logoImg = document.getElementById('logoImg');
+            
+            if (appState.logoType === 'image' && appState.logoUrl) {
+                logoImg.src = appState.logoUrl;
+                logoImg.classList.remove('hidden');
+                logoInitials.classList.add('hidden');
+            } else {
+                const nameVal = isEn ? (appState.name_en || appState.name) : appState.name;
+                logoInitials.textContent = (nameVal || 'A').charAt(0);
+                logoInitials.classList.remove('hidden');
+                logoImg.classList.add('hidden');
+            }
+
+            const headerNameStr = isEn ? (appState.name_en || appState.headerName) : (appState.headerName || appState.name);
+            document.getElementById('headerName').textContent = headerNameStr;
+            document.getElementById('footerName').textContent = headerNameStr;
+
+            // Hero
+            document.getElementById('heroGreeting').textContent = dict.greeting;
+            document.getElementById('heroName').textContent = isEn ? (appState.name_en || appState.name) : appState.name;
+            document.getElementById('heroTitle').textContent = isEn ? (appState.title_en || appState.title) : appState.title;
+            document.getElementById('availabilityBadge').textContent = isEn ? (appState.badge_en || appState.badge) : appState.badge;
+            document.getElementById('heroBio').textContent = isEn ? (appState.bio_en || appState.bio) : appState.bio;
+            document.getElementById('profileImage').src = appState.profileImg;
+
+            // Social links
+            const linkFb = document.getElementById('linkFacebook');
+            if (linkFb) linkFb.href = appState.facebook || '#';
+
+            const linkInsta = document.getElementById('linkInstagram');
+            if (linkInsta) linkInsta.href = appState.instagram || '#';
+
+            const linkWa = document.getElementById('linkWhatsapp');
+            if (linkWa) linkWa.href = appState.whatsapp || '#';
+
+            // Stats
+            document.getElementById('stat1Value').textContent = appState.stat1Val;
+            document.getElementById('stat1Label').textContent = isEn ? (appState.stat1Lbl_en || appState.stat1Lbl) : appState.stat1Lbl;
+            document.getElementById('stat2Value').textContent = appState.stat2Val;
+            document.getElementById('stat2Label').textContent = isEn ? (appState.stat2Lbl_en || appState.stat2Lbl) : appState.stat2Lbl;
+            document.getElementById('stat3Value').textContent = appState.stat3Val;
+            document.getElementById('stat3Label').textContent = isEn ? (appState.stat3Lbl_en || appState.stat3Lbl) : appState.stat3Lbl;
+            document.getElementById('stat4Value').textContent = appState.stat4Val;
+            document.getElementById('stat4Label').textContent = isEn ? (appState.stat4Lbl_en || appState.stat4Lbl) : appState.stat4Lbl;
+
+            // About
+            document.getElementById('aboutHeading').textContent = isEn ? (appState.aboutHeading_en || appState.aboutHeading) : appState.aboutHeading;
+            document.getElementById('aboutDetail').textContent = isEn ? (appState.aboutDetail_en || appState.aboutDetail) : appState.aboutDetail;
+
+            // Skills
+            const skillsContainer = document.getElementById('skillsContainer');
+            skillsContainer.innerHTML = appState.skills.map(skill => {
+                const skillName = isEn ? (skill.name_en || skill.name) : skill.name;
+                return `
+                <div>
+                    <div class="flex justify-between text-sm font-semibold mb-1">
+                        <span>${skillName}</span>
+                        <span class="text-blue-600 dark:text-blue-400">${skill.percent}%</span>
+                    </div>
+                    <div class="w-full bg-slate-200 dark:bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                        <div class="bg-gradient-to-r from-blue-600 to-purple-600 h-2.5 rounded-full transition-all duration-500" style="width: ${skill.percent}%"></div>
+                    </div>
+                </div>
+                `;
+            }).join('');
+
+            // Services
+            const servicesGrid = document.getElementById('servicesGrid');
+            servicesGrid.innerHTML = appState.services.map(srv => {
+                const srvTitle = isEn ? (srv.title_en || srv.title) : srv.title;
+                const srvDesc = isEn ? (srv.desc_en || srv.desc) : srv.desc;
+                return `
+                <div class="p-8 rounded-2xl glass-card border border-slate-200/80 dark:border-slate-800 hover:-translate-y-2 transition-all duration-300 group">
+                    <div class="w-14 h-14 rounded-2xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid ${srv.icon || 'fa-palette'}"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 group-hover:text-blue-600 transition-colors">${srvTitle}</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">${srvDesc}</p>
+                </div>
+                `;
+            }).join('');
+
+            // Projects
+            const projectsGrid = document.getElementById('projectsGrid');
+            projectsGrid.innerHTML = appState.projects.map((proj, idx) => {
+                const projTitle = isEn ? (proj.title_en || proj.title) : proj.title;
+                const projDesc = isEn ? (proj.desc_en || proj.desc) : proj.desc;
+                return `
+                <div class="project-card group rounded-2xl overflow-hidden glass-card border border-slate-200/80 dark:border-slate-800 flex flex-col" data-category="${proj.category}">
+                    <div class="relative overflow-hidden h-60 bg-slate-900">
+                        <img src="${proj.img}" alt="${projTitle}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-blue-900/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
+                            <button onclick="openProjectModal(${idx})" class="p-3 bg-white text-slate-900 rounded-full shadow-lg hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider">${getCategoryLabel(proj.category)}</span>
+                            <h3 class="text-lg font-bold mt-1 mb-2">${projTitle}</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm line-clamp-2">${projDesc}</p>
+                        </div>
+                        <div class="flex items-center gap-2 mt-4 pt-4 border-t border-slate-200 dark:border-slate-800 text-xs font-mono text-slate-500">
+                            ${(proj.tags || []).map(tag => `<span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-800">${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                </div>
+                `;
+            }).join('');
+
+            // Experience
+            const experienceTimeline = document.getElementById('experienceTimeline');
+            experienceTimeline.innerHTML = appState.experiences.map(exp => {
+                const periodStr = isEn ? (exp.period_en || exp.period) : exp.period;
+                const roleStr = isEn ? (exp.role_en || exp.role) : exp.role;
+                const compStr = isEn ? (exp.company_en || exp.company) : exp.company;
+                const descStr = isEn ? (exp.desc_en || exp.desc) : exp.desc;
+                return `
+                <div class="relative pr-8 group">
+                    <div class="absolute -right-2.5 top-1.5 w-5 h-5 rounded-full bg-blue-600 border-4 border-white dark:border-slate-950 group-hover:scale-125 transition-transform"></div>
+                    <div class="p-6 rounded-2xl glass-card border border-slate-200/80 dark:border-slate-800 shadow-sm">
+                        <span class="text-xs font-bold text-blue-600 dark:text-blue-400">${periodStr}</span>
+                        <h3 class="text-xl font-bold mt-1">${roleStr}</h3>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 mt-0.5">${compStr}</p>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm mt-3 leading-relaxed">${descStr}</p>
+                    </div>
+                </div>
+                `;
+            }).join('');
+
+            // Contact
+            document.getElementById('contactEmail').textContent = appState.email;
+            document.getElementById('contactEmail').href = `mailto:${appState.email}`;
+            document.getElementById('contactPhone').textContent = appState.phone;
+            document.getElementById('contactPhone').href = `https://wa.me/${appState.phone.replace(/[^0-9]/g, '')}`;
+            document.getElementById('contactLocationText').textContent = isEn ? (appState.location_en || appState.location) : appState.location;
+        }
+
+        function getCategoryLabel(cat) {
+            const isEn = appState.currentLang === 'en';
+            if (cat === 'social') return isEn ? 'Social Media & Ads' : 'سوشيال ميديا وإعلانات';
+            if (cat === 'branding') return isEn ? 'Branding & Logos' : 'هويات بصرية وشعارات';
+            if (cat === 'print') return isEn ? 'Print & Packaging' : 'مطبوعات وتغليف';
+            return isEn ? 'Graphic Design' : 'تصميم جرافيك';
+        }
+
+        function fillControlPanelInputs() {
+            document.getElementById('editLogoType').value = appState.logoType || 'image';
+            document.getElementById('editLogoUrl').value = appState.logoUrl || '';
+            document.getElementById('editHeaderName').value = appState.headerName || '';
+            
+            document.getElementById('editName').value = appState.name || '';
+            document.getElementById('editNameEn').value = appState.name_en || '';
+            
+            document.getElementById('editTitle').value = appState.title || '';
+            document.getElementById('editTitleEn').value = appState.title_en || '';
+            
+            document.getElementById('editBadge').value = appState.badge || '';
+            document.getElementById('editBadgeEn').value = appState.badge_en || '';
+            
+            document.getElementById('editBio').value = appState.bio || '';
+            document.getElementById('editBioEn').value = appState.bio_en || '';
+            
+            document.getElementById('editImage').value = appState.profileImg || '';
+            document.getElementById('editFacebook').value = appState.facebook || '';
+            document.getElementById('editInstagram').value = appState.instagram || '';
+            document.getElementById('editWhatsapp').value = appState.whatsapp || '';
+
+            document.getElementById('editAboutHeading').value = appState.aboutHeading || '';
+            document.getElementById('editAboutHeadingEn').value = appState.aboutHeading_en || '';
+            
+            document.getElementById('editAboutDetail').value = appState.aboutDetail || '';
+            document.getElementById('editAboutDetailEn').value = appState.aboutDetail_en || '';
+
+            document.getElementById('editEmail').value = appState.email || '';
+            document.getElementById('editPhone').value = appState.phone || '';
+            
+            document.getElementById('editLocation').value = appState.location || '';
+            document.getElementById('editLocationEn').value = appState.location_en || '';
+
+            // Skills editor
+            const skillsEditForm = document.getElementById('skillsEditForm');
+            skillsEditForm.innerHTML = appState.skills.map((s, i) => `
+                <div class="p-2.5 rounded-lg border dark:bg-slate-800 dark:border-slate-700 space-y-2">
+                    <div class="flex justify-between items-center text-xs font-bold">
+                        <span>المهارة ${i + 1}</span>
+                        <span>${s.percent}%</span>
+                    </div>
+                    <input type="text" value="${s.name}" onchange="updateSkillName(${i}, this.value)" placeholder="اسم المهارة (عربي)" class="w-full p-1.5 rounded border dark:bg-slate-900 text-xs">
+                    <input type="text" value="${s.name_en || ''}" onchange="updateSkillNameEn(${i}, this.value)" placeholder="Skill Name (English)" class="w-full p-1.5 rounded border dark:bg-slate-900 text-xs dir-ltr">
+                    <input type="range" min="0" max="100" value="${s.percent}" oninput="updateSkillPercent(${i}, this.value)" class="w-full accent-blue-500">
+                </div>
+            `).join('');
+
+            // Services editor
+            const servicesEditForm = document.getElementById('servicesEditForm');
+            servicesEditForm.innerHTML = appState.services.map((srv, i) => `
+                <div class="p-3 rounded-lg border dark:bg-slate-800 dark:border-slate-700 space-y-2">
+                    <span class="text-xs font-bold block">الخدمة ${i + 1}</span>
+                    <input type="text" value="${srv.title}" onchange="updateService(${i}, 'title', this.value)" placeholder="عنوان الخدمة (عربي)" class="w-full p-1.5 rounded border dark:bg-slate-900 text-xs font-bold">
+                    <input type="text" value="${srv.title_en || ''}" onchange="updateService(${i}, 'title_en', this.value)" placeholder="Service Title (English)" class="w-full p-1.5 rounded border dark:bg-slate-900 text-xs font-bold dir-ltr">
+                    <textarea onchange="updateService(${i}, 'desc', this.value)" placeholder="وصف الخدمة (عربي)" class="w-full p-1.5 rounded border dark:bg-slate-900 text-xs" rows="2">${srv.desc}</textarea>
+                    <textarea onchange="updateService(${i}, 'desc_en', this.value)" placeholder="Service Description (English)" class="w-full p-1.5 rounded border dark:bg-slate-900 text-xs dir-ltr" rows="2">${srv.desc_en || ''}</textarea>
+                </div>
+            `).join('');
+
+            // Projects editor
+            const projectsEditForm = document.getElementById('projectsEditForm');
+            projectsEditForm.innerHTML = appState.projects.map((proj, i) => `
+                <div class="p-3 rounded-lg border dark:bg-slate-800 dark:border-slate-700 space-y-2 relative">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-bold">المشروع ${i + 1}</span>
+                        <button onclick="deleteProject(${i})" class="text-rose-500 text-xs hover:underline"><i class="fa-solid fa-trash"></i> حذف</button>
+                    </div>
+                    <input type="text" value="${proj.title}" onchange="updateProject(${i}, 'title', this.value)" placeholder="عنوان المشروع (عربي)" class="w-full p-1.5 rounded border dark:bg-slate-900 text-xs font-bold">
+                    <input type="text" value="${proj.title_en || ''}" onchange="updateProject(${i}, 'title_en', this.value)" placeholder="Project Title (English)" class="w-full p-1.5 rounded border dark:bg-slate-900 text-xs font-bold dir-ltr">
+                    
+                    <select onchange="updateProject(${i}, 'category', this.value)" class="w-full p-1.5 rounded border dark:bg-slate-900 text-xs">
+                        <option value="social" ${proj.category === 'social' ? 'selected' : ''}>سوشيال ميديا وإعلانات</option>
+                        <option value="branding" ${proj.category === 'branding' ? 'selected' : ''}>هويات بصرية وشعارات</option>
+                        <option value="print" ${proj.category === 'print' ? 'selected' : ''}>مطبوعات وتغليف</option>
+                    </select>
+
+                    <div class="space-y-1">
+                        <label class="block text-[11px] font-bold text-slate-400">صورة المشروع</label>
+                        <label class="cursor-pointer w-full py-2 px-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-bold flex items-center justify-center gap-2 transition-all shadow-sm active:scale-95">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <span>اختر وارفِع صورة من جهازك/هاتفك</span>
+                            <input type="file" accept="image/*" class="hidden" onchange="uploadProjectImageDirectly(${i}, this)">
+                        </label>
+                        <input type="text" value="${proj.img && proj.img.startsWith('data:') ? 'صورة تم رفعها محلياً' : proj.img}" onchange="updateProject(${i}, 'img', this.value)" placeholder="أو أدخل رابط صورة خارجي بيدك" class="w-full p-1.5 rounded border dark:bg-slate-900 text-xs text-slate-500">
+                        <label class="cursor-pointer w-full py-2 px-3 bg-violet-600 hover:bg-violet-700 text-white rounded-lg text-xs font-bold flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-images"></i><span>إضافة صور كثيرة للمعرض من الجهاز</span>
+                            <input type="file" accept="image/*" multiple class="hidden" onchange="uploadGalleryImages(${i}, this)">
+                        </label>
+                        <div class="text-[11px] text-slate-500">صور المعرض: ${(proj.gallery||[]).length} — تظهر في صفحة رؤية المزيد فقط.</div>
+                    </div>
+
+                    <textarea onchange="updateProject(${i}, 'desc', this.value)" placeholder="وصف المشروع (عربي)" class="w-full p-1.5 rounded border dark:bg-slate-900 text-xs" rows="2">${proj.desc}</textarea>
+                    <textarea onchange="updateProject(${i}, 'desc_en', this.value)" placeholder="Project Description (English)" class="w-full p-1.5 rounded border dark:bg-slate-900 text-xs dir-ltr" rows="2">${proj.desc_en || ''}</textarea>
+                </div>
+            `).join('');
+        }
+
+        // Language Button Listener
+        document.getElementById('langToggleBtn').addEventListener('click', () => {
+            appState.currentLang = appState.currentLang === 'ar' ? 'en' : 'ar';
+            saveState();
+            showToast(appState.currentLang === 'ar' ? 'تم التغيير إلى اللغة العربية' : 'Switched to English');
+        });
+
+        // Direct File Upload Listeners
+        document.getElementById('uploadLogoFile').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                compressAndUploadImage(file, function(compressedUrl) {
+                    appState.logoUrl = compressedUrl;
+                    appState.logoType = 'image';
+                    saveState();
+                    fillControlPanelInputs();
+                    showToast('تم رفع صورة اللوجو ومزامنتها بنجاح!');
+                });
+            }
+        });
+
+        document.getElementById('uploadProfileFile').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                compressAndUploadImage(file, function(compressedUrl) {
+                    appState.profileImg = compressedUrl;
+                    saveState();
+                    fillControlPanelInputs();
+                    showToast('تم رفع صورتك الشخصية ومزامنتها بنجاح!');
+                });
+            }
+        });
+
+        async function uploadProjectImageDirectly(index, fileInput) {
+            const file = fileInput.files[0];
+            if (!file || !storage) return;
+            if (!currentUser || currentUser.email !== ADMIN_EMAIL) { showToast('سجّل دخول الأدمن أولاً لرفع الصور'); return; }
+            try {
+                showToast('جاري رفع الصورة للسحابة...');
+                const safe = file.name.replace(/[^a-zA-Z0-9._-]/g,'_');
+                const path = `projects/${Date.now()}_${safe}`;
+                const storageRef = ref(storage, path);
+                await uploadBytes(storageRef, file, {contentType:file.type});
+                const url = await getDownloadURL(storageRef);
+                appState.projects[index].img = url;
+                appState.projects[index].gallery = appState.projects[index].gallery || [];
+                saveState(); fillControlPanelInputs(); showToast('تم حفظ صورة المشروع في مجلد الأعمال بنجاح');
+            } catch(e) { console.error(e); showToast('فشل رفع الصورة: '+(e.code||'تحقق من Storage Rules')); }
+        }
+
+        async function uploadGalleryImages(index, input) {
+            if (!input.files?.length || !storage || !currentUser || currentUser.email !== ADMIN_EMAIL) { showToast('سجّل دخول الأدمن أولاً'); return; }
+            const proj=appState.projects[index]; proj.gallery=proj.gallery||[];
+            try {
+                showToast('جاري رفع صور المعرض...');
+                for (const file of [...input.files]) {
+                    const safe=file.name.replace(/[^a-zA-Z0-9._-]/g,'_');
+                    const r=ref(storage,`projects/${Date.now()}_${Math.random().toString(36).slice(2)}_${safe}`);
+                    await uploadBytes(r,file,{contentType:file.type});
+                    proj.gallery.push(await getDownloadURL(r));
+                }
+                saveState(); fillControlPanelInputs(); showToast(`تم رفع ${input.files.length} صورة وحفظها`);
+            } catch(e) { console.error(e); showToast('فشل حفظ صور المعرض'); }
+        }
+
+        function updateSkillName(index, val) {
+            appState.skills[index].name = val;
+            saveState();
+        }
+        function updateSkillNameEn(index, val) {
+            appState.skills[index].name_en = val;
+            saveState();
+        }
+        function updateSkillPercent(index, val) {
+            appState.skills[index].percent = Number(val);
+            saveState();
+        }
+
+        function updateService(index, key, val) {
+            appState.services[index][key] = val;
+            saveState();
+        }
+
+        function updateProject(index, key, val) {
+            appState.projects[index][key] = val;
+            saveState();
+        }
+
+        function deleteProject(index) {
+            appState.projects.splice(index, 1);
+            saveState();
+            fillControlPanelInputs();
+            showToast('تم حذف المشروع بنجاح');
+        }
+
+        document.getElementById('addProjectBtn').addEventListener('click', () => {
+            appState.projects.push({
+                title: 'مشروع تصميم جديد',
+                title_en: 'New Design Project',
+                category: 'social',
+                desc: 'تفاصيل المشروع الجديد واهدافه البصرية...',
+                desc_en: 'Details of the new visual design project...',
+                img: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
+                tags: ['Design']
+            });
+            saveState();
+            fillControlPanelInputs();
+            showToast('تمت إضافة مشروع جديد');
+        });
+
+        const bindings = [
+            ['editLogoType', 'logoType'],
+            ['editLogoUrl', 'logoUrl'],
+            ['editHeaderName', 'headerName'],
+            ['editName', 'name'],
+            ['editNameEn', 'name_en'],
+            ['editTitle', 'title'],
+            ['editTitleEn', 'title_en'],
+            ['editBadge', 'badge'],
+            ['editBadgeEn', 'badge_en'],
+            ['editBio', 'bio'],
+            ['editBioEn', 'bio_en'],
+            ['editImage', 'profileImg'],
+            ['editFacebook', 'facebook'],
+            ['editInstagram', 'instagram'],
+            ['editWhatsapp', 'whatsapp'],
+            ['editAboutHeading', 'aboutHeading'],
+            ['editAboutHeadingEn', 'aboutHeading_en'],
+            ['editAboutDetail', 'aboutDetail'],
+            ['editAboutDetailEn', 'aboutDetail_en'],
+            ['editEmail', 'email'],
+            ['editPhone', 'phone'],
+            ['editLocation', 'location'],
+            ['editLocationEn', 'location_en']
+        ];
+
+        bindings.forEach(([elemId, stateKey]) => {
+            const el = document.getElementById(elemId);
+            if (el) {
+                el.addEventListener('input', (e) => {
+                    appState[stateKey] = e.target.value;
+                    saveState();
+                });
+            }
+        });
+
+        // Control Panel Tabs logic
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(c => c.classList.add('hidden'));
+
+                btn.classList.add('active');
+                const targetTab = btn.getAttribute('data-tab');
+                document.getElementById(targetTab).classList.remove('hidden');
+            });
+        });
+
+        // Auth & Drawer Modals
+        const openCustomizerBtn = document.getElementById('openCustomizerBtn');
+        const customizerDrawer = document.getElementById('customizerDrawer');
+        const closeCustomizerBtn = document.getElementById('closeCustomizerBtn');
+        const passwordModal = document.getElementById('passwordModal');
+        const closePasswordModalBtn = document.getElementById('closePasswordModalBtn');
+        const passwordForm = document.getElementById('passwordForm');
+        const passwordError = document.getElementById('passwordError');
+        const inputAdminPassword = document.getElementById('inputAdminPassword');
+        const lockStatusIcon = document.getElementById('lockStatusIcon');
+        const lockControlPanelBtn = document.getElementById('lockControlPanelBtn');
+
+        openCustomizerBtn.addEventListener('click', () => {
+            if (isAuthenticated) {
+                fillControlPanelInputs();
+                customizerDrawer.classList.remove('-translate-x-full');
+            } else {
+                passwordModal.classList.remove('hidden');
+                passwordModal.classList.add('flex');
+                inputAdminPassword.focus();
+            }
+        });
+
+        closePasswordModalBtn.addEventListener('click', () => {
+            passwordModal.classList.add('hidden');
+            passwordModal.classList.remove('flex');
+            passwordError.classList.add('hidden');
+        });
+
+        passwordForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const entered = inputAdminPassword.value.trim();
+            if (entered === (appState.adminPassword || '123456')) {
+                isAuthenticated = true;
+                passwordModal.classList.add('hidden');
+                passwordModal.classList.remove('flex');
+                passwordError.classList.add('hidden');
+                inputAdminPassword.value = '';
+                
+                lockStatusIcon.className = 'fa-solid fa-lock-open text-emerald-500';
+                fillControlPanelInputs();
+                customizerDrawer.classList.remove('-translate-x-full');
+                showToast('تم تسجيل الدخول بنجاح للوحة التحكم');
+            } else {
+                passwordError.classList.remove('hidden');
+            }
+        });
+
+        lockControlPanelBtn.addEventListener('click', () => {
+            isAuthenticated = false;
+            lockStatusIcon.className = 'fa-solid fa-lock text-amber-500';
+            customizerDrawer.classList.add('-translate-x-full');
+            showToast('تم قفل لوحة التحكم');
+        });
+
+        closeCustomizerBtn.addEventListener('click', () => {
+            customizerDrawer.classList.add('-translate-x-full');
+        });
+
+        document.getElementById('savePasswordBtn').addEventListener('click', () => {
+            const cur = document.getElementById('inputCurrentPass').value;
+            const newP = document.getElementById('inputNewPass').value;
+
+            if (cur !== (appState.adminPassword || '123456')) {
+                showToast('كلمة المرور الحالية غير صحيحة!');
+                return;
+            }
+            if (!newP || newP.length < 4) {
+                showToast('كلمة المرور يجب أن تكون 4 عناصر على الأقل');
+                return;
+            }
+
+            appState.adminPassword = newP;
+            saveState();
+            document.getElementById('inputCurrentPass').value = '';
+            document.getElementById('inputNewPass').value = '';
+            showToast('تم تغيير كلمة السر بنجاح!');
+        });
+
+        document.getElementById('btnSyncCloudNow').addEventListener('click', async () => {
+            saveState();
+            showToast('تم مزامنة التعديلات سحابياً لجميع الأجهزة!');
+        });
+
+        document.getElementById('btnExportDataLink').addEventListener('click', () => {
+            const stateString = JSON.stringify(appState);
+            const encoded = encodeURIComponent(stateString);
+            const shareableUrl = `${window.location.origin}${window.location.pathname}#data=${encoded}`;
+            
+            navigator.clipboard.writeText(shareableUrl).then(() => {
+                showToast('تم نسخ رابط التعديلات الشامل إلى الحافظة!');
+            }).catch(() => {
+                showToast('تعذر النسخ التلقائي، تم توفير البيانات سحابياً');
+            });
+        });
+
+        document.getElementById('btnExportJson').addEventListener('click', () => {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(appState, null, 2));
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", `website_config_${appState.name}.json`);
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+            showToast('تم تحميل ملف النسخة الاحتياطية بنجاح!');
+        });
+
+        document.getElementById('importJsonFile').addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                try {
+                    const imported = JSON.parse(evt.target.result);
+                    appState = { ...defaultState, ...imported };
+                    saveState();
+                    fillControlPanelInputs();
+                    showToast('تم استيراد النسخة الاحتياطية وتحديث الموقع بنجاح!');
+                } catch (err) {
+                    showToast('ملف غير صالِح!');
+                }
+            };
+            reader.readAsText(file);
+        });
+
+        // Reset settings
+        document.getElementById('resetCustomizerBtn').addEventListener('click', () => {
+            appState = JSON.parse(JSON.stringify(defaultState));
+            saveState();
+            fillControlPanelInputs();
+            showToast('تم استعادة الضبط الافتراضي للموقع');
+        });
+
+        // Dark mode
+        document.getElementById('themeToggleBtn').addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('.mobile-nav-link').forEach(l => {
+            l.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // Portfolio filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-blue-600', 'text-white', 'active');
+                    b.classList.add('bg-slate-200', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+                });
+
+                btn.classList.add('bg-blue-600', 'text-white', 'active');
+                btn.classList.remove('bg-slate-200', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+
+                const filter = btn.getAttribute('data-filter');
+                document.querySelectorAll('.project-card').forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        const projectModal = document.getElementById('projectModal');
+        function openProjectModal(index) {
+            const proj = appState.projects[index];
+            if (!proj) return;
+            const isEn = appState.currentLang === 'en';
+            document.getElementById('modalTitle').textContent = isEn ? (proj.title_en || proj.title) : proj.title;
+            document.getElementById('modalDesc').textContent = isEn ? (proj.desc_en || proj.desc) : proj.desc;
+            document.getElementById('modalImg').src = proj.img;
+            projectModal.classList.remove('hidden');
+            projectModal.classList.add('flex');
+        }
+
+        function hideModal() {
+            projectModal.classList.add('hidden');
+            projectModal.classList.remove('flex');
+        }
+
+        document.getElementById('closeModalBtn').addEventListener('click', hideModal);
+        document.getElementById('dismissModalBtn').addEventListener('click', hideModal);
+
+        // Toast Helper
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').textContent = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const isEn = appState.currentLang === 'en';
+            showToast(isEn ? 'Thank you! Your message has been submitted successfully.' : 'شكراً لتواصلك! تم إرسال طلبك بنجاح وسنتواصل معك قريباً.');
+            e.target.reset();
+        });
+
+        renderSite();
+        initFirebaseSync();
+
+
+        // V15 reliability + full-control layer
+        function updateAuthUI(){
+          const admin = currentUser && currentUser.email === ADMIN_EMAIL;
+          if(admin) isAuthenticated=true;
+          const b=document.getElementById('openChatWidget'); if(b) b.classList.toggle('hidden', !!admin);
+        }
+        async function adminFirebaseLogin(password){
+          try{ await signInWithEmailAndPassword(auth,ADMIN_EMAIL,password); isAuthenticated=true; showToast('تم تسجيل دخول الأدمن'); fillControlPanelInputs(); customizerDrawer.classList.remove('-translate-x-full'); }
+          catch(e){ console.error(e); showToast('بيانات دخول الأدمن غير صحيحة'); }
+        }
+        const originalPasswordSubmit=document.getElementById('passwordForm');
+        if(originalPasswordSubmit){ originalPasswordSubmit.addEventListener('submit', async e=>{ const pw=document.getElementById('inputAdminPassword').value.trim(); if(pw) await adminFirebaseLogin(pw); }, true); }
+        function refreshFullEditor(){ const el=document.getElementById('fullStateEditor'); if(el) el.value=JSON.stringify(appState,null,2); }
+        const saveJsonBtn=document.getElementById('saveJsonStateBtn'); if(saveJsonBtn) saveJsonBtn.onclick=async()=>{ try{ const obj=JSON.parse(document.getElementById('fullStateEditor').value); appState={...defaultState,...obj}; await saveStateToCloud(appState); localStorage.setItem('site_custom_state_v4',JSON.stringify(appState)); renderSite(); fillControlPanelInputs(); showToast('تم حفظ كل تعديلات الموقع على السحابة'); }catch(e){showToast('صيغة التعديل غير صحيحة');} };
+        const oldFill=fillControlPanelInputs; fillControlPanelInputs=function(){ oldFill(); refreshFullEditor(); };
+        function showProjectGallery(index){ const p=appState.projects[index]; if(!p)return; document.getElementById('galleryTitle').textContent=appState.currentLang==='en'?(p.title_en||p.title):p.title; const imgs=p.gallery||[]; document.getElementById('galleryGrid').innerHTML=imgs.length?imgs.map(u=>`<img src="${u}" class="w-full aspect-square object-cover rounded-2xl shadow-xl">`).join(''):'<p class="text-white">لا توجد صور إضافية لهذا المشروع.</p>'; document.getElementById('galleryOverlay').classList.remove('hidden'); }
+        window.showProjectGallery=showProjectGallery; window.uploadGalleryImages=uploadGalleryImages;
+        document.getElementById('closeGallery').onclick=()=>document.getElementById('galleryOverlay').classList.add('hidden');
+        // Replace project modal buttons with gallery option
+        const _openProjectModal=openProjectModal; openProjectModal=function(index){ _openProjectModal(index); const p=appState.projects[index]; if((p.gallery||[]).length){ let b=document.getElementById('modalGalleryBtn'); if(!b){b=document.createElement('button');b.id='modalGalleryBtn';b.className='px-5 py-2.5 rounded-xl bg-blue-600 text-white font-bold';document.querySelector('#projectModal .flex.justify-end').prepend(b);} b.textContent='رؤية المزيد'; b.onclick=()=>showProjectGallery(index); } };
+        // Customer chat persisted per user
+        let chatUnsub=null;
+        async function loadChat(){ if(!currentUser||currentUser.email===ADMIN_EMAIL)return; const q=query(collection(db,'messages'),where('uid','==',currentUser.uid),orderBy('createdAt','asc')); if(chatUnsub)chatUnsub(); chatUnsub=onSnapshot(q,s=>{ const box=document.getElementById('chatMessages'); box.innerHTML=''; s.forEach(d=>{const m=d.data(); const el=document.createElement('div'); el.className='p-2 rounded-xl '+(m.fromAdmin?'bg-slate-200 dark:bg-slate-800':'bg-blue-600 text-white ml-8'); el.textContent=m.text||''; box.appendChild(el);}); box.scrollTop=box.scrollHeight; }); }
+        document.getElementById('chatForm').onsubmit=async e=>{e.preventDefault(); const input=document.getElementById('chatInput'); const textv=input.value.trim(); if(!textv||!currentUser){showToast('سجّل دخولك أولاً');return;} try{await addDoc(collection(db,'messages'),{uid:currentUser.uid,text:textv,fromAdmin:false,createdAt:serverTimestamp()});input.value='';}catch(err){console.error(err);showToast('تعذر إرسال الرسالة');}};
+        document.getElementById('openChatWidget').onclick=()=>{document.getElementById('chatWidget').classList.remove('hidden');loadChat();}; document.getElementById('closeChatWidget').onclick=()=>document.getElementById('chatWidget').classList.add('hidden');
+        // Graphic click feedback and anti-copy friction
+        document.addEventListener('click',e=>{const b=document.createElement('span');b.className='site-click-burst';b.style.left=e.clientX+'px';b.style.top=e.clientY+'px';document.body.appendChild(b);setTimeout(()=>b.remove(),600);},{passive:true});
+        ['copy','cut','dragstart','contextmenu'].forEach(ev=>document.addEventListener(ev,e=>e.preventDefault()));
+        document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&['c','x','u','s','a'].includes(e.key.toLowerCase()))e.preventDefault();if(e.key==='F12')e.preventDefault();});
+        // Floating graphics without changing layout
+        document.querySelectorAll('section').forEach((sec,i)=>{const g=document.createElement('div');g.className='graphic-float pointer-events-none absolute opacity-10 text-blue-500 text-6xl';g.style.left=(10+i*7)%80+'%';g.style.top='8%';g.innerHTML='<i class="fa-solid fa-sparkles"></i>'; if(getComputedStyle(sec).position==='static')sec.style.position='relative';sec.appendChild(g);});
+        // Email/password customer login helpers available to future buttons
+        window.createCustomerAccount=async(email,password)=>{const c=await createUserWithEmailAndPassword(auth,email,password);return c.user;};
+        window.customerLogin=async(email,password)=>{const c=await signInWithEmailAndPassword(auth,email,password);currentUser=c.user;isAuthenticated=false;await loadChat();return c.user;};
+
+
+        function mountAdminChat(){ if(document.getElementById('adminChatBox'))return; const d=document.createElement('div');d.id='adminChatBox';d.className='mt-6 p-4 rounded-2xl border dark:border-slate-700';d.innerHTML='<h3 class="font-bold mb-2">محادثات العملاء</h3><div id="adminThreads" class="space-y-2 max-h-56 overflow-auto"></div><div class="flex gap-2 mt-2"><input id="adminReply" class="flex-1 p-2 rounded border dark:bg-slate-800" placeholder="اكتب الرد"><button id="adminReplyBtn" class="px-3 rounded bg-blue-600 text-white">رد</button></div>'; document.querySelector('#customizerDrawer .p-6').appendChild(d); }
+        setTimeout(()=>{mountAdminChat(); const btn=document.getElementById('adminReplyBtn'); if(btn)btn.onclick=async()=>{const uid=document.getElementById('adminThreads').dataset.uid;const t=document.getElementById('adminReply').value.trim();if(!uid||!t||!currentUser)return;try{await addDoc(collection(db,'messages'),{uid,text:t,fromAdmin:true,sender:'الإدارة',createdAt:serverTimestamp()});document.getElementById('adminReply').value='';showToast('تم إرسال الرد وحفظه');}catch(e){console.error(e);showToast('تعذر حفظ الرد');}};},1500);
+        async function loadAdminThreads(){if(!currentUser||currentUser.email!==ADMIN_EMAIL)return; const snap=await getDocs(collection(db,'messages')); const map=new Map(); snap.forEach(x=>{const m=x.data(); if(m.uid&&!map.has(m.uid))map.set(m.uid,m);}); const box=document.getElementById('adminThreads'); if(!box)return; box.innerHTML=[...map.entries()].map(([uid,m])=>`<button class="w-full text-right p-2 rounded bg-slate-100 dark:bg-slate-800" onclick="document.getElementById('adminThreads').dataset.uid='${uid}';document.getElementById('adminReply').focus()">عميل: ${uid.slice(0,8)}…</button>`).join('')||'<div class="text-xs text-slate-500">لا توجد محادثات بعد</div>'; }
+        const _fill2=fillControlPanelInputs; fillControlPanelInputs=function(){_fill2();refreshFullEditor();loadAdminThreads();};
+
+        // Expose functions for inline HTML event handlers
+        window.openProjectModal = openProjectModal;
+        window.deleteProject = deleteProject;
+        window.uploadProjectImageDirectly = uploadProjectImageDirectly;
+        window.updateSkillName = updateSkillName;
+        window.updateSkillNameEn = updateSkillNameEn;
+        window.updateSkillPercent = updateSkillPercent;
+        window.updateService = updateService;
+        window.updateProject = updateProject;
+    </script>
+</body>
+</html>

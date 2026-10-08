@@ -1,18 +1,4 @@
-عبدالرحمن عطيه — V14
-
-التعديلات في هذه النسخة:
-1) معرض الأعمال يعتمد على رفع الصور من الجهاز فقط، وليس روابط الصور.
-2) الصورة الرئيسية للعمل تخص «عرض التفاصيل» فقط.
-3) صور الشغل الإضافية تظهر في «رؤية المزيد» فقط، ولا يتم خلط الصورة الرئيسية معها.
-4) يمكن اختيار عدد كبير من الصور دفعة واحدة، بما في ذلك 100 صورة أو أكثر حسب مساحة Firebase Storage وسرعة الاتصال.
-5) لوحة التحكم تعرض كل عميل كمحادثة واحدة مثل Messenger، مع قائمة محادثات وآخر رسالة وعدد الرسائل الجديدة.
-6) رد المشرف يُحفظ كرسالة جديدة داخل نفس محادثة العميل ويظهر للعميل، ولا يتم حذفه تلقائياً.
-7) تم إصلاح صلاحية Firestore التي كانت تمنع المشرف من إنشاء رسالة الرد.
-8) توجد شارة/تنبيه للرسائل الجديدة عند العميل وعند المشرف، مع إشعار المتصفح إذا سمح المستخدم بذلك.
-9) عند فتح محادثة معينة من لوحة التحكم، تُعلّم رسائل العميل في هذه المحادثة كمقروءة فقط، بدل مسحها أو تحويل كل الرسائل إلى قائمة منفصلة.
-10) أضيفت تأثيرات ضغط جرافيكية في كل نقرات الموقع تقريباً.
-11) تم تعطيل النسخ والسحب وقائمة الزر الأيمن واختصارات النسخ/الحفظ خارج حقول الإدخال. هذا يمنع الاستخدام العادي للنسخ، لكنه لا يمكن أن يمنع التقاط الشاشة أو أدوات المطور بنسبة 100% لأن الموقع يعمل داخل متصفح العميل.
-
-بعد رفع الملفات إلى GitHub:
-- انشر firestore.rules الموجودة في هذه النسخة من Firebase Console > Firestore Database > Rules.
-- لا توجد حاجة لتغيير Storage Rules؛ النسخة تستخدم المسارات projects/covers وprojects/gallery وهي مسموحة بالفعل في storage.rules.
+V15 fixed build - keeps the existing visual layout and adds Firebase Storage project uploads, project galleries, persistent customer chat, admin reply persistence, full JSON content control, click effects, and copy-friction controls.
+Firebase project: abdelrahman-website-98d4c
+Admin email: abdelrahmanatia167@gmail.com
+IMPORTANT: Firebase Storage/Firestore rules must allow the intended authenticated admin writes and customer message access.
