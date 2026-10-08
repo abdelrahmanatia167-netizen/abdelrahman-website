@@ -3,22 +3,20 @@ service cloud.firestore {
   match /databases/{database}/documents {
     function signedIn() { return request.auth != null; }
     function isAdmin() {
-      return signedIn() && request.auth.token.email == 'abdelrahmanatia167@gmail.com';
+      return signedIn() && request.auth.token.email != null
+        && request.auth.token.email == 'abdelrahmanatia167@gmail.com';
     }
 
-    // Main site state used by the live website.
     match /artifacts/abdelrahman-website/public/data/config/siteState {
       allow read: if true;
       allow create, update, delete: if isAdmin();
     }
 
-    // Compatibility with the older site path.
     match /site/content {
       allow read: if true;
       allow create, update, delete: if isAdmin();
     }
 
-    // Reviews: customers submit pending reviews; only approved reviews are public.
     match /reviews/{id} {
       allow read: if isAdmin() || resource.data.approved == true;
       allow create: if request.resource.data.rating is int
@@ -31,7 +29,6 @@ service cloud.firestore {
       allow update, delete: if isAdmin();
     }
 
-    // Contact requests.
     match /contacts/{id} {
       allow create: if request.resource.data.name is string
                     && request.resource.data.contact is string
@@ -39,7 +36,6 @@ service cloud.firestore {
       allow read, update, delete: if isAdmin();
     }
 
-    // Customer profiles.
     match /users/{id} {
       allow create: if signedIn() && request.auth.uid == id;
       allow read: if isAdmin() || (signedIn() && request.auth.uid == id);
@@ -47,20 +43,18 @@ service cloud.firestore {
       allow delete: if isAdmin();
     }
 
-    // Name/phone -> email lookup used by the login screen.
     match /loginIndex/{id} {
       allow read: if true;
       allow create, update: if signedIn() && request.resource.data.uid == request.auth.uid;
       allow delete: if isAdmin();
     }
 
-    // Customer/admin chat with unread/read flags.
     match /messages/{id} {
-      allow create: if (signedIn() && request.resource.data.uid == request.auth.uid) || (isAdmin() && request.resource.data.uid is string);
+      allow create: if (signedIn() && request.resource.data.uid == request.auth.uid && request.resource.data.fromAdmin == false)
+                    || (isAdmin() && request.resource.data.uid is string && request.resource.data.fromAdmin == true);
       allow read: if isAdmin() || (signedIn() && resource.data.uid == request.auth.uid);
       allow update: if isAdmin()
-                    || (signedIn()
-                        && resource.data.uid == request.auth.uid
+                    || (signedIn() && resource.data.uid == request.auth.uid
                         && resource.data.fromAdmin == true
                         && request.resource.data.uid == resource.data.uid
                         && request.resource.data.text == resource.data.text
@@ -70,7 +64,6 @@ service cloud.firestore {
       allow delete: if isAdmin();
     }
 
-    // Separate gallery images: public can view, admin manages.
     match /projectImages/{id} {
       allow read: if true;
       allow create, update, delete: if isAdmin();
