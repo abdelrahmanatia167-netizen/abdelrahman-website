@@ -6,25 +6,32 @@ service cloud.firestore {
       return signedIn() && request.auth.token.email == 'abdelrahmanatia167@gmail.com';
     }
 
-    // Site content: public can read; only the admin can change it.
+    // Main site state used by the live website.
+    match /artifacts/abdelrahman-website/public/data/config/siteState {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    // Compatibility with the older site path.
     match /site/content {
       allow read: if true;
       allow create, update, delete: if isAdmin();
     }
 
-    // Customer reviews: public can read and submit; only admin can edit/delete.
+    // Reviews: customers submit pending reviews; only approved reviews are public.
     match /reviews/{id} {
-      allow read: if true;
+      allow read: if isAdmin() || resource.data.approved == true;
       allow create: if request.resource.data.rating is int
                     && request.resource.data.rating >= 1
                     && request.resource.data.rating <= 5
                     && request.resource.data.text is string
                     && request.resource.data.text.size() > 0
-                    && request.resource.data.text.size() <= 2000;
+                    && request.resource.data.text.size() <= 2000
+                    && request.resource.data.approved == false;
       allow update, delete: if isAdmin();
     }
 
-    // Contact requests: anyone may submit; only admin can read/manage them.
+    // Contact requests.
     match /contacts/{id} {
       allow create: if request.resource.data.name is string
                     && request.resource.data.contact is string
@@ -40,21 +47,35 @@ service cloud.firestore {
       allow delete: if isAdmin();
     }
 
-    // Name/phone -> email index used for login without exposing passwords.
+    // Name/phone -> email lookup used by the login screen.
     match /loginIndex/{id} {
       allow read: if true;
       allow create, update: if signedIn() && request.resource.data.uid == request.auth.uid;
       allow delete: if isAdmin();
     }
 
-    // Customer/admin chat.
+    // Customer/admin chat with unread/read flags.
     match /messages/{id} {
       allow create: if signedIn() && request.resource.data.uid == request.auth.uid;
       allow read: if isAdmin() || (signedIn() && resource.data.uid == request.auth.uid);
-      allow update, delete: if isAdmin();
+      allow update: if isAdmin()
+                    || (signedIn()
+                        && resource.data.uid == request.auth.uid
+                        && resource.data.fromAdmin == true
+                        && request.resource.data.uid == resource.data.uid
+                        && request.resource.data.text == resource.data.text
+                        && request.resource.data.sender == resource.data.sender
+                        && request.resource.data.fromAdmin == resource.data.fromAdmin
+                        && request.resource.data.readByClient == true);
+      allow delete: if isAdmin();
     }
 
-    // Everything else stays locked.
+    // Separate gallery images: public can view, admin manages.
+    match /projectImages/{id} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
     match /{document=**} {
       allow read, write: if false;
     }
