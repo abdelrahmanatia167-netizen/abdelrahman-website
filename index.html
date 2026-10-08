@@ -292,4 +292,31 @@ function setLanguage(lang){
 $('langBtn').onclick=()=>setLanguage(currentLang==='ar'?'en':'ar');
 window.addEventListener('siteCloudSynced',()=>{setTimeout(translatePage,80)});
 loadSite();
-</script></body></html>
+</script><script>
+(function(){
+  function openAdminNow(e){
+    if(e){e.preventDefault();e.stopImmediatePropagation();}
+    var m=document.getElementById('adminLogin');
+    if(!m) return;
+    m.classList.add('show');
+    m.style.setProperty('display','flex','important');
+    m.style.setProperty('pointer-events','auto','important');
+    m.style.setProperty('visibility','visible','important');
+    m.style.setProperty('opacity','1','important');
+    m.style.setProperty('z-index','99999','important');
+    document.body.style.overflow='hidden';
+    var p=document.getElementById('adminPassword');
+    if(p) setTimeout(function(){p.focus();},100);
+  }
+  function bind(){
+    var b=document.getElementById('adminBtn');
+    if(!b) return setTimeout(bind,50);
+    b.onclick=openAdminNow;
+    b.addEventListener('pointerup',openAdminNow,true);
+    b.addEventListener('touchend',openAdminNow,{capture:true,passive:false});
+    window.__openAdminClick=openAdminNow;
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',bind); else bind();
+})();
+</script>
+</body></html>
