@@ -1,81 +1,100 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    function signedIn() { return request.auth != null; }
-    function isAdmin() {
-      return signedIn() && request.auth.token.email == 'abdelrahmanatia167@gmail.com';
+    function signedIn() {
+      return request.auth != null;
     }
 
-    // Main site state used by the live website.
+    function isAdmin() {
+      return signedIn()
+        && request.auth.token.email == 'abdelrahmanatia167@gmail.com';
+    }
+
+    // Public site configuration; only the authenticated administrator can change it.
     match /artifacts/abdelrahman-website/public/data/config/siteState {
       allow read: if true;
       allow create, update, delete: if isAdmin();
     }
 
-    // Compatibility with the older site path.
+    // Legacy path retained for compatibility with older builds.
     match /site/content {
       allow read: if true;
       allow create, update, delete: if isAdmin();
     }
 
-    // Reviews: customers submit pending reviews; only approved reviews are public.
-    match /reviews/{id} {
+    // Public reviews must be approved. Customers may submit pending reviews.
+    match /reviews/{reviewId} {
       allow read: if isAdmin() || resource.data.approved == true;
-      allow create: if request.resource.data.rating is int
-                    && request.resource.data.rating >= 1
-                    && request.resource.data.rating <= 5
-                    && request.resource.data.text is string
-                    && request.resource.data.text.size() > 0
-                    && request.resource.data.text.size() <= 2000
-                    && request.resource.data.approved == false;
+      allow create: if isAdmin() || (request.resource.data.rating is int
+        && request.resource.data.rating >= 1
+        && request.resource.data.rating <= 5
+        && request.resource.data.text is string
+        && request.resource.data.text.size() > 0
+        && request.resource.data.text.size() <= 2000
+        && request.resource.data.approved == false);
       allow update, delete: if isAdmin();
     }
 
-    // Contact requests.
-    match /contacts/{id} {
+    // Contact form submissions.
+    match /contacts/{contactId} {
       allow create: if request.resource.data.name is string
-                    && request.resource.data.contact is string
-                    && request.resource.data.details is string;
+        && request.resource.data.contact is string
+        && request.resource.data.details is string;
       allow read, update, delete: if isAdmin();
     }
 
     // Customer profiles.
-    match /users/{id} {
-      allow create: if signedIn() && request.auth.uid == id;
-      allow read: if isAdmin() || (signedIn() && request.auth.uid == id);
-      allow update: if isAdmin() || (signedIn() && request.auth.uid == id);
+    match /users/{userId} {
+      allow create: if signedIn() && request.auth.uid == userId;
+      allow read, update: if isAdmin()
+        || (signedIn() && request.auth.uid == userId);
       allow delete: if isAdmin();
     }
 
-    // Name/phone -> email lookup used by the login screen.
-    match /loginIndex/{id} {
-      allow read: if true;
-      allow create, update: if signedIn() && request.resource.data.uid == request.auth.uid;
+    // The current customer sign-in form uses email/password. Keep this legacy index private.
+    match /loginIndex/{entryId} {
+      allow read: if isAdmin();
+      allow create, update: if isAdmin()
+        && request.resource.data.uid is string;
       allow delete: if isAdmin();
     }
 
-    // Customer/admin chat with unread/read flags.
-    match /messages/{id} {
-      allow create: if (signedIn() && request.resource.data.uid == request.auth.uid) || (isAdmin() && request.resource.data.uid is string);
-      allow read: if isAdmin() || (signedIn() && resource.data.uid == request.auth.uid);
+    // Customer/admin messages. Each customer can read only their own thread.
+    match /messages/{messageId} {
+      allow create: if (signedIn()
+          && request.resource.data.uid == request.auth.uid
+          && request.resource.data.fromAdmin == false)
+        || (isAdmin()
+          && request.resource.data.uid is string
+          && request.resource.data.fromAdmin == true);
+
+      allow read: if isAdmin()
+        || (signedIn() && resource.data.uid == request.auth.uid);
+
       allow update: if isAdmin()
-                    || (signedIn()
-                        && resource.data.uid == request.auth.uid
-                        && resource.data.fromAdmin == true
-                        && request.resource.data.uid == resource.data.uid
-                        && request.resource.data.text == resource.data.text
-                        && request.resource.data.sender == resource.data.sender
-                        && request.resource.data.fromAdmin == resource.data.fromAdmin
-                        && request.resource.data.readByClient == true);
+        || (signedIn()
+          && resource.data.uid == request.auth.uid
+          && resource.data.fromAdmin == true
+          && request.resource.data.uid == resource.data.uid
+          && request.resource.data.text == resource.data.text
+          && request.resource.data.sender == resource.data.sender
+          && request.resource.data.fromAdmin == resource.data.fromAdmin
+          && request.resource.data.readByClient == true);
+
       allow delete: if isAdmin();
     }
 
-    // Separate gallery images: public can view, admin manages.
-    match /projectImages/{id} {
+    // Portfolio images are stored as compressed data URLs in Firestore documents,
+    // so Firebase Storage is not required for gallery uploads in this build.
+    match /projectImages/{imageId} {
       allow read: if true;
-      allow create, update, delete: if isAdmin();
+      allow create, update: if isAdmin()
+        && request.resource.data.url is string
+        && request.resource.data.url.size() <= 780000;
+      allow delete: if isAdmin();
     }
 
+    // Deny every path not explicitly listed above.
     match /{document=**} {
       allow read, write: if false;
     }

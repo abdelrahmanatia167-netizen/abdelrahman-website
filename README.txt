@@ -1,30 +1,32 @@
-يرجى تنفيذ التعديلات والتحسينات التالية على المشروع مع الالتزام التام بكتابة كود نظيف، آمن، سريع، وخالي تماماً من الأخطاء:
+V14 WEBSITE UPDATE — FIRESTORE-ONLY PORTFOLIO UPLOAD
 
-1. نظام الترجمة (In-House Translation System):
-- تحويل نظام الترجمة ليكون كاملاً وخاصاً بالموقع (In-House / Custom Dictionary) لكل النصوص والمكونات، دون الاعتماد على إضافة ترجمة جوجل الخارجية (No Google Translate Widget).
-- توفير ملفات ترجمة (e.g., JSON / Dictionary) تسمح بالتنقل السلس واللحظي بين اللغات.
+This package preserves the existing V14 design and includes:
+- Local Arabic/English dictionary translation (no Google Translate widget).
+- Lightweight click micro-interactions and animations.
+- Separate portfolio galleries by category.
+- Portfolio cover/gallery image upload saved as compressed image data in Firestore.
+- Customer email/password authentication separated from the admin login entry.
+- Admin review and chat management tools already present in this V14 build.
 
-2. الرسومات والتفاعلات (Graphics & Interactive Micro-Interactions):
-- إضافة لمسات تفاعلية (Micro-interactions & Animations) عند الضغط على العناصر أو التنفيذ.
-- إدراج رسومات جرافيك/أنيميشن خفيفة تعبر عن كل أمر أو إجراء داخل الموقع بدون التغيير في التصميم العام أو الهوية البصرية.
+IMPORTANT: This version does NOT require Firebase Storage for portfolio images.
+Images are resized/compressed in the browser and stored as separate documents in the Firestore `projectImages` collection. Each image is kept below the Firestore document size limit. This is suitable for a modest portfolio; storing very large galleries this way can increase Firestore storage and read costs. Firebase Storage remains the better long-term choice for hundreds of large images.
 
-3. معارض الأعمال المتخصصة (Dynamic Portfolio Galleries):
-- إنشاء صفحة خاصة لمعرض الأعمال لكل قسم بشكل منفصل (Sub-galleries).
-- عند الضغط على زر "رؤية المزيد" في أي قسم، يتم التوجيه لصفحة المعرض الخاصة بهذا القسم مع دعم التنقل السلس بين الصور.
-- ربط المعارض بلوحة التحكم لإمكانية رفع، تعديل، وحذف الصور في أي وقت ديناميكياً.
+PUBLISH FIRESTORE RULES:
+1. Open Firebase Console and choose project `abdelrahman-website-98d4c`.
+2. Open Firestore Database > Rules.
+3. Back up the existing rules, replace them with the contents of `firestore.rules`, and click Publish.
+4. Do NOT publish `storage.rules`; it is not required by this build.
 
-4. لوحة التحكم الشاملة (Full Dynamic Admin Control Panel):
-- توفير تحكم كامل (Full CRUD) لكافة النصوص، الصور، العناصر، والأقسام داخل الموقع.
-- ضمان عمل جميع الأزرار والوظائف داخل لوحة التحكم بنسبة 100% وبدون أي مشاكل أو أخطاء برمجية.
-- إمكانية إضافة أو تعديل عناصر جديدة أو سابقة بكل سهولة.
+GITHUB PAGES DEPLOY:
+1. Extract this ZIP.
+2. Upload `index.html`, `1001809140.jpg`, `1001778764.jpg`, and `README.txt` to the root of the existing GitHub repository.
+3. `firestore.rules` is for Firebase Console only; it does not automatically publish when uploaded to GitHub.
+4. After GitHub Pages finishes deploying, hard-refresh the website and test admin login, saving text, and uploading one small image first.
 
-5. إدارة الدردشة (Chat Management):
-- إتاحة صلاحية كاملة للمسؤول من خلال لوحة التحكم لمسح أو إدارة أي محادثة/شات.
+ADMIN AUTH:
+The admin email configured in the code/rules is `abdelrahmanatia167@gmail.com`. This email must exist as a user in Firebase Authentication, and Firestore must be enabled in the same Firebase project.
 
-6. أمان وتجربة تسجيل الدخول (Authentication & Security):
-- عزل حساب الأدمن/المسؤول تماماً عن واجهة التسجيل الخاصة بالعملاء.
-- تخصيص نموذج تسجيل الدخول/إنشاء الحساب للعملاء فقط (كل عميل يسجل ببريده الإلكتروني وكلمة السر الخاصة به فقط دون إظهار بيانات الأدمن).
-
-7. جودة الكود والأداء (Performance & Clean Code):
-- كتابة كود مقتضب، آمن، ومنظم لمنع أي تعارض أو انهيار في النظام (No Breaking Changes).
-- تحسين أداء الموقع واستجابته ليكون خفيفاً وسريعاً جداً في التحميل والتنقل (Optimized Speed & Performance).
+LIMITATIONS:
+- Firestore rules do not create or reset Firebase Authentication accounts.
+- Client accounts use Firebase Authentication email/password.
+- Image uploads should be tested with a few small files before selecting many images. Each compressed image is stored as a separate Firestore document.
