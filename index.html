@@ -243,6 +243,7 @@ function localTranslateString(value,toEnglish){
 }
 function translatePage(){
   const en=currentLang==='en';
+  translationObserver?.disconnect();
   document.documentElement.lang=en?'en':'ar';
   document.documentElement.dir=en?'ltr':'rtl';
   document.body.classList.toggle('site-en',en);
@@ -254,6 +255,7 @@ function translatePage(){
     ['placeholder','title','aria-label'].forEach(attr=>{if(el.hasAttribute?.(attr)){const v=el.getAttribute(attr);el.setAttribute(attr,localTranslateString(v,en))}});
   });
   if($('langBtn'))$('langBtn').textContent=en?'عربي':'EN';
+  translationObserver?.observe(document.body,{childList:true,subtree:true});
 }
 function setLanguage(lang){
   currentLang=lang==='en'?'en':'ar';
@@ -265,6 +267,19 @@ function setLanguage(lang){
 }
 $('langBtn').onclick=()=>setLanguage(currentLang==='ar'?'en':'ar');
 window.addEventListener('siteCloudSynced',()=>{setTimeout(translatePage,80)});
+// Translate newly rendered UI text using the in-house dictionary. This covers
+// cards, toasts, admin tabs and other content inserted after the first render.
+let translationObserverTimer=0;
+const translationObserver=new MutationObserver(records=>{
+  if(currentLang!=='en'||translationObserverTimer) return;
+  const hasNewContent=records.some(record=>record.type==='childList'&&record.addedNodes.length);
+  if(!hasNewContent) return;
+  translationObserverTimer=window.setTimeout(()=>{
+    translationObserverTimer=0;
+    if(currentLang==='en') translatePage();
+  },80);
+});
+translationObserver.observe(document.body,{childList:true,subtree:true});
 // Keep the main document vertically scrollable on mobile; overlays should manage their own scrolling.
 function ensurePageScroll(){document.documentElement.style.setProperty('overflow-y','auto','important');document.body.style.setProperty('overflow-y','auto','important');document.documentElement.style.setProperty('touch-action','pan-y');document.body.style.setProperty('touch-action','pan-y');}
 ensurePageScroll();window.addEventListener('pageshow',ensurePageScroll);window.addEventListener('orientationchange',()=>setTimeout(ensurePageScroll,100));
